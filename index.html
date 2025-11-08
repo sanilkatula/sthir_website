@@ -197,145 +197,163 @@
     </div>
   </section>
 
-  <!-- 12-Week Road Map -->
-  <!-- place this right after the Hero section -->
+<!-- 12-Week Road Map -->
 <section id="roadmap" class="roadmap-section">
   <div class="container">
-    <div class="roadmap-head">
+    <header class="roadmap-head">
+      <span class="roadmap-kicker">12 weeks · 3 phases · 1 clear arc</span>
       <h2 class="section-title font-playfair">Your 12-Week Journey</h2>
-      <p class="roadmap-subtitle">Three phases from Anchoring → Exploration → Rooting</p>
-    </div>
+      <p class="roadmap-subtitle">
+        Move from <strong>Anchoring</strong> → <strong>Exploration</strong> → <strong>Rooting</strong> 
+        with a clear, visual path.
+      </p>
+    </header>
 
+    <!-- Main Roadmap Layout -->
     <div class="roadmap-map">
-      <button class="roadmap-arrow roadmap-prev" aria-label="Previous week">‹</button>
-      <button class="roadmap-arrow roadmap-next" aria-label="Next week">›</button>
+      <!-- Track: SVG + navigation -->
+      <div class="roadmap-track" aria-label="Weekly roadmap timeline">
+        <button 
+          class="roadmap-arrow roadmap-prev" 
+          aria-label="Previous week"
+          type="button"
+        >
+          <span aria-hidden="true">‹</span>
+        </button>
 
-      <!-- widened viewBox so the finish label never clips -->
-      <svg id="roadSvg" viewBox="0 0 1680 520" role="img" aria-label="Sthir 12-week roadmap" preserveAspectRatio="xMidYMid meet">
-        <!-- phase separators -->
-        <g class="phase-sep" aria-hidden="true">
-          <line x1="560"  y1="36" x2="560"  y2="500"/>
-          <line x1="1120" y1="36" x2="1120" y2="500"/>
-          <g class="phase-pill"><rect x="260"  y="24" width="230" height="38" rx="12" ry="12"/><text x="375"  y="48" text-anchor="middle">Phase 1 · Anchoring</text></g>
-          <g class="phase-pill"><rect x="820"  y="24" width="230" height="38" rx="12" ry="12"/><text x="935"  y="48" text-anchor="middle">Phase 2 · Exploration</text></g>
-          <g class="phase-pill"><rect x="1380" y="24" width="230" height="38" rx="12" ry="12"/><text x="1495" y="48" text-anchor="middle">Phase 3 · Rooting</text></g>
-        </g>
+        <button 
+          class="roadmap-arrow roadmap-next" 
+          aria-label="Next week"
+          type="button"
+        >
+          <span aria-hidden="true">›</span>
+        </button>
 
-        <!-- smoother, broader road -->
-        <path id="roadBase" d="M 40 420 C 300 360, 480 300, 660 280 S 1060 320, 1245 290 S 1500 260, 1580 190" />
-        <path id="roadDash" d="M 40 420 C 300 360, 480 300, 660 280 S 1060 320, 1245 290 S 1500 260, 1580 190" />
+        <svg 
+          id="roadSvg" 
+          viewBox="0 0 1740 520" 
+          role="img" 
+          aria-label="Sthir 12-week roadmap"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          <defs>
+            <!-- soft gradient for the main path -->
+            <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#0b1b3a"/>
+              <stop offset="50%" stop-color="#1f3c73"/>
+              <stop offset="100%" stop-color="#4a7af7"/>
+            </linearGradient>
+          </defs>
 
-        <!-- start / finish -->
-        <g aria-hidden="true">
-          <circle cx="40" cy="420" r="6" fill="#0b1b3a"></circle>
-          <text x="56" y="428" font-size="14" fill="#0b1b3a">Start</text>
-          <text x="1620" y="170" font-size="18" fill="#0b1b3a">🏁 Finish</text>
-        </g>
+          <!-- Base road -->
+          <path 
+            id="roadBase" 
+            d="M 80 420 L 600 420 L 600 270 L 1140 270 L 1140 120 L 1660 120" 
+            style="fill: none; stroke: url(#roadGradient); stroke-width: 20px; stroke-linejoin: round; stroke-linecap: round;"
+          />
+          <!-- Center dashed line -->
+          <path 
+            id="roadDash" 
+            d="M 80 420 L 600 420 L 600 270 L 1140 270 L 1140 120 L 1660 120" 
+            class="road-dash"
+          />
 
-        <!-- waypoints injected by JS -->
-        <g id="waypoints"></g>
-      </svg>
+          <!-- Phase labels -->
+          <g class="phase-pills" aria-hidden="true">
+            <g class="phase-pill" data-phase="1">
+              <rect x="225" y="350" width="230" height="38" rx="12" ry="12"/>
+              <text x="340" y="374" text-anchor="middle">Phase 1 · Anchoring</text>
+            </g>
+            <g class="phase-pill" data-phase="2">
+              <rect x="755" y="200" width="230" height="38" rx="12" ry="12"/>
+              <text x="870" y="224" text-anchor="middle">Phase 2 · Exploration</text>
+            </g>
+            <g class="phase-pill" data-phase="3">
+              <rect x="1285" y="50" width="230" height="38" rx="12" ry="12"/>
+              <text x="1400" y="74" text-anchor="middle">Phase 3 · Rooting</text>
+            </g>
+          </g>
 
-      <!-- info panel -->
-      <aside id="roadPanel" class="roadmap-panel hidden" aria-live="polite">
-        <div class="rp-badge" id="rpWeek">Week 1</div>
-        <h3 id="rpTitle">Title</h3>
+          <!-- Start / finish -->
+          <g aria-hidden="true" class="road-endpoints">
+            <circle cx="80" cy="420" r="6" class="road-start-dot"></circle>
+            <text x="80" y="455" font-size="14" class="road-label" text-anchor="middle">Start</text>
+            <text x="1660" y="85" font-size="18" class="road-label" text-anchor="middle">🏁 Finish</text>
+          </g>
+
+          <!-- Waypoints injected by JS -->
+          <g id="waypoints"></g>
+        </svg>
+      </div>
+
+      <!-- Dynamic week detail panel -->
+      <aside 
+        id="roadPanel" 
+        class="roadmap-panel hidden" 
+        aria-live="polite"
+      >
+        <div class="rp-header">
+          <span class="rp-badge" id="rpWeek">Week 1</span>
+          <span class="rp-phase-tag" id="rpPhaseTag">Phase 1 · Anchoring</span>
+        </div>
+        <h3 id="rpTitle" class="rp-title">Anchoring your attention</h3>
+        <p id="rpSummary" class="rp-summary">
+          Zoom into one meaningful problem space while turning off autopilot.
+        </p>
         <ul class="rp-list" id="rpList"></ul>
       </aside>
     </div>
 
-    <!-- Phase summaries under the map -->
+    <!-- Phase Summary Cards -->
     <div class="phase-cards" aria-label="Phase summaries">
       <article class="phase-card" data-phase="1">
-        <h3>Phase 1 · Anchoring</h3>
-        <p>Notice patterns, slow down, and choose your focus.</p>
+        <header class="phase-card-head">
+          <span class="phase-tag">Weeks 1–4</span>
+          <h3>Phase 1 · Anchoring</h3>
+        </header>
+        <p class="phase-description">
+          Notice patterns, slow down, and choose the work that actually matters.
+        </p>
         <ul>
-          <li>Autopilot audit &amp; attention science</li>
-          <li>Create your personal Anchoring Map</li>
-          <li>Commit a problem space to explore</li>
+          <li>Run an “autopilot audit” using attention science</li>
+          <li>Map your personal Anchoring &amp; distraction triggers</li>
+          <li>Commit to a problem space you’ll explore deeply</li>
         </ul>
       </article>
+
       <article class="phase-card" data-phase="2">
-        <h3>Phase 2 · Exploration</h3>
-        <p>Run small tests, collaborate, and learn from people.</p>
+        <header class="phase-card-head">
+          <span class="phase-tag">Weeks 5–8</span>
+          <h3>Phase 2 · Exploration</h3>
+        </header>
+        <p class="phase-description">
+          Run small, brave experiments and learn directly from real people.
+        </p>
         <ul>
-          <li>Bold real-world experiments</li>
-          <li>Team charter &amp; deep listening</li>
-          <li>Jobs-to-be-Done interviews &amp; synthesis</li>
+          <li>Design bold real-world experiments in low-risk ways</li>
+          <li>Create a team charter &amp; practice deep listening</li>
+          <li>Run Jobs-to-be-Done interviews and synthesis sessions</li>
         </ul>
       </article>
+
       <article class="phase-card" data-phase="3">
-        <h3>Phase 3 · Rooting</h3>
-        <p>Shape a point of view and ship a tangible outcome.</p>
+        <header class="phase-card-head">
+          <span class="phase-tag">Weeks 9–12</span>
+          <h3>Phase 3 · Rooting</h3>
+        </header>
+        <p class="phase-description">
+          Shape a point of view, ship something tangible, and make it stick.
+        </p>
         <ul>
-          <li>Influence &amp; network building</li>
-          <li>MVP sprint with feedback loops</li>
-          <li>Leadership commitment &amp; next steps</li>
+          <li>Build influence through intentional network-building</li>
+          <li>Run an MVP sprint with tight feedback loops</li>
+          <li>Secure leadership commitment &amp; define next steps</li>
         </ul>
       </article>
     </div>
   </div>
 </section>
 
-  <section id="roadmap" class="roadmap-section">
-    <div class="container">
-      <div class="roadmap-map">
-        <button class="roadmap-arrow roadmap-prev" aria-label="Previous week">‹</button>
-        <button class="roadmap-arrow roadmap-next" aria-label="Next week">›</button>
-
-        <svg id="roadSvg" viewBox="0 0 1600 520" role="img" aria-label="Sthir 12-week roadmap" preserveAspectRatio="xMidYMid meet">
-          <!-- phase separators -->
-          <g class="phase-sep" aria-hidden="true">
-            <!-- lines (at ~33% and ~66%) -->
-            <line x1="533" y1="36" x2="533" y2="500"/>
-            <line x1="1066" y1="36" x2="1066" y2="500"/>
-            <!-- pills -->
-            <g class="phase-pill">
-              <rect x="250" y="24" width="220" height="38" rx="12" ry="12"></rect>
-              <text x="360" y="48" text-anchor="middle">Phase 1 · Anchoring</text>
-            </g>
-            <g class="phase-pill">
-              <rect x="785" y="24" width="220" height="38" rx="12" ry="12"></rect>
-              <text x="895" y="48" text-anchor="middle">Phase 2 · Exploration</text>
-            </g>
-            <g class="phase-pill">
-              <rect x="1318" y="24" width="220" height="38" rx="12" ry="12"></rect>
-              <text x="1428" y="48" text-anchor="middle">Phase 3 · Rooting</text>
-            </g>
-          </g>
-
-          <!-- smooth S-curve road (broader) -->
-          <path id="roadBase" fill="none"
-                d="M 40 420
-                  C 280 360, 460 300, 640 280
-                  S 1040 320, 1225 290
-                  S 1480 260, 1560 190" />
-          <path id="roadDash" fill="none"
-                d="M 40 420
-                  C 280 360, 460 300, 640 280
-                  S 1040 320, 1225 290
-                  S 1480 260, 1560 190" />
-
-          <!-- start / finish -->
-          <g aria-hidden="true">
-            <circle cx="40" cy="420" r="6" fill="#0b1b3a"></circle>
-            <text x="56" y="428" font-size="14" fill="#0b1b3a">Start</text>
-            <text x="1545" y="165" font-size="18" fill="#0b1b3a">🏁 Finish</text>
-          </g>
-
-          <!-- waypoints injected by JS -->
-          <g id="waypoints"></g>
-        </svg>
-
-        <!-- info panel -->
-        <aside id="roadPanel" class="roadmap-panel hidden" aria-live="polite">
-          <div class="rp-badge" id="rpWeek">Week 1</div>
-          <h3 id="rpTitle">Title</h3>
-          <ul class="rp-list" id="rpList"></ul>
-        </aside>
-      </div>
-    </div>
-  </section>
   
   <!-- Philosophy Section -->
   <section id="philosophy" class="section philosophy-bg">
