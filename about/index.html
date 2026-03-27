@@ -1,359 +1,160 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — Sthir</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Sthir</title>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-
-  <style>
-    /* =========================================
-       Global Tokens (with sensible fallbacks)
-    ========================================= */
-    :root {
-      --brand-dark: #0f172a; /* fallback if not defined globally */
-      --brand: #1f2937;
-      --blue: #2563eb;
-      --accent: #7c3aed;
-      --surface: #ffffff;
-      --muted: #64748b;
-      --faint: #e2e8f0;
-      --radius: 16px;
-      --shadow-lg: 0 24px 60px rgba(2, 6, 23, 0.14);
-      --shadow-md: 0 12px 32px rgba(2, 6, 23, 0.12);
-      --shadow-sm: 0 6px 18px rgba(2, 6, 23, 0.08);
-      --container: 1160px;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: #0b1220;
-      background:
-        /* Pattern layer (soft, professional) */
-        url("data:image/svg+xml,%3Csvg width='48' height='48' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23e5ecff' stroke-width='1'%3E%3Cpath d='M0 24h48M24 0v48'/%3E%3C/g%3E%3C/svg%3E") repeat,
-        linear-gradient(180deg, #f8fbff 0%, #ffffff 20%, #f8fbff 100%);
-      background-size: 48px 48px, auto;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .font-playfair { font-family: "Playfair Display", Georgia, serif; }
-    .container { width: min(100%, var(--container)); margin-inline: auto; padding-inline: 1.25rem; }
-    img { max-width: 100%; height: auto; display: block; }
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: .8rem 1.2rem; font-weight: 600; gap: .5rem; }
-    .btn-primary {
-      background: linear-gradient(93deg, var(--blue), #93c5fd);
-      color: #fff; border: 0; box-shadow: var(--shadow-sm);
-      transition: transform .16s ease, box-shadow .16s ease, filter .16s ease;
-    }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); filter: brightness(.98); }
-    .btn-secondary { background: #eef2ff; color: #1e1b4b; border: 1px solid #c7d2fe; }
-
-    /* =========================================
-       Navigation (Professional, compact)
-    ========================================= */
-    .navbar { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.75); backdrop-filter: saturate(180%) blur(14px); border-bottom: 1px solid rgba(2,6,23,.06); }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-    .brand { display: flex; align-items: center; gap: .75rem; }
-    .brand-logo { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; box-shadow: 0 4px 14px rgba(37,99,235,.22); }
-    .brand-title { font-weight: 700; letter-spacing: .2px; color: var(--brand-dark); font-size: 1.25rem; }
-    .brand-tagline { display:block; font-size:.8rem; color:#475569; line-height:1; margin-top:2px; }
-
-    .nav-links { list-style: none; display: flex; gap: 1.2rem; margin: 0; padding: 0; align-items: center; }
-    .nav-links a { color: #0b1220; font-weight: 500; padding: .4rem .6rem; border-radius: 8px; }
-    .nav-links a[aria-current="page"] { background: #eef2ff; color: #1e3a8a; }
-    .nav-toggle { display:none; background:transparent; border:0; width:44px; height:44px; border-radius:10px; }
-    .nav-toggle span { display:block; width:22px; height:2px; background:#0b1220; margin:5px auto; border-radius:2px; }
-
-    @media (max-width: 920px) {
-      .nav-links { position: fixed; inset: 72px 0 auto 0; background: rgba(255,255,255,.96); backdrop-filter: blur(10px); flex-direction: column; gap: .8rem; padding: 1rem 1rem 1.2rem; transform: translateY(-8px); opacity:0; pointer-events:none; transition: .18s ease; border-bottom:1px solid rgba(2,6,23,.06); }
-      .nav-links.open { transform: translateY(0); opacity:1; pointer-events:auto; }
-      .nav-toggle { display:block; }
-    }
-
-    /* =========================================
-       HERO — Formal, Enthusiastic, Executive polish
-    ========================================= */
-    .about-hero {
-      position: relative;
-      background:
-        radial-gradient(1200px 600px at 80% -10%, rgba(124,58,237,.22), transparent 60%),
-        radial-gradient(900px 480px at -10% 10%, rgba(37,99,235,.18), transparent 55%),
-        linear-gradient(120deg, var(--accent) 0%, var(--blue) 90%);
-      color: #fff;
-      min-height: 56vh;
-      display: grid; place-items: center; text-align: center;
-      padding: 5.5rem 0 4.5rem;
-      overflow: hidden;
-      box-shadow: inset 0 -1px 0 rgba(255,255,255,.2);
-    }
-    .about-hero::after { /* tasteful dotted overlay */
-      content: "";
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='44' height='44' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1' fill='%23ffffff22'/%3E%3C/svg%3E") repeat;
-      pointer-events: none;
-      opacity: .8;
-    }
-    .about-hero .badge { display:inline-flex; align-items:center; gap:.5rem; background: rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.28); padding:.35rem .7rem; border-radius:999px; font-weight:600; letter-spacing:.2px; }
-    .about-title { font-size: clamp(2.2rem, 1.4rem + 2.8vw, 3.4rem); margin: .6rem 0 .4rem; }
-    .about-subtitle { max-width: 880px; margin: 0 auto; font-size: 1.125rem; color: #eef6ff; }
-
-    /* =========================================
-       SECTION WRAPPERS
-    ========================================= */
-    .section { padding: 4.5rem 0; }
-    .section.narrow { padding: 3.25rem 0; }
-    .section-title { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); margin: 0 0 1.25rem; color: var(--brand-dark); }
-    .lead { color: #334155; font-size: 1.06rem; }
-
-    /* Glass and Cards */
-    .glass-section { background: linear-gradient(180deg, #ffffffaa, #ffffffaa), rgba(255,255,255,0.7); backdrop-filter: blur(8px); border-top: 1px solid rgba(2,6,23,.06); border-bottom: 1px solid rgba(2,6,23,.06); }
-    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: .25rem; }
-    .glass-card { background: linear-gradient(#ffffff, #ffffff) padding-box,
-                           linear-gradient(93deg, rgba(37,99,235,.35), rgba(124,58,237,.35)) border-box;
-                  border: 1.5px solid transparent; border-radius: var(--radius); padding: 1.1rem 1rem; box-shadow: var(--shadow-sm); }
-    .glass-card h3 { margin: .25rem 0 .35rem; font-size: 1.15rem; }
-    .glass-card p { margin: 0; color: var(--muted); }
-    .icon-circle { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 999px; background: #eef2ff; color: #1e3a8a; font-weight: 700; box-shadow: inset 0 0 0 1px #c7d2fe; }
-
-    /* =========================================
-       STORY / FOUNDER
-    ========================================= */
-    .about-bg { background:
-        url("data:image/svg+xml,%3Csvg width='72' height='72' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 36h72M36 0v72' stroke='%23f0f5ff'/%3E%3C/svg%3E") repeat,
-        #fff; }
-
-    .about-content { display: grid; grid-template-columns: 360px 1fr; gap: 2rem; align-items: start; }
-    .about-img { position: relative; }
-    .about-portrait { border-radius: 20px; box-shadow: var(--shadow-lg); border: 1px solid rgba(2,6,23,.08); }
-    .about-logo { position: absolute; right: -12px; bottom: -12px; }
-    .sthir-logo { width: 64px; height:64px; border-radius: 16px; box-shadow: var(--shadow-md); }
-    .about-text p { color: #334155; }
-
-    @media (max-width: 960px) {
-      .about-content { grid-template-columns: 1fr; }
-      .about-logo { right: 0; bottom: -10px; }
-    }
-
-    /* =========================================
-       VALUES (Refined)
-    ========================================= */
-    .about-values .glass-card { text-align: left; }
-    .about-values .icon-circle { font-size: 1.1rem; }
-
-    /* =========================================
-       TEAM (Founding Circle)
-    ========================================= */
-    .about-team { background:
-      linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-    }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.4rem; margin-top: .75rem; }
-    .team-card { background: rgba(255,255,255,0.9); border: 1px solid rgba(2,6,23,0.06); border-radius: 18px; text-align: center; padding: 1.2rem 1rem; box-shadow: var(--shadow-sm); }
-    .team-card img { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; margin: 0 auto .8rem; box-shadow: 0 8px 20px rgba(2,6,23,0.08); }
-    .team-card strong { display: block; color: var(--brand-dark); font-size: 1.05rem; }
-    .team-card span { color: #64748b; font-size: .98rem; }
-
-    /* =========================================
-       CTA (Executive Gradient Border)
-    ========================================= */
-    .cta-wrap { background:
-      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 60H0z' fill='%23f9fafb'/%3E%3C/svg%3E") repeat;
-      background-size: 60px 60px; padding-top: 0; }
-    .cta-card { background: linear-gradient(#fdfdfb, #ffffff) padding-box,
-                         linear-gradient(93deg, var(--blue), var(--accent)) border-box;
-                 border: 2px solid transparent; border-radius: 18px; padding: 1.6rem 1.25rem; max-width: 920px; margin: 0 auto; box-shadow: var(--shadow-md); text-align: center; }
-
-    /* =========================================
-       FOOTER
-    ========================================= */
-    .footer { background: #0b1220; color: #cbd5e1; }
-    .footer-inner { display: grid; gap: 1.25rem; grid-template-columns: 1.2fr .8fr .8fr; padding: 2rem 0; }
-    .footer-brand { font-size: 1.25rem; color: #fff; }
-    .footer-tagline { color: #94a3b8; }
-    .footer-links { list-style: none; padding:0; margin:0; display:grid; gap:.5rem; }
-    .footer-links a { color: #cbd5e1; }
-    .footer-links a:hover { color: #fff; }
-    .footer-social { display: flex; gap: .75rem; }
-    .footer-social a { width: 36px; height: 36px; display:grid; place-items:center; border-radius: 10px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); }
-    .footer svg { width: 18px; height: 18px; fill: currentColor; color: #e2e8f0; }
-    .footer-copy { grid-column: 1 / -1; border-top: 1px solid rgba(148,163,184,.2); padding-top: 1rem; font-size: .9rem; color: #94a3b8; }
-
-    @media (max-width: 960px){ .footer-inner { grid-template-columns: 1fr; } }
-
-    /* =========================================
-       Mobile niceties
-    ========================================= */
-    @media (max-width: 640px) {
-      .about-hero { padding: 3.2rem 0 2.8rem; }
-      .about-subtitle { font-size: 1.02rem; }
-    }
-  </style>
+  <link href="../blog/blog.css" rel="stylesheet" />
+  <link href="./about.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body>
-  <!-- Navbar -->
-  <header class="navbar" id="navbar">
-    <nav class="container nav-inner" aria-label="Main navigation">
-      <a href="/" class="brand" aria-label="Sthir Home">
-        <img src="../images/logo.jpeg" alt="" class="brand-logo" />
-        <div class="brand-text">
-          <span class="brand-title font-playfair">Sthir</span>
-          <span class="brand-tagline">Sit Sthir, Stand Tall</span>
-        </div>
-      </a>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="/#services">Programs</a></li>
-        <li><a href="/#philosophy">Philosophy</a></li>
-        <li><a href="/#ai-tools">AI Tools</a></li>
-        <li><a href="/#testimonials">Testimonials</a></li>
-        <li><a href="/contact/">Contact</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/about" aria-current="page">About</a></li>
-        <li style="margin-left:1.2rem; display:flex; align-items:center; height:100%;">
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing"
-            target="_blank" rel="noopener"
-            class="btn btn-primary"
-            style="font-size:1.05rem; padding:.55rem 1.1rem; box-shadow:0 6px 18px rgba(37,99,235,0.24);"
-          >Apply Now</a>
-        </li>
-      </ul>
-      <button id="nav-toggle" class="nav-toggle" aria-label="Open Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-  </header>
+<body class="blog about-page">
 
-  <!-- About Hero -->
-  <section class="about-hero">
-    <div class="container about-hero-inner">
-      <span class="badge">🌱 Advancing Conscious Leadership</span>
-      <h1 class="about-title font-playfair">About Sthir</h1>
-      <p class="about-subtitle">
-        We partner with ambitious young adults to cultivate clarity, character, and real-world capability. Our programs blend reflective rigor with action-oriented experiments—so you build momentum with purpose.
+  <div class="progress-bar" id="progress-bar"></div>
+  <div class="noise"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <nav id="navbar">
+    <a href="../hybrid_positive_framing.html" class="site-brand interactive" aria-label="Sthir Home">
+      <img src="../images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'" />
+      <div class="site-brand-meta">
+        <span class="brand-title-text">STHIR</span>
+        <span class="brand-tagline-text">stillness in motion</span>
+      </div>
+    </a>
+    <div class="site-nav-links">
+      <a href="./" class="interactive" aria-current="page">About</a>
+      <a href="../hybrid_positive_framing.html#offerings" class="interactive">Paths</a>
+      <a href="../hybrid_positive_framing.html#sprints-directory" class="interactive">Sprints</a>
+      <a href="../blog/" class="interactive">Blogs</a>
+      <a href="../hybrid_positive_framing.html#testimonials" class="interactive">Testimonials</a>
+      <a href="../contact/" class="interactive">Contact</a>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive">Apply Now</a>
+  </nav>
+
+  <section class="hero-shell">
+    <div class="hero-inner">
+      <span class="hero-badge interactive">About Sthir</span>
+      <h1 class="hero-title">
+        Design steadier futures.
+        <span class="hero-title-accent">We help thoughtful young adults build clarity, character, and conscious momentum.</span>
+      </h1>
+      <p class="hero-summary">
+        Sthir brings together reflection, action experiments, and grounded support so growth feels aligned, durable, and deeply your own.
       </p>
     </div>
   </section>
 
-  <!-- Founder / Story -->
-  <section class="section about-bg" id="founder">
-    <div class="container about-content">
-      <div class="about-img">
-        <img src="../images/shalu_ahuja.png" alt="Portrait of Shalu Ahuja, Founder of Sthir" class="about-portrait" />
-        <div class="about-logo">
-          <img src="../images/logo.jpeg" alt="Sthir Logo" class="sthir-logo" />
+  <main class="wrap about-main">
+    <section class="page-section">
+      <div class="about-story-grid">
+        <div class="glass-card about-photo-panel">
+          <img src="../images/shalu_ahuja.png" alt="Shalu Ahuja, founder of Sthir" class="about-portrait" />
+        </div>
+        <div class="glass-card about-copy-panel">
+          <p class="section-kicker">Founder</p>
+          <h2>Shalu Ahuja</h2>
+          <p>
+            Shalu is an engineer, business leader, and guide who has spent more than twenty-five years building teams, products, and enduring systems in the real world.
+          </p>
+          <p>
+            Over the last decade, she has also walked closely with young adults navigating identity shifts, career pivots, and the pressure to keep moving before they feel ready. The pattern was clear: ambition was present, but anchoring was often missing.
+          </p>
+          <p>
+            Sthir exists to close that gap. We bring reflection, discernment, experimentation, and community into one practice so people can move forward with more inner steadiness and less noise.
+          </p>
         </div>
       </div>
+    </section>
 
-      <div class="about-text">
-        <h2 class="font-playfair" style="margin-top:0;">Founder: Shalu Ahuja</h2>
-        <p>
-          An engineer, business leader, and devoted parent, Shalu has led high-performing teams and built enduring products and services for over twenty-five years. Behind the résumé, she witnessed a recurring challenge: success without centeredness.
-        </p>
-        <p>
-          For the past decade, she has walked alongside young people through identity shifts, career pivots, and the uneasy quiet of uncertainty. A consistent insight emerged—ambition isn’t the issue; anchoring is.
-        </p>
-        <p>
-          Sthir exists to resolve that gap. We bring structure and substance, tools and accountability, so the next generation doesn’t just launch careers—they craft conscious, durable lives.
+    <section class="page-section">
+      <div class="section-header">
+        <p class="section-kicker">Mission And Values</p>
+        <h2 class="section-title">Clarity before speed, experiments before overthinking, and growth in community.</h2>
+        <p class="section-copy">
+          Our work is designed to help people move from scattered possibility to grounded next steps without losing depth, self-trust, or intention.
         </p>
       </div>
-    </div>
-  </section>
-
-  <!-- Mission & Values -->
-  <section class="section glass-section" id="values">
-    <div class="container">
-      <h2 class="section-title font-playfair">Mission & Values</h2>
-      <p class="lead">Our promise is simple: clarity before velocity, experiments over abstractions, and growth in community.</p>
-
-      <div class="card-grid about-values" style="margin-top: 1rem;">
-        <article class="glass-card" tabindex="0" aria-label="Anchored Self value">
-          <div class="icon-circle" aria-hidden="true">🧭</div>
+      <div class="about-values-grid">
+        <article class="glass-card about-value-card">
+          <div class="value-icon">01</div>
           <h3>Anchored Self</h3>
-          <p>Decisions align when values are visible. We help you articulate your center and act from it.</p>
+          <p>Decisions become clearer when values are visible. We help people name their center and act from it.</p>
         </article>
-
-        <article class="glass-card" tabindex="0" aria-label="Action Experiments value">
-          <div class="icon-circle" aria-hidden="true">🧪</div>
+        <article class="glass-card about-value-card">
+          <div class="value-icon">02</div>
           <h3>Action Experiments</h3>
-          <p>Small, focused tests create real data. Ship, measure, reflect, and iterate with momentum.</p>
+          <p>Small, grounded tests create real evidence. Progress grows through movement, reflection, and iteration.</p>
         </article>
-
-        <article class="glass-card" tabindex="0" aria-label="Conscious Community value">
-          <div class="icon-circle" aria-hidden="true">🤝</div>
+        <article class="glass-card about-value-card">
+          <div class="value-icon">03</div>
           <h3>Conscious Community</h3>
-          <p>Leadership is practiced publicly—through collaboration, feedback, and mutual accountability.</p>
+          <p>Growth holds more deeply in relationship. Accountability, feedback, and shared learning are part of the path.</p>
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Founding Circle -->
-  <section class="section about-team" id="team">
-    <div class="container">
-      <h2 class="section-title font-playfair">Founding Circle</h2>
-      <div class="team-grid">
-        <div class="team-card" aria-label="Arjun Menon profile">
-          <img src="https://placehold.co/160x160?text=A" alt="Headshot of Arjun Menon" />
-          <strong>Arjun Menon</strong>
-          <span>Product &amp; Operations</span>
-        </div>
-        <div class="team-card" aria-label="Maanya Gupta profile">
-          <img src="https://placehold.co/160x160?text=M" alt="Headshot of Maanya Gupta" />
-          <strong>Maanya Gupta</strong>
-          <span>Programs</span>
-        </div>
-        <div class="team-card" aria-label="Sanil Katula profile">
-          <img src="https://placehold.co/160x160?text=S" alt="Headshot of Sanil Katula" />
-          <strong>Sanil Katula</strong>
-          <span>Community</span>
-        </div>
-        <div class="team-card" aria-label="Bahaar Ahuja profile">
-          <img src="https://placehold.co/160x160?text=B" alt="Headshot of Bahaar Ahuja" />
-          <strong>Bahaar Ahuja</strong>
-          <span>Experience</span>
+    <section class="page-section">
+      <div class="section-header">
+        <p class="section-kicker">Founding Circle</p>
+        <h2 class="section-title">A multidisciplinary team building the next chapter with care.</h2>
+      </div>
+      <div class="about-team-grid">
+        <article class="glass-card team-card">
+          <div class="team-avatar">SA</div>
+          <h3>Shalu Ahuja</h3>
+          <p>Founder and steward of the Sthir vision, methodology, and community direction.</p>
+        </article>
+        <article class="glass-card team-card">
+          <div class="team-avatar">AM</div>
+          <h3>Arjun Menon</h3>
+          <p>Supports product thinking and operational structure so ideas become dependable experiences.</p>
+        </article>
+        <article class="glass-card team-card">
+          <div class="team-avatar">BA</div>
+          <h3>Bahaar Ahuja</h3>
+          <p>Shapes experience, narrative, and emotional resonance across the Sthir journey.</p>
+        </article>
+        <article class="glass-card team-card">
+          <div class="team-avatar">SK</div>
+          <h3>Sanil Katula</h3>
+          <p>Supports digital systems, community touchpoints, and the evolving online experience.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="glass-card about-cta-card">
+        <p class="section-kicker">Move Forward</p>
+        <h2>Build from the inside out.</h2>
+        <p>
+          Join a cohort, explore the tools, or start a conversation with us about where you are and what comes next.
+        </p>
+        <div class="about-cta-actions">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive">Apply Now</a>
+          <a href="../contact/" class="about-secondary-link interactive">Contact Sthir</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Commitment / CTA -->
-  <section class="section cta-wrap" id="apply">
-    <div class="container cta-card">
-      <h3 class="font-playfair" style="margin:0 0 .25rem;">Ready to Build from the Inside Out?</h3>
-      <p style="margin:.25rem 0 1rem; color:#374151;">
-        Join a cohort committed to purposeful impact. Applications are reviewed on a rolling basis.
-      </p>
-      <div>
-        <a class="btn btn-primary" target="_blank" rel="noopener"
-           href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing">Apply Now</a>
-        <a class="btn btn-secondary" target="_blank" rel="noopener"
-           href="https://docs.google.com/forms/d/e/1FAIpQLScl240ueTEebNQobfeNkejVFbQ0pJW_64cL_0rPfJszRjhPsA/viewform?usp=sharing">Join Interest List</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <div>
-        <div class="font-playfair footer-brand">Sthir</div>
-        <div class="footer-tagline">Sit Sthir, Stand Tall.</div>
+        <div class="footer-brand">STHIR</div>
+        <div class="footer-tagline">stillness in motion</div>
       </div>
       <ul class="footer-links">
-        <li><a href="#founder">Founder</a></li>
-        <li><a href="#values">Mission &amp; Values</a></li>
-        <li><a href="#team">Founding Circle</a></li>
-        <li><a href="#apply">Apply</a></li>
-        <li><a href="/contact/">Contact</a></li>
+        <li><a href="./" aria-current="page">About</a></li>
+        <li><a href="../hybrid_positive_framing.html#offerings">Paths</a></li>
+        <li><a href="../hybrid_positive_framing.html#sprints-directory">Sprints</a></li>
+        <li><a href="../blog/">Blogs</a></li>
+        <li><a href="../contact/">Contact</a></li>
       </ul>
-      <div class="footer-social" aria-label="social links">
+      <div class="footer-social">
         <a href="#" aria-label="Twitter">
           <svg viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/></svg>
         </a>
@@ -364,27 +165,62 @@
           <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12.011c0 4.432 2.865 8.18 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.011C22 6.477 17.523 2 12 2z" /></svg>
         </a>
       </div>
-      <div class="footer-copy">&copy; 2025 Sthir. All Rights Reserved.</div>
+      <div class="footer-copy">&copy; 2026 Sthir. All Rights Reserved.</div>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Mark "About" as current
-    (function() {
-      var aboutLinks = Array.from(document.querySelectorAll('a[href="/about"]'));
-      aboutLinks.forEach(function(a){ a.setAttribute('aria-current','page'); });
-    })();
+  (function(){
+    var body = document.body;
+    var cursorDot = document.querySelector('.cursor-dot');
+    var cursorOutline = document.querySelector('.cursor-outline');
+    var navbar = document.getElementById('navbar');
+    var progressBar = document.getElementById('progress-bar');
+    var interactiveSelector = '.interactive, a, button, textarea, input, .btn';
+    var prefersCoarse = window.matchMedia('(pointer: coarse)').matches;
 
-    // Mobile menu
-    (function(){
-      var toggle = document.getElementById('nav-toggle');
-      var links = document.getElementById('nav-links');
-      toggle && toggle.addEventListener('click', function(){
-        var isOpen = links.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(isOpen));
+    if (!prefersCoarse && cursorDot && cursorOutline) {
+      window.addEventListener('mousemove', function(e){
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+        cursorOutline.animate(
+          { left: e.clientX + 'px', top: e.clientY + 'px' },
+          { duration: 500, fill: 'forwards' }
+        );
       });
-    })();
+
+      document.addEventListener('mouseover', function(e){
+        if (e.target.closest(interactiveSelector)) {
+          body.classList.add('cursor-hover');
+        }
+      });
+
+      document.addEventListener('mouseout', function(e){
+        if (!e.target.closest(interactiveSelector)) {
+          return;
+        }
+        if (!e.relatedTarget || !e.relatedTarget.closest(interactiveSelector)) {
+          body.classList.remove('cursor-hover');
+        }
+      });
+    }
+
+    function updateChrome() {
+      var scrollTop = window.scrollY || window.pageYOffset;
+      if (navbar) {
+        navbar.classList.toggle('nav-scrolled', scrollTop > 50);
+      }
+      if (progressBar) {
+        var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var width = totalHeight > 0 ? (scrollTop / totalHeight) * 100 : 0;
+        progressBar.style.width = Math.max(0, Math.min(100, width)) + '%';
+      }
+    }
+
+    window.addEventListener('scroll', updateChrome, { passive: true });
+    window.addEventListener('resize', updateChrome);
+    updateChrome();
+  })();
   </script>
 </body>
 </html>

@@ -5,99 +5,34 @@
   <title>Sthir Blog — Post</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- AOS (to mirror index.html include order) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
-
-  <!-- Global site styles -->
-  <link href="../styles.css" rel="stylesheet" />
-  <!-- Blog-only overrides -->
   <link href="./blog.css" rel="stylesheet" />
-
-  <!-- Fonts (match index.html) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-  
-  <!-- Page-specific tweaks (narrow post content) -->
-  <style>
-    .wrap { max-width: 760px; margin: 0 auto; padding: 24px; }
-    .meta { color: #64748b; margin: 8px 0 16px; }
-    #err { margin-top:12px; padding:12px; border:1px solid #fecaca; background:#fff1f2; border-radius:10px; color:#991b1b; display:none; }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"/>
 </head>
 <body class="blog blog-post">
 
-  <!-- Navbar -->
-  <header class="navbar" id="navbar">
-    <nav class="container nav-inner" aria-label="Main navigation">
-      <!-- Brand (left) -->
-      <a href="/" class="brand" aria-label="Sthir Home">
-        <img src="../images/logo.jpeg" alt="" class="brand-logo" />
-        <div class="brand-text">
-          <span class="brand-title font-playfair">Sthir</span>
-          <span class="brand-tagline">Sit Sthir, Stand Tall</span>
-        </div>
-      </a>
+  <div class="progress-bar" id="progress-bar"></div>
+  <div class="noise"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
 
-      <!-- Spacer pushes links to the right -->
-      <div class="nav-spacer" aria-hidden="true"></div>
-
-      <!-- Desktop links (right) -->
-      <ul class="nav-links" id="nav-links">
-        <li><a href="/#services">Programs</a></li>
-        <li><a href="/#philosophy">Philosophy</a></li>
-        <li><a href="/#ai-tools">AI Tools</a></li>
-        <li><a href="/#testimonials">Testimonials</a></li>
-        <li><a href="/contact/">Contact</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/about">About</a></li>
-        <li style="margin-left:1.2rem; display:flex; align-items:center; height:100%;">
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing"
-            target="_blank" rel="noopener"
-            style="
-              display:inline-flex; align-items:center; justify-content:center;
-              padding:0.25rem 1.1rem; border-radius:999px; font-weight:500; font-size:1.07rem;
-              cursor:pointer; border:none;
-              background:linear-gradient(93deg, #2563eb 65%, #93c5fd 100%);
-              color:#fff; box-shadow:0 2px 8px 0 rgba(37,99,235,0.18); text-decoration:none; line-height:1.35;
-              transition:background 0.18s, box-shadow 0.18s, transform 0.14s; outline:none;
-            "
-            onmouseover="this.style.background='linear-gradient(93deg, #1e3a8a 90%, #bfdbfe 100%)'; this.style.transform='translateY(-2px) scale(1.03)'; this.style.boxShadow='0 6px 18px rgba(37,99,235,0.28)';"
-            onmouseout="this.style.background='linear-gradient(93deg, #2563eb 65%, #93c5fd 100%)'; this.style.transform='none'; this.style.boxShadow='0 2px 8px 0 rgba(37,99,235,0.18)';"
-          >
-            Apply Now
-          </a>
-        </li>
-      </ul>
-
-      <!-- Hamburger button -->
-      <button id="nav-toggle" class="nav-toggle" aria-label="Open Menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
-    </nav>
-
-    <!-- Mobile menu -->
-    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-      <ul>
-        <li><a href="/#services">Programs</a></li>
-        <li><a href="/#philosophy">Philosophy</a></li>
-        <li><a href="/#ai-tools">AI Tools</a></li>
-        <li><a href="/#testimonials">Testimonials</a></li>
-        <li><a href="/contact/">Contact</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/about">About</a></li>
-        <li style="margin-left:1.2rem; display:flex; align-items:center; height:100%;">
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing"
-            target="_blank"
-            rel="noopener"
-            class="apply-now-btn"
-          >
-            Apply Now
-          </a>
-        </li>     
-      </ul>
-    </nav>
-  </header>
+  <nav id="navbar">
+    <a href="../hybrid_positive_framing.html" class="site-brand interactive" aria-label="Sthir Home">
+      <img src="../images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'" />
+      <div class="site-brand-meta">
+        <span class="brand-title-text">STHIR</span>
+        <span class="brand-tagline-text">stillness in motion</span>
+      </div>
+    </a>
+    <div class="site-nav-links">
+      <a href="../about/" class="interactive">About</a>
+      <a href="../hybrid_positive_framing.html#offerings" class="interactive">Paths</a>
+      <a href="../hybrid_positive_framing.html#sprints-directory" class="interactive">Sprints</a>
+      <a href="./index.html" class="interactive" aria-current="page">Blogs</a>
+      <a href="../hybrid_positive_framing.html#testimonials" class="interactive">Testimonials</a>
+      <a href="../contact/" class="interactive">Contact</a>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive">Apply Now</a>
+  </nav>
 
   <!-- Main Post -->
   <main class="wrap">
@@ -113,14 +48,15 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div>
-        <div class="font-playfair footer-brand">Sthir</div>
-        <div class="footer-tagline">Sit Sthir, Stand Tall.</div>
+        <div class="footer-brand">STHIR</div>
+        <div class="footer-tagline">stillness in motion</div>
       </div>
       <ul class="footer-links">
-        <li><a href="/about">About</a></li>
-        <li><a href="/#services">Programs</a></li>
-        <li><a href="/#apply">Apply</a></li>
-        <li><a href="/contact/">Contact</a></li>
+        <li><a href="../about/">About</a></li>
+        <li><a href="../hybrid_positive_framing.html#offerings">Paths</a></li>
+        <li><a href="../hybrid_positive_framing.html#sprints-directory">Sprints</a></li>
+        <li><a href="./index.html" aria-current="page">Blogs</a></li>
+        <li><a href="../contact/">Contact</a></li>
       </ul>
       <div class="footer-social">
         <a href="#" aria-label="Twitter">
@@ -133,12 +69,65 @@
           <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12.011c0 4.432 2.865 8.18 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.011C22 6.477 17.523 2 12 2z" /></svg>
         </a>
       </div>
-      <div class="footer-copy">&copy; 2025 Sthir. All Rights Reserved.</div>
+      <div class="footer-copy">&copy; 2026 Sthir. All Rights Reserved.</div>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
+  <script>
+  (function(){
+    var body = document.body;
+    var cursorDot = document.querySelector('.cursor-dot');
+    var cursorOutline = document.querySelector('.cursor-outline');
+    var navbar = document.getElementById('navbar');
+    var progressBar = document.getElementById('progress-bar');
+    var interactiveSelector = '.interactive, a, button, textarea, input, .btn';
+    var prefersCoarse = window.matchMedia('(pointer: coarse)').matches;
+
+    if (!prefersCoarse && cursorDot && cursorOutline) {
+      window.addEventListener('mousemove', function(e){
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+        cursorOutline.animate(
+          { left: e.clientX + 'px', top: e.clientY + 'px' },
+          { duration: 500, fill: 'forwards' }
+        );
+      });
+
+      document.addEventListener('mouseover', function(e){
+        if (e.target.closest(interactiveSelector)) {
+          body.classList.add('cursor-hover');
+        }
+      });
+
+      document.addEventListener('mouseout', function(e){
+        if (!e.target.closest(interactiveSelector)) {
+          return;
+        }
+        if (!e.relatedTarget || !e.relatedTarget.closest(interactiveSelector)) {
+          body.classList.remove('cursor-hover');
+        }
+      });
+    }
+
+    function updateChrome() {
+      var scrollTop = window.scrollY || window.pageYOffset;
+      if (navbar) {
+        navbar.classList.toggle('nav-scrolled', scrollTop > 50);
+      }
+      if (progressBar) {
+        var totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var width = totalHeight > 0 ? (scrollTop / totalHeight) * 100 : 0;
+        progressBar.style.width = Math.max(0, Math.min(100, width)) + '%';
+      }
+    }
+
+    window.addEventListener('scroll', updateChrome, { passive: true });
+    window.addEventListener('resize', updateChrome);
+    updateChrome();
+  })();
+  </script>
   <script>
   (function(){
     var WP = 'https://public-api.wordpress.com/wp/v2/sites/staysthir.wordpress.com';
@@ -176,7 +165,5 @@
     loadPost();
   })();
   </script>
-  <script src="../hamburgermenu.js"></script>
-
 </body>
 </html>

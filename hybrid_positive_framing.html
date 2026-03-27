@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sthir - Stillness in Motion</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#fff7ef',
+                            surface: '#ffffff',
+                            surfaceLight: '#e7dff1',
+                            accent1: '#5b2b82',
+                            accent2: '#f97316',
+                            accent3: '#ef4444',
+                            ink: '#1f2937',
+                            muted: '#6b7280'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --paper: #ffffff;
+            --bg: #fff7ef;
+            --surface: #ffffff;
+            --surface-soft: rgba(255, 255, 255, 0.82);
+            --surface-strong: rgba(255, 255, 255, 0.94);
+            --ink: #1f2937;
+            --accent-gold: #5b2b82;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+            --brand-purple: #5b2b82;
+            --brand-purple-mid: #3a1452;
+            --brand-purple-dark: #2b0f3a;
+            --muted: #6b7280;
+            --line: rgba(17, 24, 39, 0.08);
+            --hero-text: #fff7ef;
+            --hero-muted: rgba(255, 247, 239, 0.84);
+            --shadow-soft: 0 10px 26px rgba(17, 24, 39, 0.10);
+            --shadow-card: 0 14px 35px rgba(17, 24, 39, 0.12);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor */
+        }
+
+        h1, h2, h3, .font-display {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px; height: 8px;
+            background-color: var(--accent-gold);
+            box-shadow: 0 0 16px rgba(202, 168, 233, 0.8);
+            transition: transform 0.1s;
+        }
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 1px solid rgba(91, 43, 130, 0.28);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+        body.cursor-hover .cursor-dot { transform: translate(-50%, -50%) scale(0); }
+        body.cursor-hover .cursor-outline {
+            width: 60px; height: 60px;
+            background-color: rgba(249, 115, 22, 0.1);
+            border-color: rgba(249, 115, 22, 0.5);
+        }
+
+        /* Buttons & Cards */
+        .story-button {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 1rem 2.5rem; border-radius: 999px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-red));
+            color: #fff; font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: none;
+        }
+        .story-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.28);
+        }
+        .secondary-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(17, 24, 39, 0.12);
+            background: rgba(255, 255, 255, 0.82);
+            color: var(--ink);
+            font-weight: 600;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            cursor: none;
+        }
+        .secondary-button:hover {
+            transform: translateY(-2px);
+            background: #ffffff;
+            border-color: rgba(91, 43, 130, 0.18);
+        }
+        .glass-card {
+            background: var(--surface-soft);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .brand-logo-image {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 8px 24px rgba(17, 24, 39, 0.18);
+        }
+
+        .brand-meta {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-title-text {
+            font-family: 'Poppins', 'Inter', sans-serif;
+            letter-spacing: 0.22em;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--brand-purple);
+            line-height: 1;
+        }
+
+        .brand-tagline-text {
+            margin-top: 2px;
+            font-size: 12px;
+            color: var(--brand-purple);
+            opacity: 0.9;
+            text-transform: lowercase;
+        }
+
+        .hero-shell {
+            background:
+                radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 28%),
+                linear-gradient(90deg, var(--brand-purple) 0%, var(--brand-purple-dark) 100%);
+        }
+
+        .hero-shell::before {
+            content: "";
+            position: absolute;
+            inset: -40px -120px auto auto;
+            width: 540px;
+            height: 540px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%);
+            transform: rotate(12deg);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.16);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        /* Scrollytelling Architecture */
+        .story-section { height: 400vh; position: relative; }
+        .sticky-view {
+            position: sticky; top: 0; height: 100vh; width: 100vw;
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+            background:
+                radial-gradient(circle at 18% 18%, rgba(249, 115, 22, 0.16), transparent 24%),
+                radial-gradient(circle at 82% 24%, rgba(239, 68, 68, 0.12), transparent 22%),
+                linear-gradient(145deg, var(--brand-purple) 0%, var(--brand-purple-mid) 40%, var(--brand-purple-dark) 100%);
+            isolation: isolate;
+        }
+
+        .svg-scene {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center; z-index: 1;
+        }
+        .svg-scene svg { width: 100%; max-width: 1200px; height: 100%; overflow: visible; }
+        
+        .scrolly-text {
+            position: absolute; font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+            font-weight: 400; line-height: 1.6; text-align: center; max-width: 650px;
+            padding: 2.5rem; color: var(--ink); z-index: 10;
+            opacity: 0; will-change: transform, opacity;
+        }
+
+        .scrolly-character-name {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: #ffb07a;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* AI Sandbox Tab Styling */
+        .ai-tab-btn {
+            position: relative;
+            color: var(--muted);
+            transition: color 0.3s ease;
+        }
+        .ai-tab-btn.active {
+            color: var(--brand-purple);
+            font-weight: 600;
+        }
+        .ai-tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--brand-purple);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+        .ai-tab-btn.active::after {
+            transform: scaleX(1);
+        }
+        
+        /* Quick Prompts Chips */
+        .prompt-chip {
+            padding: 6px 12px;
+            font-size: 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(17,24,39,0.1);
+            color: var(--muted);
+            cursor: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .prompt-chip:hover {
+            background: #fff;
+            color: var(--brand-purple);
+            border-color: rgba(91,43,130,0.3);
+            transform: translateY(-1px);
+        }
+
+        /* Typewriter Cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+            color: var(--accent-orange);
+            margin-left: 2px;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* FAQ Accordion UI */
+        .faq-accordion {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-accordion[open] {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(91, 43, 130, 0.2);
+            box-shadow: 0 4px 20px rgba(17, 24, 39, 0.05);
+        }
+        .faq-accordion summary {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            font-family: 'Poppins', 'Inter', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+        .faq-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-chevron {
+            transition: transform 0.3s ease;
+            color: var(--muted);
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+        .faq-accordion[open] .faq-chevron {
+            transform: rotate(180deg);
+            color: var(--brand-purple);
+        }
+        .faq-body {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* Testimonials Marquee */
+        .marquee-container {
+            display: flex; 
+            overflow-x: auto; 
+            width: 100%; 
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            gap: 2rem;
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+        }
+        .marquee-container::-webkit-scrollbar { display: none; }
+        .marquee-content {
+            display: flex; flex-shrink: 0; gap: 2rem; align-items: stretch; padding: 1rem 0; 
+        }
+        
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(91, 43, 130, 0.06); border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(91, 43, 130, 0.2); border-radius: 8px; }
+
+        /* Ambient Noise & Progress */
+        .noise {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: 9998; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-red));
+            width: 0%; z-index: 10000; transition: width 0.1s ease-out;
+        }
+
+        /* Nav Transitions */
+        #navbar {
+            transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+            box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+        }
+        #navbar::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 5px;
+            background: var(--brand-purple);
+        }
+        #navbar > a.story-button {
+            min-height: 30px;
+            padding: 0 14px !important;
+            background: var(--brand-purple);
+            border-color: rgba(91, 43, 130, 0.25);
+            box-shadow: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        #navbar > a.story-button:hover {
+            filter: brightness(0.95);
+            transform: translateY(-1px);
+            box-shadow: none;
+        }
+        .nav-scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+        }
+
+        /* Quiz Options Styling */
+        .quiz-option {
+            background: rgba(255,255,255,0.92);
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            font-size: 0.95rem;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+        }
+        .quiz-option:hover {
+            background: #ffffff;
+            border-color: var(--accent-gold);
+            transform: translateX(4px);
+        }
+
+        /* Rotating Hero Text */
+        .rotating-text-container {
+            position: relative;
+            min-height: 140px; 
+            width: 100%;
+        }
+        @media (min-width: 768px) {
+            .rotating-text-container { min-height: 100px; }
+        }
+        .rotating-text-item {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            pointer-events: none;
+        }
+        .rotating-text-item.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .rotating-text-item.exit {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        /* Reveal Animations (Scroll) */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+
+        /* Spotlight Hover Effect */
+        .spotlight-card {
+            position: relative;
+        }
+        .spotlight-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(
+                600px circle at var(--mouse-x, 0) var(--mouse-y, 0),
+                var(--spotlight-color, rgba(255, 255, 255, 0.1)),
+                transparent 40%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+        .spotlight-card > * {
+            z-index: 10; 
+        }
+        .spotlight-card .big-number {
+            z-index: 1; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .hero-shell .secondary-button {
+            background: rgba(255, 255, 255, 0.12);
+            color: var(--hero-text);
+            border-color: rgba(255, 255, 255, 0.22);
+            box-shadow: none;
+        }
+        .hero-shell .secondary-button:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .hero-shell .text-brand-ink {
+            color: var(--hero-text) !important;
+        }
+        .hero-shell .text-brand-muted {
+            color: var(--hero-muted) !important;
+        }
+        .hero-shell .hero-badge {
+            color: var(--hero-text) !important;
+        }
+        .hero-shell .text-brand-accent1 {
+            color: #caa8e9 !important;
+        }
+        #sprints-directory .glass-card button:hover {
+            background: var(--accent-orange);
+            color: #ffffff;
+            border-color: var(--accent-orange);
+        }
+
+        /* Quiz Question Transition */
+        #quiz-anim-container {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #quiz-anim-container.fade-out {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        @media (max-width: 768px) {
+            .scrolly-text { width: calc(100% - 2rem); padding: 1.5rem; }
+        }
+        @media (pointer: coarse) {
+            body, .story-button, .secondary-button, .quiz-option, .prompt-chip, .interactive { cursor: auto !important; }
+            .cursor-dot, .cursor-outline { display: none; }
+        }
+
+        /* Flip Grid Additions */
+        .flip-grid {
+            display: grid;
+            perspective: 1000px;
+            width: 100%;
+            height: 100%;
+            flex-grow: 1;
+        }
+        .flip-grid > * {
+            grid-area: 1 / 1;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .flip-front {
+            transform: rotateY(0deg);
+        }
+        .group:hover .flip-front {
+            transform: rotateY(-180deg);
+            opacity: 0;
+        }
+        .flip-back {
+            transform: rotateY(180deg);
+            opacity: 0;
+        }
+        .group:hover .flip-back {
+            transform: rotateY(0deg);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="progress-bar" id="progress-bar"></div>
+    <div class="noise"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
+        <a href="/" class="flex items-center gap-3 interactive">
+            <img src="./images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'"/>
+            <div class="brand-meta hidden md:flex">
+                <span class="brand-title-text">STHIR</span>
+                <span class="brand-tagline-text">stillness in motion</span>
+            </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-ink/80">
+            <a href="./about/" class="hover:text-brand-ink transition-colors interactive">About</a>
+            <a href="#offerings" class="hover:text-brand-ink transition-colors interactive">Paths</a>
+            <a href="#sprints-directory" class="hover:text-brand-ink transition-colors interactive">Sprints</a>
+            <a href="./blog/" class="hover:text-brand-ink transition-colors interactive">Blogs</a>
+            <a href="#testimonials" class="hover:text-brand-ink transition-colors interactive">Testimonials</a>
+            <a href="./contact/" class="hover:text-brand-ink transition-colors interactive">Contact</a>
+        </div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button !py-2 !px-6 text-sm interactive">Apply Now</a>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <section class="hero-shell min-h-screen w-full flex flex-col items-center justify-center relative z-10 pt-24 pb-12">
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12 flex flex-col items-center">
+            <span class="hero-badge mb-8 interactive inline-flex text-brand-accent1 border-brand-accent1/30 bg-brand-accent1/10 shadow-[0_0_15px_rgba(202,168,233,0.15)]">
+                For thoughtful young adults who want direction and grounded inspiration
+            </span>
+            
+            <h1 class="text-4xl md:text-5xl lg:text-[4rem] font-display font-medium tracking-tight leading-[1.1] mb-6 text-brand-ink">
+                In the Age of AI, you can design your way forward. <br class="hidden md:block" />
+                <span class="text-brand-accent2">With clarity and intention.</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-brand-ink mb-6 font-medium italic">
+                Your life deserves more than trial and error.
+            </p>
+            
+            <div class="rotating-text-container text-brand-muted text-lg md:text-xl mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                <div class="rotating-text-item active">
+                    <p>More options invite deeper discernment and stronger inner clarity.</p>
+                </div>
+                <div class="rotating-text-item">
+                    <p>Learning to hear beyond <em class="text-brand-accent1">"Shor"</em> (Noise) helps you reclaim years of aligned choices and self-trust.</p>
+                </div>
+                <div class="rotating-text-item">
+                    <p>In a world overflowing with information, your real edge is <strong class="text-brand-ink font-semibold">Discernment</strong>. Sthir helps you move from the expanse of "The Many Futures" to the clarity of "The One Next Step."</p>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 w-full max-w-3xl mx-auto">
+                <!-- Button 1: Clarity Check -->
+                <div class="flex flex-col items-center w-full sm:w-1/2">
+                    <button id="btn-open-clarity" class="story-button interactive w-full text-center text-sm md:text-base">
+                        Take the 7-min Clarity Check
+                    </button>
+                    <span class="text-[11px] text-brand-muted mt-3 font-medium tracking-wider uppercase opacity-80">(Find your design focus today)</span>
+                </div>
+                
+                <!-- Button 2: Sandbox Link -->
+                <div class="flex flex-col items-center w-full sm:w-1/2">
+                    <a href="#ai-sandbox" class="secondary-button interactive w-full text-center text-sm md:text-base">
+                        Try the Sthir Tools
+                    </a>
+                    <span class="text-[11px] text-brand-muted mt-3 font-medium tracking-wider uppercase opacity-80">(Experience the method)</span>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="flex flex-col items-center justify-center opacity-70 interactive cursor-pointer mt-8" onclick="document.getElementById('problem').scrollIntoView({behavior: 'smooth'})">
+                <span class="text-[10px] text-brand-muted mb-3 uppercase tracking-[0.2em] font-medium">Scroll to explore</span>
+                <svg class="w-6 h-6 animate-bounce text-brand-accent1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credibility Banner -->
+    <div class="border-y border-brand-surfaceLight/30 bg-brand-surface/40 backdrop-blur-md relative z-20 py-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+            <!-- Badge -->
+            <div class="flex-shrink-0 relative group">
+                <div class="absolute inset-0 bg-brand-accent1/20 blur-xl rounded-full group-hover:bg-brand-accent1/40 transition-colors"></div>
+                <img src="./images/dyl_badge.png" alt="Designing Your Life Certified Coach" class="relative h-32 md:h-40 w-auto drop-shadow-xl hover:scale-105 transition-transform duration-300 interactive" onerror="this.style.display='none'"/>
+            </div>
+            
+            <!-- Trust Points -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center md:text-left text-brand-muted text-sm font-medium">
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent1 text-lg">✦</span>
+                    <span>Co-created across generations & research</span>
+                </div>
+                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent2 text-lg">✦</span>
+                    <span>Rooted in Stanford’s Design Your Life Approach</span>
+                </div>
+                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent3 text-lg">✦</span>
+                    <span>25+ years of real-world experience</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. The Problem Section -->
+    <section id="problem" class="py-24 px-6 bg-brand-bg relative z-10 border-b border-brand-surfaceLight/20 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            
+            <!-- Left Big Block (Sticky) -->
+            <div class="lg:col-span-5 lg:sticky lg:top-32 reveal-up">
+                <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-4">Here is what you can notice</span>
+                <h2 class="text-3xl md:text-5xl font-display font-medium leading-tight mb-6 text-brand-ink">
+                    Your ability is already here. <br/>
+                    <span class="text-brand-accent1">You’re ready for clearer signal.</span>
+                </h2>
+                <div class="w-16 h-1 bg-brand-accent2 mb-6 rounded-full"></div>
+                <p class="text-brand-muted text-lg md:text-xl leading-relaxed font-light">
+                    The world is changing faster than we’re designed to process, and that makes clear thinking harder.
+                </p>
+            </div>
+
+            <!-- Right: 4 Problem Areas -->
+            <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6 mt-8 lg:mt-0">
+                
+                <!-- Card 1 -->
+                <div class="glass-card spotlight-card p-8 flex flex-col relative overflow-hidden group hover:border-brand-accent1/40 transition-colors reveal-up delay-100" style="--spotlight-color: rgba(202, 168, 233, 0.15);">
+                    <div class="flip-grid">
+                        <div class="flip-front">
+                            <h3 class="text-xl font-display font-medium text-brand-ink mb-2 relative z-10">The "Paradox of Choice"</h3>
+                            <span class="text-brand-accent1 text-xs font-bold tracking-[0.1em] uppercase block relative z-10">8000 versions of the same thing.</span>
+                            <div class="mt-6 flex items-center gap-2 text-brand-accent1 text-[10px] uppercase tracking-widest font-bold opacity-60">
+                                <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg> Hover to reveal
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <p class="text-brand-muted text-sm leading-relaxed relative z-10">When you’re staring at dozens of paths, freedom works best with a grounded filter. The right structure helps you recognize the path that already carries energy, meaning, and momentum for you.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="glass-card spotlight-card p-8 flex flex-col relative overflow-hidden group hover:border-brand-accent2/40 transition-colors lg:translate-y-6 reveal-up delay-200" style="--spotlight-color: rgba(249, 115, 22, 0.15);">
+                    <div class="flip-grid">
+                        <div class="flip-front">
+                            <h3 class="text-xl font-display font-medium text-brand-ink mb-2 relative z-10">The "Clarity Gap"</h3>
+                            <span class="text-brand-accent2 text-xs font-bold tracking-[0.1em] uppercase block relative z-10">24 hours of noise.</span>
+                            <div class="mt-6 flex items-center gap-2 text-brand-accent2 text-[10px] uppercase tracking-widest font-bold opacity-60">
+                                <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg> Hover to reveal
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <p class="text-brand-muted text-sm leading-relaxed relative z-10">You’re constantly consuming "3 Ways," "10-step plans," and expert opinions. Clarity grows when information is filtered with intention. The right question turns a flood of input into the one answer you actually need.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="glass-card spotlight-card p-8 flex flex-col relative overflow-hidden group hover:border-brand-accent3/40 transition-colors reveal-up delay-300" style="--spotlight-color: rgba(239, 68, 68, 0.15);">
+                    <div class="flip-grid">
+                        <div class="flip-front">
+                            <h3 class="text-xl font-display font-medium text-brand-ink mb-2 relative z-10">The "Analysis Trap"</h3>
+                            <span class="text-brand-accent3 text-xs font-bold tracking-[0.1em] uppercase block relative z-10">The 2:00 AM Loop.</span>
+                            <div class="mt-6 flex items-center gap-2 text-brand-accent3 text-[10px] uppercase tracking-widest font-bold opacity-60">
+                                <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg> Hover to reveal
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <p class="text-brand-muted text-sm leading-relaxed relative z-10">You want to make the “right” decision. The fastest way to build confidence is to pair reflection with movement, so each small action lightens the decision and makes the next step easier to take.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="glass-card spotlight-card p-8 flex flex-col relative overflow-hidden group hover:border-brand-muted/40 transition-colors lg:translate-y-6 reveal-up delay-400" style="--spotlight-color: rgba(216, 199, 228, 0.15);">
+                    <div class="flip-grid">
+                        <div class="flip-front">
+                            <h3 class="text-xl font-display font-medium text-brand-ink mb-2 relative z-10">The "Authenticity Filter"</h3>
+                            <span class="text-brand-muted text-xs font-bold tracking-[0.1em] uppercase block relative z-10">A thousand silent 'shoulds'.</span>
+                            <div class="mt-6 flex items-center gap-2 text-brand-muted text-[10px] uppercase tracking-widest font-bold opacity-60">
+                                <svg class="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg> Hover to reveal
+                            </div>
+                        </div>
+                        <div class="flip-back">
+                            <p class="text-brand-muted text-sm leading-relaxed relative z-10">Even when you think you’re choosing for yourself, four external expectations are quietly steering the wheel. You’ve listened to everyone else's version of success before defining the one that actually belongs to you.</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- TRANSITION / BRIDGE SECTION -->
+    <section class="py-32 px-6 bg-brand-surface relative z-10 text-center flex flex-col items-center justify-center border-b border-brand-surfaceLight/20">
+        <div class="max-w-4xl mx-auto reveal-up">
+            <h2 class="text-3xl md:text-5xl font-display font-medium mb-6 text-brand-ink leading-tight">
+                Your talent is already present. <br/>
+                <span class="text-brand-accent1">It shines most with a clear way to think, choose, and move forward.</span>
+            </h2>
+            <p class="text-brand-muted text-lg md:text-xl mb-12 italic opacity-80">
+                Many people feel this deeply, even before they put it into words.
+            </p>
+            <div class="glass-card p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-brand-accent2/5 to-brand-accent1/10 pointer-events-none"></div>
+                <p class="text-brand-ink text-lg md:text-xl leading-relaxed relative z-10 max-w-2xl mx-auto font-light">
+                    <strong class="font-medium">Sthir blends reflection, play, and design thinking</strong> to help you build grounded momentum and self-trust one clear decision at a time.
+                </p>
+            </div>
+            
+            <div class="mt-16 flex flex-col items-center opacity-60">
+                <span class="text-sm text-brand-muted mb-2 uppercase tracking-[0.2em] font-bold">How it works</span>
+                <div class="w-[1px] h-16 bg-gradient-to-b from-brand-accent1 to-transparent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STORY OF HOW STHIR HELPS (SCROLLYTELLING) -->
+
+    <!-- SCENE 1: Phase 01 (Pause & Notice / The Problem) -->
+    <section class="story-section" id="scene-1">
+        <div class="sticky-view">
+            <div class="svg-scene" id="svg-scene-1">
+                <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+                    <!-- Chaos / Autopilot Lines -->
+                    <g id="s1-chaos" stroke="#6d35a0" stroke-width="3" fill="none" stroke-linecap="round">
+                        <path d="M-100,200 Q400,50 800,300 T1100,800" />
+                        <path d="M-50,800 Q300,900 700,400 T1200,100" />
+                        <path d="M200,-100 Q400,600 900,1100" />
+                        <path d="M800,-50 Q500,400 100,900" />
+                        <!-- Nodes in the chaos -->
+                        <circle cx="300" cy="400" r="8" fill="#d8c7e4" />
+                        <circle cx="700" cy="600" r="12" fill="#d8c7e4" />
+                        <circle cx="200" cy="700" r="6" fill="#d8c7e4" />
+                        <circle cx="800" cy="300" r="10" fill="#d8c7e4" />
+                    </g>
+                    
+                    <!-- The Magnifying Glass -->
+                    <g id="s1-lens" transform="translate(500,500) scale(0)">
+                        <!-- Lens Ring -->
+                        <circle cx="0" cy="0" r="160" fill="#2b0f3a" fill-opacity="0.8" stroke="#f97316" stroke-width="12" />
+                        <!-- Lens Handle -->
+                        <line x1="113" y1="113" x2="280" y2="280" stroke="#f97316" stroke-width="24" stroke-linecap="round" />
+                        
+                        <!-- Focused / Objective Center -->
+                        <circle id="s1-focus" cx="0" cy="0" r="30" fill="#caa8e9" opacity="0" />
+                        <circle cx="0" cy="0" r="80" fill="none" stroke="#caa8e9" stroke-width="2" stroke-dasharray="10 10" opacity="0.5" />
+                        <path d="M-100,0 L100,0 M0,-100 L0,100" stroke="#caa8e9" stroke-width="1" opacity="0.3" />
+                    </g>
+                </svg>
+            </div>
+
+            <div class="scrolly-text glass-card" data-start="0.05" data-end="0.45">
+                <span class="scrolly-character-name text-brand-accent2">01. Pause & Notice</span>
+                <span class="font-display text-2xl md:text-3xl block mb-4 text-brand-ink">Return to conscious choice.</span>
+                Moving from a world of digital noise and endless paths to taking out a magnifying glass and zooming in on what is actually in front of you.
+            </div>
+            
+            <div class="scrolly-text glass-card" data-start="0.55" data-end="0.95">
+                <span class="scrolly-character-name text-brand-accent1">Find Your Center</span>
+                <span class="font-display text-2xl md:text-3xl block mb-4 text-brand-ink">See what matters and what wants attention.</span>
+                Through guided reflection and playful observation, we bring your current reality into an objective light.
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENE 2: Phase 02 (Reframe & Redesign / Methodology) -->
+    <section class="story-section" id="scene-2">
+        <div class="sticky-view">
+            <div class="svg-scene" id="svg-scene-2">
+                <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+                    <!-- Design Framework Grid (DYL Worksheet vibe) -->
+                    <g id="s2-grid" stroke="#6d35a0" stroke-width="1.5" fill="none" opacity="0">
+                        <!-- Horizontal Lines -->
+                        <line x1="100" y1="250" x2="900" y2="250" />
+                        <line x1="100" y1="500" x2="900" y2="500" />
+                        <line x1="100" y1="750" x2="900" y2="750" />
+                        <!-- Vertical Lines -->
+                        <line x1="333" y1="100" x2="333" y2="900" />
+                        <line x1="666" y1="100" x2="666" y2="900" />
+                        <!-- Accent Nodes on Grid -->
+                        <circle cx="333" cy="250" r="6" fill="#caa8e9" />
+                        <circle cx="666" cy="500" r="6" fill="#f97316" />
+                        <circle cx="333" cy="750" r="6" fill="#ef4444" />
+                    </g>
+                    
+                    <!-- Signboard -->
+                    <g id="s2-sign" transform="translate(500, 1200)">
+                        <!-- Pole -->
+                        <rect x="-8" y="-300" width="16" height="350" fill="#d8c7e4" />
+                        <!-- Sign Shape -->
+                        <path d="M-180,-320 L140,-320 L180,-260 L140,-200 L-180,-200 Z" fill="#f97316" />
+                        <!-- Text -->
+                        <text x="-20" y="-245" fill="#fff7ef" font-family="Poppins, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" letter-spacing="4">YOU ARE HERE</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="scrolly-text glass-card" data-start="0.05" data-end="0.45">
+                <span class="scrolly-character-name text-brand-accent2">02. Reframe & Redesign</span>
+                <span class="font-display text-2xl md:text-3xl block mb-4">Look at "Where you are" with expanded perspective.</span>
+                Gain a bird's-eye view of your own life. We use design thinking frameworks to map out the reality of your current season.
+            </div>
+            
+            <div class="scrolly-text glass-card" data-start="0.55" data-end="0.95">
+                <span class="scrolly-character-name text-brand-accent1">Explore Possibilities</span>
+                <span class="font-display text-2xl md:text-3xl block mb-4 text-brand-ink">Articulate your work view.</span>
+                Ask better questions. Map out multiple viable futures on paper before risking them in reality.
+            </div>
+        </div>
+    </section>
+
+    <!-- SCENE 3: Abstract Isometric Ascent -->
+    <section class="story-section" id="scene-3">
+        <div class="sticky-view">
+            <div class="svg-scene" id="svg-scene-3">
+                <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+                    
+                    <!-- Abstract Isometric Staircase (Lowered to keep character in view) -->
+                    <g id="iso-staircase">
+                        <!-- Step 3 (Top/Back) -->
+                        <g class="iso-stair opacity-0">
+                            <!-- Riser -->
+                            <rect x="650" y="450" width="350" height="550" fill="#e47032" />
+                            <!-- Tread -->
+                            <rect x="650" y="450" width="350" height="24" fill="#da3e35" />
+                        </g>
+                        <!-- Step 2 (Middle) -->
+                        <g class="iso-stair opacity-0">
+                            <!-- Riser -->
+                            <rect x="350" y="600" width="300" height="400" fill="#e47032" />
+                            <!-- Tread -->
+                            <rect x="350" y="600" width="300" height="24" fill="#da3e35" />
+                        </g>
+                        <!-- Step 1 (Bottom/Front) -->
+                        <g class="iso-stair opacity-0">
+                            <!-- Riser -->
+                            <rect x="50" y="750" width="300" height="250" fill="#e47032" />
+                            <!-- Tread -->
+                            <rect x="50" y="750" width="300" height="24" fill="#da3e35" />
+                        </g>
+                    </g>
+                    
+                    <!-- Abstract Character Geometry -->
+                    <g id="s3-character" transform="translate(200, 730)" opacity="0">
+                        <g id="s3-character-mesh">
+                            <!-- The sweeping splash base -->
+                            <path d="M -80,20 Q 0,-15 80,20 Q 0,5 -80,20 Z" fill="#faedb5" />
+                            <!-- The leaf-shaped torso pointing up-right -->
+                            <path d="M 0,0 C -50,-50 -20,-140 30,-150 C 25,-80 15,-30 0,0 Z" fill="#faedb5" />
+                            <!-- The floating head -->
+                            <circle cx="35" cy="-185" r="22" fill="#faedb5" />
+                        </g>
+                    </g>
+
+                    <!-- Finish Radiant Burst -->
+                    <g id="s3-finish-burst" transform="translate(800, 430) scale(0)" opacity="0">
+                        <circle cx="0" cy="0" r="280" fill="#faedb5" opacity="0.05" />
+                        <circle cx="0" cy="0" r="160" fill="#faedb5" opacity="0.1" />
+                        <circle cx="0" cy="0" r="80" fill="#faedb5" opacity="0.15" />
+                    </g>
+                </svg>
+            </div>
+
+            <div class="scrolly-text glass-card" data-start="0.1" data-end="0.45">
+                <span class="scrolly-character-name text-brand-accent3">03. Prototype & Move</span>
+                <span class="font-display text-2xl md:text-3xl block mb-4">Take small steps in the real world.</span>
+                Start with conversations, experiments, and tiny prototypes. We help you build real-world momentum before you commit to the big leap.
+            </div>
+            
+            <div class="scrolly-text glass-card" data-start="0.55" data-end="0.95">
+                <span class="scrolly-character-name text-brand-accent1">Learn through action</span>
+                <span class="font-display text-2xl md:text-3xl block mb-4 text-brand-ink">Beaming with confidence.</span>
+                Move forward knowing your next step is rooted in actual data and lived insight.
+            </div>
+        </div>
+    </section>
+
+
+    <!-- NEW SECTION: AI Sandbox (Upgraded) -->
+    <section id="ai-sandbox" class="py-24 px-6 bg-brand-bg relative z-10 border-t border-brand-surfaceLight/20">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-brand-accent1 text-sm tracking-[0.2em] font-bold uppercase block mb-3 flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                    Sthir AI Tools
+                </span>
+                <h2 class="text-3xl md:text-5xl font-display font-medium mb-4 text-brand-ink leading-tight">
+                    Experience the method. <br/>
+                    <span class="text-brand-muted text-2xl md:text-3xl italic">A space to process before you proceed.</span>
+                </h2>
+            </div>
+            
+            <div class="glass-card overflow-hidden flex flex-col md:flex-row reveal-up delay-100 min-h-[500px]">
+                
+                <!-- Left Side: Controls & Input -->
+                <div class="w-full md:w-5/12 bg-white/50 border-r border-brand-surfaceLight/50 p-6 md:p-8 flex flex-col">
+                    
+                    <!-- Tab Navigation -->
+                    <div class="flex gap-6 mb-8 border-b border-brand-surfaceLight/50 pb-2">
+                        <button id="tab-idea" class="ai-tab-btn interactive active pb-2 text-sm uppercase tracking-wider font-bold">Test an Idea</button>
+                        <button id="tab-lens" class="ai-tab-btn interactive pb-2 text-sm uppercase tracking-wider font-bold">The Lens</button>
+                    </div>
+
+                    <!-- Idea Tool Input Area -->
+                    <div id="panel-idea" class="flex-grow flex flex-col">
+                        <p class="text-brand-ink font-medium mb-2">What's on your mind?</p>
+                        <p class="text-brand-muted text-sm mb-4">Share a career pivot, a project idea, or a new direction. Get honest feedback on the strength, the hidden assumption, and a way to test it.</p>
+                        
+                        <textarea id="ai-idea-input" rows="5" class="w-full bg-white/80 border border-brand-surfaceLight rounded-xl p-4 text-sm text-brand-ink focus:outline-none focus:border-brand-accent1 focus:ring-1 focus:ring-brand-accent1/30 mb-4 custom-scrollbar resize-none interactive transition-all" placeholder="E.g., I'm thinking about leaving my corporate job to start a boutique design agency..."></textarea>
+                        
+                        <!-- Quick Prompts -->
+                        <div class="mb-6">
+                            <span class="text-xs text-brand-muted uppercase tracking-widest font-bold block mb-2">Quick Prompts</span>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="prompt-chip interactive" onclick="fillPrompt('ai-idea-input', 'I want to transition from Marketing to Tech Product Management.')">Pivot to PM</button>
+                                <button class="prompt-chip interactive" onclick="fillPrompt('ai-idea-input', 'I am thinking of taking a 6-month sabbatical to figure things out.')">Sabbatical</button>
+                                <button class="prompt-chip interactive" onclick="fillPrompt('ai-idea-input', 'I want to start a side hustle selling my art online.')">Art Side Hustle</button>
+                            </div>
+                        </div>
+
+                        <button id="btn-run-idea" class="story-button w-full mt-auto interactive shadow-lg">Get Feedback</button>
+                    </div>
+
+                    <!-- Lens Tool Input Area (Hidden by default) -->
+                    <div id="panel-lens" class="flex-grow flex flex-col hidden">
+                        <p class="text-brand-ink font-medium mb-2">What feels stuck?</p>
+                        <p class="text-brand-muted text-sm mb-4">Describe a situation where you feel confused or overwhelmed. We'll give you one powerful question to reframe it.</p>
+                        
+                        <textarea id="ai-lens-input" rows="5" class="w-full bg-white/80 border border-brand-surfaceLight rounded-xl p-4 text-sm text-brand-ink focus:outline-none focus:border-brand-accent2 focus:ring-1 focus:ring-brand-accent2/30 mb-4 custom-scrollbar resize-none interactive transition-all" placeholder="E.g., I have three good job offers but none of them feel 'right', and I'm paralyzed..."></textarea>
+                        
+                        <!-- Quick Prompts -->
+                        <div class="mb-6">
+                            <span class="text-xs text-brand-muted uppercase tracking-widest font-bold block mb-2">Quick Prompts</span>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="prompt-chip interactive" onclick="fillPrompt('ai-lens-input', 'I feel like I am falling behind my peers.')">Falling Behind</button>
+                                <button class="prompt-chip interactive" onclick="fillPrompt('ai-lens-input', 'I want to say no to a project, but I am afraid of disappointing my boss.')">Saying No</button>
+                            </div>
+                        </div>
+
+                        <button id="btn-run-lens" class="story-button w-full mt-auto interactive shadow-lg !from-brand-accent2 !to-yellow-500">Reframe This</button>
+                    </div>
+                </div>
+
+                <!-- Right Side: Response Area -->
+                <div class="w-full md:w-7/12 p-6 md:p-10 flex flex-col relative bg-[#fdfaf6]">
+                    <!-- Decorative Background -->
+                    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                        <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-accent1/5 rounded-full blur-3xl"></div>
+                        <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-accent2/5 rounded-full blur-3xl"></div>
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-6 relative z-10">
+                        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="text-xs uppercase tracking-widest font-bold text-brand-muted">Sthir Guide</span>
+                    </div>
+
+                    <!-- Idle State -->
+                    <div id="ai-idle" class="flex-grow flex flex-col items-center justify-center text-center relative z-10 opacity-60">
+                        <svg class="w-12 h-12 text-brand-surfaceLight mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        <p class="text-brand-muted text-sm max-w-xs">Share your thoughts on the left, and I will help you process them here.</p>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div id="ai-loading" class="hidden flex-grow flex flex-col items-center justify-center text-center relative z-10">
+                        <svg class="animate-spin h-8 w-8 text-brand-accent1 mb-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                        <p class="text-brand-ink text-sm font-medium animate-pulse">Filtering the noise...</p>
+                    </div>
+
+                    <!-- Result State -->
+                    <div id="ai-result" class="hidden flex-grow relative z-10 overflow-y-auto custom-scrollbar pr-2 text-brand-ink leading-relaxed text-lg">
+                        <!-- Content injected via JS with typing effect -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Core Offerings (Paths & Sprints separated visually) -->
+    <section id="offerings" class="py-24 px-6 bg-brand-surface relative z-10 border-t border-brand-surfaceLight/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-3">How to work with us</span>
+                <h2 class="text-3xl md:text-5xl font-display font-medium mb-4 text-brand-ink">Your next chapter begins here.</h2>
+                <p class="text-brand-muted text-lg max-w-2xl mx-auto">Whether you need to zoom in on a single decision, or zoom out to map your next decade, we have a structure for you.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8 items-stretch">
+                
+                <!-- Sprints Card (Short Term) -->
+                <div class="glass-card flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-accent2/10 transition-all duration-500 reveal-up delay-100 border-t-4 border-t-brand-accent2">
+                    <div class="p-8 md:p-12 flex flex-col flex-grow z-10">
+                        <div class="w-12 h-12 rounded-full bg-brand-accent2/10 text-brand-accent2 flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-3xl font-display mb-3 text-brand-ink">Sthir Sprints</h3>
+                        <p class="text-brand-accent2 font-bold tracking-widest uppercase text-xs mb-6">Zoom In • 1 to 2 Days</p>
+                        
+                        <p class="text-brand-muted text-lg leading-relaxed mb-8">Targeted, immersive deep-dives. Perfect for when you are circling a specific decision (a career pivot, a project launch, a tough choice) and need immediate clarity to move.</p>
+                        
+                        <ul class="space-y-4 mb-10 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-brand-ink">
+                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>High-momentum workshops</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-brand-ink">
+                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Specific, actionable outputs (e.g., your "Anti-Resume")</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-brand-ink">
+                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Available Live or On-Demand</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="#sprints-directory" class="secondary-button w-full sm:w-auto text-center self-start interactive hover:!bg-brand-accent2 hover:!text-white hover:!border-brand-accent2">View Upcoming Sprints</a>
+                    </div>
+                    <!-- Background Accent -->
+                    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-accent2/5 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-accent2/10 transition-colors duration-500"></div>
+                </div>
+
+                <!-- Pathways Card (Long Term) -->
+                <div class="glass-card flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-accent1/10 transition-all duration-500 reveal-up delay-200 border-t-4 border-t-brand-accent1">
+                    <div class="p-8 md:p-12 flex flex-col flex-grow z-10">
+                        <div class="w-12 h-12 rounded-full bg-brand-accent1/10 text-brand-accent1 flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                        </div>
+                        <h3 class="text-3xl font-display mb-3 text-brand-ink">Sthir Pathways</h3>
+                        <p class="text-brand-accent1 font-bold tracking-widest uppercase text-xs mb-6">Zoom Out • 4 to 8 Weeks</p>
+                        
+                        <p class="text-brand-muted text-lg leading-relaxed mb-8">Comprehensive life-design cohorts. Best for navigating larger life transitions, understanding your core identity, and designing multiple viable futures.</p>
+                        
+                        <ul class="space-y-4 mb-10 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-brand-ink">
+                                <svg class="w-5 h-5 text-brand-accent1 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Intimate, curated cohorts</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-brand-ink">
+                                <svg class="w-5 h-5 text-brand-accent1 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Age-specific tracks (15-18 yrs, 18-25 yrs)</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-brand-ink">
+                                <svg class="w-5 h-5 text-brand-accent1 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Deep 1:1 coaching integration</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="#contact" class="secondary-button w-full sm:w-auto text-center self-start interactive hover:!bg-brand-accent1 hover:!text-white hover:!border-brand-accent1">Apply for next Cohort</a>
+                    </div>
+                    <!-- Background Accent -->
+                    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-accent1/5 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-accent1/10 transition-colors duration-500"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Sprints Directory (Masterclasses) -->
+    <section id="sprints-directory" class="py-24 px-6 bg-brand-surface relative z-10 border-t border-brand-surfaceLight">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-3">Zoom in to one growth area</span>
+                <h2 class="text-3xl md:text-5xl font-display font-medium mb-4">Sthir Sprints</h2>
+                <p class="text-brand-muted text-lg max-w-2xl mx-auto">Targeted, immersive deep-dives designed to support specific transitions in your life and career. Design your way forward.</p>
+            </div>
+            
+            <!-- Upcoming Sprints -->
+            <h3 class="text-2xl font-display mb-8 text-brand-ink border-b border-brand-surfaceLight pb-4 flex items-center gap-3 reveal-up delay-100">
+                <span class="w-2 h-2 rounded-full bg-brand-accent2 animate-pulse"></span> Upcoming Live Sprints
+            </h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+                <!-- Sprint Card -->
+                <div class="glass-card p-8 flex flex-col hover:border-brand-accent2/50 transition-colors reveal-up delay-200">
+                    <span class="text-xs font-bold tracking-wider uppercase text-brand-accent2 mb-3 block">Apr 15 • Live Workshop</span>
+                    <h4 class="text-xl font-display mb-3 text-brand-ink">The Pivot Prototype</h4>
+                    <p class="text-brand-muted text-sm leading-relaxed mb-6 flex-grow">A 2-hour intensive on designing small, low-risk experiments for your next career move before taking the big leap.</p>
+                    <button class="w-full py-3 rounded-lg bg-brand-bg border border-brand-surfaceLight text-brand-ink hover:border-brand-accent2 hover:text-white transition-colors interactive text-sm font-medium">Join Waitlist</button>
+                </div>
+                <!-- Sprint Card -->
+                <div class="glass-card p-8 flex flex-col hover:border-brand-accent2/50 transition-colors reveal-up delay-300">
+                    <span class="text-xs font-bold tracking-wider uppercase text-brand-accent2 mb-3 block">May 02 • Group Sprint</span>
+                    <h4 class="text-xl font-display mb-3 text-brand-ink">Designing the Next Decade</h4>
+                    <p class="text-brand-muted text-sm leading-relaxed mb-6 flex-grow">Turn your 5-year vision into multiple viable futures, then choose the one that fits who you are becoming.</p>
+                    <button class="w-full py-3 rounded-lg bg-brand-bg border border-brand-surfaceLight text-brand-ink hover:border-brand-accent2 hover:text-white transition-colors interactive text-sm font-medium">Join Waitlist</button>
+                </div>
+            </div>
+
+            <!-- Past/On-Demand Sprints -->
+            <h3 class="text-2xl font-display mb-8 text-brand-ink border-b border-brand-surfaceLight pb-4 flex items-center gap-3 reveal-up delay-100">
+                <svg class="w-5 h-5 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 
+                On-Demand Sprints
+            </h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Past Sprint Card -->
+                <div class="glass-card p-8 flex flex-col opacity-80 hover:opacity-100 transition-opacity cursor-pointer interactive reveal-up delay-200">
+                    <span class="text-xs font-bold tracking-wider uppercase text-brand-muted mb-3 block">Self-Paced • 90 Mins</span>
+                    <h4 class="text-xl font-display mb-3 text-brand-ink">Quiet the Noise</h4>
+                    <p class="text-brand-muted text-sm leading-relaxed mb-6 flex-grow">A framework to separate external expectations from your internal compass when facing a major life decision.</p>
+                    <div class="text-brand-accent1 text-sm font-medium flex items-center gap-2">Access Recording &rarr;</div>
+                </div>
+                <!-- Past Sprint Card -->
+                <div class="glass-card p-8 flex flex-col opacity-80 hover:opacity-100 transition-opacity cursor-pointer interactive reveal-up delay-300">
+                    <span class="text-xs font-bold tracking-wider uppercase text-brand-muted mb-3 block">Self-Paced • 90 Mins</span>
+                    <h4 class="text-xl font-display mb-3 text-brand-ink">The Anti-Resume</h4>
+                    <p class="text-brand-muted text-sm leading-relaxed mb-6 flex-grow">Design the narrative of who you are becoming and what you want next.</p>
+                    <div class="text-brand-accent1 text-sm font-medium flex items-center gap-2">Access Recording &rarr;</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-brand-bg relative z-10 overflow-hidden border-t border-brand-surfaceLight">
+        <div class="text-center px-6 mb-16 reveal-up">
+            <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-3">What people feel after Sthir</span>
+            <h2 class="text-3xl md:text-5xl font-display font-medium">Calmer. Clearer. More able to move.</h2>
+        </div>
+
+        <div class="marquee-container interactive reveal-up delay-200" id="testimonial-wrapper">
+            <!-- Set 1 -->
+            <div class="marquee-content" id="testimonial-set-1">
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                    <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"Sthir helped me listen to what I was actually ready for. I left feeling lighter and much more trusting of my own decisions."</p>
+                    <div>
+                        <div class="font-display font-bold text-brand-accent1">Krishna Tyagi</div>
+                        <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                    <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"What stood out was the mix of calm and challenge. I left with more honesty, a clearer next step, and a grounded sense that my next step was enough for now."</p>
+                    <div>
+                        <div class="font-display font-bold text-brand-accent2">Sanil Katula</div>
+                        <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                    <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"Sthir brought structure to a searching season. By the end, I felt grounded, clear, and ready to act."</p>
+                    <div>
+                        <div class="font-display font-bold text-brand-accent3">Sana Raza</div>
+                        <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Set 2 -->
+            <div class="marquee-content" aria-hidden="true">
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                    <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"Sthir helped me listen to what I was actually ready for. I left feeling lighter and much more trusting of my own decisions."</p>
+                    <div>
+                        <div class="font-display font-bold text-brand-accent1">Krishna Tyagi</div>
+                        <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                    <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"What stood out was the mix of calm and challenge. I left with more honesty, a clearer next step, and a grounded sense that my next step was enough for now."</p>
+                    <div>
+                        <div class="font-display font-bold text-brand-accent2">Sanil Katula</div>
+                        <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
+                    </div>
+                </div>
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                    <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"Sthir brought structure to a searching season. By the end, I felt grounded, clear, and ready to act."</p>
+                    <div>
+                        <div class="font-display font-bold text-brand-accent3">Sana Raza</div>
+                        <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FAQ / About Section -->
+    <section id="about" class="py-24 px-6 bg-brand-surface relative z-10 border-t border-brand-surfaceLight">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-brand-accent1 text-sm tracking-[0.2em] font-bold uppercase block mb-4">If you are wondering whether Sthir is for you</span>
+                <h2 class="text-3xl md:text-5xl font-display font-medium mb-6">FAQ</h2>
+                <p class="text-brand-muted text-lg md:text-xl max-w-2xl mx-auto">Sthir is built for people who are ready for calm, practical support in understanding what is true and deciding what to do next.</p>
+            </div>
+
+            <div class="reveal-up delay-200">
+                <details class="faq-accordion interactive" open>
+                    <summary>
+                        What Sthir is
+                        <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="faq-body">
+                        <strong class="text-brand-accent3 block mb-2 font-display text-lg">A life design space for people in transition</strong>
+                        <p class="text-brand-muted leading-relaxed">Sthir blends coaching, design thinking, and reflective tools to help people navigate questions around work, identity, leadership, and direction with more honesty.</p>
+                    </div>
+                </details>
+
+                <details class="faq-accordion interactive">
+                    <summary>
+                        What it helps unlock
+                        <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="faq-body">
+                        <strong class="text-brand-accent2 block mb-2 font-display text-lg">The gap between looking fine and feeling aligned</strong>
+                        <p class="text-brand-muted leading-relaxed">Many people have options, ambition, and momentum, and they benefit from a grounded way to hear their own signal through expectation, achievement, and overthinking. Sthir gives structure to that fog.</p>
+                    </div>
+                </details>
+
+                <details class="faq-accordion interactive">
+                    <summary>
+                        What is in it for me
+                        <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="faq-body">
+                        <strong class="text-brand-accent1 block mb-2 font-display text-lg">Clarity you can actually use in real life</strong>
+                        <p class="text-brand-muted leading-relaxed">You leave with sharper questions, a clearer decision lens, and one next experiment to test, paired with momentum that stays with you after a good conversation.</p>
+                    </div>
+                </details>
+
+                <details class="faq-accordion interactive">
+                    <summary>
+                        What others feel after it
+                        <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </summary>
+                    <div class="faq-body">
+                        <strong class="text-brand-ink block mb-2 font-display text-lg">Calmer, clearer, and more able to move</strong>
+                        <p class="text-brand-muted leading-relaxed">People often describe feeling more permission to be honest and more trust in their own next step. The emotional shift is usually just as important as the practical one.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Footer -->
+    <footer id="contact" class="bg-brand-bg border-t border-brand-surfaceLight pt-20 pb-10 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+                <a href="/" class="flex items-center gap-3 mb-6 interactive inline-flex">
+                    <img src="./images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'"/>
+                    <div class="brand-meta">
+                        <span class="brand-title-text text-2xl">STHIR</span>
+                        <span class="brand-tagline-text">stillness in motion</span>
+                    </div>
+                </a>
+                <div class="flex gap-6 mt-8">
+                    <a href="#about" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">About</a>
+                    <a href="#offerings" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Paths</a>
+                    <a href="#sprints-directory" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sprints</a>
+                    <a href="./blog/" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Blogs</a>
+                    <a href="#testimonials" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Testimonials</a>
+                    <a href="#contact" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Contact</a>
+                </div>
+            </div>
+            
+            <div class="glass-card p-8 md:ml-auto w-full max-w-md border-brand-accent1/20">
+                <h3 class="text-xl font-display mb-2">Stay in the loop</h3>
+                <p class="text-brand-muted text-sm mb-6">Get updates on cohorts, events, and resources.</p>
+                <form class="flex gap-2" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Email address" class="bg-brand-surface border border-brand-surfaceLight rounded-lg px-4 py-2 flex-grow text-brand-ink focus:outline-none focus:border-brand-accent1 transition-colors interactive">
+                    <button type="submit" class="bg-brand-ink text-brand-bg font-semibold px-4 py-2 rounded-lg hover:bg-brand-accent1 transition-colors interactive">Join</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto text-center border-t border-brand-surfaceLight/50 pt-8">
+            <p class="text-brand-muted text-xs uppercase tracking-widest">© 2026 Sthir. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- MODALS -->
+    <div id="clarity-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-brand-bg/90 backdrop-blur-md opacity-0 transition-opacity duration-300">
+        <div class="glass-card w-full max-w-2xl p-8 md:p-12 relative max-h-[90vh] flex flex-col overflow-y-auto custom-scrollbar">
+            <button id="close-clarity" class="absolute top-6 right-6 text-brand-muted hover:text-brand-ink interactive">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            
+            <div id="quiz-container" class="flex flex-col flex-grow">
+                <div class="mb-6 w-full">
+                    <div class="flex justify-between items-center mb-2">
+                        <span id="quiz-progress-text" class="text-brand-ink text-xs tracking-[0.2em] font-bold uppercase">Question 1 of 4</span>
+                        <span id="quiz-progress-label" class="text-xs tracking-wider uppercase font-bold text-red-500 transition-colors duration-500">Shor (Noise)</span>
+                    </div>
+                    <div class="w-full h-2 bg-brand-surfaceLight/30 rounded-full overflow-hidden relative">
+                        <div id="quiz-progress-fill" class="absolute left-0 top-0 h-full transition-all duration-500 ease-out" style="width: 25%; background-color: #ef4444;"></div>
+                    </div>
+                </div>
+                
+                <div id="quiz-anim-container" class="flex flex-col flex-grow w-full mt-4">
+                    <h3 id="quiz-question" class="text-2xl md:text-3xl font-display text-brand-ink leading-tight mb-6"></h3>
+                    <div id="quiz-options" class="flex flex-col gap-3 flex-grow mb-8">
+                        <!-- Options injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="quiz-loading" class="hidden flex-col items-center justify-center py-16">
+                <svg class="w-12 h-12 animate-spin text-brand-accent2 mb-6" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <h3 class="text-xl font-display text-brand-ink mb-2">Analyzing your design focus...</h3>
+                <p class="text-brand-muted text-sm animate-pulse">Filtering the noise to find your signal.</p>
+            </div>
+
+            <div id="quiz-result" class="hidden flex-col flex-grow">
+                <div class="flex justify-between items-center mb-4 border-b border-brand-surfaceLight/50 pb-3">
+                    <span class="text-brand-accent1 text-xs font-bold tracking-[0.2em] uppercase block">Your Sthir Design Profile</span>
+                </div>
+                
+                <div id="quiz-report-content" class="text-brand-ink leading-relaxed space-y-4 mb-8 bg-brand-surface/50 p-6 md:p-8 rounded-xl border border-brand-accent1/20">
+                    <!-- Predefined report goes here -->
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 mt-auto">
+                    <a href="#sprints-directory" onclick="document.getElementById('close-clarity').click()" id="quiz-cta-btn" class="story-button w-full sm:w-auto text-center !px-4">Join the Next Sprint - Clarity in 48 Hours</a>
+                    <button id="btn-restart-quiz" class="secondary-button w-full sm:w-auto text-center !px-4">Retake Assessment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core Engine Scripts -->
+    <script>
+        // --- 1. Custom Cursor ---
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = `${e.clientX}px`;
+            cursorDot.style.top = `${e.clientY}px`;
+            cursorOutline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 500, fill: "forwards" });
+        });
+
+        const attachCursorEvents = () => {
+            const interactives = document.querySelectorAll('.interactive, a, button, details summary, .quiz-option, textarea, input, .prompt-chip');
+            interactives.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        };
+        attachCursorEvents();
+
+        // --- 1.5 Hero Rotating Text ---
+        const rotatingItems = document.querySelectorAll('.rotating-text-item');
+        if (rotatingItems.length > 0) {
+            let currentRotateIndex = 0;
+            setInterval(() => {
+                const currentItem = rotatingItems[currentRotateIndex];
+                currentItem.classList.remove('active');
+                currentItem.classList.add('exit');
+                currentRotateIndex = (currentRotateIndex + 1) % rotatingItems.length;
+                const nextItem = rotatingItems[currentRotateIndex];
+                nextItem.classList.remove('exit');
+                nextItem.classList.add('active');
+            }, 4500); 
+        }
+
+        // --- 2. Navbar Scroll Effect ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // --- 3. Scrollytelling Engine & SVG Manipulation ---
+        const sections = document.querySelectorAll('.story-section');
+        const progressBar = document.getElementById('progress-bar');
+
+        const s1Chaos = document.getElementById('s1-chaos');
+        const s1Lens = document.getElementById('s1-lens');
+        const s1Focus = document.getElementById('s1-focus');
+        const s2Grid = document.getElementById('s2-grid');
+        const s2Sign = document.getElementById('s2-sign');
+
+        function updateOnScroll() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const totalHeight = document.body.scrollHeight - windowHeight;
+            progressBar.style.width = `${(scrollY / totalHeight) * 100}%`;
+
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                const sectionTop = rect.top + scrollY; 
+                const sectionHeight = rect.height;
+                let progress = (scrollY - sectionTop) / (sectionHeight - windowHeight);
+                let clampedProgress = Math.max(0, Math.min(1, progress));
+
+                if (progress >= -0.2 && progress <= 1.2) {
+                    
+                    // --- Scene 1: Magnifying Glass ---
+                    if (index === 0 && s1Lens) { 
+                        s1Chaos.style.opacity = Math.max(0, 0.6 - (clampedProgress * 1.5));
+                        s1Lens.style.transform = `translate(500px, 500px) scale(${clampedProgress * 1.5})`;
+                        s1Lens.style.opacity = clampedProgress * 2;
+                        
+                        if (clampedProgress > 0.5) {
+                            s1Focus.style.opacity = (clampedProgress - 0.5) * 2;
+                        } else {
+                            s1Focus.style.opacity = 0;
+                        }
+                    } 
+                    
+                    // --- Scene 2: You Are Here Sign & Grid ---
+                    else if (index === 1 && s2Sign) { 
+                        s2Grid.style.opacity = clampedProgress;
+                        const signY = 1200 - (clampedProgress * 500); 
+                        s2Sign.style.transform = `translate(500px, ${signY}px)`;
+                    }
+                    
+                    // --- Scene 3: Isometric Jump Ascent ---
+                    else if (index === 2) { 
+                        const s3Stairs = section.querySelectorAll('.iso-stair');
+                        const s3Char = document.getElementById('s3-character');
+                        const s3Burst = document.getElementById('s3-finish-burst');
+
+                        if (s3Stairs.length > 0) { 
+                            // Fade in Stairs sequentially
+                            if (clampedProgress > 0.05) { s3Stairs[2].style.opacity = (clampedProgress - 0.05) * 4; } else { s3Stairs[2].style.opacity = 0; }
+                            if (clampedProgress > 0.15) { s3Stairs[1].style.opacity = (clampedProgress - 0.15) * 4; } else { s3Stairs[1].style.opacity = 0; }
+                            if (clampedProgress > 0.25) { s3Stairs[0].style.opacity = (clampedProgress - 0.25) * 4; } else { s3Stairs[0].style.opacity = 0; }
+                            
+                            // Parabolic Jump Math
+                            if (clampedProgress > 0.3) {
+                                // Jump occurs between 0.3 and 0.8 clamped progress
+                                const jumpProg = Math.max(0, Math.min(1, (clampedProgress - 0.3) * 2)); 
+                                s3Char.style.opacity = Math.min(1, jumpProg * 5); 
+                                
+                                // Coordinates mapping the centers of the 3 stair treads
+                                const startX = 200, endX = 800; 
+                                const startY = 730, endY = 430;
+                                
+                                const linearX = startX + (jumpProg * (endX - startX));
+                                const linearY = startY + (jumpProg * (endY - startY));
+                                
+                                // Genuine Parabolic arc physics mapping
+                                let localT = jumpProg < 0.5 ? jumpProg * 2 : (jumpProg - 0.5) * 2;
+                                const bounceHeight = 130;
+                                const bounce = 4 * localT * (1 - localT) * bounceHeight;
+                                const yWithBounce = linearY - bounce;
+                                
+                                // Gentle rocking rotation for character feel based on the curve's derivative
+                                const rotate = (0.5 - localT) * 20;
+                                
+                                s3Char.style.transform = `translate(${linearX}px, ${yWithBounce}px) rotate(${rotate}deg)`;
+                            } else {
+                                s3Char.style.opacity = 0;
+                                s3Char.style.transform = `translate(200px, 730px) rotate(0deg)`;
+                            }
+                            
+                            // Animate burst at the end
+                            if (clampedProgress > 0.8) {
+                                const burstProg = Math.min(1, (clampedProgress - 0.8) * 5);
+                                s3Burst.style.opacity = burstProg;
+                                s3Burst.style.transform = `translate(800px, 430px) scale(${burstProg})`;
+                            } else {
+                                s3Burst.style.opacity = 0;
+                                s3Burst.style.transform = `translate(800px, 430px) scale(0)`;
+                            }
+                        }
+                    }
+
+                    // --- Text Bubbles ---
+                    const texts = section.querySelectorAll('.scrolly-text');
+                    texts.forEach(text => {
+                        const start = parseFloat(text.dataset.start);
+                        const end = parseFloat(text.dataset.end);
+                        if (progress >= start && progress <= end) {
+                            const localProgress = (progress - start) / (end - start);
+                            const bellCurve = Math.sin(localProgress * Math.PI);
+                            const translateY = 40 - (localProgress * 80); 
+                            const scale = 0.95 + (bellCurve * 0.05);
+                            text.style.opacity = bellCurve.toFixed(3);
+                            text.style.transform = `translateY(${translateY}px) scale(${scale})`;
+                            text.style.visibility = 'visible';
+                            text.style.pointerEvents = 'auto';
+                        } else {
+                            text.style.opacity = 0;
+                            text.style.visibility = 'hidden';
+                            text.style.pointerEvents = 'none';
+                        }
+                    });
+                }
+            });
+            requestAnimationFrame(updateOnScroll);
+        }
+        window.addEventListener('scroll', updateOnScroll);
+        window.addEventListener('load', updateOnScroll);
+
+        // --- 3.5 Scroll Reveal Animations ---
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -100px 0px', 
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-up').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // --- 3.7 Spotlight Effect on Cards ---
+        const spotlightCards = document.querySelectorAll('.spotlight-card');
+        spotlightCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // --- 4. Infinite Draggable Marquee ---
+        const testimonialWrapper = document.getElementById('testimonial-wrapper');
+        const testimonialSet1 = document.getElementById('testimonial-set-1');
+        
+        if (testimonialWrapper && testimonialSet1) {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let isHovered = false;
+            let exactScroll = 0; 
+
+            testimonialWrapper.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - testimonialWrapper.offsetLeft;
+                scrollLeft = testimonialWrapper.scrollLeft;
+            });
+            testimonialWrapper.addEventListener('mouseleave', () => { isDown = false; isHovered = false; });
+            testimonialWrapper.addEventListener('mouseenter', () => isHovered = true);
+            testimonialWrapper.addEventListener('mouseup', () => isDown = false);
+            testimonialWrapper.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault(); 
+                const x = e.pageX - testimonialWrapper.offsetLeft;
+                const walk = (x - startX) * 1.5; 
+                testimonialWrapper.scrollLeft = scrollLeft - walk;
+            });
+
+            testimonialWrapper.addEventListener('touchstart', () => isHovered = true, {passive: true});
+            testimonialWrapper.addEventListener('touchend', () => isHovered = false, {passive: true});
+
+            function autoScrollMarquee() {
+                if (Math.abs(testimonialWrapper.scrollLeft - exactScroll) > 1) {
+                    exactScroll = testimonialWrapper.scrollLeft;
+                }
+                if (!isHovered && !isDown) {
+                    exactScroll += 0.3; 
+                    testimonialWrapper.scrollLeft = exactScroll;
+                }
+                const gap = parseFloat(getComputedStyle(testimonialWrapper).gap) || 32;
+                const loopPoint = testimonialSet1.offsetWidth + gap;
+
+                if (testimonialWrapper.scrollLeft >= loopPoint) {
+                    exactScroll -= loopPoint;
+                    testimonialWrapper.scrollLeft = exactScroll;
+                } else if (testimonialWrapper.scrollLeft <= 0 && isDown) {
+                    exactScroll += loopPoint;
+                    testimonialWrapper.scrollLeft = exactScroll;
+                }
+                requestAnimationFrame(autoScrollMarquee);
+            }
+            autoScrollMarquee();
+        }
+
+        // --- 5. AI Sandbox Logic (Tabs, Chips, Typewriter, API) ---
+        const tabIdea = document.getElementById('tab-idea');
+        const tabLens = document.getElementById('tab-lens');
+        const panelIdea = document.getElementById('panel-idea');
+        const panelLens = document.getElementById('panel-lens');
+        const aiIdle = document.getElementById('ai-idle');
+        const aiResult = document.getElementById('ai-result');
+
+        function switchTab(tab) {
+            aiResult.classList.add('hidden');
+            aiResult.innerHTML = '';
+            aiIdle.classList.remove('hidden');
+
+            if(tab === 'idea') {
+                tabIdea.classList.add('active');
+                tabLens.classList.remove('active');
+                panelIdea.classList.remove('hidden');
+                panelLens.classList.add('hidden');
+            } else {
+                tabLens.classList.add('active');
+                tabIdea.classList.remove('active');
+                panelLens.classList.remove('hidden');
+                panelIdea.classList.add('hidden');
+            }
+        }
+
+        if(tabIdea && tabLens) {
+            tabIdea.addEventListener('click', () => switchTab('idea'));
+            tabLens.addEventListener('click', () => switchTab('lens'));
+        }
+
+        window.fillPrompt = function(inputId, text) {
+            const input = document.getElementById(inputId);
+            if(input) {
+                input.value = text;
+                input.focus();
+            }
+        }
+
+        async function typeWriterEffect(element, htmlContent, speed = 15) {
+            element.innerHTML = '';
+            element.classList.add('typing-cursor');
+            
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlContent;
+            
+            async function typeNode(node, parentElement) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const text = node.textContent;
+                    for (let i = 0; i < text.length; i++) {
+                        parentElement.innerHTML += text.charAt(i);
+                        await new Promise(r => setTimeout(r, speed));
+                    }
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    const newElement = document.createElement(node.tagName);
+                    for (let attr of node.attributes) {
+                        newElement.setAttribute(attr.name, attr.value);
+                    }
+                    parentElement.appendChild(newElement);
+                    for (let child of node.childNodes) {
+                        await typeNode(child, newElement);
+                    }
+                }
+            }
+            
+            for (let child of tempDiv.childNodes) {
+                await typeNode(child, element);
+            }
+            
+            element.classList.remove('typing-cursor');
+        }
+
+        async function callGroqAPI(userPrompt, systemInstruction) {
+            for (let i = 0; i < 5; i++) {
+                try {
+                    const response = await fetch('/api/groq', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            userPrompt,
+                            systemInstruction
+                        })
+                    });
+
+                    const data = await response.json().catch(() => null);
+                    if (!response.ok) {
+                        throw new Error(data?.error || `API error: ${response.status}`);
+                    }
+                    return data?.content || "Here is a reflection prompt for you.";
+                } catch (err) {
+                    await new Promise(res => setTimeout(res, 1000 * Math.pow(2, i)));
+                }
+            }
+            throw new Error("Unable to connect right now. Please try again.");
+        }
+
+        const btnRunIdea = document.getElementById('btn-run-idea');
+        if(btnRunIdea) {
+            btnRunIdea.addEventListener('click', async () => {
+                const inputEl = document.getElementById('ai-idea-input');
+                if (!inputEl.value.trim()) return;
+
+                document.getElementById('ai-idle').classList.add('hidden');
+                document.getElementById('ai-result').classList.add('hidden');
+                document.getElementById('ai-loading').classList.remove('hidden');
+
+                const instruction = `You are a life design coach at Sthir. Provide very brief, structured, and honest feedback on the user's idea or plan. Format exactly like this (bold headers):
+                **The Strength:** [1 sentence identifying a solid part]
+                **The Assumption:** [1 sentence challenging a hidden assumption]
+                **The Test:** [1 sentence suggesting a tiny, low-risk test]`;
+
+                try {
+                    const responseText = await callGroqAPI(inputEl.value, instruction);
+                    const formattedHtml = responseText.replace(/\*\*(.*?)\*\*/g, '<strong class="text-brand-accent1 block mt-4 mb-1 text-sm tracking-widest uppercase">$1</strong>');
+                    
+                    document.getElementById('ai-loading').classList.add('hidden');
+                    document.getElementById('ai-result').classList.remove('hidden');
+                    
+                    typeWriterEffect(document.getElementById('ai-result'), formattedHtml, 20);
+                } catch (error) {
+                    document.getElementById('ai-loading').classList.add('hidden');
+                    document.getElementById('ai-result').classList.remove('hidden');
+                    document.getElementById('ai-result').innerHTML = `<span class="text-brand-accent3">Something went wrong. Let's take a breath and try again.</span>`;
+                }
+            });
+        }
+
+        const btnRunLens = document.getElementById('btn-run-lens');
+        if(btnRunLens) {
+            btnRunLens.addEventListener('click', async () => {
+                const inputEl = document.getElementById('ai-lens-input');
+                if (!inputEl.value.trim()) return;
+
+                document.getElementById('ai-idle').classList.add('hidden');
+                document.getElementById('ai-result').classList.add('hidden');
+                document.getElementById('ai-loading').classList.remove('hidden');
+
+                const instruction = `You are a life design coach at Sthir. The user will tell you what is stuck. Reply ONLY with ONE powerful, reframing journal question.`;
+
+                try {
+                    const responseText = await callGroqAPI(inputEl.value, instruction);
+                    const cleanText = `"${responseText.replace(/^"|"$/g, '').trim()}"`;
+                    const formattedHtml = `<div class="h-full flex items-center justify-center text-center"><h3 class="text-2xl md:text-3xl font-display text-brand-accent2 italic leading-tight">${cleanText}</h3></div>`;
+                    
+                    document.getElementById('ai-loading').classList.add('hidden');
+                    document.getElementById('ai-result').classList.remove('hidden');
+                    
+                    typeWriterEffect(document.getElementById('ai-result'), formattedHtml, 30);
+                } catch (error) {
+                    document.getElementById('ai-loading').classList.add('hidden');
+                    document.getElementById('ai-result').classList.remove('hidden');
+                    document.getElementById('ai-result').innerHTML = `<span class="text-brand-accent3">Something went wrong. Let's take a breath and try again.</span>`;
+                }
+            });
+        }
+
+        // --- 6. Custom 7-Min Clarity Quiz Logic ---
+        const quizQuestions = [
+            {
+                type: 'choice',
+                q: "Imagine your life is a movie set right now. What’s the vibe?",
+                options: [
+                    { text: "High-speed chase with a destination I’m still defining.", value: 'C' },
+                    { text: "In the trailer, shaping the next version of the script.", value: 'A' },
+                    { text: "A supporting character ready to step into my own lead story.", value: 'C' },
+                    { text: "A beautiful indie film opening into its next great act.", value: 'B' }
+                ]
+            },
+            {
+                type: 'choice',
+                q: "When you think about your next 2 years, what hits first?",
+                options: [
+                    { text: "The Trend Pull: There’s a lot of AI/Data Science/MBA buzz, and I want to choose what truly fits me.", value: 'A' },
+                    { text: "The Legacy: My parents’ expectations matter, and I’m learning how to carry them alongside my own voice.", value: 'C' },
+                    { text: "The Spark: I have 10 tabs open in my brain, and I’m ready to turn them into one clear direction.", value: 'B' },
+                    { text: "The Starting Line: I know what I want, and I’m ready to begin with the right first step.", value: 'B' }
+                ]
+            },
+            {
+                type: 'choice',
+                q: "If your current \"Plan A\" evolved tomorrow because of AI or a market shift, how many alternative paths would genuinely excite you?",
+                options: [
+                    { text: "0 (Ready to discover some)", value: 'A' },
+                    { text: "1 (A grounded alternative)", value: 'C' },
+                    { text: "2-3 (I’ve got ideas, and I’m ready to test them)", value: 'B' },
+                    { text: "4+ (I’m a natural prototyper)", value: 'B' }
+                ]
+            },
+            {
+                type: 'text',
+                q: "What is the one thing you do where you lose track of time, and it reveals something deeply personal about who you are?"
+            }
+        ];
+
+        const archetypes = {
+            'A': {
+                diagnosis: "You’re excellent at working with structure, and now you’re ready to pair that strength with adaptability for a fast-changing world.",
+                nudge: "Your next edge is Practical Improvisation: learning how to move confidently when the script is still being written.",
+                keyword: "The Structured Explorer"
+            },
+            'B': {
+                diagnosis: "You have rich curiosity and strong imagination. Your next breakthrough comes from turning possibilities into motion.",
+                nudge: "A prototype will turn curiosity into clarity. Your answers grow stronger each time you test them in the real world.",
+                keyword: "The Curious Prototyper"
+            },
+            'C': {
+                diagnosis: "You’re already moving with momentum, and your next step is to tune more closely into your \"Inner Signal\" beneath external \"Shor\" (noise).",
+                nudge: "A Pause & Notice session can help you translate pressure into information and choose from a place of alignment.",
+                keyword: "The Emerging Signal"
+            }
+        };
+
+        let currentQuestionIndex = 0;
+        let scoreTracker = { A: 0, B: 0, C: 0 };
+        const progressColors = ['#ef4444', '#f97316', '#eab308', '#10b981'];
+
+        const modalClarity = document.getElementById('clarity-modal');
+        const containerQuiz = document.getElementById('quiz-container');
+        const containerLoading = document.getElementById('quiz-loading');
+        const containerResult = document.getElementById('quiz-result');
+        const elProgressText = document.getElementById('quiz-progress-text');
+        const elProgressLabel = document.getElementById('quiz-progress-label');
+        const elProgressFill = document.getElementById('quiz-progress-fill');
+        const elQuestion = document.getElementById('quiz-question');
+        const elOptions = document.getElementById('quiz-options');
+        const elReport = document.getElementById('quiz-report-content');
+        const elQuizCta = document.getElementById('quiz-cta-btn');
+
+        const openModal = (modal) => {
+            if(!modal) return;
+            modal.classList.remove('hidden');
+            void modal.offsetWidth; 
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+            document.body.style.overflow = 'hidden';
+            resetQuiz();
+        };
+
+        const closeModal = (modal) => {
+            if(!modal) return;
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        };
+
+        function renderQuestion() {
+            const qData = quizQuestions[currentQuestionIndex];
+            
+            elProgressText.innerText = `Question ${currentQuestionIndex + 1} of ${quizQuestions.length}`;
+            const percentage = ((currentQuestionIndex + 1) / quizQuestions.length) * 100;
+            elProgressFill.style.width = `${percentage}%`;
+            elProgressFill.style.backgroundColor = progressColors[currentQuestionIndex];
+            
+            if(currentQuestionIndex === 3) {
+                elProgressLabel.innerText = "Sthir (Calm)";
+                elProgressLabel.style.color = '#10b981';
+            } else {
+                elProgressLabel.innerText = "Shor (Noise)";
+                elProgressLabel.style.color = progressColors[currentQuestionIndex];
+            }
+
+            elQuestion.innerText = qData.q;
+            elOptions.innerHTML = '';
+            
+            if (qData.type === 'choice') {
+                const labels = ['A', 'B', 'C', 'D'];
+                qData.options.forEach((opt, idx) => {
+                    const btn = document.createElement('div');
+                    btn.className = 'quiz-option interactive group flex items-center gap-4 p-4 mb-3 rounded-xl border border-brand-surfaceLight/30 bg-brand-surface/40 hover:bg-brand-surfaceLight/20 hover:border-brand-accent1 transition-all cursor-pointer hover:-translate-y-1';
+                    btn.innerHTML = `
+                        <span class="flex-shrink-0 w-8 h-8 rounded-full bg-brand-bg border border-brand-surfaceLight flex items-center justify-center text-xs font-bold text-brand-muted group-hover:bg-brand-accent1 group-hover:text-brand-bg group-hover:border-brand-accent1 transition-colors">${labels[idx]}</span>
+                        <span class="text-brand-ink text-sm md:text-base leading-relaxed">${opt.text}</span>
+                    `;
+                    btn.onclick = () => handleOptionClick(opt.value);
+                    elOptions.appendChild(btn);
+                });
+            } else if (qData.type === 'text') {
+                elOptions.innerHTML = `
+                    <div class="flex flex-col h-full">
+                        <textarea id="q4-text" class="w-full bg-brand-bg/80 border border-brand-surfaceLight/50 rounded-xl p-6 text-brand-ink focus:outline-none focus:border-brand-accent1 focus:ring-1 focus:ring-brand-accent1/50 mb-6 custom-scrollbar resize-none interactive flex-grow min-h-[160px] text-lg transition-all" placeholder="E.g., I love organizing local community events, mapping out fictional worlds, or deeply analyzing cinema..."></textarea>
+                        <button onclick="handleOptionClick('TEXT')" class="story-button w-full sm:w-auto self-end !px-8 !py-4 shadow-lg shadow-brand-accent2/20 hover:shadow-brand-accent2/40 text-lg transition-transform hover:-translate-y-1">Unlock My Profile ✨</button>
+                    </div>
+                `;
+            }
+            attachCursorEvents();
+        }
+
+        window.handleOptionClick = function(value) {
+            const animContainer = document.getElementById('quiz-anim-container');
+            animContainer.classList.add('fade-out');
+            
+            setTimeout(() => {
+                if(value !== 'TEXT') {
+                    scoreTracker[value]++;
+                }
+                currentQuestionIndex++;
+                if (currentQuestionIndex < quizQuestions.length) {
+                    renderQuestion();
+                    animContainer.classList.remove('fade-out');
+                } else {
+                    finishQuiz();
+                    animContainer.classList.remove('fade-out');
+                }
+            }, 300);
+        };
+
+        function finishQuiz() {
+            containerQuiz.classList.add('hidden');
+            containerLoading.classList.remove('hidden');
+            containerLoading.classList.add('flex');
+
+            let highestCat = 'A';
+            if (scoreTracker.B > scoreTracker.A) highestCat = 'B';
+            if (scoreTracker.C > scoreTracker[highestCat]) highestCat = 'C';
+            const result = archetypes[highestCat];
+
+            setTimeout(() => {
+                elReport.innerHTML = `
+                    <div class="text-center mb-8 mt-2">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-surfaceLight/20 mb-4 border border-brand-accent1/30 text-brand-accent1 shadow-[0_0_30px_rgba(202,168,233,0.15)]">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <p class="text-brand-muted text-sm tracking-[0.2em] uppercase font-bold mb-2">You are navigating as</p>
+                        <h4 class="text-3xl md:text-4xl font-display text-brand-ink font-medium">${result.keyword}</h4>
+                    </div>
+                    
+                    <div class="bg-brand-bg/50 border border-brand-surfaceLight/30 rounded-2xl p-6 md:p-8 mb-6 relative overflow-hidden group hover:border-brand-accent3/40 transition-colors">
+                        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-brand-accent3 opacity-80"></div>
+                        <strong class="text-brand-accent3 uppercase text-xs tracking-[0.2em] block mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            Your Pattern
+                        </strong> 
+                        <p class="text-brand-muted leading-relaxed text-sm md:text-base">${result.diagnosis}</p>
+                    </div>
+                    
+                    <div class="bg-brand-accent1/10 border border-brand-accent1/30 rounded-2xl p-6 md:p-8 mb-8 relative overflow-hidden group hover:border-brand-accent1/50 transition-colors">
+                        <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-brand-accent1 opacity-80"></div>
+                        <strong class="text-brand-accent1 uppercase text-xs tracking-[0.2em] block mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            The Sthir Nudge
+                        </strong> 
+                        <p class="text-brand-ink font-medium leading-relaxed text-sm md:text-base">${result.nudge}</p>
+                    </div>
+
+                    <div class="text-center bg-brand-surface/40 border border-brand-surfaceLight/20 p-6 rounded-xl">
+                        <p class="text-brand-ink leading-relaxed text-sm md:text-base">
+                            Your Clarity Check shows you're navigating <strong class="text-brand-accent1">'${result.keyword}.'</strong> 
+                            Our Sprints are designed specifically to clear this noise through experiential play.
+                        </p>
+                    </div>
+                `;
+                
+                elQuizCta.innerHTML = `Join the Next Sprint - Clarity in 48 Hours`;
+
+                containerLoading.classList.add('hidden');
+                containerLoading.classList.remove('flex');
+                containerResult.classList.remove('hidden');
+                containerResult.classList.add('flex');
+            }, 1800);
+        }
+
+        function resetQuiz() {
+            currentQuestionIndex = 0;
+            scoreTracker = { A: 0, B: 0, C: 0 };
+            
+            containerQuiz.classList.remove('hidden');
+            containerQuiz.classList.add('flex');
+            containerLoading.classList.add('hidden');
+            containerLoading.classList.remove('flex');
+            containerResult.classList.add('hidden');
+            containerResult.classList.remove('flex');
+            renderQuestion();
+        }
+
+        const btnOpenClarity = document.getElementById('btn-open-clarity');
+        const btnCloseClarity = document.getElementById('close-clarity');
+        const btnRestartQuiz = document.getElementById('btn-restart-quiz');
+        
+        if(btnOpenClarity) btnOpenClarity.addEventListener('click', () => openModal(modalClarity));
+        if(btnCloseClarity) btnCloseClarity.addEventListener('click', () => closeModal(modalClarity));
+        if(btnRestartQuiz) btnRestartQuiz.addEventListener('click', resetQuiz);
+
+    </script>
+</body>
+</html>
