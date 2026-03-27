@@ -1729,7 +1729,27 @@
             element.classList.remove('typing-cursor');
         }
 
+        function escapeHtml(value) {
+            return String(value)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function showAiError(message) {
+            const safeMessage = escapeHtml(message || "Something went wrong. Let's take a breath and try again.");
+            document.getElementById('ai-loading').classList.add('hidden');
+            document.getElementById('ai-result').classList.remove('hidden');
+            document.getElementById('ai-result').innerHTML = `<span class="text-brand-accent3">${safeMessage}</span>`;
+        }
+
         async function callGroqAPI(userPrompt, systemInstruction) {
+            if (window.location.protocol === 'file:') {
+                throw new Error('AI needs the local server. Open http://127.0.0.1:3000/hybrid_positive_framing.html#ai-sandbox instead of file://.');
+            }
+
             for (let i = 0; i < 5; i++) {
                 try {
                     const response = await fetch('/api/groq', {
@@ -1745,10 +1765,16 @@
 
                     const data = await response.json().catch(() => null);
                     if (!response.ok) {
-                        throw new Error(data?.error || `API error: ${response.status}`);
+                        const error = new Error(data?.error || `API error: ${response.status}`);
+                        error.status = response.status;
+                        throw error;
                     }
                     return data?.content || "Here is a reflection prompt for you.";
                 } catch (err) {
+                    const shouldRetry = !err?.status || err.status >= 500;
+                    if (!shouldRetry || i === 4) {
+                        throw err;
+                    }
                     await new Promise(res => setTimeout(res, 1000 * Math.pow(2, i)));
                 }
             }
@@ -1779,9 +1805,7 @@
                     
                     typeWriterEffect(document.getElementById('ai-result'), formattedHtml, 20);
                 } catch (error) {
-                    document.getElementById('ai-loading').classList.add('hidden');
-                    document.getElementById('ai-result').classList.remove('hidden');
-                    document.getElementById('ai-result').innerHTML = `<span class="text-brand-accent3">Something went wrong. Let's take a breath and try again.</span>`;
+                    showAiError(error?.message);
                 }
             });
         }
@@ -1808,9 +1832,7 @@
                     
                     typeWriterEffect(document.getElementById('ai-result'), formattedHtml, 30);
                 } catch (error) {
-                    document.getElementById('ai-loading').classList.add('hidden');
-                    document.getElementById('ai-result').classList.remove('hidden');
-                    document.getElementById('ai-result').innerHTML = `<span class="text-brand-accent3">Something went wrong. Let's take a breath and try again.</span>`;
+                    showAiError(error?.message);
                 }
             });
         }
