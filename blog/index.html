@@ -32,6 +32,22 @@
       <a href="../contact/" class="interactive">Contact</a>
     </div>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive">Apply Now</a>
+    <button class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-links">
+        <a href="../about/" class="interactive">About</a>
+        <a href="../hybrid_positive_framing.html#offerings" class="interactive">Paths</a>
+        <a href="../hybrid_positive_framing.html#sprints-directory" class="interactive">Sprints</a>
+        <a href="./" class="interactive" aria-current="page">Blogs</a>
+        <a href="../hybrid_positive_framing.html#testimonials" class="interactive">Testimonials</a>
+        <a href="../contact/" class="interactive">Contact</a>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive mobile-nav-cta">Apply Now</a>
+    </div>
   </nav>
 
   <section class="hero-shell">
@@ -101,6 +117,8 @@
     var cursorDot = document.querySelector('.cursor-dot');
     var cursorOutline = document.querySelector('.cursor-outline');
     var navbar = document.getElementById('navbar');
+    var mobileNavToggle = document.querySelector('.nav-toggle');
+    var mobileNav = document.getElementById('mobile-nav');
     var progressBar = document.getElementById('progress-bar');
     var interactiveSelector = '.interactive, a, button, textarea, input, .btn';
     var prefersCoarse = window.matchMedia('(pointer: coarse)').matches;
@@ -127,6 +145,30 @@
         }
         if (!e.relatedTarget || !e.relatedTarget.closest(interactiveSelector)) {
           body.classList.remove('cursor-hover');
+        }
+      });
+    }
+
+    function closeMobileNav() {
+      if (!mobileNavToggle || !mobileNav) return;
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+      mobileNav.classList.remove('is-open');
+    }
+
+    if (mobileNavToggle && mobileNav) {
+      mobileNavToggle.addEventListener('click', function() {
+        var willOpen = mobileNavToggle.getAttribute('aria-expanded') !== 'true';
+        mobileNavToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        mobileNav.classList.toggle('is-open', willOpen);
+      });
+
+      mobileNav.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMobileNav);
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth >= 1024) {
+          closeMobileNav();
         }
       });
     }
