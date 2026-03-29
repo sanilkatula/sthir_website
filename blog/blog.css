@@ -236,6 +236,8 @@ html {
   display: none;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 4px;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -249,14 +251,15 @@ html {
   display: block;
   width: 18px;
   height: 2px;
-  margin: 3px 0;
+  margin: 0;
   border-radius: 999px;
   background: var(--ink);
   transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
 }
 
 .blog .nav-toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);
 }
 
 .blog .nav-toggle[aria-expanded="true"] span:nth-child(2) {
@@ -264,7 +267,7 @@ html {
 }
 
 .blog .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .blog .mobile-nav {
