@@ -237,7 +237,7 @@ html {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -245,12 +245,15 @@ html {
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.88);
   box-shadow: var(--shadow-soft);
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .blog .nav-toggle span {
   display: block;
-  width: 18px;
-  height: 2px;
+  width: 22px;
+  height: 2.5px;
+  flex: 0 0 auto;
   margin: 0;
   border-radius: 999px;
   background: var(--ink);
@@ -259,7 +262,7 @@ html {
 }
 
 .blog .nav-toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
+  transform: translateY(7.5px) rotate(45deg);
 }
 
 .blog .nav-toggle[aria-expanded="true"] span:nth-child(2) {
@@ -267,7 +270,7 @@ html {
 }
 
 .blog .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
+  transform: translateY(-7.5px) rotate(-45deg);
 }
 
 .blog .mobile-nav {
@@ -358,6 +361,7 @@ html {
   justify-content: center;
   min-height: 64vh;
   width: 100%;
+  overflow-x: hidden;
   padding: 6rem 1.5rem 3rem;
   background:
     radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 28%),
