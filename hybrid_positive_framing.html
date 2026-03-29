@@ -183,10 +183,13 @@
         .hero-shell::before {
             content: "";
             position: absolute;
-            inset: -40px -120px auto auto;
+            top: -60px;
+            right: -150px;
             width: 540px;
             height: 540px;
+            border-radius: 50%;
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%);
+            filter: blur(10px);
             transform: rotate(12deg);
             pointer-events: none;
         }
