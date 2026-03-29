@@ -172,6 +172,9 @@
         }
 
         .hero-shell {
+            position: relative;
+            overflow: hidden;
+            isolation: isolate;
             background:
                 radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 28%),
                 linear-gradient(90deg, var(--brand-purple) 0%, var(--brand-purple-dark) 100%);
@@ -186,6 +189,87 @@
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%);
             transform: rotate(12deg);
             pointer-events: none;
+        }
+
+        .nav-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            border: 1px solid rgba(17, 24, 39, 0.12);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: var(--shadow-soft);
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: none;
+            flex-shrink: 0;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--ink);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            transform-origin: center;
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: calc(100% + 0.75rem);
+            left: 1rem;
+            right: 1rem;
+            z-index: 60;
+            flex-direction: column;
+            gap: 0.9rem;
+            padding: 1rem;
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 18px 40px rgba(17, 24, 39, 0.12);
+            backdrop-filter: blur(18px);
+        }
+
+        .mobile-nav.is-open {
+            display: flex;
+        }
+
+        .mobile-nav-links {
+            display: grid;
+            gap: 0.65rem;
+        }
+
+        .mobile-nav-links a {
+            display: block;
+            padding: 0.95rem 1rem;
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.74);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .mobile-nav-cta {
+            width: 100%;
         }
 
         .hero-badge {
@@ -408,6 +492,32 @@
             box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
         }
 
+        @media (max-width: 1023px) {
+            #navbar {
+                padding: 0.9rem 1rem !important;
+                gap: 0.75rem;
+            }
+
+            #navbar > a.story-button {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .mobile-nav {
+                left: 0.85rem;
+                right: 0.85rem;
+            }
+
+            .mobile-nav-links a {
+                padding: 0.9rem;
+            }
+        }
+
         /* Quiz Options Styling */
         .quiz-option {
             background: rgba(255,255,255,0.92);
@@ -607,6 +717,22 @@
             <a href="./contact/" class="hover:text-brand-ink transition-colors interactive">Contact</a>
         </div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button !py-2 !px-6 text-sm interactive">Apply Now</a>
+        <button class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-links">
+                <a href="./about/" class="interactive">About</a>
+                <a href="#offerings" class="interactive">Paths</a>
+                <a href="#sprints-directory" class="interactive">Sprints</a>
+                <a href="./blog/" class="interactive">Blogs</a>
+                <a href="#testimonials" class="interactive">Testimonials</a>
+                <a href="./contact/" class="interactive">Contact</a>
+            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive mobile-nav-cta">Apply Now</a>
+        </div>
     </nav>
 
     <!-- 1. Hero Section -->
@@ -1440,6 +1566,33 @@
 
         // --- 2. Navbar Scroll Effect ---
         const navbar = document.getElementById('navbar');
+        const mobileNavToggle = document.querySelector('.nav-toggle');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        function closeMobileNav() {
+            if (!mobileNavToggle || !mobileNav) return;
+            mobileNavToggle.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.remove('is-open');
+        }
+
+        if (mobileNavToggle && mobileNav) {
+            mobileNavToggle.addEventListener('click', () => {
+                const willOpen = mobileNavToggle.getAttribute('aria-expanded') !== 'true';
+                mobileNavToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+                mobileNav.classList.toggle('is-open', willOpen);
+            });
+
+            mobileNav.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', closeMobileNav);
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1024) {
+                    closeMobileNav();
+                }
+            });
+        }
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('nav-scrolled');
