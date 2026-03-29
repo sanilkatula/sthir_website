@@ -68,10 +68,6 @@
             cursor: none; /* Custom cursor */
         }
 
-        body.nav-open {
-            overflow: hidden;
-        }
-
         h1, h2, h3, .font-display {
             font-family: 'Poppins', 'Inter', sans-serif;
             letter-spacing: -0.02em;
@@ -156,7 +152,6 @@
         .brand-meta {
             display: flex;
             flex-direction: column;
-            min-width: 0;
         }
 
         .brand-title-text {
@@ -176,114 +171,10 @@
             text-transform: lowercase;
         }
 
-        .site-nav-links {
-            display: none;
-            align-items: center;
-            gap: 2rem;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: rgba(31, 41, 55, 0.8);
-        }
-
-        .site-nav-links a {
-            transition: color 0.2s ease;
-        }
-
-        .site-nav-links a:hover {
-            color: var(--ink);
-        }
-
-        .nav-toggle {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            padding: 0;
-            border: 1px solid rgba(17, 24, 39, 0.12);
-            border-radius: 14px;
-            background: rgba(255, 255, 255, 0.88);
-            box-shadow: var(--shadow-soft);
-            cursor: none;
-        }
-
-        .nav-toggle span {
-            display: block;
-            width: 18px;
-            height: 2px;
-            margin: 3px 0;
-            border-radius: 999px;
-            background: var(--ink);
-            transition: transform 0.25s ease, opacity 0.25s ease;
-        }
-
-        .nav-toggle[aria-expanded="true"] span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-
-        .nav-toggle[aria-expanded="true"] span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .nav-toggle[aria-expanded="true"] span:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
-
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: calc(100% + 0.75rem);
-            left: 1rem;
-            right: 1rem;
-            z-index: 60;
-            flex-direction: column;
-            gap: 0.9rem;
-            padding: 1rem;
-            border: 1px solid rgba(17, 24, 39, 0.08);
-            border-radius: 24px;
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 18px 40px rgba(17, 24, 39, 0.12);
-            backdrop-filter: blur(18px);
-        }
-
-        .mobile-nav.is-open {
-            display: flex;
-        }
-
-        .mobile-nav-links {
-            display: grid;
-            gap: 0.65rem;
-        }
-
-        .mobile-nav-links a {
-            display: block;
-            padding: 0.95rem 1rem;
-            border: 1px solid rgba(17, 24, 39, 0.08);
-            border-radius: 16px;
-            background: rgba(255, 255, 255, 0.74);
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .mobile-nav-cta {
-            width: 100%;
-        }
-
         .hero-shell {
             background:
                 radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 28%),
                 linear-gradient(90deg, var(--brand-purple) 0%, var(--brand-purple-dark) 100%);
-        }
-
-        .hero-shell::before {
-            content: "";
-            position: absolute;
-            inset: -40px -120px auto auto;
-            width: 540px;
-            height: 540px;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%);
-            transform: rotate(12deg);
-            pointer-events: none;
         }
 
         .hero-badge {
@@ -535,16 +426,6 @@
         @media (min-width: 768px) {
             .rotating-text-container { min-height: 100px; }
         }
-
-        @media (min-width: 1024px) {
-            .site-nav-links {
-                display: flex;
-            }
-
-            .mobile-nav {
-                display: none !important;
-            }
-        }
         .rotating-text-item {
             position: absolute;
             inset: 0;
@@ -651,129 +532,6 @@
         @media (max-width: 768px) {
             .scrolly-text { width: calc(100% - 2rem); padding: 1.5rem; }
         }
-
-        @media (max-width: 1023px) {
-            #navbar {
-                padding: 0.9rem 1rem !important;
-                gap: 0.75rem;
-            }
-
-            #navbar > a.story-button,
-            .site-nav-links {
-                display: none;
-            }
-
-            .nav-toggle {
-                display: inline-flex;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .story-section {
-                height: auto;
-            }
-
-            .sticky-view {
-                position: relative;
-                width: 100%;
-                height: auto;
-                min-height: auto;
-                display: block;
-                padding: 3.5rem 1rem 2.5rem;
-            }
-
-            .svg-scene {
-                display: none;
-            }
-
-            .scrolly-text {
-                position: relative;
-                inset: auto;
-                width: min(100%, 36rem);
-                max-width: none;
-                margin: 0 auto 1rem;
-                padding: 1.5rem;
-                text-align: left;
-                opacity: 1 !important;
-                visibility: visible !important;
-                pointer-events: auto !important;
-                transform: none !important;
-            }
-
-            .marquee-container {
-                padding: 0 1rem;
-                gap: 1rem;
-                mask-image: none;
-            }
-
-            .marquee-content {
-                gap: 1rem;
-                padding: 0 0 0.5rem;
-            }
-
-            .testimonial-card {
-                width: min(84vw, 320px) !important;
-            }
-
-            .footer-nav-links {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 0.75rem 1rem;
-            }
-
-            .footer-signup-form {
-                flex-direction: column;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-shell {
-                min-height: 88svh;
-                padding-top: 6.5rem;
-            }
-
-            .hero-badge {
-                font-size: 11px;
-                padding: 7px 12px;
-            }
-
-            .brand-title-text {
-                font-size: 14px;
-                letter-spacing: 0.16em;
-            }
-
-            .brand-tagline-text {
-                display: none;
-            }
-
-            .mobile-nav {
-                left: 0.85rem;
-                right: 0.85rem;
-            }
-
-            .rotating-text-container {
-                min-height: 180px;
-            }
-
-            .testimonial-card {
-                width: min(88vw, 300px) !important;
-            }
-
-            .faq-accordion summary {
-                padding: 1.1rem;
-                font-size: 1rem;
-                align-items: flex-start;
-            }
-
-            .faq-body {
-                padding: 0 1.1rem 1.1rem;
-            }
-
-            .footer-nav-links {
-                grid-template-columns: 1fr;
-            }
-        }
-
         @media (pointer: coarse) {
             body, .story-button, .secondary-button, .quiz-option, .prompt-chip, .interactive { cursor: auto !important; }
             .cursor-dot, .cursor-outline { display: none; }
@@ -824,12 +582,12 @@
     <nav id="navbar" class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
         <a href="/" class="flex items-center gap-3 interactive">
             <img src="./images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'"/>
-            <div class="brand-meta">
+            <div class="brand-meta hidden md:flex">
                 <span class="brand-title-text">STHIR</span>
                 <span class="brand-tagline-text">stillness in motion</span>
             </div>
         </a>
-        <div class="site-nav-links">
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-ink/80">
             <a href="./about/" class="hover:text-brand-ink transition-colors interactive">About</a>
             <a href="#offerings" class="hover:text-brand-ink transition-colors interactive">Paths</a>
             <a href="#sprints-directory" class="hover:text-brand-ink transition-colors interactive">Sprints</a>
@@ -838,22 +596,6 @@
             <a href="./contact/" class="hover:text-brand-ink transition-colors interactive">Contact</a>
         </div>
         <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button !py-2 !px-6 text-sm interactive">Apply Now</a>
-        <button class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="mobile-nav" id="mobile-nav">
-            <div class="mobile-nav-links">
-                <a href="./about/" class="interactive">About</a>
-                <a href="#offerings" class="interactive">Paths</a>
-                <a href="#sprints-directory" class="interactive">Sprints</a>
-                <a href="./blog/" class="interactive">Blogs</a>
-                <a href="#testimonials" class="interactive">Testimonials</a>
-                <a href="./contact/" class="interactive">Contact</a>
-            </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive mobile-nav-cta">Apply Now</a>
-        </div>
     </nav>
 
     <!-- 1. Hero Section -->
@@ -1455,21 +1197,21 @@
         <div class="marquee-container interactive reveal-up delay-200" id="testimonial-wrapper">
             <!-- Set 1 -->
             <div class="marquee-content" id="testimonial-set-1">
-                <div class="glass-card testimonial-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
                     <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"Sthir helped me listen to what I was actually ready for. I left feeling lighter and much more trusting of my own decisions."</p>
                     <div>
                         <div class="font-display font-bold text-brand-accent1">Krishna Tyagi</div>
                         <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
                     </div>
                 </div>
-                <div class="glass-card testimonial-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
                     <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"What stood out was the mix of calm and challenge. I left with more honesty, a clearer next step, and a grounded sense that my next step was enough for now."</p>
                     <div>
                         <div class="font-display font-bold text-brand-accent2">Sanil Katula</div>
                         <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
                     </div>
                 </div>
-                <div class="glass-card testimonial-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
                     <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"Sthir brought structure to a searching season. By the end, I felt grounded, clear, and ready to act."</p>
                     <div>
                         <div class="font-display font-bold text-brand-accent3">Sana Raza</div>
@@ -1479,21 +1221,21 @@
             </div>
             <!-- Set 2 -->
             <div class="marquee-content" aria-hidden="true">
-                <div class="glass-card testimonial-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
                     <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"Sthir helped me listen to what I was actually ready for. I left feeling lighter and much more trusting of my own decisions."</p>
                     <div>
                         <div class="font-display font-bold text-brand-accent1">Krishna Tyagi</div>
                         <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
                     </div>
                 </div>
-                <div class="glass-card testimonial-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
                     <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"What stood out was the mix of calm and challenge. I left with more honesty, a clearer next step, and a grounded sense that my next step was enough for now."</p>
                     <div>
                         <div class="font-display font-bold text-brand-accent2">Sanil Katula</div>
                         <div class="text-brand-muted text-sm">Student, Sthir Cohort</div>
                     </div>
                 </div>
-                <div class="glass-card testimonial-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
+                <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
                     <p class="text-brand-ink text-lg leading-relaxed mb-8 italic">"Sthir brought structure to a searching season. By the end, I felt grounded, clear, and ready to act."</p>
                     <div>
                         <div class="font-display font-bold text-brand-accent3">Sana Raza</div>
@@ -1572,7 +1314,7 @@
                         <span class="brand-tagline-text">stillness in motion</span>
                     </div>
                 </a>
-                <div class="footer-nav-links flex gap-6 mt-8">
+                <div class="flex gap-6 mt-8">
                     <a href="#about" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">About</a>
                     <a href="#offerings" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Paths</a>
                     <a href="#sprints-directory" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sprints</a>
@@ -1585,7 +1327,7 @@
             <div class="glass-card p-8 md:ml-auto w-full max-w-md border-brand-accent1/20">
                 <h3 class="text-xl font-display mb-2">Stay in the loop</h3>
                 <p class="text-brand-muted text-sm mb-6">Get updates on cohorts, events, and resources.</p>
-                <form class="footer-signup-form flex gap-2" onsubmit="event.preventDefault();">
+                <form class="flex gap-2" onsubmit="event.preventDefault();">
                     <input type="email" placeholder="Email address" class="bg-brand-surface border border-brand-surfaceLight rounded-lg px-4 py-2 flex-grow text-brand-ink focus:outline-none focus:border-brand-accent1 transition-colors interactive">
                     <button type="submit" class="bg-brand-ink text-brand-bg font-semibold px-4 py-2 rounded-lg hover:bg-brand-accent1 transition-colors interactive">Join</button>
                 </form>
@@ -1687,47 +1429,6 @@
 
         // --- 2. Navbar Scroll Effect ---
         const navbar = document.getElementById('navbar');
-        const mobileNavToggle = document.querySelector('.nav-toggle');
-        const mobileNav = document.getElementById('mobile-nav');
-        const compactViewportQuery = window.matchMedia('(max-width: 900px)');
-
-        function closeMobileNav() {
-            if (!mobileNavToggle || !mobileNav) return;
-            mobileNavToggle.setAttribute('aria-expanded', 'false');
-            mobileNav.classList.remove('is-open');
-            document.body.classList.remove('nav-open');
-        }
-
-        if (mobileNavToggle && mobileNav) {
-            mobileNavToggle.addEventListener('click', () => {
-                const willOpen = mobileNavToggle.getAttribute('aria-expanded') !== 'true';
-                mobileNavToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-                mobileNav.classList.toggle('is-open', willOpen);
-                document.body.classList.toggle('nav-open', willOpen);
-            });
-
-            mobileNav.querySelectorAll('a').forEach((link) => {
-                link.addEventListener('click', closeMobileNav);
-            });
-
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 1024) {
-                    closeMobileNav();
-                }
-            });
-        }
-
-        let scrollUpdateQueued = false;
-
-        function queueScrollUpdate() {
-            if (scrollUpdateQueued) return;
-            scrollUpdateQueued = true;
-            requestAnimationFrame(() => {
-                scrollUpdateQueued = false;
-                updateOnScroll();
-            });
-        }
-
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('nav-scrolled');
@@ -1751,10 +1452,6 @@
             const windowHeight = window.innerHeight;
             const totalHeight = document.body.scrollHeight - windowHeight;
             progressBar.style.width = `${(scrollY / totalHeight) * 100}%`;
-
-            if (compactViewportQuery.matches) {
-                return;
-            }
 
             sections.forEach((section, index) => {
                 const rect = section.getBoundingClientRect();
@@ -1859,11 +1556,10 @@
                     });
                 }
             });
+            requestAnimationFrame(updateOnScroll);
         }
-        window.addEventListener('scroll', queueScrollUpdate, { passive: true });
-        window.addEventListener('resize', queueScrollUpdate);
-        window.addEventListener('load', queueScrollUpdate);
-        queueScrollUpdate();
+        window.addEventListener('scroll', updateOnScroll);
+        window.addEventListener('load', updateOnScroll);
 
         // --- 3.5 Scroll Reveal Animations ---
         const observerOptions = {
@@ -1902,56 +1598,52 @@
         const testimonialSet1 = document.getElementById('testimonial-set-1');
         
         if (testimonialWrapper && testimonialSet1) {
-            if (compactViewportQuery.matches) {
-                testimonialWrapper.classList.add('marquee-static');
-            } else {
-                let isDown = false;
-                let startX;
-                let scrollLeft;
-                let isHovered = false;
-                let exactScroll = 0; 
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            let isHovered = false;
+            let exactScroll = 0; 
 
-                testimonialWrapper.addEventListener('mousedown', (e) => {
-                    isDown = true;
-                    startX = e.pageX - testimonialWrapper.offsetLeft;
-                    scrollLeft = testimonialWrapper.scrollLeft;
-                });
-                testimonialWrapper.addEventListener('mouseleave', () => { isDown = false; isHovered = false; });
-                testimonialWrapper.addEventListener('mouseenter', () => isHovered = true);
-                testimonialWrapper.addEventListener('mouseup', () => isDown = false);
-                testimonialWrapper.addEventListener('mousemove', (e) => {
-                    if (!isDown) return;
-                    e.preventDefault(); 
-                    const x = e.pageX - testimonialWrapper.offsetLeft;
-                    const walk = (x - startX) * 1.5; 
-                    testimonialWrapper.scrollLeft = scrollLeft - walk;
-                });
+            testimonialWrapper.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - testimonialWrapper.offsetLeft;
+                scrollLeft = testimonialWrapper.scrollLeft;
+            });
+            testimonialWrapper.addEventListener('mouseleave', () => { isDown = false; isHovered = false; });
+            testimonialWrapper.addEventListener('mouseenter', () => isHovered = true);
+            testimonialWrapper.addEventListener('mouseup', () => isDown = false);
+            testimonialWrapper.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault(); 
+                const x = e.pageX - testimonialWrapper.offsetLeft;
+                const walk = (x - startX) * 1.5; 
+                testimonialWrapper.scrollLeft = scrollLeft - walk;
+            });
 
-                testimonialWrapper.addEventListener('touchstart', () => isHovered = true, {passive: true});
-                testimonialWrapper.addEventListener('touchend', () => isHovered = false, {passive: true});
+            testimonialWrapper.addEventListener('touchstart', () => isHovered = true, {passive: true});
+            testimonialWrapper.addEventListener('touchend', () => isHovered = false, {passive: true});
 
-                function autoScrollMarquee() {
-                    if (Math.abs(testimonialWrapper.scrollLeft - exactScroll) > 1) {
-                        exactScroll = testimonialWrapper.scrollLeft;
-                    }
-                    if (!isHovered && !isDown) {
-                        exactScroll += 0.3; 
-                        testimonialWrapper.scrollLeft = exactScroll;
-                    }
-                    const gap = parseFloat(getComputedStyle(testimonialWrapper).gap) || 32;
-                    const loopPoint = testimonialSet1.offsetWidth + gap;
-
-                    if (testimonialWrapper.scrollLeft >= loopPoint) {
-                        exactScroll -= loopPoint;
-                        testimonialWrapper.scrollLeft = exactScroll;
-                    } else if (testimonialWrapper.scrollLeft <= 0 && isDown) {
-                        exactScroll += loopPoint;
-                        testimonialWrapper.scrollLeft = exactScroll;
-                    }
-                    requestAnimationFrame(autoScrollMarquee);
+            function autoScrollMarquee() {
+                if (Math.abs(testimonialWrapper.scrollLeft - exactScroll) > 1) {
+                    exactScroll = testimonialWrapper.scrollLeft;
                 }
-                autoScrollMarquee();
+                if (!isHovered && !isDown) {
+                    exactScroll += 0.3; 
+                    testimonialWrapper.scrollLeft = exactScroll;
+                }
+                const gap = parseFloat(getComputedStyle(testimonialWrapper).gap) || 32;
+                const loopPoint = testimonialSet1.offsetWidth + gap;
+
+                if (testimonialWrapper.scrollLeft >= loopPoint) {
+                    exactScroll -= loopPoint;
+                    testimonialWrapper.scrollLeft = exactScroll;
+                } else if (testimonialWrapper.scrollLeft <= 0 && isDown) {
+                    exactScroll += loopPoint;
+                    testimonialWrapper.scrollLeft = exactScroll;
+                }
+                requestAnimationFrame(autoScrollMarquee);
             }
+            autoScrollMarquee();
         }
 
         // --- 5. AI Sandbox Logic (Tabs, Chips, Typewriter, API) ---
@@ -2026,52 +1718,37 @@
             element.classList.remove('typing-cursor');
         }
 
-        function escapeHtml(value) {
-            return String(value)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
-        function showAiError(message) {
-            const safeMessage = escapeHtml(message || "Something went wrong. Let's take a breath and try again.");
-            document.getElementById('ai-loading').classList.add('hidden');
-            document.getElementById('ai-result').classList.remove('hidden');
-            document.getElementById('ai-result').innerHTML = `<span class="text-brand-accent3">${safeMessage}</span>`;
-        }
-
+        const apiKey = "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";
+        
         async function callGroqAPI(userPrompt, systemInstruction) {
-            if (window.location.protocol === 'file:') {
-                throw new Error('AI needs the local server. Open http://127.0.0.1:3000/hybrid_positive_framing.html#ai-sandbox instead of file://.');
-            }
-
+            const url = `https://api.groq.com/openai/v1/chat/completions`;
+            const payload = {
+                model: "llama-3.1-8b-instant",
+                messages: [
+                    { role: "system", "content": systemInstruction },
+                    { role: "user", "content": userPrompt }
+                ],
+                temperature: 1,
+                max_completion_tokens: 1024,
+                top_p: 1,
+                stream: false,
+                stop: null
+            };
+            
             for (let i = 0; i < 5; i++) {
                 try {
-                    const response = await fetch('/api/groq', {
+                    const response = await fetch(url, {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${apiKey}`
                         },
-                        body: JSON.stringify({
-                            userPrompt,
-                            systemInstruction
-                        })
+                        body: JSON.stringify(payload)
                     });
-
-                    const data = await response.json().catch(() => null);
-                    if (!response.ok) {
-                        const error = new Error(data?.error || `API error: ${response.status}`);
-                        error.status = response.status;
-                        throw error;
-                    }
-                    return data?.content || "Here is a reflection prompt for you.";
+                    if (!response.ok) throw new Error(`API error: ${response.status}`);
+                    const data = await response.json();
+                    return data.choices?.[0]?.message?.content || "Here is a reflection prompt for you.";
                 } catch (err) {
-                    const shouldRetry = !err?.status || err.status >= 500;
-                    if (!shouldRetry || i === 4) {
-                        throw err;
-                    }
                     await new Promise(res => setTimeout(res, 1000 * Math.pow(2, i)));
                 }
             }
@@ -2102,7 +1779,9 @@
                     
                     typeWriterEffect(document.getElementById('ai-result'), formattedHtml, 20);
                 } catch (error) {
-                    showAiError(error?.message);
+                    document.getElementById('ai-loading').classList.add('hidden');
+                    document.getElementById('ai-result').classList.remove('hidden');
+                    document.getElementById('ai-result').innerHTML = `<span class="text-brand-accent3">Something went wrong. Let's take a breath and try again.</span>`;
                 }
             });
         }
@@ -2129,7 +1808,9 @@
                     
                     typeWriterEffect(document.getElementById('ai-result'), formattedHtml, 30);
                 } catch (error) {
-                    showAiError(error?.message);
+                    document.getElementById('ai-loading').classList.add('hidden');
+                    document.getElementById('ai-result').classList.remove('hidden');
+                    document.getElementById('ai-result').innerHTML = `<span class="text-brand-accent3">Something went wrong. Let's take a breath and try again.</span>`;
                 }
             });
         }
