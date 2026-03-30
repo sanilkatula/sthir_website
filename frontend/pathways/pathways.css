@@ -1,24 +1,3 @@
-.pathways-page .pathways-hero {
-  min-height: 56vh;
-}
-
-.pathways-page .hero-inner {
-  margin-top: 2.5rem;
-  text-align: center;
-}
-
-.pathways-page .hero-title {
-  margin-bottom: 1.35rem;
-}
-
-.pathways-page .pathways-main {
-  padding-top: 8px;
-}
-
-.pathways-page .page-section {
-  margin-bottom: 5rem;
-}
-
 .pathways-page .section-header {
   margin-bottom: 2rem;
 }
@@ -389,10 +368,6 @@
 }
 
 @media (max-width: 640px) {
-  .pathways-page .pathways-hero {
-    min-height: 48vh;
-  }
-
   .pathways-page .section-header--split {
     flex-direction: column;
     align-items: stretch;

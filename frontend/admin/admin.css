@@ -11,49 +11,80 @@
   --admin-shadow-lg: 0 28px 64px rgba(17, 24, 39, 0.14);
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(91, 43, 130, 0.08), transparent 22%),
-    radial-gradient(circle at top right, rgba(249, 115, 22, 0.08), transparent 20%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0)),
+    radial-gradient(circle at top left, rgba(91, 43, 130, 0.05), transparent 22%),
+    radial-gradient(circle at top right, rgba(249, 115, 22, 0.05), transparent 20%),
+    linear-gradient(180deg, rgba(255, 247, 239, 0.42), rgba(255, 255, 255, 0)),
     var(--page-bg, #ffffff);
 }
 
 .admin-page .hero-shell {
   position: relative;
-  min-height: 44vh;
-  padding-bottom: 5.25rem;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 58vh;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 5.5rem 1.5rem 2.5rem;
   background:
-    radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.14), transparent 26%),
-    radial-gradient(circle at 82% 20%, rgba(249, 115, 22, 0.18), transparent 18%),
-    linear-gradient(110deg, rgba(43, 15, 58, 0.98), rgba(91, 43, 130, 0.96) 58%, rgba(122, 68, 162, 0.92));
+    radial-gradient(circle at 18% 20%, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 28%),
+    linear-gradient(90deg, var(--accent1) 0%, var(--accent1-deep) 100%);
+}
+
+.admin-page .hero-shell::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -150px;
+  width: 540px;
+  height: 540px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(10px);
+  transform: rotate(12deg);
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%);
 }
 
 .admin-page .hero-shell::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 110px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.94));
-  pointer-events: none;
+  content: none;
 }
 
 .admin-page .hero-inner {
   position: relative;
   z-index: 1;
-  width: min(100%, 72rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 80rem);
+  margin: 3rem auto 0;
+  padding: 0 1.5rem;
   text-align: center;
 }
 
 .admin-page .hero-badge {
-  padding-inline: 1rem;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 8px 16px;
   border-color: rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  color: var(--hero-text);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .admin-page .hero-summary {
-  max-width: 46rem;
-  margin-inline: auto;
-  color: rgba(255, 247, 239, 0.88);
+  max-width: 48rem;
+  margin: 0 0 2rem;
+  color: var(--hero-text);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.7;
 }
 
 .admin-page,
@@ -79,7 +110,7 @@
   gap: 1.6rem;
   position: relative;
   z-index: 2;
-  margin-top: -3.5rem;
+  margin-top: -1.75rem;
   padding-bottom: 1rem;
 }
 
@@ -729,7 +760,7 @@
   }
 
   .admin-page .admin-main {
-    margin-top: -2.5rem;
+    margin-top: -1.25rem;
   }
 }
 
@@ -740,12 +771,16 @@
     grid-template-columns: 1fr;
   }
 
+  .admin-page .hero-inner {
+    padding: 0 0.5rem;
+  }
+
   .admin-page .admin-filter-field--wide {
     grid-column: auto;
   }
 
   .admin-page .admin-main {
-    margin-top: -2rem;
+    margin-top: -0.85rem;
   }
 }
 
@@ -763,12 +798,12 @@
 
 @media (max-width: 640px) {
   .admin-page .hero-shell {
-    min-height: 38vh;
-    padding-bottom: 4.25rem;
+    min-height: 50vh;
+    padding: 5rem 1rem 2.25rem;
   }
 
   .admin-page .admin-main {
-    margin-top: -1.5rem;
+    margin-top: -0.35rem;
   }
 
   .admin-page .admin-access-card,

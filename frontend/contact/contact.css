@@ -1,15 +1,7 @@
-.contact-page .hero-shell {
-  min-height: 56vh;
-}
-
 .contact-page .hero-email-link {
   color: #ffffff;
   text-decoration: underline;
   text-decoration-color: rgba(255, 255, 255, 0.35);
-}
-
-.contact-page .contact-main {
-  padding-top: 8px;
 }
 
 .contact-page .contact-grid {
@@ -255,10 +247,6 @@
 }
 
 @media (max-width: 640px) {
-  .contact-page .hero-shell {
-    min-height: 52vh;
-  }
-
   .contact-page .booking-header {
     position: sticky;
     top: 0;

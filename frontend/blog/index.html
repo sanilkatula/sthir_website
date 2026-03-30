@@ -52,33 +52,47 @@
 
   <section class="hero-shell">
     <div class="hero-inner">
-      <span class="hero-badge interactive">
-        Sthir Writing
-      </span>
+      <span class="hero-badge interactive">Sthir Blogs</span>
       <h1 class="hero-title">
         Sthir Blogs.
-        <span class="hero-title-accent">Insights, stories, and reflections.</span>
+        <span class="hero-title-accent">Stories, insights, and reflections for a steadier next step.</span>
       </h1>
       <p class="hero-summary">
-        Thoughts to help you sit steady, hear your own signal, and choose your next step with more clarity.
+        Read reflections designed to help you slow down, hear your own signal, and move forward with more clarity.
       </p>
-      <div class="glass-card blog-search-shell hero-search-wrap">
-        <input id="search" class="interactive hero-search-input" placeholder="Search posts…" aria-label="Search blog posts" />
-      </div>
     </div>
   </section>
 
   
   <!-- Blog Feed (Vertical) -->
-  <main class="wrap">
-    <section id="list" class="feed" aria-live="polite"></section>
+  <main class="wrap page-main">
+    <section class="page-section page-section--tight">
+      <div class="glass-card blog-search-shell page-search-shell">
+        <div class="blog-search-meta">
+          <div>
+            <span class="blog-search-kicker">Search The Journal</span>
+            <p class="blog-search-copy">Find posts by theme, transition, or reflection.</p>
+          </div>
+        </div>
+        <label class="blog-search-field" for="search">
+          <svg class="blog-search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="2"></circle>
+            <path d="M16 16l4.5 4.5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+          </svg>
+          <input id="search" class="interactive hero-search-input" placeholder="Search posts, themes, or keywords" aria-label="Search blog posts" />
+        </label>
+      </div>
+    </section>
+    <section class="page-section blog-feed-section">
+      <section id="list" class="feed" aria-live="polite"></section>
 
-    <nav class="pager">
-      <button id="prev" class="btn" disabled>Previous</button>
-      <button id="next" class="btn" disabled>Next</button>
-    </nav>
+      <nav class="pager">
+        <button id="prev" class="btn" disabled>Previous</button>
+        <button id="next" class="btn" disabled>Next</button>
+      </nav>
 
-    <div id="err"></div>
+      <div id="err"></div>
+    </section>
   </main>
 
   <footer id="contact" class="site-footer-home">
