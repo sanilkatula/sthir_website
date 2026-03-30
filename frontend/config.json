@@ -1,0 +1,6 @@
+{
+  "supabaseUrl": "https://dsxzrbhyqhsmpbsyapxh.supabase.co",
+  "supabaseAnonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRzeHpyYmh5cWhzbXBic3lhcHhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ4NDI5MjksImV4cCI6MjA5MDQxODkyOX0.t8MoTuNtG6Phha2GooxHXFmsafwR9Pu3epXeW96CYDU",
+  "apiBaseUrl": "https://dsxzrbhyqhsmpbsyapxh.supabase.co/functions/v1/database-api-calls",
+  "groqFunctionUrl": "https://dsxzrbhyqhsmpbsyapxh.supabase.co/functions/v1/groq-prompt"
+}

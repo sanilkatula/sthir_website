@@ -1,0 +1,8 @@
+{
+  "name": "sthir-website",
+  "private": true,
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  }
+}

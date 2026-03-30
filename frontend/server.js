@@ -32,10 +32,6 @@ function loadLocalEnv() {
       return {};
     }
 
-    if (!raw.includes('=')) {
-      return { GROQ_API_KEY: raw };
-    }
-
     const parsed = {};
 
     for (const line of raw.split(/\r?\n/)) {
@@ -68,8 +64,21 @@ function loadLocalEnv() {
   }
 }
 
-function getGroqApiKey() {
-  return (env.GROQ_API_KEY || '').trim();
+function buildPublicConfig() {
+  const supabaseUrl = (env.SUPABASE_URL || '').trim();
+  const apiBaseUrl = (env.BACKEND_API_URL || (supabaseUrl ? `${supabaseUrl.replace(/\/+$/, '')}/functions/v1/api` : 'http://127.0.0.1:4000/api')).trim();
+  const supabaseAnonKey = (env.SUPABASE_ANON_KEY || '').trim();
+  const groqFunctionUrl = (
+    env.GROQ_EDGE_FUNCTION_URL ||
+    (supabaseUrl ? `${supabaseUrl.replace(/\/+$/, '')}/functions/v1/groq-proxy` : '')
+  ).trim();
+
+  return {
+    apiBaseUrl: apiBaseUrl.replace(/\/+$/, ''),
+    supabaseUrl: supabaseUrl.replace(/\/+$/, ''),
+    supabaseAnonKey,
+    groqFunctionUrl
+  };
 }
 
 function sendJson(res, statusCode, payload) {
@@ -78,103 +87,6 @@ function sendJson(res, statusCode, payload) {
     'Cache-Control': 'no-store'
   });
   res.end(JSON.stringify(payload));
-}
-
-async function readJsonBody(req) {
-  return new Promise((resolve, reject) => {
-    let body = '';
-
-    req.on('data', (chunk) => {
-      body += chunk;
-      if (body.length > 1024 * 1024) {
-        reject(new Error('Request body too large.'));
-        req.destroy();
-      }
-    });
-
-    req.on('end', () => {
-      try {
-        resolve(body ? JSON.parse(body) : {});
-      } catch (error) {
-        reject(new Error('Invalid JSON body.'));
-      }
-    });
-
-    req.on('error', reject);
-  });
-}
-
-async function handleGroqProxy(req, res) {
-  if (req.method !== 'POST') {
-    return sendJson(res, 405, { error: 'Method not allowed.' });
-  }
-
-  const apiKey = getGroqApiKey();
-  if (!apiKey) {
-    return sendJson(res, 500, {
-      error: 'Missing GROQ_API_KEY in sthir_website/.env.'
-    });
-  }
-
-  let body;
-  try {
-    body = await readJsonBody(req);
-  } catch (error) {
-    return sendJson(res, 400, { error: error.message });
-  }
-
-  const userPrompt = typeof body.userPrompt === 'string' ? body.userPrompt.trim() : '';
-  const systemInstruction =
-    typeof body.systemInstruction === 'string' ? body.systemInstruction.trim() : '';
-
-  if (!userPrompt || !systemInstruction) {
-    return sendJson(res, 400, {
-      error: 'Both userPrompt and systemInstruction are required.'
-    });
-  }
-
-  const payload = {
-    model: 'llama-3.1-8b-instant',
-    messages: [
-      { role: 'system', content: systemInstruction },
-      { role: 'user', content: userPrompt }
-    ],
-    temperature: 1,
-    max_completion_tokens: 1024,
-    top_p: 1,
-    stream: false,
-    stop: null
-  };
-
-  try {
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`
-      },
-      body: JSON.stringify(payload)
-    });
-
-    const data = await response.json().catch(() => null);
-    if (!response.ok) {
-      return sendJson(res, response.status, {
-        error: data && data.error && data.error.message
-          ? data.error.message
-          : 'Groq request failed.'
-      });
-    }
-
-    return sendJson(res, 200, {
-      content: data && data.choices && data.choices[0] && data.choices[0].message
-        ? data.choices[0].message.content
-        : 'Here is a reflection prompt for you.'
-    });
-  } catch (error) {
-    return sendJson(res, 502, {
-      error: 'Unable to reach Groq right now. Please try again.'
-    });
-  }
 }
 
 async function serveStaticFile(pathname, res) {
@@ -225,8 +137,8 @@ async function serveStaticFile(pathname, res) {
 const server = http.createServer(async (req, res) => {
   const requestUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
 
-  if (requestUrl.pathname === '/api/groq') {
-    await handleGroqProxy(req, res);
+  if (requestUrl.pathname === '/api/config') {
+    sendJson(res, 200, buildPublicConfig());
     return;
   }
 

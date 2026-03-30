@@ -1,0 +1,426 @@
+.pathways-page .pathways-hero {
+  min-height: 56vh;
+}
+
+.pathways-page .hero-inner {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.pathways-page .hero-title {
+  margin-bottom: 1.35rem;
+}
+
+.pathways-page .pathways-main {
+  padding-top: 8px;
+}
+
+.pathways-page .page-section {
+  margin-bottom: 1.75rem;
+}
+
+.pathways-page .section-header {
+  margin-bottom: 1rem;
+}
+
+.pathways-page .section-header--split {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pathways-page .section-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.55rem, 2.4vw, 2rem);
+}
+
+.pathways-page .section-summary {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  max-width: 760px;
+  line-height: 1.8;
+}
+
+.pathways-page .section-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.1rem;
+  min-height: 2.1rem;
+  margin-left: 0.55rem;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  background: rgba(91, 43, 130, 0.1);
+  color: var(--accent1);
+  font-size: 0.85rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.pathways-page .pathways-grid,
+.pathways-page .events-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.pathways-page .pathways-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.pathways-page .events-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pathways-page .pathway-card,
+.pathways-page .event-card,
+.pathways-page .pathway-modal-dialog {
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.pathways-page .pathway-card,
+.pathways-page .event-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.pathways-page .pathway-card {
+  min-height: 280px;
+  height: 100%;
+}
+
+.pathways-page .pathway-kicker {
+  margin: 0 0 0.85rem;
+  color: var(--accent2);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pathways-page .pathway-card h2,
+.pathways-page .event-card h3,
+.pathways-page .pathway-modal-dialog h2 {
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+}
+
+.pathways-page .pathway-card h2 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  min-height: 3.6rem;
+}
+
+.pathways-page .pathway-card p,
+.pathways-page .event-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.pathways-page .pathway-card p:not(.pathway-kicker) {
+  flex: 1 1 auto;
+}
+
+.pathways-page .pathway-action {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  align-self: flex-start;
+  min-width: 108px;
+  min-height: 42px;
+  padding: 0.8rem 1.4rem;
+  justify-content: center;
+  font-size: 0.95rem;
+}
+
+.pathways-page .event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.9rem;
+}
+
+.pathways-page .event-meta span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  background: rgba(91, 43, 130, 0.1);
+  color: var(--accent1);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pathways-page .event-date,
+.pathways-page .event-price {
+  margin: 0.55rem 0 0.85rem;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.pathways-page .event-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.2rem;
+  color: var(--accent1);
+  font-weight: 600;
+}
+
+.pathways-page .event-link:hover {
+  color: var(--accent2);
+}
+
+.pathways-page .event-card--empty {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.pathways-page .session-filter-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 48px;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pathways-page .session-filter-trigger:hover {
+  transform: translateY(-2px);
+  border-color: rgba(91, 43, 130, 0.2);
+  box-shadow: 0 16px 28px rgba(17, 24, 39, 0.12);
+}
+
+.pathways-page .session-filter-trigger svg {
+  width: 18px;
+  height: 18px;
+}
+
+.pathways-page .session-filter-trigger.is-active {
+  border-color: rgba(91, 43, 130, 0.24);
+  color: var(--accent1);
+}
+
+.pathways-page .session-filter-trigger-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.45rem;
+  min-height: 1.45rem;
+  padding: 0 0.35rem;
+  border-radius: 999px;
+  background: rgba(91, 43, 130, 0.12);
+  color: var(--accent1);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.pathways-page .session-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.pathways-page .session-filter-grid--modal {
+  margin-top: 0.5rem;
+}
+
+.pathways-page .session-filter-field {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.pathways-page .session-filter-field input,
+.pathways-page .session-filter-field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pathways-page .session-filter-field input:focus,
+.pathways-page .session-filter-field select:focus {
+  outline: none;
+  border-color: rgba(91, 43, 130, 0.2);
+  box-shadow: 0 0 0 4px rgba(91, 43, 130, 0.08);
+}
+
+.pathways-page .session-filter-note {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.pathways-page .session-filter-actions {
+  margin-top: 1.15rem;
+  justify-content: space-between;
+}
+
+.pathways-page .pathway-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.pathways-page .pathway-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 41, 55, 0.56);
+}
+
+.pathways-page .pathway-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(560px, 100%);
+  padding: 1.5rem;
+}
+
+.pathways-page .pathway-modal-dialog--filters {
+  width: min(720px, 100%);
+}
+
+.pathways-page .pathway-modal-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  border: 0;
+  background: transparent;
+  color: var(--accent1);
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.pathways-page .pathway-modal-kicker {
+  margin: 0 0 0.6rem;
+  color: var(--accent2);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.pathways-page .interest-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.pathways-page .form-field {
+  display: grid;
+  gap: 0.45rem;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.pathways-page .form-field input,
+.pathways-page .form-field textarea {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pathways-page .form-field input:focus,
+.pathways-page .form-field textarea:focus {
+  outline: none;
+  border-color: rgba(91, 43, 130, 0.2);
+  box-shadow: 0 0 0 4px rgba(91, 43, 130, 0.08);
+}
+
+.pathways-page .interest-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pathways-page .form-note {
+  margin: 0;
+  color: #065f46;
+  font-size: 0.95rem;
+}
+
+.pathways-page .form-note--error {
+  color: #b91c1c;
+}
+
+.pathways-page .hidden {
+  display: none !important;
+}
+
+.pathways-page.no-scroll {
+  overflow: hidden;
+}
+
+@media (max-width: 960px) {
+  .pathways-page .pathways-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .pathways-page .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pathways-page .session-filter-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .pathways-page .pathways-hero {
+    min-height: 48vh;
+  }
+
+  .pathways-page .section-header--split {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pathways-page .session-filter-trigger {
+    align-self: flex-start;
+  }
+
+  .pathways-page .pathway-modal-dialog {
+    padding: 1.25rem;
+  }
+
+  .pathways-page .session-filter-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+}

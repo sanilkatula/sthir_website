@@ -1,14 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <title>Sthir Blog — Post</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sthir Story - Sthir</title>
 
-  <link href="./blog.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <link href="../blog/blog.css" rel="stylesheet" />
+  <link href="./about.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
 </head>
-<body class="blog blog-post">
+<body class="blog about-page">
 
   <div class="progress-bar" id="progress-bar"></div>
   <div class="noise"></div>
@@ -24,10 +25,10 @@
       </div>
     </a>
     <div class="site-nav-links">
-      <a href="../about/" class="interactive">About</a>
-      <a href="../hybrid_positive_framing.html#offerings" class="interactive">Paths</a>
+      <a href="./" class="interactive" aria-current="page">Sthir Story</a>
+      <a href="../pathways/" class="interactive">Pathways</a>
       <a href="../hybrid_positive_framing.html#sprints-directory" class="interactive">Sprints</a>
-      <a href="./index.html" class="interactive" aria-current="page">Blogs</a>
+      <a href="../blog/" class="interactive">Blogs</a>
       <a href="../hybrid_positive_framing.html#testimonials" class="interactive">Testimonials</a>
       <a href="../contact/" class="interactive">Contact</a>
     </div>
@@ -39,10 +40,10 @@
     </button>
     <div class="mobile-nav" id="mobile-nav">
       <div class="mobile-nav-links">
-        <a href="../about/" class="interactive">About</a>
-        <a href="../hybrid_positive_framing.html#offerings" class="interactive">Paths</a>
+        <a href="./" class="interactive" aria-current="page">Sthir Story</a>
+        <a href="../pathways/" class="interactive">Pathways</a>
         <a href="../hybrid_positive_framing.html#sprints-directory" class="interactive">Sprints</a>
-        <a href="./index.html" class="interactive" aria-current="page">Blogs</a>
+        <a href="../blog/" class="interactive">Blogs</a>
         <a href="../hybrid_positive_framing.html#testimonials" class="interactive">Testimonials</a>
         <a href="../contact/" class="interactive">Contact</a>
       </div>
@@ -50,17 +51,112 @@
     </div>
   </nav>
 
-  <!-- Main Post -->
-  <main class="wrap">
-    <article id="post">
-      <h1 id="title">Loading…</h1>
-      <div id="meta" class="meta"></div>
-      <div id="content" class="content"></div>
-      <div id="err"></div>
-    </article>
+  <section class="hero-shell">
+    <div class="hero-inner">
+      <span class="hero-badge interactive">Sthir Story</span>
+      <h1 class="hero-title">
+        Design steadier futures.
+        <span class="hero-title-accent">We help thoughtful young adults build clarity, character, and conscious momentum.</span>
+      </h1>
+      <p class="hero-summary">
+        Sthir brings together reflection, action experiments, and grounded support so growth feels aligned, durable, and deeply your own.
+      </p>
+    </div>
+  </section>
+
+  <main class="wrap about-main">
+    <section class="page-section">
+      <div class="about-story-grid">
+        <div class="glass-card about-photo-panel">
+          <img src="../images/shalu_ahuja.png" alt="Shalu Ahuja, founder of Sthir" class="about-portrait" />
+        </div>
+        <div class="glass-card about-copy-panel">
+          <p class="section-kicker">Founder</p>
+          <h2>Shalu Ahuja</h2>
+          <p>
+            Shalu is an engineer, business leader, and guide who has spent more than twenty-five years building teams, products, and enduring systems in the real world.
+          </p>
+          <p>
+            Over the last decade, she has also walked closely with young adults navigating identity shifts, career pivots, and the pressure to keep moving before they feel ready. The pattern was clear: ambition was present, but anchoring was often missing.
+          </p>
+          <p>
+            Sthir exists to close that gap. We bring reflection, discernment, experimentation, and community into one practice so people can move forward with more inner steadiness and less noise.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="section-header">
+        <p class="section-kicker">Mission And Values</p>
+        <h2 class="section-title">Clarity before speed, experiments before overthinking, and growth in community.</h2>
+        <p class="section-copy">
+          Our work is designed to help people move from scattered possibility to grounded next steps without losing depth, self-trust, or intention.
+        </p>
+      </div>
+      <div class="about-values-grid">
+        <article class="glass-card about-value-card">
+          <div class="value-icon">01</div>
+          <h3>Anchored Self</h3>
+          <p>Decisions become clearer when values are visible. We help people name their center and act from it.</p>
+        </article>
+        <article class="glass-card about-value-card">
+          <div class="value-icon">02</div>
+          <h3>Action Experiments</h3>
+          <p>Small, grounded tests create real evidence. Progress grows through movement, reflection, and iteration.</p>
+        </article>
+        <article class="glass-card about-value-card">
+          <div class="value-icon">03</div>
+          <h3>Conscious Community</h3>
+          <p>Growth holds more deeply in relationship. Accountability, feedback, and shared learning are part of the path.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="section-header">
+        <p class="section-kicker">Founding Circle</p>
+        <h2 class="section-title">A multidisciplinary team building the next chapter with care.</h2>
+      </div>
+      <div class="about-team-grid">
+        <article class="glass-card team-card">
+          <div class="team-avatar">SA</div>
+          <h3>Shalu Ahuja</h3>
+          <p>Founder and steward of the Sthir vision, methodology, and community direction.</p>
+        </article>
+        <article class="glass-card team-card">
+          <div class="team-avatar">AM</div>
+          <h3>Arjun Menon</h3>
+          <p>Supports product thinking and operational structure so ideas become dependable experiences.</p>
+        </article>
+        <article class="glass-card team-card">
+          <div class="team-avatar">BA</div>
+          <h3>Bahaar Ahuja</h3>
+          <p>Shapes experience, narrative, and emotional resonance across the Sthir journey.</p>
+        </article>
+        <article class="glass-card team-card">
+          <div class="team-avatar">SK</div>
+          <h3>Sanil Katula</h3>
+          <p>Supports digital systems, community touchpoints, and the evolving online experience.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="glass-card about-cta-card">
+        <p class="section-kicker">Move Forward</p>
+        <h2>Build from the inside out.</h2>
+        <p>
+          Join a cohort, explore the tools, or start a conversation with us about where you are and what comes next.
+        </p>
+        <div class="about-cta-actions">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive">Apply Now</a>
+          <a href="../contact/" class="about-secondary-link interactive">Contact Sthir</a>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <div>
@@ -68,10 +164,11 @@
         <div class="footer-tagline">stillness in motion</div>
       </div>
       <ul class="footer-links">
-        <li><a href="../about/">About</a></li>
-        <li><a href="../hybrid_positive_framing.html#offerings">Paths</a></li>
+        <li><a href="./" aria-current="page">Sthir Story</a></li>
+        <li><a href="../pathways/">Pathways</a></li>
         <li><a href="../hybrid_positive_framing.html#sprints-directory">Sprints</a></li>
-        <li><a href="./index.html" aria-current="page">Blogs</a></li>
+        <li><a href="../blog/">Blogs</a></li>
+        <li><a href="../hybrid_positive_framing.html#testimonials">Testimonials</a></li>
         <li><a href="../contact/">Contact</a></li>
       </ul>
       <div class="footer-social">
@@ -89,8 +186,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js"></script>
   <script>
   (function(){
     var body = document.body;
@@ -168,43 +263,6 @@
     window.addEventListener('scroll', updateChrome, { passive: true });
     window.addEventListener('resize', updateChrome);
     updateChrome();
-  })();
-  </script>
-  <script>
-  (function(){
-    var WP = 'https://public-api.wordpress.com/wp/v2/sites/staysthir.wordpress.com';
-    var params = new URLSearchParams(location.search);
-    var slug = params.get('slug');
-
-    var elTitle = document.getElementById('title');
-    var elMeta  = document.getElementById('meta');
-    var elCont  = document.getElementById('content');
-    var errBox  = document.getElementById('err');
-
-    function showError(msg){
-      errBox.style.display='block';
-      errBox.innerHTML='<strong>Couldn’t load post.</strong><br><small>'+msg.replace(/</g,'&lt;')+'</small>';
-    }
-
-    function loadPost(){
-      if (!slug){ elTitle.textContent='Post not found'; return; }
-      fetch(WP + '/posts?slug=' + encodeURIComponent(slug))
-        .then(function(r){
-          if(!r.ok){ return r.text().then(function(t){ throw new Error('HTTP '+r.status+' — '+t); }); }
-          return r.json();
-        })
-        .then(function(arr){
-          var p = Array.isArray(arr) ? arr[0] : null;
-          if (!p){ elTitle.textContent='Post not found'; return; }
-          document.title = (p.title && p.title.rendered ? p.title.rendered : 'Post') + ' — Sthir Blog';
-          elTitle.innerHTML = p.title && p.title.rendered ? p.title.rendered : '(untitled)';
-          elMeta.textContent = p.date ? new Date(p.date).toLocaleDateString() : '';
-          elCont.innerHTML = DOMPurify.sanitize((p.content && p.content.rendered) || '', {USE_PROFILES:{html:true}});
-        })
-        .catch(function(err){ console.error(err); showError(err.message); });
-    }
-
-    loadPost();
   })();
   </script>
 </body>

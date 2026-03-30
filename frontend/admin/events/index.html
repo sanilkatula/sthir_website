@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Events - Sthir Admin</title>
+
+  <link href="../../blog/blog.css" rel="stylesheet" />
+  <link href="../admin.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="blog admin-page">
+  <div class="progress-bar" id="progress-bar"></div>
+  <div class="noise"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <nav id="navbar">
+    <a href="../../hybrid_positive_framing.html" class="site-brand interactive" aria-label="Sthir Home">
+      <img src="../../images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'" />
+      <div class="site-brand-meta">
+        <span class="brand-title-text">STHIR</span>
+        <span class="brand-tagline-text">stillness in motion</span>
+      </div>
+    </a>
+    <div class="site-nav-links">
+      <a href="../../hybrid_positive_framing.html" class="interactive">Website</a>
+      <a href="../" class="interactive">Admin Home</a>
+      <a href="./" class="interactive" aria-current="page">Manage Events</a>
+      <a href="../interests/" class="interactive">Look At Interests</a>
+      <a href="../users/" class="interactive">Manage Users</a>
+    </div>
+    <a href="../../hybrid_positive_framing.html" class="story-button interactive">Back To Site</a>
+    <button class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-links">
+        <a href="../../hybrid_positive_framing.html" class="interactive">Website</a>
+        <a href="../" class="interactive">Admin Home</a>
+        <a href="./" class="interactive" aria-current="page">Manage Events</a>
+        <a href="../interests/" class="interactive">Look At Interests</a>
+        <a href="../users/" class="interactive">Manage Users</a>
+      </div>
+      <a href="../../hybrid_positive_framing.html" class="story-button interactive mobile-nav-cta">Back To Site</a>
+    </div>
+  </nav>
+
+  <section class="hero-shell">
+    <div class="hero-inner">
+      <span class="hero-badge interactive">Workspace 01</span>
+      <h1 class="hero-title">
+        Manage Events.
+      </h1>
+      <p class="hero-summary">
+        Pathways currently show `live` events with `ai`, `4-week`, `6-week`, or `general` path types.
+      </p>
+    </div>
+  </section>
+
+  <main class="wrap admin-main">
+    <section class="glass-card admin-session-card">
+      <div class="admin-session-copy">
+        <p class="section-kicker">Session</p>
+        <h2>Events workspace</h2>
+        <p>Use the form for new entries or to update existing ones. Filters on the right help you find the event you want quickly.</p>
+        <div class="admin-session-meta">
+          <div class="admin-meta-item">
+            <span class="admin-meta-label">Status</span>
+            <span class="admin-meta-value" id="session-status">Checking...</span>
+          </div>
+          <div class="admin-meta-item">
+            <span class="admin-meta-label">Email</span>
+            <span class="admin-meta-value" id="session-email">-</span>
+          </div>
+        </div>
+        <div class="admin-toolbar">
+          <a href="../" class="btn interactive">Admin Home</a>
+          <button type="button" class="btn interactive" id="refresh-page">Refresh</button>
+          <button type="button" class="btn interactive" id="sign-out">Sign Out</button>
+        </div>
+      </div>
+      <div class="admin-stat-grid">
+        <div class="admin-stat-card">
+          <span class="admin-stat-label">Total</span>
+          <div class="admin-stat-value" id="stat-total">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <span class="admin-stat-label">Live</span>
+          <div class="admin-stat-value" id="stat-live">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <span class="admin-stat-label">Draft</span>
+          <div class="admin-stat-value" id="stat-draft">0</div>
+        </div>
+        <div class="admin-stat-card">
+          <span class="admin-stat-label">Archived</span>
+          <div class="admin-stat-value" id="stat-archived">0</div>
+        </div>
+      </div>
+    </section>
+
+    <p class="admin-note hidden" id="page-note"></p>
+
+    <section class="admin-panel admin-panel--full">
+      <div class="admin-panel-head">
+        <div>
+          <p class="section-kicker">Library</p>
+          <h2>Event list</h2>
+          <p class="admin-helper">Review the full event library here, then open the modal to create or update any entry.</p>
+        </div>
+        <div class="admin-panel-head-actions">
+          <button type="button" class="story-button interactive" id="open-create-event">Create Event</button>
+        </div>
+      </div>
+
+      <div class="admin-filter-bar">
+        <input type="search" id="search-input" class="admin-search-input interactive" placeholder="Search title, slug, description, or location" />
+        <select id="status-filter" class="admin-select-control interactive">
+          <option value="all">All statuses</option>
+          <option value="live">Live</option>
+          <option value="draft">Draft</option>
+          <option value="archived">Archived</option>
+        </select>
+        <select id="path-filter" class="admin-select-control interactive">
+          <option value="all">All path types</option>
+          <option value="ai">AI</option>
+          <option value="4-week">4-Week</option>
+          <option value="6-week">6-Week</option>
+          <option value="general">General</option>
+        </select>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Path</th>
+              <th>Format</th>
+              <th>Status</th>
+              <th>Start</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="events-body">
+            <tr class="admin-empty-row"><td colspan="7">Loading events...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="admin-modal hidden" id="event-modal" aria-hidden="true">
+    <div class="admin-modal-backdrop" data-close-event-modal></div>
+    <div class="glass-card admin-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="event-form-mode">
+      <button type="button" class="admin-modal-close interactive" aria-label="Close event editor" data-close-event-modal>&times;</button>
+
+      <div class="admin-panel-head admin-panel-head--modal">
+        <div>
+          <p class="section-kicker">Event Editor</p>
+          <h2 id="event-form-mode">Create a new event</h2>
+          <p class="admin-helper" id="event-form-helper">Add a new event to the library, then publish it when it is ready.</p>
+        </div>
+      </div>
+
+      <form id="event-form" novalidate>
+        <div class="admin-form-grid">
+          <label class="admin-field">
+            <span>Title</span>
+            <input type="text" name="title" required />
+          </label>
+          <label class="admin-field">
+            <span>Slug</span>
+            <input type="text" name="slug" placeholder="auto-generated if empty" />
+          </label>
+          <label class="admin-field">
+            <span>Format</span>
+            <select name="format" required>
+              <option value="cohort">Cohort</option>
+              <option value="live">Live</option>
+              <option value="on-demand">On-demand</option>
+            </select>
+          </label>
+          <label class="admin-field">
+            <span>Path type</span>
+            <select name="path_type" required>
+              <option value="ai">AI</option>
+              <option value="4-week">4-Week</option>
+              <option value="6-week">6-Week</option>
+              <option value="general">General</option>
+            </select>
+          </label>
+          <label class="admin-field">
+            <span>Status</span>
+            <select name="status" required>
+              <option value="draft">Draft</option>
+              <option value="live">Live</option>
+              <option value="archived">Archived</option>
+            </select>
+          </label>
+          <label class="admin-field">
+            <span>Price (USD)</span>
+            <input type="number" name="price_usd" min="0" step="1" value="0" required />
+          </label>
+          <label class="admin-field">
+            <span>Start</span>
+            <input type="datetime-local" name="start_at" />
+          </label>
+          <label class="admin-field">
+            <span>End</span>
+            <input type="datetime-local" name="end_at" />
+          </label>
+          <label class="admin-field">
+            <span>CTA label</span>
+            <input type="text" name="cta_label" value="Join Waitlist" />
+          </label>
+          <label class="admin-field">
+            <span>CTA URL</span>
+            <input type="url" name="cta_url" placeholder="https://..." />
+          </label>
+          <label class="admin-field">
+            <span>Location</span>
+            <input type="text" name="location" />
+          </label>
+          <label class="admin-checkbox">
+            <input type="checkbox" name="is_featured" />
+            <span>Featured event</span>
+          </label>
+          <label class="admin-field admin-field--full">
+            <span>Description</span>
+            <textarea name="description" rows="5" required></textarea>
+          </label>
+        </div>
+
+        <div class="admin-form-actions">
+          <button type="submit" class="story-button interactive" id="save-event">Save Event</button>
+          <button type="button" class="btn interactive" id="reset-event-form">Reset Form</button>
+          <button type="button" class="btn interactive" id="cancel-event-form" data-close-event-modal>Cancel</button>
+        </div>
+        <p class="admin-inline-note hidden" id="event-note"></p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">STHIR</div>
+        <div class="footer-tagline">stillness in motion</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../">Admin Home</a></li>
+        <li><a href="./" aria-current="page">Manage Events</a></li>
+        <li><a href="../interests/">Look At Interests</a></li>
+        <li><a href="../users/">Manage Users</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Sthir. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../../shared/runtime.js"></script>
+  <script src="../admin.js"></script>
+  <script src="./events.js"></script>
+</body>
+</html>

@@ -1,7 +1,14 @@
 {
-  "name": "sthir-website",
+  "name": "sthir-fullstack",
   "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
   "scripts": {
-    "start": "node server.js"
+    "dev:frontend": "npm --workspace frontend run dev",
+    "start:frontend": "npm --workspace frontend run start",
+    "dev:backend": "npm --workspace backend run dev",
+    "start:backend": "npm --workspace backend run start"
   }
 }

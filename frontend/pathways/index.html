@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pathways - Sthir</title>
+
+  <link href="../blog/blog.css" rel="stylesheet" />
+  <link href="./pathways.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body class="blog pathways-page">
+
+  <div class="progress-bar" id="progress-bar"></div>
+  <div class="noise"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <nav id="navbar">
+    <a href="../hybrid_positive_framing.html" class="site-brand interactive" aria-label="Sthir Home">
+      <img src="../images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'" />
+      <div class="site-brand-meta">
+        <span class="brand-title-text">STHIR</span>
+        <span class="brand-tagline-text">stillness in motion</span>
+      </div>
+    </a>
+    <div class="site-nav-links">
+      <a href="../about/" class="interactive">Sthir Story</a>
+      <a href="./" class="interactive" aria-current="page">Pathways</a>
+      <a href="../hybrid_positive_framing.html#sprints-directory" class="interactive">Sprints</a>
+      <a href="../blog/" class="interactive">Blogs</a>
+      <a href="../hybrid_positive_framing.html#testimonials" class="interactive">Testimonials</a>
+      <a href="../contact/" class="interactive">Contact</a>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive">Apply Now</a>
+    <button class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-links">
+        <a href="../about/" class="interactive">Sthir Story</a>
+        <a href="./" class="interactive" aria-current="page">Pathways</a>
+        <a href="../hybrid_positive_framing.html#sprints-directory" class="interactive">Sprints</a>
+        <a href="../blog/" class="interactive">Blogs</a>
+        <a href="../hybrid_positive_framing.html#testimonials" class="interactive">Testimonials</a>
+        <a href="../contact/" class="interactive">Contact</a>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive mobile-nav-cta">Apply Now</a>
+    </div>
+  </nav>
+
+  <section class="hero-shell pathways-hero">
+    <div class="hero-inner">
+      <span class="hero-badge interactive">Sthir Pathways</span>
+      <h1 class="hero-title">
+        Sthir Pathways.
+        <span class="hero-title-accent">Three ways to move forward with more clarity and steadiness.</span>
+      </h1>
+      <p class="hero-summary">
+        Start with the container that matches where you are right now: a free AI reflection tool, a focused 4 week cohort, or a deeper 6 week pathway.
+      </p>
+    </div>
+  </section>
+
+  <main class="wrap pathways-main">
+    <section class="page-section">
+      <div class="pathways-grid">
+        <article class="glass-card pathway-card">
+          <p class="pathway-kicker">Pathway 01</p>
+          <h2>AI Pathway</h2>
+          <p>Explore the Sthir AI tools to get a first reflection, test an idea, and begin hearing your own signal more clearly.</p>
+          <a href="../hybrid_positive_framing.html#ai-sandbox" class="story-button interactive pathway-action">Free</a>
+        </article>
+
+        <article class="glass-card pathway-card">
+          <p class="pathway-kicker">Pathway 02</p>
+          <h2>4 Week Cohort</h2>
+          <p>A shorter guided cohort for reflection, clarity, and grounded next steps when you need support without a long commitment.</p>
+          <button
+            type="button"
+            class="story-button interactive pathway-action"
+            data-open-interest="4-week"
+            data-price="$295"
+          >
+            $295
+          </button>
+        </article>
+
+        <article class="glass-card pathway-card">
+          <p class="pathway-kicker">Pathway 03</p>
+          <h2>6 Week Cohort</h2>
+          <p>A deeper cohort for bigger transitions, more support, and a more spacious process for redesigning your next chapter.</p>
+          <button
+            type="button"
+            class="story-button interactive pathway-action"
+            data-open-interest="6-week"
+            data-price="$395"
+          >
+            $395
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-section" id="upcoming-section">
+      <div class="section-header section-header--split">
+        <div>
+          <h2 class="section-title">Upcoming Sessions <span class="section-count" id="upcoming-count">0</span></h2>
+        </div>
+        <button type="button" class="session-filter-trigger interactive" id="open-upcoming-filters" aria-label="Open upcoming session filters">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          <span>Filter</span>
+          <span class="session-filter-trigger-count hidden" id="upcoming-filter-active-count">0</span>
+        </button>
+      </div>
+      <div id="upcoming-sessions" class="events-grid" aria-live="polite">
+        <article class="glass-card event-card event-card--empty">
+          <p>Loading upcoming sessions...</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-section" id="past-section">
+      <div class="section-header section-header--split">
+        <h2 class="section-title">Past Sessions <span class="section-count" id="past-count">0</span></h2>
+        <button type="button" class="session-filter-trigger interactive" id="open-past-filters" aria-label="Open past session filters">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16M7 12h10M10 18h4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+          <span>Filter</span>
+          <span class="session-filter-trigger-count hidden" id="past-filter-active-count">0</span>
+        </button>
+      </div>
+      <div id="past-sessions" class="events-grid" aria-live="polite">
+        <article class="glass-card event-card event-card--empty">
+          <p>Loading past sessions...</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div class="pathway-modal hidden" id="session-filter-modal" aria-hidden="true">
+    <div class="pathway-modal-backdrop" data-close-session-filters></div>
+    <div class="glass-card pathway-modal-dialog pathway-modal-dialog--filters" role="dialog" aria-modal="true" aria-labelledby="session-filter-title">
+      <button type="button" class="pathway-modal-close interactive" aria-label="Close session filters" data-close-session-filters>&times;</button>
+      <p class="pathway-modal-kicker" id="session-filter-kicker">Session Filters</p>
+      <h2 id="session-filter-title">Refine Sessions</h2>
+
+      <div class="session-filter-grid session-filter-grid--modal">
+        <label class="session-filter-field">
+          <span>Search</span>
+          <input type="search" id="session-search" placeholder="Search by title, description, or location" />
+        </label>
+        <label class="session-filter-field">
+          <span>Pathway</span>
+          <select id="session-pathway-filter">
+            <option value="all">All pathways</option>
+            <option value="general">General</option>
+            <option value="ai">AI Pathway</option>
+            <option value="4-week">4 Week Cohort</option>
+            <option value="6-week">6 Week Cohort</option>
+          </select>
+        </label>
+        <label class="session-filter-field">
+          <span>Format</span>
+          <select id="session-format-filter">
+            <option value="all">All formats</option>
+            <option value="cohort">Cohort</option>
+            <option value="live">Live</option>
+            <option value="on-demand">On-demand</option>
+          </select>
+        </label>
+        <label class="session-filter-field">
+          <span>Display</span>
+          <select id="session-display-filter">
+            <option value="smart">Auto: latest 6</option>
+            <option value="all">Show all results</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="interest-actions session-filter-actions">
+        <button type="button" class="btn interactive" id="reset-session-filters">Reset</button>
+        <button type="button" class="story-button interactive" id="close-session-filters">Done</button>
+      </div>
+      <p class="session-filter-note" id="session-filter-note">
+        Default view shows the latest six sessions here. Use filters or Show all results to expand the list.
+      </p>
+    </div>
+  </div>
+
+  <div class="pathway-modal hidden" id="interest-modal" aria-hidden="true">
+    <div class="pathway-modal-backdrop" data-close-interest></div>
+    <div class="glass-card pathway-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="interest-modal-title">
+      <button type="button" class="pathway-modal-close interactive" aria-label="Close interest form" data-close-interest>&times;</button>
+      <p class="pathway-modal-kicker" id="interest-modal-price">Interest Form</p>
+      <h2 id="interest-modal-title">Pathway Interest</h2>
+      <form id="pathway-interest-form" class="interest-form" novalidate>
+        <input type="hidden" name="selected_pathway" id="selected-pathway" value="" />
+
+        <label class="form-field">
+          <span>Name</span>
+          <input type="text" name="name" required />
+        </label>
+        <label class="form-field">
+          <span>Email</span>
+          <input type="email" name="email" required />
+        </label>
+        <label class="form-field">
+          <span>Phone</span>
+          <input type="tel" name="phone" />
+        </label>
+        <label class="form-field">
+          <span>What are you looking for?</span>
+          <textarea name="message" rows="5" placeholder="Share a few lines about what you are navigating right now."></textarea>
+        </label>
+
+        <div class="interest-actions">
+          <button type="submit" class="story-button interactive" id="interest-submit">Send Interest</button>
+          <p class="form-note hidden" id="interest-success">Thanks. Your interest has been recorded and we’ll reach out soon.</p>
+          <p class="form-note form-note--error hidden" id="interest-error">We couldn’t submit that right now. Please try again or contact Sthir directly.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">STHIR</div>
+        <div class="footer-tagline">stillness in motion</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="../about/">Sthir Story</a></li>
+        <li><a href="./" aria-current="page">Pathways</a></li>
+        <li><a href="../hybrid_positive_framing.html#sprints-directory">Sprints</a></li>
+        <li><a href="../blog/">Blogs</a></li>
+        <li><a href="../hybrid_positive_framing.html#testimonials">Testimonials</a></li>
+        <li><a href="../contact/">Contact</a></li>
+      </ul>
+      <div class="footer-copy">&copy; 2026 Sthir. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script src="../shared/runtime.js"></script>
+  <script src="./pathways.js"></script>
+</body>
+</html>
