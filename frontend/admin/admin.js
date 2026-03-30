@@ -92,6 +92,17 @@
     return labels[value] || 'General';
   }
 
+  function formatInterestType(value) {
+    var labels = {
+      pathways: 'Pathways',
+      sprints: 'Sprints',
+      coaching: 'Coaching',
+      general: 'General'
+    };
+
+    return labels[value] || 'General';
+  }
+
   function formatSelectedPathway(interest) {
     var pathway = interest && interest.metadata && interest.metadata.selected_pathway;
     var labels = {
@@ -101,7 +112,7 @@
       'not-sure': 'Not sure yet'
     };
 
-    return labels[pathway] || formatPathType(interest && interest.interest_type ? interest.interest_type : 'general');
+    return labels[pathway] || formatInterestType(interest && interest.interest_type ? interest.interest_type : 'general');
   }
 
   function closeMobileNav() {
@@ -332,6 +343,7 @@
     escapeHtml: escapeHtml,
     formatDate: formatDate,
     formatDateTime: formatDateTime,
+    formatInterestType: formatInterestType,
     formatPathType: formatPathType,
     formatSelectedPathway: formatSelectedPathway,
     getClient: getClient,

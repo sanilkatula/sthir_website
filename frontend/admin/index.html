@@ -16,7 +16,7 @@
   <div class="cursor-outline"></div>
 
   <nav id="navbar">
-    <a href="../hybrid_positive_framing.html" class="site-brand interactive" aria-label="Sthir Home">
+    <a href="../" class="site-brand interactive" aria-label="Sthir Home">
       <img src="../images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'" />
       <div class="site-brand-meta">
         <span class="brand-title-text">STHIR</span>
@@ -24,13 +24,13 @@
       </div>
     </a>
     <div class="site-nav-links">
-      <a href="../hybrid_positive_framing.html" class="interactive">Website</a>
+      <a href="../" class="interactive">Website</a>
       <a href="./" class="interactive" aria-current="page">Admin Home</a>
       <a href="./events/" class="interactive">Manage Events</a>
       <a href="./interests/" class="interactive">Look At Interests</a>
       <a href="./users/" class="interactive">Manage Users</a>
     </div>
-    <a href="../hybrid_positive_framing.html" class="story-button interactive">Back To Site</a>
+    <a href="../" class="story-button interactive">Back To Site</a>
     <button class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
       <span></span>
       <span></span>
@@ -38,13 +38,13 @@
     </button>
     <div class="mobile-nav" id="mobile-nav">
       <div class="mobile-nav-links">
-        <a href="../hybrid_positive_framing.html" class="interactive">Website</a>
+        <a href="../" class="interactive">Website</a>
         <a href="./" class="interactive" aria-current="page">Admin Home</a>
         <a href="./events/" class="interactive">Manage Events</a>
         <a href="./interests/" class="interactive">Look At Interests</a>
         <a href="./users/" class="interactive">Manage Users</a>
       </div>
-      <a href="../hybrid_positive_framing.html" class="story-button interactive mobile-nav-cta">Back To Site</a>
+      <a href="../" class="story-button interactive mobile-nav-cta">Back To Site</a>
     </div>
   </nav>
 
@@ -52,12 +52,9 @@
     <div class="hero-inner">
       <span class="hero-badge interactive">Private Workspace</span>
       <h1 class="hero-title">
-        Sthir Admin.
-        <span class="hero-title-accent">Sign in once, then choose the area you want to manage.</span>
+        
+        <span class="hero-title-accent">Sthir Admin.</span>
       </h1>
-      <p class="hero-summary">
-        This workspace uses Supabase Auth for login and the Sthir Edge API for protected admin actions.
-      </p>
     </div>
   </section>
 
@@ -127,25 +124,44 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner">
+  <footer id="contact" class="site-footer-home">
+    <div class="site-footer-home-inner">
       <div>
-        <div class="footer-brand">STHIR</div>
-        <div class="footer-tagline">stillness in motion</div>
+        <a href="../" class="site-footer-brand-link interactive">
+          <img src="../images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'" />
+          <div class="site-footer-brand-meta">
+            <span class="brand-title-text">STHIR</span>
+            <span class="brand-tagline-text">stillness in motion</span>
+          </div>
+        </a>
+        <div class="site-footer-nav">
+          <a href="../about/" class="interactive">Sthir Story</a>
+          <a href="../pathways/" class="interactive">Pathways</a>
+          <a href="../#sprints-directory" class="interactive">Sprints</a>
+          <a href="../blog/" class="interactive">Blogs</a>
+          <a href="../#testimonials" class="interactive">Testimonials</a>
+          <a href="../contact/" class="interactive">Contact</a>
+        </div>
       </div>
-      <ul class="footer-links">
-        <li><a href="../hybrid_positive_framing.html">Website</a></li>
-        <li><a href="./" aria-current="page">Admin Home</a></li>
-        <li><a href="./events/">Manage Events</a></li>
-        <li><a href="./interests/">Look At Interests</a></li>
-        <li><a href="./users/">Manage Users</a></li>
-      </ul>
-      <div class="footer-copy">&copy; 2026 Sthir. All Rights Reserved.</div>
+
+      <div class="glass-card site-footer-card">
+        <h3>Stay in the loop</h3>
+        <p>Get updates on cohorts, events, and resources.</p>
+        <form class="site-footer-form" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Email address" class="site-footer-input interactive" />
+          <button type="submit" class="site-footer-submit interactive">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="site-footer-bottom">
+      <p>&copy; 2026 Sthir. All Rights Reserved.</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="../shared/runtime.js"></script>
+  <script src="../shared/interest-forms.js"></script>
   <script src="./admin.js"></script>
   <script src="./index.js"></script>
 </body>

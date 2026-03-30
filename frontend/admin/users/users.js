@@ -1,7 +1,9 @@
 (function() {
   var state = {
     me: null,
-    users: []
+    users: [],
+    sortKey: 'created_at',
+    sortDirection: 'desc'
   };
 
   var elements = {
@@ -12,11 +14,11 @@
     sessionEmail: document.getElementById('session-email'),
     sessionStatus: document.getElementById('session-status'),
     signOut: document.getElementById('sign-out'),
-    sortFilter: document.getElementById('sort-filter'),
     statAdmins: document.getElementById('stat-admins'),
     statMembers: document.getElementById('stat-members'),
     statNewest: document.getElementById('stat-newest'),
     statTotal: document.getElementById('stat-total'),
+    sortButtons: Array.prototype.slice.call(document.querySelectorAll('.admin-sort-button')),
     usersBody: document.getElementById('users-body')
   };
 
@@ -39,7 +41,11 @@
   function renderStats() {
     var admins = state.users.filter(function(user) { return user.is_admin; }).length;
     var members = state.users.length - admins;
-    var newest = state.users.length ? state.users[0].created_at : '';
+    var newest = state.users.reduce(function(latest, user) {
+      var latestTime = latest ? new Date(latest).getTime() : Number.NEGATIVE_INFINITY;
+      var nextTime = user && user.created_at ? new Date(user.created_at).getTime() : Number.NEGATIVE_INFINITY;
+      return nextTime > latestTime ? user.created_at : latest;
+    }, '');
 
     elements.statTotal.textContent = String(state.users.length);
     elements.statAdmins.textContent = String(admins);
@@ -47,11 +53,58 @@
     elements.statNewest.textContent = newest ? window.SthirAdmin.formatDate(newest) : '-';
   }
 
+  function getTimeValue(value, fallback) {
+    var time = value ? new Date(value).getTime() : Number.NaN;
+    return Number.isFinite(time) ? time : fallback;
+  }
+
+  function compareText(left, right) {
+    return String(left || '').localeCompare(String(right || ''), undefined, {
+      sensitivity: 'base',
+      numeric: true
+    });
+  }
+
+  function getDefaultSortDirection(key) {
+    if (key === 'created_at' || key === 'is_admin') {
+      return 'desc';
+    }
+
+    return 'asc';
+  }
+
+  function updateSortButtons() {
+    elements.sortButtons.forEach(function(button) {
+      var key = button.getAttribute('data-sort-key');
+      var indicator = button.querySelector('.admin-sort-indicator');
+      var isActive = key === state.sortKey;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+
+      if (indicator) {
+        indicator.textContent = isActive ? (state.sortDirection === 'asc' ? '↑' : '↓') : '↕';
+      }
+    });
+  }
+
+  function applySort(key) {
+    if (!key) {
+      return;
+    }
+
+    if (state.sortKey === key) {
+      state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      state.sortKey = key;
+      state.sortDirection = getDefaultSortDirection(key);
+    }
+
+    renderTable();
+  }
+
   function getFilteredUsers() {
     var query = String(elements.searchInput.value || '').trim().toLowerCase();
     var role = elements.roleFilter.value;
-    var sort = elements.sortFilter.value;
-
     var rows = state.users.filter(function(user) {
       var matchesQuery = !query || [
         user.full_name,
@@ -66,9 +119,24 @@
     });
 
     rows.sort(function(a, b) {
-      var left = new Date(a.created_at || 0).getTime();
-      var right = new Date(b.created_at || 0).getTime();
-      return sort === 'oldest' ? left - right : right - left;
+      var sortDirection = state.sortDirection === 'desc' ? -1 : 1;
+      var result = 0;
+
+      if (state.sortKey === 'created_at') {
+        result = getTimeValue(a.created_at, Number.POSITIVE_INFINITY) - getTimeValue(b.created_at, Number.POSITIVE_INFINITY);
+      } else if (state.sortKey === 'full_name') {
+        result = compareText(a.full_name, b.full_name);
+      } else if (state.sortKey === 'email') {
+        result = compareText(a.email, b.email);
+      } else if (state.sortKey === 'is_admin') {
+        result = Number(Boolean(a.is_admin)) - Number(Boolean(b.is_admin));
+      }
+
+      if (result === 0) {
+        result = compareText(a.full_name, b.full_name);
+      }
+
+      return result * sortDirection;
     });
 
     return rows;
@@ -76,6 +144,7 @@
 
   function renderTable() {
     var rows = getFilteredUsers();
+    updateSortButtons();
 
     if (!rows.length) {
       elements.usersBody.innerHTML = '<tr class="admin-empty-row"><td colspan="5">No users match the current filters.</td></tr>';
@@ -135,7 +204,11 @@
 
   elements.searchInput.addEventListener('input', renderTable);
   elements.roleFilter.addEventListener('change', renderTable);
-  elements.sortFilter.addEventListener('change', renderTable);
+  elements.sortButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      applySort(button.getAttribute('data-sort-key'));
+    });
+  });
 
   elements.usersBody.addEventListener('click', function(event) {
     var button = event.target.closest('[data-action="make-admin"]');

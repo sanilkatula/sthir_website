@@ -9,6 +9,7 @@
   var interactiveSelector = '.interactive, a, button, textarea, input, select, .btn';
   var prefersCoarse = window.matchMedia('(pointer: coarse)').matches;
   var openUpcomingFilters = document.getElementById('open-upcoming-filters');
+  var openOnDemandFilters = document.getElementById('open-ondemand-filters');
   var openPastFilters = document.getElementById('open-past-filters');
   var sessionFilterModal = document.getElementById('session-filter-modal');
   var sessionFilterKicker = document.getElementById('session-filter-kicker');
@@ -16,6 +17,9 @@
   var upcomingFilterActiveCount = document.getElementById('upcoming-filter-active-count');
   var upcomingRoot = document.getElementById('upcoming-sessions');
   var upcomingCount = document.getElementById('upcoming-count');
+  var ondemandFilterActiveCount = document.getElementById('ondemand-filter-active-count');
+  var ondemandRoot = document.getElementById('ondemand-sessions');
+  var ondemandCount = document.getElementById('ondemand-count');
   var pastFilterActiveCount = document.getElementById('past-filter-active-count');
   var pastRoot = document.getElementById('past-sessions');
   var pastCount = document.getElementById('past-count');
@@ -35,6 +39,7 @@
   var activeFilterPanel = 'upcoming';
   var sectionFilters = {
     upcoming: createDefaultFilters(),
+    ondemand: createDefaultFilters(),
     past: createDefaultFilters()
   };
 
@@ -186,6 +191,68 @@
     return '$' + amount.toLocaleString('en-US');
   }
 
+  function formatDateLabel(value) {
+    if (!value) {
+      return 'Date coming soon';
+    }
+
+    var date = new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return 'Date coming soon';
+    }
+
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'short',
+      day: 'numeric'
+    }).format(date);
+  }
+
+  function renderEventAction(event) {
+    var ctaUrl = event && event.cta_url ? event.cta_url : '';
+    var label = event && event.cta_label ? escapeHtml(event.cta_label) : '';
+
+    if (ctaUrl && label) {
+      return '' +
+        '<a class="w-full py-3 rounded-lg bg-brand-bg border border-brand-surfaceLight text-brand-ink hover:border-brand-accent2 hover:text-white transition-colors interactive text-sm font-medium text-center" href="' + escapeHtml(ctaUrl) + '" target="_blank" rel="noopener">' +
+          label +
+        '</a>';
+    }
+
+    return '';
+  }
+
+  function getEventCardMeta(event, sectionTitle) {
+    if (!event) {
+      return {
+        cardClass: 'event-card glass-card p-8 flex flex-col',
+        kickerClass: 'text-xs font-bold tracking-wider uppercase text-brand-muted mb-3 block',
+        kicker: 'Session'
+      };
+    }
+
+    if (event.format === 'on-demand') {
+      return {
+        cardClass: 'event-card event-card--ondemand glass-card p-8 flex flex-col opacity-80 hover:opacity-100 transition-opacity',
+        kickerClass: 'text-xs font-bold tracking-wider uppercase text-brand-muted mb-3 block',
+        kicker: 'On-demand • Available now'
+      };
+    }
+
+    if (sectionTitle === 'Past Sessions') {
+      return {
+        cardClass: 'event-card event-card--past glass-card p-8 flex flex-col hover:border-brand-surfaceLight transition-colors',
+        kickerClass: 'text-xs font-bold tracking-wider uppercase text-brand-muted mb-3 block',
+        kicker: formatDateLabel(event.start_at) + ' • Past session'
+      };
+    }
+
+    return {
+      cardClass: 'event-card event-card--upcoming glass-card p-8 flex flex-col hover:border-brand-accent2/50 transition-colors',
+      kickerClass: 'text-xs font-bold tracking-wider uppercase text-brand-accent2 mb-3 block',
+      kicker: formatDateLabel(event.start_at) + ' • ' + formatEventFormat(event.format)
+    };
+  }
+
   function renderSessionList(root, title, events) {
     if (!root) {
       return;
@@ -193,29 +260,21 @@
 
     if (!events.length) {
       root.innerHTML = '' +
-        '<article class="glass-card event-card event-card--empty">' +
+        '<article class="glass-card event-card event-card--empty p-8 text-center text-brand-muted md:col-span-2 lg:col-span-3">' +
           '<p>No ' + escapeHtml(title.toLowerCase()) + ' right now.</p>' +
         '</article>';
       return;
     }
 
     root.innerHTML = events.map(function(event) {
-      var ctaUrl = event.cta_url || '';
+      var eventMeta = getEventCardMeta(event, title);
       return '' +
-        '<article class="glass-card event-card">' +
-          '<div class="event-meta">' +
-            '<span>' + escapeHtml(formatPathType(event.path_type)) + '</span>' +
-            '<span>' + escapeHtml(formatEventFormat(event.format)) + '</span>' +
-          '</div>' +
-          '<h3>' + escapeHtml(event.title || 'Session') + '</h3>' +
-          '<p class="event-date">' + escapeHtml(formatDateTime(event.start_at)) + '</p>' +
-          '<p>' + escapeHtml(event.description || 'More details coming soon.') + '</p>' +
-          '<p class="event-price">' + escapeHtml(formatPrice(event.price_usd)) + '</p>' +
-          (ctaUrl
-            ? '<a class="event-link interactive" href="' + escapeHtml(ctaUrl) + '" target="_blank" rel="noopener">' +
-                escapeHtml(event.cta_label || 'Learn more') +
-              '</a>'
-            : '') +
+        '<article class="' + eventMeta.cardClass + '">' +
+          '<span class="' + eventMeta.kickerClass + '">' + escapeHtml(eventMeta.kicker) + '</span>' +
+          '<h3 class="text-xl font-display mb-3 text-brand-ink">' + escapeHtml(event.title || 'Session') + '</h3>' +
+          '<p class="text-brand-muted text-sm leading-relaxed mb-6 flex-grow">' + escapeHtml(event.description || 'More details coming soon.') + '</p>' +
+          '<div class="text-brand-accent1 text-sm font-semibold mb-4">' + escapeHtml(formatPrice(event.price_usd)) + '</div>' +
+          renderEventAction(event) +
         '</article>';
     }).join('');
   }
@@ -223,9 +282,15 @@
   function splitSessions(events) {
     var now = Date.now();
     var upcoming = [];
+    var ondemand = [];
     var past = [];
 
     events.forEach(function(event) {
+      if (event && event.format === 'on-demand') {
+        ondemand.push(event);
+        return;
+      }
+
       var startTime = event.start_at ? new Date(event.start_at).getTime() : Number.NaN;
       var isPast = event.status === 'archived' || (Number.isFinite(startTime) ? startTime < now : false);
 
@@ -240,12 +305,21 @@
       return new Date(a.start_at || 0).getTime() - new Date(b.start_at || 0).getTime();
     });
 
+    ondemand.sort(function(a, b) {
+      if (Boolean(b && b.is_featured) !== Boolean(a && a.is_featured)) {
+        return Number(Boolean(b && b.is_featured)) - Number(Boolean(a && a.is_featured));
+      }
+
+      return new Date(b.created_at || 0).getTime() - new Date(a.created_at || 0).getTime();
+    });
+
     past.sort(function(a, b) {
       return new Date(b.start_at || 0).getTime() - new Date(a.start_at || 0).getTime();
     });
 
     return {
       upcoming: upcoming,
+      ondemand: ondemand,
       past: past
     };
   }
@@ -325,7 +399,11 @@
       return;
     }
 
-    var label = sectionName === 'past' ? 'Past' : 'Upcoming';
+    var label = {
+      upcoming: 'Upcoming',
+      ondemand: 'On-demand',
+      past: 'Past'
+    }[sectionName] || 'Upcoming';
 
     sessionFilterKicker.textContent = label + ' Filters';
     sessionFilterTitle.textContent = 'Refine ' + label + ' Sessions';
@@ -371,16 +449,21 @@
   }
 
   function applyEventFilters() {
-    if (!upcomingRoot || !pastRoot) {
+    if (!upcomingRoot || !ondemandRoot || !pastRoot) {
       return;
     }
 
     var sessions = splitSessions(allEvents);
     var upcomingView = buildSectionView(sessions.upcoming, sectionFilters.upcoming);
+    var ondemandView = buildSectionView(sessions.ondemand, sectionFilters.ondemand);
     var pastView = buildSectionView(sessions.past, sectionFilters.past);
 
     if (upcomingCount) {
       upcomingCount.textContent = String(upcomingView.visible.length);
+    }
+
+    if (ondemandCount) {
+      ondemandCount.textContent = String(ondemandView.visible.length);
     }
 
     if (pastCount) {
@@ -388,14 +471,23 @@
     }
 
     renderSessionList(upcomingRoot, 'Upcoming Sessions', upcomingView.visible);
+    renderSessionList(ondemandRoot, 'On-demand Sessions', ondemandView.visible);
     renderSessionList(pastRoot, 'Past Sessions', pastView.visible);
     updateFilterTrigger(openUpcomingFilters, upcomingFilterActiveCount, sectionFilters.upcoming);
+    updateFilterTrigger(openOnDemandFilters, ondemandFilterActiveCount, sectionFilters.ondemand);
     updateFilterTrigger(openPastFilters, pastFilterActiveCount, sectionFilters.past);
-    updateModalCopy(activeFilterPanel, activeFilterPanel === 'past' ? pastView : upcomingView);
+    updateModalCopy(
+      activeFilterPanel,
+      activeFilterPanel === 'past'
+        ? pastView
+        : activeFilterPanel === 'ondemand'
+          ? ondemandView
+          : upcomingView
+    );
   }
 
   function loadEvents() {
-    if (!window.SthirRuntime || !upcomingRoot || !pastRoot) {
+    if (!window.SthirRuntime || !upcomingRoot || !ondemandRoot || !pastRoot) {
       return;
     }
 
@@ -408,12 +500,17 @@
         var message = error && error.message ? error.message : 'Please try again soon.';
 
         upcomingRoot.innerHTML = '' +
-          '<article class="glass-card event-card event-card--empty">' +
+          '<article class="glass-card event-card event-card--empty p-8 text-center text-brand-muted md:col-span-2 lg:col-span-3">' +
+            '<p>' + escapeHtml(message) + '</p>' +
+          '</article>';
+
+        ondemandRoot.innerHTML = '' +
+          '<article class="glass-card event-card event-card--empty p-8 text-center text-brand-muted md:col-span-2 lg:col-span-3">' +
             '<p>' + escapeHtml(message) + '</p>' +
           '</article>';
 
         pastRoot.innerHTML = '' +
-          '<article class="glass-card event-card event-card--empty">' +
+          '<article class="glass-card event-card event-card--empty p-8 text-center text-brand-muted md:col-span-2 lg:col-span-3">' +
             '<p>' + escapeHtml(message) + '</p>' +
           '</article>';
 
@@ -513,6 +610,12 @@
   if (openUpcomingFilters) {
     openUpcomingFilters.addEventListener('click', function() {
       openSessionFilterModal('upcoming');
+    });
+  }
+
+  if (openOnDemandFilters) {
+    openOnDemandFilters.addEventListener('click', function() {
+      openSessionFilterModal('ondemand');
     });
   }
 

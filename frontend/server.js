@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT_DIR = __dirname;
-const DEFAULT_FILE = 'hybrid_positive_framing.html';
+const DEFAULT_FILE = 'index.html';
 const CONTENT_TYPES = {
   '.css': 'text/css; charset=utf-8',
   '.gif': 'image/gif',

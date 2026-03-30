@@ -1,7 +1,9 @@
 (function() {
   var state = {
     editingEventId: '',
-    events: []
+    events: [],
+    sortKey: 'start_at',
+    sortDirection: 'asc'
   };
 
   var elements = {
@@ -25,7 +27,8 @@
     statDraft: document.getElementById('stat-draft'),
     statLive: document.getElementById('stat-live'),
     statTotal: document.getElementById('stat-total'),
-    statusFilter: document.getElementById('status-filter')
+    statusFilter: document.getElementById('status-filter'),
+    sortButtons: Array.prototype.slice.call(document.querySelectorAll('.admin-sort-button'))
   };
 
   function setPageNote(message, type) {
@@ -93,12 +96,87 @@
     return labels[value] || 'Cohort';
   }
 
+  function getTimeValue(value, fallback) {
+    var time = value ? new Date(value).getTime() : Number.NaN;
+    return Number.isFinite(time) ? time : fallback;
+  }
+
+  function compareText(left, right) {
+    return String(left || '').localeCompare(String(right || ''), undefined, {
+      sensitivity: 'base',
+      numeric: true
+    });
+  }
+
+  function getDefaultSortDirection(key) {
+    return key === 'start_at' ? 'asc' : 'asc';
+  }
+
+  function sortRows(rows) {
+    var sortKey = state.sortKey;
+    var sortDirection = state.sortDirection === 'desc' ? -1 : 1;
+
+    rows.sort(function(left, right) {
+      var result = 0;
+
+      if (sortKey === 'start_at') {
+        result = getTimeValue(left.start_at, Number.POSITIVE_INFINITY) - getTimeValue(right.start_at, Number.POSITIVE_INFINITY);
+      } else if (sortKey === 'price_usd') {
+        result = Number(left.price_usd || 0) - Number(right.price_usd || 0);
+      } else if (sortKey === 'path_type') {
+        result = compareText(window.SthirAdmin.formatPathType(left.path_type), window.SthirAdmin.formatPathType(right.path_type));
+      } else if (sortKey === 'format') {
+        result = compareText(formatEventFormat(left.format), formatEventFormat(right.format));
+      } else if (sortKey === 'status') {
+        result = compareText(left.status, right.status);
+      } else {
+        result = compareText(left.title, right.title);
+      }
+
+      if (result === 0) {
+        result = compareText(left.title, right.title);
+      }
+
+      return result * sortDirection;
+    });
+
+    return rows;
+  }
+
+  function updateSortButtons() {
+    elements.sortButtons.forEach(function(button) {
+      var key = button.getAttribute('data-sort-key');
+      var indicator = button.querySelector('.admin-sort-indicator');
+      var isActive = key === state.sortKey;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+
+      if (indicator) {
+        indicator.textContent = isActive ? (state.sortDirection === 'asc' ? '↑' : '↓') : '↕';
+      }
+    });
+  }
+
+  function applySort(key) {
+    if (!key) {
+      return;
+    }
+
+    if (state.sortKey === key) {
+      state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      state.sortKey = key;
+      state.sortDirection = getDefaultSortDirection(key);
+    }
+
+    renderTable();
+  }
+
   function getFilteredEvents() {
     var query = String(elements.searchInput.value || '').trim().toLowerCase();
     var statusFilter = elements.statusFilter.value;
     var pathFilter = elements.pathFilter.value;
-
-    return state.events.filter(function(event) {
+    var rows = state.events.filter(function(event) {
       var matchesQuery = !query || [
         event.title,
         event.slug,
@@ -111,6 +189,7 @@
 
       return matchesQuery && matchesStatus && matchesPath;
     });
+    return sortRows(rows);
   }
 
   function renderStats() {
@@ -127,6 +206,7 @@
 
   function renderTable() {
     var rows = getFilteredEvents();
+    updateSortButtons();
 
     if (!rows.length) {
       elements.eventsBody.innerHTML = '<tr class="admin-empty-row"><td colspan="7">No events match the current filters.</td></tr>';
@@ -304,6 +384,11 @@
   elements.searchInput.addEventListener('input', renderTable);
   elements.statusFilter.addEventListener('change', renderTable);
   elements.pathFilter.addEventListener('change', renderTable);
+  elements.sortButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      applySort(button.getAttribute('data-sort-key'));
+    });
+  });
 
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape' && elements.eventModal && !elements.eventModal.classList.contains('hidden')) {

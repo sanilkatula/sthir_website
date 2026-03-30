@@ -1,12 +1,15 @@
 (function() {
   var state = {
-    interests: []
+    interests: [],
+    interestTypeFilter: 'all',
+    sortKey: 'created_at',
+    sortDirection: 'desc'
   };
 
   var elements = {
     interestsBody: document.getElementById('interests-body'),
+    interestTypeButtons: Array.prototype.slice.call(document.querySelectorAll('[data-interest-type-filter]')),
     pageNote: document.getElementById('page-note'),
-    pathwayFilter: document.getElementById('pathway-filter'),
     refreshPage: document.getElementById('refresh-page'),
     searchInput: document.getElementById('search-input'),
     sessionEmail: document.getElementById('session-email'),
@@ -16,7 +19,8 @@
     statClosed: document.getElementById('stat-closed'),
     statContacted: document.getElementById('stat-contacted'),
     statNew: document.getElementById('stat-new'),
-    statQualified: document.getElementById('stat-qualified')
+    statQualified: document.getElementById('stat-qualified'),
+    sortButtons: Array.prototype.slice.call(document.querySelectorAll('.admin-sort-button'))
   };
 
   function setPageNote(message, type) {
@@ -48,30 +52,131 @@
     elements.statClosed.textContent = String(countStage('closed'));
   }
 
+  function getTimeValue(value, fallback) {
+    var time = value ? new Date(value).getTime() : Number.NaN;
+    return Number.isFinite(time) ? time : fallback;
+  }
+
+  function compareText(left, right) {
+    return String(left || '').localeCompare(String(right || ''), undefined, {
+      sensitivity: 'base',
+      numeric: true
+    });
+  }
+
+  function formatInterestType(value) {
+    return window.SthirAdmin.formatInterestType
+      ? window.SthirAdmin.formatInterestType(value)
+      : String(value || 'general');
+  }
+
+  function getInterestDetail(interest) {
+    var source = interest && interest.source_page ? 'Source: ' + interest.source_page : 'Source: direct';
+    var selectedPathway = window.SthirAdmin.formatSelectedPathway(interest);
+    var interestType = formatInterestType(interest && interest.interest_type);
+
+    if (selectedPathway && selectedPathway !== interestType) {
+      return 'Selected: ' + selectedPathway + ' • ' + source;
+    }
+
+    return source;
+  }
+
+  function getDefaultSortDirection(key) {
+    return key === 'created_at' ? 'desc' : 'asc';
+  }
+
+  function updateInterestTypeButtons() {
+    elements.interestTypeButtons.forEach(function(button) {
+      var value = button.getAttribute('data-interest-type-filter');
+      var isActive = value === state.interestTypeFilter;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+  }
+
+  function updateSortButtons() {
+    elements.sortButtons.forEach(function(button) {
+      var key = button.getAttribute('data-sort-key');
+      var indicator = button.querySelector('.admin-sort-indicator');
+      var isActive = key === state.sortKey;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+
+      if (indicator) {
+        indicator.textContent = isActive ? (state.sortDirection === 'asc' ? '↑' : '↓') : '↕';
+      }
+    });
+  }
+
+  function applySort(key) {
+    if (!key) {
+      return;
+    }
+
+    if (state.sortKey === key) {
+      state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      state.sortKey = key;
+      state.sortDirection = getDefaultSortDirection(key);
+    }
+
+    renderTable();
+  }
+
   function getFilteredInterests() {
     var query = String(elements.searchInput.value || '').trim().toLowerCase();
     var stage = elements.stageFilter.value;
-    var pathway = elements.pathwayFilter.value;
-
-    return state.interests.filter(function(interest) {
+    var interestType = state.interestTypeFilter;
+    var rows = state.interests.filter(function(interest) {
       var haystack = [
         interest.name,
         interest.email,
         interest.notes,
         interest.source_page,
-        interest.interest_type
+        interest.interest_type,
+        formatInterestType(interest.interest_type),
+        window.SthirAdmin.formatSelectedPathway(interest),
+        interest && interest.metadata ? interest.metadata.selected_pathway : ''
       ].join(' ').toLowerCase();
 
       var matchesQuery = !query || haystack.includes(query);
       var matchesStage = stage === 'all' || interest.stage === stage;
-      var matchesPathway = pathway === 'all' || interest.interest_type === pathway;
+      var matchesInterestType = interestType === 'all' || interest.interest_type === interestType;
 
-      return matchesQuery && matchesStage && matchesPathway;
+      return matchesQuery && matchesStage && matchesInterestType;
     });
+
+    rows.sort(function(left, right) {
+      var sortDirection = state.sortDirection === 'desc' ? -1 : 1;
+      var result = 0;
+
+      if (state.sortKey === 'created_at') {
+        result = getTimeValue(left.created_at, Number.POSITIVE_INFINITY) - getTimeValue(right.created_at, Number.POSITIVE_INFINITY);
+      } else if (state.sortKey === 'name') {
+        result = compareText(left.name, right.name);
+      } else if (state.sortKey === 'interest_type') {
+        result = compareText(formatInterestType(left.interest_type), formatInterestType(right.interest_type));
+      } else if (state.sortKey === 'notes') {
+        result = compareText(left.notes, right.notes);
+      } else if (state.sortKey === 'stage') {
+        result = compareText(left.stage, right.stage);
+      }
+
+      if (result === 0) {
+        result = compareText(left.name, right.name);
+      }
+
+      return result * sortDirection;
+    });
+
+    return rows;
   }
 
   function renderTable() {
     var rows = getFilteredInterests();
+    updateInterestTypeButtons();
+    updateSortButtons();
 
     if (!rows.length) {
       elements.interestsBody.innerHTML = '<tr class="admin-empty-row"><td colspan="6">No interest submissions match the current filters.</td></tr>';
@@ -86,8 +191,8 @@
             '<div class="admin-row-subtitle">' + window.SthirAdmin.escapeHtml(interest.email || '-') + '</div>' +
           '</td>' +
           '<td>' +
-            '<div class="admin-row-title">' + window.SthirAdmin.escapeHtml(window.SthirAdmin.formatSelectedPathway(interest)) + '</div>' +
-            '<div class="admin-row-subtitle">' + window.SthirAdmin.escapeHtml(interest.source_page || '-') + '</div>' +
+            '<div class="admin-row-title">' + window.SthirAdmin.escapeHtml(formatInterestType(interest.interest_type)) + '</div>' +
+            '<div class="admin-row-subtitle">' + window.SthirAdmin.escapeHtml(getInterestDetail(interest)) + '</div>' +
           '</td>' +
           '<td>' + window.SthirAdmin.escapeHtml(interest.notes || 'No notes') + '</td>' +
           '<td>' +
@@ -133,7 +238,17 @@
 
   elements.searchInput.addEventListener('input', renderTable);
   elements.stageFilter.addEventListener('change', renderTable);
-  elements.pathwayFilter.addEventListener('change', renderTable);
+  elements.interestTypeButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      state.interestTypeFilter = button.getAttribute('data-interest-type-filter') || 'all';
+      renderTable();
+    });
+  });
+  elements.sortButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      applySort(button.getAttribute('data-sort-key'));
+    });
+  });
 
   elements.interestsBody.addEventListener('click', function(event) {
     var button = event.target.closest('[data-action="save-interest"]');
