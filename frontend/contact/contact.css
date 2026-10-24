@@ -8,10 +8,13 @@
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 1.5rem;
-  align-items: start;
+  align-items: stretch;
+  grid-auto-rows: 1fr;
 }
 
 .contact-page .contact-panel {
+  display: flex;
+  flex-direction: column;
   padding: 1.7rem;
   background: rgba(255, 255, 255, 0.84);
 }
@@ -46,6 +49,13 @@
 .contact-page .contact-method-list {
   display: grid;
   gap: 0.9rem;
+  margin-top: auto;
+}
+
+.contact-page .contact-page-form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .contact-page .contact-method {
@@ -135,7 +145,8 @@
 }
 
 .contact-page .form-actions {
-  margin-top: 1.25rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
 }
 
 .contact-page .send-btn {

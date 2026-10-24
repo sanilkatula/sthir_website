@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 540" fill="none">
+  <defs>
+    <linearGradient id="choice-path" x1="85" y1="105" x2="450" y2="435" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#caa8e9"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+    <radialGradient id="choice-glow">
+      <stop stop-color="#caa8e9" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#caa8e9" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="280" cy="270" r="245" fill="url(#choice-glow)"/>
+  <circle cx="280" cy="270" r="204" stroke="#fff7ef" stroke-opacity=".12"/>
+  <circle cx="280" cy="270" r="145" stroke="#fff7ef" stroke-opacity=".12" stroke-dasharray="4 10"/>
+  <path d="M116 140C90 235 169 376 280 270S471 116 433 197C395 278 151 401 248 435C345 469 430 391 453 342" stroke="url(#choice-path)" stroke-width="3" stroke-linecap="round"/>
+  <path d="m443 344 11-6 3 13" stroke="#f97316" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="280" cy="270" r="94" fill="#3a1452" stroke="#caa8e9" stroke-width="1.5"/>
+  <circle cx="280" cy="270" r="82" stroke="#fff7ef" stroke-opacity=".15"/>
+  <g fill="#fff7ef" font-family="Poppins, Inter, sans-serif" text-anchor="middle">
+    <text x="280" y="260" font-size="25" font-weight="500">Your choices.</text>
+    <text x="280" y="294" font-size="25" font-weight="500" fill="#fb923c">Your own.</text>
+  </g>
+  <g font-family="Poppins, Inter, sans-serif" text-anchor="middle" font-weight="500">
+    <rect x="52" y="87" width="136" height="80" rx="22" fill="#fff7ef" transform="rotate(-8 120 127)"/>
+    <text x="120" y="137" fill="#5b2b82" font-size="27" transform="rotate(-8 120 127)">Who?</text>
+    <rect x="364" y="142" width="146" height="80" rx="22" fill="#e7dff1" transform="rotate(8 437 182)"/>
+    <text x="437" y="192" fill="#5b2b82" font-size="27" transform="rotate(8 437 182)">What?</text>
+    <rect x="161" y="398" width="164" height="80" rx="22" fill="#f97316" transform="rotate(-5 243 438)"/>
+    <text x="243" y="448" fill="#fff" font-size="27" transform="rotate(-5 243 438)">Where?</text>
+  </g>
+  <circle cx="374" cy="74" r="7" fill="#f97316"/>
+  <circle cx="102" cy="334" r="5" fill="#caa8e9"/>
+  <circle cx="458" cy="380" r="6" fill="#fff7ef" fill-opacity=".65"/>
+  <path d="M218 62v16m-8-8h16M468 270v16m-8-8h16M119 434v12m-6-6h12" stroke="#caa8e9" stroke-width="2" stroke-linecap="round"/>
+</svg>

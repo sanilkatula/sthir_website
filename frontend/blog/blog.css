@@ -26,7 +26,7 @@ html {
     var(--page-bg);
   color: var(--ink);
   font-family: 'Inter', sans-serif;
-  cursor: none;
+  cursor: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -60,12 +60,10 @@ html {
 
 .blog a,
 .blog button,
-.blog input,
-.blog textarea,
 .blog .interactive,
 .blog .btn,
 .blog .story-button {
-  cursor: none;
+  cursor: pointer;
 }
 
 .blog .container {
@@ -75,6 +73,7 @@ html {
 
 .blog .cursor-dot,
 .blog .cursor-outline {
+  display: none !important;
   position: fixed;
   top: 0;
   left: 0;
@@ -243,7 +242,7 @@ html {
   box-shadow: var(--shadow-soft);
   -webkit-appearance: none;
   appearance: none;
-  cursor: none;
+  cursor: pointer;
   flex-shrink: 0;
 }
 
@@ -1033,4 +1032,12 @@ html {
   .blog .cursor-outline {
     display: none;
   }
+}
+
+/* Keep the standard text cursor on editable fields. */
+.blog input,
+.blog textarea,
+.blog input.interactive,
+.blog textarea.interactive {
+  cursor: text;
 }

@@ -113,7 +113,7 @@
       mobileNav.classList.toggle('is-open', willOpen);
     });
 
-    mobileNav.querySelectorAll('a').forEach(function(link) {
+    mobileNav.querySelectorAll('a, [data-open-ai-tools]').forEach(function(link) {
       link.addEventListener('click', closeMobileNav);
     });
 

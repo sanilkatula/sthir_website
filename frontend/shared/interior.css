@@ -1,0 +1,181 @@
+/* One simple layout and type scale for Story, Pathways, Reflections, and Contact. */
+body.interior-page {
+  --interior-width: 1120px;
+  --interior-copy-size: 1.0625rem;
+  --interior-copy-leading: 1.75;
+  --interior-section-gap: 3rem;
+  font-family: 'Inter', sans-serif;
+  font-size: var(--interior-copy-size);
+  line-height: var(--interior-copy-leading);
+}
+
+body.interior-page .interior-container {
+  width: calc(100% - 3rem);
+  max-width: var(--interior-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.interior-page .interior-hero {
+  padding: 8rem 0 2.5rem;
+  border-bottom: 1px solid var(--site-border);
+  background: var(--site-bg);
+}
+
+.interior-page .interior-kicker {
+  min-height: 1.25rem;
+  margin: 0 0 0.75rem;
+  color: #d66c3f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body.interior-page .interior-title {
+  max-width: 55rem;
+  min-height: 2.5em;
+  margin: 0 0 1rem;
+  color: var(--site-purple);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.interior-page .interior-description {
+  max-width: 55rem;
+  min-height: 3.5em;
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--interior-copy-size);
+  font-weight: 400;
+  line-height: var(--interior-copy-leading);
+}
+
+body.interior-page .interior-main {
+  padding-top: var(--interior-section-gap);
+  padding-bottom: 4rem;
+  scroll-margin-top: 6rem;
+}
+
+body.interior-page .interior-main :is(h2, h3) {
+  min-height: 0;
+  margin: 0 0 1rem;
+  color: var(--site-purple);
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+
+body.interior-page .interior-main h3 {
+  font-size: 1.25rem;
+}
+
+body.interior-page .interior-main :is(p, blockquote) {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-family: 'Inter', sans-serif;
+  font-size: var(--interior-copy-size);
+  font-weight: 400;
+  line-height: var(--interior-copy-leading);
+  letter-spacing: normal;
+}
+
+body.interior-page .interior-main strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+body.interior-page .interior-main :is(.section-kicker, .pathway-kicker, .shalu-eyebrow, .blog-search-kicker, .card-kicker) {
+  margin-bottom: 0.75rem;
+  color: #d66c3f;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.65;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body.interior-page .interior-main :is(figcaption, .meta-row) {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+body.interior-page .interior-main > .page-section,
+body.interior-page .interior-main .shalu-section {
+  margin-bottom: var(--interior-section-gap);
+}
+
+body.interior-page .interior-main :is(.glass-card, .card, .shalu-invitation) {
+  border: 1px solid var(--site-border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: none;
+}
+
+body.interior-page .interior-main .card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+body.interior-page .interior-main :is(.pathway-card, .event-card, .contact-panel, .card-content, .shalu-invitation, .shalu-quote) {
+  padding: 1.5rem;
+}
+
+body.interior-page .interior-main :is(.pathways-grid, .events-grid, .feed, .contact-grid) {
+  gap: 1.5rem;
+}
+
+body.interior-page .interior-main .page-search-shell {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 1.5rem;
+}
+
+body.interior-page .interior-main .section-header {
+  margin-bottom: 1.5rem;
+}
+
+body.interior-page .interior-main .section-header h2 { margin-bottom: 0; }
+body.interior-page .interior-main :is(input, textarea, select) { font-size: 1rem; }
+body.interior-page .interior-main :is(.story-button, .secondary-button, .btn) { font-size: 0.9375rem; }
+body.interior-page .interior-main .secondary-button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0.8rem 1.4rem; }
+
+/* Story content uses the same outer grid, with a readable prose measure. */
+.interior-page .interior-profile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 320px);
+  align-items: start;
+  gap: 3rem;
+  margin-bottom: var(--interior-section-gap);
+}
+
+.interior-page .interior-prose { max-width: 48rem; }
+body.interior-page .interior-profile .shalu-personal { max-width: none; }
+body.interior-page .interior-profile .shalu-portrait { width: 100%; max-width: 320px; margin: 0; justify-self: end; }
+body.interior-page .interior-profile .shalu-portrait-image { width: 100%; height: auto; aspect-ratio: 1 / 1.06; object-fit: cover; border-radius: 16px; }
+body.interior-page .interior-main .shalu-people { padding: 1.5rem; background: #faf8fc; }
+body.interior-page .interior-main .shalu-belief { margin-top: 0; padding: 1.5rem; }
+body.interior-page .interior-main .shalu-section:last-child { margin-bottom: 0; }
+
+@media (max-width: 800px) {
+  .interior-page .interior-profile { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  body.interior-page .interior-profile .shalu-portrait { max-width: 280px; justify-self: start; }
+}
+
+@media (max-width: 640px) {
+  body.interior-page .interior-hero { padding: 6.25rem 0 2rem; }
+  body.interior-page .interior-title { font-size: 1.75rem; min-height: 3.75em; }
+  .interior-page .interior-description { min-height: 7em; }
+  body.interior-page { --interior-section-gap: 2.5rem; }
+  body.interior-page .interior-main :is(h2, h3) { font-size: 1.35rem; }
+  body.interior-page .interior-main h3 { font-size: 1.2rem; }
+  body.interior-page .interior-main :is(.pathway-card, .event-card, .contact-panel, .card-content, .shalu-invitation, .shalu-quote) { padding: 1.25rem; }
+}
