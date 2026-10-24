@@ -8,14 +8,16 @@
   <link href="../../blog/blog.css" rel="stylesheet" />
   <link href="../admin.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="../../shared/site.css?v=compact-1" rel="stylesheet">
 </head>
-<body class="blog admin-page">
+<body class="blog admin-page sthir-site">
   <div class="progress-bar" id="progress-bar"></div>
   <div class="noise"></div>
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
 
-  <nav id="navbar">
+  <!-- Preserved previous navbar layout. Inner comments and existing entities are escaped.
+<nav id="navbar">
     <a href="../../" class="site-brand interactive" aria-label="Sthir Home">
       <img src="../../images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'" />
       <div class="site-brand-meta">
@@ -45,6 +47,31 @@
         <a href="../users/" class="interactive">Manage Users</a>
       </div>
       <a href="../../" class="story-button interactive mobile-nav-cta">Back To Site</a>
+    </div>
+  </nav>
+  -->
+
+  <nav id="navbar" class="reference-nav" aria-label="Admin navigation">
+    <a href="../../#home" class="reference-brand interactive" aria-label="Sthir home">
+      <img src="../../images/sthir-mark.svg" alt="" width="48" height="60">
+      <span class="reference-brand-copy"><span class="reference-brand-title">STHIR</span><span class="reference-brand-tagline">stillness in motion</span></span>
+    </a>
+    <div class="reference-nav-links">
+      <a href="../" class="interactive">Admin Home</a>
+      <a href="../events/" class="interactive" aria-current="page">Events</a>
+      <a href="../interests/" class="interactive">Interests</a>
+      <a href="../users/" class="interactive">Users</a>
+    </div>
+    <a href="../../" class="reference-nav-cta interactive">Back to site</a>
+    <button id="site-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-links">
+      <a href="../" class="interactive">Admin Home</a>
+      <a href="../events/" class="interactive" aria-current="page">Events</a>
+      <a href="../interests/" class="interactive">Interests</a>
+      <a href="../users/" class="interactive">Users</a>
+      </div>
+      <a href="../../" class="reference-mobile-cta interactive">Back to site</a>
     </div>
   </nav>
 
@@ -246,7 +273,8 @@
     </div>
   </div>
 
-  <footer id="contact" class="site-footer-home">
+  <!-- Preserved previous contact layout. Inner comments and existing entities are escaped.
+<footer id="contact" class="site-footer-home">
     <div class="site-footer-home-inner">
       <div>
         <a href="../../" class="site-footer-brand-link interactive">
@@ -260,7 +288,7 @@
           <a href="../../about/" class="interactive">Sthir Story</a>
           <a href="../../pathways/" class="interactive">Pathways</a>
           <a href="../../#sprints-directory" class="interactive">Sprints</a>
-          <a href="../../blog/" class="interactive">Blogs</a>
+          <a href="../../blog/" class="interactive">Sthir Reflections</a>
           <a href="../../#testimonials" class="interactive">Testimonials</a>
           <a href="../../contact/" class="interactive">Contact</a>
         </div>
@@ -277,8 +305,39 @@
     </div>
 
     <div class="site-footer-bottom">
-      <p>&copy; 2026 Sthir. All Rights Reserved.</p>
+      <p>&amp;copy; 2026 Sthir. All Rights Reserved.</p>
     </div>
+  </footer>
+  -->
+
+  <footer id="contact" class="site-footer-home">
+    <div class="site-footer-home-inner">
+      <div>
+        <a href="../../" class="reference-brand interactive" aria-label="Sthir home">
+      <img src="../../images/sthir-mark.svg" alt="" width="48" height="60">
+      <span class="reference-brand-copy"><span class="reference-brand-title">STHIR</span><span class="reference-brand-tagline">stillness in motion</span></span>
+    </a>
+        <p class="site-footer-brand-copy">A mind gym for independent thinking.<br>Play it. Prototype it. Own it.</p>
+        <nav class="site-footer-nav" aria-label="Footer navigation">
+          <a href="../../about/">Sthir Story</a>
+          <a href="../../pathways/">Pathways</a>
+          <a href="../../blog/">Sthir Reflections</a>
+          <a href="../../#testimonials">Testimonials</a>
+          <a href="../../contact/">Contact</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener">Apply Now</a>
+        </nav>
+      </div>
+      <div class="glass-card site-footer-card">
+        <h3>Stay in the loop</h3>
+        <p>Get updates on cohorts, events, and resources.</p>
+        <form class="site-footer-form" onsubmit="event.preventDefault();">
+          <label for="site-footer-email" class="site-sr-only">Email address</label>
+          <input id="site-footer-email" type="email" name="email" placeholder="Email address" class="site-footer-input interactive" autocomplete="email" required>
+          <button type="submit" class="site-footer-submit interactive">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="site-footer-bottom"><p>© 2026 Sthir. All Rights Reserved.</p></div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>

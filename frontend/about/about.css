@@ -1,219 +1,303 @@
-.about-page .hero-shell {
-  min-height: 58vh;
+/* Shalu's story: one page layout, layered after the shared site theme. */
+body.about-page .interior-story-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  align-items: start;
+  gap: 3rem;
 }
 
-.about-page .about-main {
-  padding-top: 8px;
+body.about-page .shalu-header-portrait {
+  width: 100%;
+  max-width: 240px;
+  margin: 0;
+  justify-self: end;
 }
 
-.about-page .page-section {
-  margin-bottom: 1.75rem;
+body.about-page .shalu-header-portrait .shalu-portrait-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 16px;
 }
 
-.about-page .section-header {
-  max-width: 46rem;
-  margin-bottom: 1.5rem;
+body.about-page .shalu-header-portrait figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
 }
 
-.about-page .section-kicker {
-  display: inline-flex;
-  margin-bottom: 0.85rem;
-  color: var(--accent2);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+.about-page .interior-profile-text {
+  max-width: 48rem;
+  margin-bottom: var(--interior-section-gap);
+}
+
+.about-page .interior-profile-text .shalu-personal { max-width: none; }
+
+@media (max-width: 800px) {
+  body.about-page .interior-story-header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+  body.about-page .shalu-header-portrait { justify-self: start; }
+}
+
+body.about-page .shalu-hero {
+  padding: 10rem 1.5rem 4rem;
+  background: var(--site-bg, #fdfdfb);
+  border-bottom: 1px solid var(--site-border, #e9e1ed);
+}
+
+.about-page .shalu-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 6rem);
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.about-page .shalu-intro-copy { min-width: 0; }
+
+.about-page .shalu-eyebrow {
+  display: block;
+  margin: 0 0 1rem;
+  color: #d66c3f;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.7;
   text-transform: uppercase;
 }
 
-.about-page .section-title {
-  margin: 0 0 0.65rem;
-  color: var(--ink);
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  line-height: 1.15;
+body.about-page .shalu-title {
+  margin: 0 0 1.5rem;
+  color: var(--site-purple, #542078);
+  font-size: clamp(3rem, 5vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
 }
 
-.about-page .section-copy {
-  margin: 0;
-  color: var(--muted);
-  font-size: 1.02rem;
-  line-height: 1.8;
+.about-page .shalu-title > span { display: block; }
+.about-page .shalu-title .shalu-greeting {
+  margin-bottom: 0.45rem;
+  color: #716779;
+  font-size: 0.4em;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
 }
 
-.about-page .about-story-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-.about-page .about-photo-panel,
-.about-page .about-copy-panel,
-.about-page .about-value-card,
-.about-page .team-card,
-.about-page .about-cta-card {
-  background: rgba(255, 255, 255, 0.84);
-}
-
-.about-page .about-photo-panel {
-  padding: 1rem;
-}
-
-.about-page .about-portrait {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.about-page .about-copy-panel {
-  padding: 1.8rem;
-}
-
-.about-page .about-copy-panel h2,
-.about-page .about-cta-card h2 {
-  margin: 0 0 1rem;
-  color: var(--ink);
-  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
-}
-
-.about-page .about-copy-panel p,
-.about-page .about-cta-card p {
-  margin: 0 0 1rem;
-  color: var(--muted);
-  line-height: 1.85;
-}
-
-.about-page .about-values-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
-}
-
-.about-page .about-value-card {
-  padding: 1.5rem;
-}
-
-.about-page .value-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  margin-bottom: 1rem;
-  border-radius: 14px;
-  background: rgba(91, 43, 130, 0.1);
-  color: var(--accent1);
-  font-size: 0.86rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-}
-
-.about-page .about-value-card h3,
-.about-page .team-card h3 {
-  margin: 0 0 0.65rem;
-  color: var(--ink);
+.about-page .shalu-lead {
+  margin: 0 0 1.1rem;
+  color: #48404f;
   font-size: 1.2rem;
-}
-
-.about-page .about-value-card p,
-.about-page .team-card p {
-  margin: 0;
-  color: var(--muted);
+  font-weight: 400;
   line-height: 1.75;
 }
 
-.about-page .about-team-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+.about-page .shalu-lead strong { color: var(--site-purple, #542078); font-weight: 600; }
+
+.about-page .shalu-personal {
+  max-width: 33rem;
+  margin: 0;
+  color: #726c77;
+  font-size: 0.98rem;
+  line-height: 1.85;
+}
+
+.about-page .shalu-story-link {
+  display: inline-flex;
+  align-items: center;
   gap: 1.25rem;
+  margin-top: 1.6rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #d6c5df;
+  color: var(--site-purple, #542078);
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
-.about-page .team-card {
-  padding: 1.4rem;
+.about-page .shalu-story-link > span { font-size: 1.2rem; }
+
+.about-page .shalu-portrait {
+  width: 100%;
+  max-width: 350px;
+  margin: 0;
+  justify-self: end;
 }
 
-.about-page .team-avatar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  margin-bottom: 1rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(91, 43, 130, 0.16), rgba(249, 115, 22, 0.18));
-  color: var(--accent1);
-  font-weight: 700;
-  letter-spacing: 0.08em;
+.about-page .shalu-portrait-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1.06;
+  object-fit: cover;
+  object-position: 53% 40%;
+  border: 1px solid rgba(84, 32, 120, 0.08);
+  border-radius: 22px;
 }
 
-.about-page .about-cta-card {
-  padding: 1.9rem;
+.about-page .shalu-portrait figcaption {
+  margin-top: 0.85rem;
+  color: #817987;
+  font-size: 0.75rem;
+  line-height: 1.7;
   text-align: center;
+  letter-spacing: 0.025em;
 }
 
-.about-page .about-cta-card p {
-  max-width: 42rem;
-  margin-inline: auto;
+/* The entire narrative uses the same measure, including quotes and invitations. */
+body.about-page .shalu-story {
+  width: min(100% - 3rem, 760px);
+  margin: 0 auto;
+  padding: 4rem 0 5rem;
+  color: #625a69;
+  font-size: 1.0625rem;
+  line-height: 1.9;
+  scroll-margin-top: 7rem;
+  overflow-wrap: break-word;
 }
 
-.about-page .about-cta-actions {
-  display: flex;
-  justify-content: center;
-  gap: 0.9rem;
-  flex-wrap: wrap;
-  margin-top: 1.4rem;
-}
+.about-page .shalu-section { margin: 0 0 3.5rem; }
+.about-page .shalu-section:last-child { margin-bottom: 0; }
+.about-page .shalu-section p { margin: 0 0 1.25rem; }
+.about-page .shalu-section p:last-child { margin-bottom: 0; }
+.about-page .shalu-section strong { color: #45404b; font-weight: 600; }
+.about-page .shalu-section .shalu-eyebrow { margin-bottom: 0.7rem; color: #d66c3f; }
 
-.about-page .about-secondary-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 52px;
-  padding: 0 1.6rem;
-  border: 1px solid rgba(17, 24, 39, 0.12);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--ink);
+body.about-page .shalu-section-title {
+  margin: 0 0 1rem;
+  color: var(--site-purple, #542078);
+  font-size: clamp(1.7rem, 3vw, 2rem);
   font-weight: 600;
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
 }
 
-.about-page .about-secondary-link:hover {
-  transform: translateY(-2px);
-  background: #ffffff;
-  border-color: rgba(91, 43, 130, 0.18);
+.about-page .shalu-section-intro { margin-bottom: 1.75rem; }
+
+.about-page .shalu-belief {
+  margin-top: 2rem;
+  padding: 1.75rem 2rem;
+  border-left: 3px solid var(--site-orange, #fc7925);
+  border-radius: 0 16px 16px 0;
+  background: #fff7ed;
 }
 
-@media (max-width: 1024px) {
-  .about-page .about-values-grid,
-  .about-page .about-team-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+body.about-page .shalu-belief h2 {
+  margin: 0 0 1rem;
+  color: var(--site-purple, #542078);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
 }
 
-@media (max-width: 900px) {
-  .about-page .about-story-grid {
-    grid-template-columns: 1fr;
-  }
+.about-page .shalu-belief p { font-size: 1rem; line-height: 1.85; }
+.about-page .shalu-belief strong { font-weight: 500; }
 
-  .about-page .about-copy-panel,
-  .about-page .about-cta-card {
-    padding: 1.5rem;
-  }
+.about-page .shalu-quotes { display: grid; gap: 1rem; }
+
+.about-page .shalu-quote {
+  margin: 0;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid #e9e1ed;
+  border-left: 3px solid #76518b;
+  border-radius: 0 16px 16px 0;
+  background: #fff;
 }
 
-@media (max-width: 640px) {
-  .about-page .about-values-grid,
-  .about-page .about-team-grid {
-    grid-template-columns: 1fr;
-  }
+.about-page .shalu-quote-warm { border-left-color: #ef914e; }
 
-  .about-page .hero-shell {
-    min-height: 54vh;
-  }
+.about-page .shalu-quote-context {
+  margin: 0 0 0.75rem;
+  color: #807586;
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
 
-  .about-page .about-photo-panel {
-    padding: 0.85rem;
-  }
+.about-page .shalu-quote blockquote {
+  margin: 0;
+  color: #49404f;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.about-page .shalu-quote figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.1rem;
+  color: #817987;
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+.about-page .shalu-quote figcaption > span { color: #654077; font-weight: 600; }
+.about-page .shalu-reflection { margin-top: 1.75rem; }
+
+.about-page .shalu-people {
+  padding: 1.75rem 2rem;
+  border-radius: 16px;
+  background: #f7f3f9;
+}
+
+.about-page .shalu-people p {
+  color: var(--site-purple, #542078);
+  font-size: clamp(1.2rem, 2.4vw, 1.4rem);
+  line-height: 1.75;
+  letter-spacing: -0.02em;
+}
+
+.about-page .shalu-people strong { color: inherit; font-weight: 500; }
+.about-page .shalu-invitations { display: grid; gap: 1rem; }
+
+.about-page .shalu-invitation {
+  padding: 1.75rem;
+  border: 1px solid #e9e1ed;
+  border-radius: 18px;
+  background: #fff;
+}
+
+body.about-page .shalu-invitation h3 {
+  margin: 0 0 1rem;
+  color: var(--site-purple, #542078);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.025em;
+}
+
+.about-page .shalu-invitation p { font-size: 1rem; line-height: 1.85; }
+.about-page .shalu-invitation p strong { color: #625a69; font-weight: 400; }
+.about-page .shalu-invitation > a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; margin-top: 1.5rem; padding: 0.8rem 1.4rem; font-size: 0.9rem; text-align: center; }
+.about-page .shalu-invitation-personal { background: #fffaf4; }
+.about-page .shalu-invitation-personal > a { margin-top: 0.5rem; }
+
+@media (max-width: 800px) {
+  body.about-page .shalu-hero { padding-top: 8rem; padding-bottom: 3rem; }
+  .about-page .shalu-intro { grid-template-columns: minmax(0, 1fr); max-width: 620px; gap: 2.5rem; }
+  .about-page .shalu-portrait { justify-self: start; max-width: 300px; }
+  .about-page .shalu-portrait-image { aspect-ratio: 1 / 1; }
+  body.about-page .shalu-story { padding-top: 3rem; padding-bottom: 4rem; }
+}
+
+@media (max-width: 480px) {
+  body.about-page .shalu-hero { padding: 7.5rem 1.5rem 2.5rem; }
+  body.about-page .shalu-title { font-size: 2.8rem; }
+  .about-page .shalu-lead { font-size: 1.1rem; line-height: 1.8; }
+  .about-page .shalu-personal { font-size: 0.95rem; }
+  .about-page .shalu-portrait { max-width: 270px; }
+  body.about-page .shalu-story { font-size: 1rem; line-height: 1.85; }
+  .about-page .shalu-section { margin-bottom: 2.75rem; }
+  .about-page .shalu-belief, .about-page .shalu-people { padding: 1.4rem; }
+  .about-page .shalu-quote, .about-page .shalu-invitation { padding: 1.35rem; }
+  .about-page .shalu-quote blockquote { font-size: 1.05rem; }
+  .about-page .shalu-invitation > a { width: 100%; }
 }

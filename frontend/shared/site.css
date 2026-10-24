@@ -1,0 +1,429 @@
+@import url('./hero.css?v=compact-1');
+@import url('./ai-tools.css');
+
+/* Shared visual language for every public page and admin workspace. */
+body.sthir-site {
+  --site-bg: #fdfdfb;
+  --site-purple: #542078;
+  --site-orange: #fc7925;
+  --site-border: rgba(84, 32, 120, 0.12);
+  --site-shadow: 0 4px 22px rgba(54, 38, 65, 0.045);
+  --bg: var(--site-bg);
+  --page-bg: var(--site-bg);
+  --paper: #fff;
+  --surface: #fff;
+  --surface-soft: #fff;
+  --surface-strong: #fff;
+  --footer-bg: #faf8f5;
+  --ink: #39343e;
+  --muted: #66616c;
+  --accent1: #5b2b82;
+  --accent2: var(--site-orange);
+  --accent3: #df2e3e;
+  --accent-gold: var(--accent1);
+  --accent-orange: var(--site-orange);
+  --accent-red: #df2e3e;
+  --brand-purple: var(--site-purple);
+  --line: var(--site-border);
+  --shadow-soft: var(--site-shadow);
+  --shadow-card: var(--site-shadow);
+  --admin-surface: #fff;
+  --admin-surface-strong: #fff;
+  --admin-surface-soft: #faf8f5;
+  --admin-border: var(--site-border);
+  --admin-shadow-sm: var(--site-shadow);
+  --admin-shadow-md: var(--site-shadow);
+  --admin-shadow-lg: 0 20px 60px rgba(54, 38, 65, 0.14);
+  margin: 0;
+  background: var(--site-bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  cursor: auto;
+}
+
+body.sthir-site *, body.sthir-site *::before, body.sthir-site *::after {
+  box-sizing: border-box;
+}
+
+body.sthir-site :is(h1, h2, h3, h4, .font-display),
+body.sthir-site .founder-people p {
+  color: var(--site-purple);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.035em;
+}
+
+body.sthir-site :is(h2, h3, h4) {
+  font-weight: 600;
+}
+
+body.sthir-site .reference-hero h1 { letter-spacing: -0.055em; }
+
+body.sthir-site .bg-brand-bg { background-color: var(--site-bg); }
+body.sthir-site .bg-brand-surface { background-color: #fff; }
+body.sthir-site .text-brand-muted { color: var(--muted); }
+
+body.sthir-site .cursor-dot, body.sthir-site .cursor-outline {
+  display: none !important;
+}
+
+body.sthir-site :is(a, button, summary, [role='button']) {
+  cursor: pointer;
+}
+
+body.sthir-site :is(input, textarea) { cursor: text; }
+body.sthir-site input:is([type='checkbox'], [type='radio'], [type='submit'], [type='button']) { cursor: pointer; }
+body.sthir-site button:disabled { cursor: not-allowed; }
+
+body.sthir-site :is(a, button, input, textarea, select, summary):focus-visible {
+  outline: 2px solid var(--accent1);
+  outline-offset: 4px;
+}
+
+body.sthir-site .reference-nav-links a[aria-current='page'] {
+  color: var(--site-purple);
+}
+
+body.sthir-site .reference-nav :is(.reference-nav-cta, .reference-mobile-cta) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+body.sthir-site .reference-apply-cta {
+  min-width: 160px;
+  min-height: 50px;
+}
+
+body.sthir-site .reference-nav .nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--site-border);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: none;
+}
+
+body.sthir-site .reference-nav .nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--site-purple);
+}
+
+body.sthir-site .mobile-nav {
+  max-height: calc(100dvh - 110px);
+  overflow-y: auto;
+  border-color: var(--site-border);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(54, 38, 65, 0.1);
+}
+
+body.sthir-site .mobile-nav-links a {
+  border: 0;
+  background: #faf8f5;
+  color: var(--site-purple);
+  border-radius: 12px;
+}
+
+/* Inner-page heroes share the homepage's light field and geometric detail. */
+body.sthir-site .hero-shell {
+  min-height: 32rem;
+  padding: 10rem max(7.2vw, calc((100vw - 1280px) / 2)) 4rem;
+  background: var(--site-bg);
+  border-bottom: 1px solid var(--site-border);
+}
+
+body.sthir-site .hero-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  background: url('../images/hero-network.svg') right bottom / cover no-repeat;
+  opacity: 0.17;
+  filter: none;
+  transform: none;
+  pointer-events: none;
+}
+
+body.sthir-site .hero-inner {
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+}
+
+body.sthir-site .hero-badge {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #df754b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-align: left;
+  cursor: default;
+}
+
+body.sthir-site .hero-title {
+  max-width: 58rem;
+  margin: 0 0 1.5rem;
+  color: var(--site-purple);
+  font-size: clamp(2.75rem, 4.8vw, 4.5rem);
+  font-weight: 650;
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+}
+
+body.sthir-site .hero-title-accent {
+  margin-top: 0.6rem;
+  color: var(--site-purple);
+  font-size: clamp(1.6rem, 3vw, 2.7rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.035em;
+}
+
+body.sthir-site .hero-summary {
+  max-width: 46rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.75;
+}
+
+body.sthir-site .hero-email-link {
+  color: var(--accent1);
+  text-decoration-color: rgba(84, 32, 120, 0.3);
+}
+
+body.sthir-site .founder-hero { min-height: auto; }
+body.sthir-site .founder-hero-grid { width: 100%; max-width: 1280px; }
+body.sthir-site .founder-hero .hero-title-accent { font-size: inherit; font-weight: inherit; }
+body.sthir-site .founder-hero .hero-summary { margin-bottom: 1.25rem; }
+body.sthir-site .founder-hero-personal { color: var(--muted); }
+body.sthir-site .founder-story-link { color: var(--accent1); border-color: var(--site-border); }
+body.sthir-site .founder-portrait-frame {
+  width: min(100%, 26rem);
+  justify-self: end;
+  border-color: var(--site-border);
+  background: #fff;
+  box-shadow: var(--site-shadow);
+}
+body.sthir-site .founder-portrait-frame figcaption { color: var(--muted); }
+body.sthir-site .founder-invitation-personal { background: #fff8ef; }
+body.sthir-site .founder-invitation-personal h3 { color: var(--site-purple); }
+body.sthir-site .founder-invitation-personal .about-secondary-link { background: #fff; color: var(--accent1); }
+
+body.sthir-site .wrap { max-width: 1280px; }
+body.sthir-site .page-section { margin-bottom: 3rem; }
+body.sthir-site .page-main { padding-top: 3rem; }
+body.sthir-site .admin-main { margin-top: 0; padding-top: 3rem; }
+body.sthir-site.admin-page .hero-shell { min-height: 25rem; padding-bottom: 3rem; }
+body.sthir-site.admin-page .hero-title-accent { font-size: inherit; font-weight: inherit; }
+body.sthir-site.blog-post .wrap { max-width: 56rem; padding-top: 10rem; }
+body.sthir-site.blog-post #post { background: #fff; border: 1px solid var(--site-border); box-shadow: var(--site-shadow); }
+body.sthir-site.blog-post #title { color: var(--site-purple); font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.2; }
+
+body.sthir-site :is(.glass-card, .admin-panel, .admin-login-form, .admin-modal-dialog) {
+  border-color: var(--site-border);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: var(--site-shadow);
+  backdrop-filter: none;
+}
+
+body.sthir-site .glass-card:hover {
+  box-shadow: 0 7px 28px rgba(54, 38, 65, 0.065);
+}
+
+body.sthir-site .pathway-modal-dialog {
+  max-height: calc(100dvh - 2rem);
+  overflow-y: auto;
+}
+
+body.sthir-site .booking-modal {
+  border: 1px solid var(--site-border);
+  border-radius: 20px;
+  box-shadow: var(--admin-shadow-lg);
+}
+
+body.sthir-site .booking-header { background: #faf8f5; }
+body.sthir-site .booking-btn { border-radius: 999px; background: #f6f0f8; color: var(--accent1); }
+
+body.sthir-site :is(.admin-meta-item, .admin-stat-card, .admin-filter-bar, .admin-table-wrap) {
+  border-color: var(--site-border);
+  background: #fff;
+  box-shadow: none;
+}
+
+body.sthir-site :is(.admin-access-card, .admin-session-card, .admin-panel, .admin-link-card, .admin-login-form)::before {
+  height: 3px;
+  background: var(--site-orange);
+}
+
+body.sthir-site .admin-table th { background: #faf8f5; }
+body.sthir-site .admin-table tbody tr:hover { background: #fff9f2; }
+
+body.sthir-site :is(.story-button, .site-footer-submit) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--site-orange);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+body.sthir-site :is(.story-button, .site-footer-submit):not(:disabled):hover {
+  background: #ef6d1b;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(249, 115, 22, 0.14);
+  transform: translateY(-1px);
+}
+
+body.sthir-site :is(.secondary-button, .about-secondary-link, .btn, .session-filter-trigger) {
+  border: 1px solid rgba(84, 32, 120, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent1);
+  box-shadow: none;
+  font-weight: 500;
+}
+
+body.sthir-site :is(.secondary-button, .about-secondary-link, .btn, .session-filter-trigger):not(:disabled):hover {
+  background: #f6f0f8;
+  border-color: var(--accent1);
+  color: var(--accent1);
+  box-shadow: none;
+}
+
+body.sthir-site .btn.admin-danger {
+  border-color: rgba(185, 28, 28, 0.22);
+  background: #fff1f2;
+  color: #b91c1c;
+}
+
+body.sthir-site .btn.admin-danger:not(:disabled):hover {
+  background: #ffe4e6;
+  border-color: #b91c1c;
+  color: #b91c1c;
+}
+
+body.sthir-site :is(input, textarea, select) {
+  font-family: 'Inter', sans-serif;
+}
+
+body.sthir-site :is(.form-group, .form-field, .admin-field, .session-filter-field) :is(input, textarea, select) {
+  border-color: var(--site-border);
+  background: #fff;
+  border-radius: 14px;
+  font-size: 1rem;
+}
+
+body.sthir-site .section-kicker, body.sthir-site .pathway-kicker,
+body.sthir-site .blog-search-kicker {
+  color: #df754b;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+/* One footer structure, independent of each page's legacy layout. */
+body.sthir-site .site-footer-home {
+  position: relative;
+  z-index: 10;
+  margin-top: 0;
+  padding: 4.5rem max(7.2vw, calc((100vw - 1280px) / 2)) 2rem;
+  border-top: 1px solid var(--site-border);
+  background: var(--footer-bg);
+}
+
+body.sthir-site .site-footer-home-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.85fr);
+  align-items: start;
+  gap: 3rem;
+  max-width: 1280px;
+  margin: 0 auto 3rem;
+}
+
+body.sthir-site .site-footer-brand-copy {
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+body.sthir-site .site-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem 1.4rem;
+  margin-top: 1.75rem;
+}
+
+body.sthir-site .site-footer-nav a { color: var(--muted); font-size: 0.85rem; }
+body.sthir-site .site-footer-nav a:hover { color: var(--accent1); }
+body.sthir-site .site-footer-card { width: 100%; max-width: 28rem; padding: 1.75rem; justify-self: end; }
+body.sthir-site .site-footer-card h3 { margin: 0 0 0.75rem; font-size: 1.2rem; }
+body.sthir-site .site-footer-card > p { margin: 0 0 1.5rem; color: var(--muted); font-size: 0.9rem; line-height: 1.75; }
+body.sthir-site .site-footer-form { display: flex; gap: 0.65rem; }
+body.sthir-site .site-footer-input { min-width: 0; width: 100%; padding: 0.8rem 1rem; border: 1px solid var(--site-border); border-radius: 999px; background: #fff; color: var(--ink); font-size: 1rem; }
+body.sthir-site .site-footer-submit { flex-shrink: 0; padding: 0.8rem 1.25rem; }
+body.sthir-site .site-footer-note { margin-top: 1rem; font-size: 0.875rem; line-height: 1.7; }
+body.sthir-site .site-footer-note--success { color: #065f46; }
+body.sthir-site .site-footer-note--error { color: #b91c1c; }
+body.sthir-site .site-footer-bottom { max-width: 1280px; margin: 0 auto; padding-top: 1.75rem; border-top: 1px solid var(--site-border); text-align: left; }
+body.sthir-site .site-footer-bottom p { margin: 0; color: var(--muted); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: none; }
+.site-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 1023px) {
+  body.sthir-site .reference-nav .nav-toggle { display: inline-flex; }
+  body.sthir-site .hero-shell { padding: 9rem 5vw 3rem; }
+  body.sthir-site .site-footer-home { padding-left: 5vw; padding-right: 5vw; }
+}
+
+@media (max-width: 800px) {
+  body.sthir-site .founder-portrait-frame { justify-self: center; }
+}
+
+@media (max-width: 640px) {
+  body.sthir-site .reference-nav .reference-nav-cta { display: none; }
+  body.sthir-site .hero-shell { min-height: auto; padding: 8rem 1.5rem 3rem; }
+  body.sthir-site .hero-title { font-size: 2.7rem; }
+  body.sthir-site .hero-title-accent { font-size: 1.7rem; }
+  body.sthir-site .hero-badge { font-size: 0.7rem; letter-spacing: 0.18em; }
+  body.sthir-site .site-footer-home { padding: 3rem 1.5rem 1.75rem; }
+  body.sthir-site .site-footer-home-inner { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  body.sthir-site .site-footer-card { max-width: none; padding: 1.25rem; }
+  body.sthir-site.blog-post .wrap { padding-top: 8rem; }
+  body.sthir-site.admin-page .hero-shell { min-height: auto; padding-top: 8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body.sthir-site *, body.sthir-site *::before, body.sthir-site *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,120 @@
+/* A single heading hierarchy for the homepage's content sections. */
+body.home-page .home-section {
+  padding: clamp(3.5rem, 7vw, 6rem) max(7.2vw, calc((100vw - 1280px) / 2));
+  scroll-margin-top: 6rem;
+  border-top: 1px solid rgba(84, 32, 120, 0.18);
+  border-bottom: 0;
+  background-color: #fff;
+}
+
+body.home-page .home-section:nth-of-type(even) {
+  background-color: #faf8f5;
+}
+
+body.home-page .home-credibility-band {
+  border-color: rgba(84, 32, 120, 0.18);
+  background-color: #fff7ed;
+}
+
+.home-page .home-section-inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.home-page .home-section-heading {
+  position: static;
+  max-width: 52rem;
+  margin: 0 0 2.5rem;
+  text-align: left;
+}
+
+.home-page .home-section-heading::before {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-bottom: 1.25rem;
+  border-radius: 999px;
+  background-color: var(--site-orange, #fc7925);
+}
+
+body.home-page .home-section-title {
+  margin: 0 0 1rem;
+  color: var(--site-purple, #542078);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  text-align: left;
+}
+
+.home-page .home-section-intro {
+  max-width: 46rem;
+  margin: 0;
+  color: var(--muted, #66616c);
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.75;
+  text-align: left;
+}
+
+body.home-page .home-card-title {
+  margin: 0 0 0.75rem;
+  color: var(--site-purple, #542078);
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.025em;
+}
+
+.home-page .home-section-inner > .mind-gym-story-copy {
+  max-width: 48rem;
+}
+
+.home-page .home-faq-list {
+  width: 100%;
+  max-width: none;
+}
+
+.home-page #about .home-section-heading {
+  max-width: none;
+}
+
+.home-page .home-faq-list summary {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.home-page #testimonial-wrapper {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-page .reference-hero-cta {
+  max-width: 100%;
+  line-height: 1.5;
+}
+
+@media (max-width: 1023px) {
+  body.home-page .home-section {
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+}
+
+@media (max-width: 640px) {
+  body.home-page .home-section {
+    padding: 3.5rem 1.5rem;
+  }
+  .home-page .home-section-heading {
+    margin-bottom: 2rem;
+  }
+  body.home-page .home-section-title {
+    font-size: 1.85rem;
+  }
+}

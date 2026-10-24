@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sthir - Stillness in Motion</title>
+    <title>Sthir — A Mind Gym | Stillness in Motion</title>
+    <meta name="description" content="Get to know yourself, question what you’re told, and make choices you can call your own. Sthir is a mind gym for practising and strengthening your discernment.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="./shared/runtime.js"></script>
@@ -66,7 +68,7 @@
             color: var(--ink);
             background: var(--bg);
             overflow-x: hidden;
-            cursor: none; /* Custom cursor */
+            cursor: auto; /* System cursor */
         }
 
         h1, h2, h3, .font-display {
@@ -76,6 +78,7 @@
 
         /* Custom Cursor */
         .cursor-dot, .cursor-outline {
+            display: none !important;
             position: fixed;
             top: 0; left: 0;
             transform: translate(-50%, -50%);
@@ -109,7 +112,7 @@
             color: #fff; font-weight: 600;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: none;
+            cursor: pointer;
         }
         .story-button:hover {
             transform: translateY(-2px);
@@ -127,7 +130,7 @@
             font-weight: 600;
             box-shadow: var(--shadow-soft);
             transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-            cursor: none;
+            cursor: pointer;
         }
         .secondary-button:hover {
             transform: translateY(-2px);
@@ -195,6 +198,196 @@
             pointer-events: none;
         }
 
+        /* Mind gym homepage */
+        #mind-gym-story, #what-we-do, #offerings {
+            scroll-margin-top: 6rem;
+        }
+        .mind-gym-hero {
+            min-height: 100svh;
+            padding: 9rem 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .mind-gym-hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            align-items: center;
+            gap: 2.5rem;
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+        .mind-gym-hero-copy h1 {
+            font-size: clamp(3.25rem, 5.8vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.75rem;
+        }
+        .mind-gym-hero-dash {
+            font-weight: 400;
+            color: #caa8e9;
+        }
+        .mind-gym-hero-intro {
+            max-width: 35rem;
+            font-size: clamp(1.125rem, 1.6vw, 1.4rem);
+            line-height: 1.65;
+            margin-bottom: 2rem;
+        }
+        .mind-gym-hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+        }
+        .mind-gym-hero-actions a, .mind-gym-hero-actions button {
+            padding: 1rem 1.5rem;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+        .mind-gym-jump-links {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            max-width: 36rem;
+            margin-top: 2.25rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 247, 239, 0.2);
+        }
+        .mind-gym-jump-links a {
+            color: var(--hero-muted);
+            font-size: 0.75rem;
+            line-height: 1.6;
+            transition: color 0.2s;
+        }
+        .mind-gym-jump-links a span {
+            display: block;
+            color: var(--hero-text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+        .mind-gym-jump-links a:hover, .mind-gym-jump-links a:hover span {
+            color: #fdba74;
+        }
+        .mind-gym-hero-art {
+            min-width: 0;
+        }
+        .mind-gym-hero-art img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .mind-gym-hero-art figcaption {
+            color: var(--hero-muted);
+            font-size: 0.75rem;
+            text-align: center;
+            letter-spacing: 0.08em;
+        }
+        .mind-gym-scroll {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: fit-content;
+            margin: 3rem auto 0;
+            color: var(--hero-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .mind-gym-scroll span {
+            font-size: 1.5rem;
+        }
+        .mind-gym-story-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.35fr);
+            align-items: start;
+            gap: clamp(3rem, 7vw, 7rem);
+        }
+        .mind-gym-story-heading {
+            position: sticky;
+            top: 8rem;
+        }
+        .mind-gym-story-copy {
+            font-size: 1.0625rem;
+            line-height: 1.9;
+        }
+        .mind-gym-story-copy > p + p {
+            margin-top: 1.5rem;
+        }
+        .mind-gym-story-lead {
+            font-size: 1.375rem;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+        .mind-gym-quote {
+            margin-top: 2rem;
+            padding: 1.5rem 1.75rem;
+            background: var(--bg);
+            border-left: 3px solid var(--accent-orange);
+            border-radius: 0 1rem 1rem 0;
+        }
+        .mind-gym-quote blockquote {
+            font-style: italic;
+            line-height: 1.85;
+        }
+        .mind-gym-quote figcaption {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        .mind-gym-practice-note {
+            margin-top: 3rem;
+            padding: 1.5rem 2rem;
+            border: 1px solid var(--line);
+            border-radius: 1rem;
+            background: var(--bg);
+            line-height: 1.8;
+        }
+        @media (max-width: 1023px) {
+            .mind-gym-hero-grid, .mind-gym-story-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+            .mind-gym-hero-copy {
+                text-align: center;
+            }
+            .mind-gym-hero-copy h1 {
+                font-size: clamp(3.25rem, 8vw, 5rem);
+            }
+            .mind-gym-hero-intro, .mind-gym-jump-links {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .mind-gym-hero-actions {
+                justify-content: center;
+            }
+            .mind-gym-hero-art {
+                width: min(100%, 26rem);
+                margin: 0 auto;
+            }
+            .mind-gym-story-heading {
+                position: static;
+            }
+        }
+        @media (max-width: 479px) {
+            .mind-gym-hero {
+                padding-top: 7.5rem;
+            }
+            .mind-gym-hero-copy h1 {
+                font-size: clamp(2.75rem, 12vw, 3.5rem);
+            }
+            .mind-gym-hero-actions a, .mind-gym-hero-actions button {
+                width: 100%;
+            }
+            .mind-gym-quote {
+                padding: 1.25rem;
+            }
+        }
+        .mind-gym-hero a:focus-visible, .mind-gym-hero button:focus-visible {
+            outline: 2px solid #fdba74;
+            outline-offset: 5px;
+        }
+
         .nav-toggle {
             display: none;
             align-items: center;
@@ -210,7 +403,7 @@
             box-shadow: var(--shadow-soft);
             -webkit-appearance: none;
             appearance: none;
-            cursor: none;
+            cursor: pointer;
             flex-shrink: 0;
         }
 
@@ -360,7 +553,7 @@
             background: rgba(255,255,255,0.6);
             border: 1px solid rgba(17,24,39,0.1);
             color: var(--muted);
-            cursor: none;
+            cursor: pointer;
             transition: all 0.2s ease;
             white-space: nowrap;
         }
@@ -573,6 +766,7 @@
         }
 
         /* Reveal Animations (Scroll) */
+        /* Scroll-in animations disabled. Original rules preserved.
         .reveal-up {
             opacity: 0;
             transform: translateY(40px);
@@ -586,6 +780,7 @@
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
         .delay-400 { transition-delay: 400ms; }
+        */
 
         /* Spotlight Hover Effect */
         .spotlight-card {
@@ -707,15 +902,18 @@
             opacity: 1;
         }
     </style>
+  <link href="./shared/site.css?v=compact-1" rel="stylesheet">
+  <link href="./shared/home.css?v=faq-full-width-1" rel="stylesheet">
 </head>
-<body class="antialiased">
+<body class="antialiased sthir-site home-page">
 
     <div class="progress-bar" id="progress-bar"></div>
     <div class="noise"></div>
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
 
-    <!-- Navigation -->
+<!-- Preserved previous homepage navigation. Inner comment delimiters and existing entities are escaped.
+    &lt;!-- Navigation --&gt;
     <nav id="navbar" class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center">
         <a href="/" class="flex items-center gap-3 interactive">
             <img src="./images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'"/>
@@ -727,7 +925,7 @@
         <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-ink/80">
             <a href="./about/" class="hover:text-brand-ink transition-colors interactive">Sthir Story</a>
             <a href="./pathways/" class="hover:text-brand-ink transition-colors interactive">Pathways</a>
-            <a href="#sprints-directory" class="hover:text-brand-ink transition-colors interactive">Sprints</a>
+            &lt;!-- Temporarily disabled: Sprints link. <a href="#sprints-directory" class="hover:text-brand-ink transition-colors interactive">Sprints</a> --&gt;
             <a href="./blog/" class="hover:text-brand-ink transition-colors interactive">Blogs</a>
             <a href="#testimonials" class="hover:text-brand-ink transition-colors interactive">Testimonials</a>
             <a href="./contact/" class="hover:text-brand-ink transition-colors interactive">Contact</a>
@@ -742,7 +940,7 @@
             <div class="mobile-nav-links">
                 <a href="./about/" class="interactive">Sthir Story</a>
                 <a href="./pathways/" class="interactive">Pathways</a>
-                <a href="#sprints-directory" class="interactive">Sprints</a>
+                &lt;!-- Temporarily disabled: Sprints link. <a href="#sprints-directory" class="interactive">Sprints</a> --&gt;
                 <a href="./blog/" class="interactive">Blogs</a>
                 <a href="#testimonials" class="interactive">Testimonials</a>
                 <a href="./contact/" class="interactive">Contact</a>
@@ -750,8 +948,91 @@
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive mobile-nav-cta">Apply Now</a>
         </div>
     </nav>
+    -->
 
-    <!-- 1. Hero Section -->
+    <!-- Homepage navigation -->
+    <!-- Preserved previous navbar layout. Inner comments and existing entities are escaped.
+<nav id="navbar" class="reference-nav" aria-label="Main navigation">
+        <a href="#home" class="reference-brand interactive" aria-label="Sthir home">
+            <img src="./images/sthir-mark.svg" alt="" width="54" height="68">
+            <span class="reference-brand-copy"><span class="reference-brand-title">STHIR</span><span class="reference-brand-tagline">stillness in motion</span></span>
+        </a>
+        <div class="reference-nav-links">
+            <a href="#home" class="interactive">Home</a>
+            <a href="./about/" class="interactive">About</a>
+            <a href="#what-we-do" class="interactive">Approach</a>
+            <a href="./blog/" class="interactive">Sthir Reflections</a>
+        </div>
+        <button type="button" class="reference-nav-cta interactive" data-open-ai-tools aria-haspopup="dialog" aria-controls="ai-tools-dialog">Explore the sandbox</button>
+        <button id="homepage-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+        <div class="mobile-nav" id="mobile-nav">
+            <div class="mobile-nav-links">
+                <a href="#home" class="interactive">Home</a>
+                <a href="./about/" class="interactive">About</a>
+                <a href="#what-we-do" class="interactive">Approach</a>
+                <a href="./blog/" class="interactive">Sthir Reflections</a>
+                <a href="./pathways/" class="interactive">Pathways</a>
+                <a href="./contact/" class="interactive">Contact</a>
+            </div>
+            <button type="button" class="reference-mobile-cta interactive" data-open-ai-tools data-ai-return-focus="homepage-nav-toggle" aria-haspopup="dialog" aria-controls="ai-tools-dialog">Explore the sandbox</button>
+        </div>
+    </nav>
+  -->
+
+  <!-- Preserved previous menu. Inner comments and existing entities are escaped.
+<nav id="navbar" class="reference-nav" aria-label="Main navigation">
+    <a href="#home" class="reference-brand interactive" aria-label="Sthir home">
+      <img src="./images/sthir-mark.svg" alt="" width="48" height="60">
+      <span class="reference-brand-copy"><span class="reference-brand-title">STHIR</span><span class="reference-brand-tagline">stillness in motion</span></span>
+    </a>
+    <div class="reference-nav-links">
+      <a href="#home" class="interactive" aria-current="page">Home</a>
+      <a href="./about/" class="interactive">About</a>
+      <a href="./#what-we-do" class="interactive">Approach</a>
+      <a href="./blog/" class="interactive">Sthir Reflections</a>
+    </div>
+    <button type="button" class="reference-nav-cta interactive" data-open-ai-tools aria-haspopup="dialog" aria-controls="ai-tools-dialog">Explore the sandbox</button>
+    <button id="site-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-links">
+      <a href="#home" class="interactive" aria-current="page">Home</a>
+      <a href="./about/" class="interactive">About</a>
+      <a href="./#what-we-do" class="interactive">Approach</a>
+      <a href="./blog/" class="interactive">Sthir Reflections</a>
+      <a href="./pathways/" class="interactive">Pathways</a>
+      <a href="./contact/" class="interactive">Contact</a>
+      </div>
+      <button type="button" class="reference-mobile-cta interactive" data-open-ai-tools data-ai-return-focus="site-nav-toggle" aria-haspopup="dialog" aria-controls="ai-tools-dialog">Explore the sandbox</button>
+    </div>
+  </nav>
+  -->
+
+  <nav id="navbar" class="reference-nav" aria-label="Main navigation">
+    <a href="#home" class="reference-brand interactive" aria-label="Sthir home">
+      <img src="./images/sthir-mark.svg" alt="" width="48" height="60">
+      <span class="reference-brand-copy"><span class="reference-brand-title">STHIR</span><span class="reference-brand-tagline">stillness in motion</span></span>
+    </a>
+    <div class="reference-nav-links">
+      <a href="./about/" class="interactive">Sthir Story</a>
+      <a href="./pathways/" class="interactive">Pathways</a>
+      <a href="./blog/" class="interactive">Sthir Reflections</a>
+      <a href="./contact/" class="interactive">Contact</a>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="reference-nav-cta reference-apply-cta interactive">Apply Now</a>
+    <button id="site-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-links">
+      <a href="./about/" class="interactive">Sthir Story</a>
+      <a href="./pathways/" class="interactive">Pathways</a>
+      <a href="./blog/" class="interactive">Sthir Reflections</a>
+      <a href="./contact/" class="interactive">Contact</a>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="reference-mobile-cta reference-apply-cta interactive">Apply Now</a>
+    </div>
+  </nav>
+
+<!-- Preserved previous homepage hero. Inner comment delimiters are escaped.
+    &lt;!-- 1. Hero Section --&gt;
     <section class="hero-shell min-h-screen w-full flex flex-col items-center justify-center relative z-10 pt-24 pb-12">
         <div class="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12 flex flex-col items-center">
             <span class="hero-badge mb-8 interactive inline-flex text-brand-accent1 border-brand-accent1/30 bg-brand-accent1/10 shadow-[0_0_15px_rgba(202,168,233,0.15)]">
@@ -780,7 +1061,7 @@
             </div>
             
             <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16 w-full max-w-3xl mx-auto">
-                <!-- Button 1: Clarity Check -->
+                &lt;!-- Button 1: Clarity Check --&gt;
                 <div class="flex flex-col items-center w-full sm:w-1/2">
                     <button id="btn-open-clarity" class="story-button interactive w-full text-center text-sm md:text-base">
                         Take the 7-min Clarity Check
@@ -788,57 +1069,104 @@
                     <span class="text-[11px] text-brand-muted mt-3 font-medium tracking-wider uppercase opacity-80">(Find your design focus today)</span>
                 </div>
                 
-                <!-- Button 2: Sandbox Link -->
+                &lt;!-- Temporarily disabled: AI tools hero link. Inner comment delimiters are escaped.
+&lt;!-- Button 2: Sandbox Link --&gt;
                 <div class="flex flex-col items-center w-full sm:w-1/2">
                     <a href="#ai-sandbox" class="secondary-button interactive w-full text-center text-sm md:text-base">
                         Try the Sthir Tools
                     </a>
                     <span class="text-[11px] text-brand-muted mt-3 font-medium tracking-wider uppercase opacity-80">(Experience the method)</span>
                 </div>
+                --&gt;
             </div>
 
-            <!-- Scroll Indicator -->
+            &lt;!-- Scroll Indicator --&gt;
             <div class="flex flex-col items-center justify-center opacity-70 interactive cursor-pointer mt-8" onclick="document.getElementById('problem').scrollIntoView({behavior: 'smooth'})">
                 <span class="text-[10px] text-brand-muted mb-3 uppercase tracking-[0.2em] font-medium">Scroll to explore</span>
                 <svg class="w-6 h-6 animate-bounce text-brand-accent1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
             </div>
         </div>
     </section>
+    -->
 
-    <!-- Credibility Banner -->
-    <div class="border-y border-brand-surfaceLight/30 bg-brand-surface/40 backdrop-blur-md relative z-20 py-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-            <!-- Badge -->
-            <div class="flex-shrink-0 relative group">
-                <div class="absolute inset-0 bg-brand-accent1/20 blur-xl rounded-full group-hover:bg-brand-accent1/40 transition-colors"></div>
-                <img src="./images/dyl_badge.png" alt="Designing Your Life Certified Coach" class="relative h-32 md:h-40 w-auto drop-shadow-xl hover:scale-105 transition-transform duration-300 interactive" onerror="this.style.display='none'"/>
+<!-- Preserved previous Mind Gym hero. Inner comment delimiters and existing entities are escaped.
+    &lt;!-- 1. Hero: Sthir — A Mind Gym --&gt;
+    <section id="home" class="hero-shell mind-gym-hero relative z-10" aria-labelledby="hero-heading">
+        <div class="mind-gym-hero-grid">
+            <div class="mind-gym-hero-copy">
+                <span class="hero-badge mb-8 inline-flex text-brand-accent1 border-brand-accent1/30 bg-brand-accent1/10">Stillness in motion</span>
+                <h1 id="hero-heading" class="font-display font-medium tracking-tight text-brand-ink">
+                    Sthir <span class="mind-gym-hero-dash">—</span><br>
+                    <span class="text-brand-accent2">A Mind Gym</span>
+                </h1>
+                <p class="mind-gym-hero-intro text-brand-ink">Get to know yourself, question what you’re told, and make choices you can call your own.</p>
+                <div class="mind-gym-hero-actions">
+                    <button id="btn-open-clarity" class="story-button interactive" type="button">Take the 7-min Clarity Check</button>
+                    <a href="#offerings" class="secondary-button interactive">Find your way in</a>
+                </div>
+                <p class="text-brand-muted text-sm mt-4">A moment to pause. A place to begin.</p>
+                <nav class="mind-gym-jump-links" aria-label="Explore Sthir">
+                    <a href="#offerings" class="interactive"><span>Who?</span> Who we work with</a>
+                    <a href="#what-we-do" class="interactive"><span>What?</span> What we practise</a>
+                    <a href="./contact/#contact-form" class="interactive"><span>Where?</span> Start a conversation</a>
+                </nav>
             </div>
-            
-            <!-- Trust Points -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center md:text-left text-brand-muted text-sm font-medium">
-                <div class="flex items-center gap-2">
-                    <span class="text-brand-accent1 text-lg">✦</span>
-                    <span>Co-created across generations & research</span>
-                </div>
-                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
-                <div class="flex items-center gap-2">
-                    <span class="text-brand-accent2 text-lg">✦</span>
-                    <span>Rooted in Stanford’s Design Your Life Approach</span>
-                </div>
-                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
-                <div class="flex items-center gap-2">
-                    <span class="text-brand-accent3 text-lg">✦</span>
-                    <span>25+ years of real-world experience</span>
-                </div>
+            <figure class="mind-gym-hero-art">
+                <img src="./images/mind-gym-choice-map.svg" width="560" height="540" alt="Who? What? Where? Three questions connected by an exploratory path, with your own choices at the centre." fetchpriority="high">
+                <figcaption>Room to question. Space to explore.</figcaption>
+            </figure>
+        </div>
+        <a href="#mind-gym-story" class="mind-gym-scroll interactive">Scroll to explore <span aria-hidden="true">↓</span></a>
+    </section>
+    -->
+
+    <!-- Homepage hero, based on the supplied visual reference -->
+    <section id="home" class="reference-hero" aria-labelledby="hero-heading">
+        <img class="reference-hero-art" src="./images/hero-network.svg" width="1440" height="900" alt="" aria-hidden="true" fetchpriority="high">
+        <div class="reference-hero-content">
+            <p class="reference-hero-eyebrow">A sandbox for independent thinking</p>
+            <h1 id="hero-heading"><span>See beyond the noise.</span><span>Question the obvious.</span><span>Own your choices.</span></h1>
+            <p class="reference-hero-intro">For young minds ready to discover what matters, imagine<br class="reference-desktop-break"> what’s possible, and choose paths of their own making.</p>
+            <button type="button" id="open-clarity-hero" class="reference-hero-cta interactive" data-open-clarity aria-haspopup="dialog" aria-controls="clarity-modal">Take the 30-sec Clarity Check</button>
+            <div class="reference-hero-accent" aria-hidden="true"><span class="reference-accent-line"></span><span class="reference-accent-dot orange"></span><span class="reference-accent-dot red"></span><span class="reference-accent-dot yellow"></span></div>
+        </div>
+    </section>
+
+
+
+    <!-- The mind gym story -->
+    <section id="mind-gym-story" class="home-section bg-brand-surface relative z-10 border-b border-brand-surfaceLight/50" aria-labelledby="mind-gym-story-heading">
+        <div class="home-section-inner">
+            <!-- Previous section header. Inner comments and entities are escaped.
+<div class="mind-gym-story-heading reveal-up">
+                <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-4">Make room for your own point of view</span>
+                <h2 id="mind-gym-story-heading" class="text-4xl md:text-5xl font-display font-medium leading-tight text-brand-ink">Play it.<br><span class="text-brand-accent1">Prototype it.</span><br>Own it.</h2>
+                <div class="w-16 h-1 bg-brand-accent2 mt-8 rounded-full"></div>
+            </div>
+            -->
+            <header class="home-section-heading"><h2 id="mind-gym-story-heading" class="home-section-title">Why Sthir exists</h2><p class="home-section-intro">Play it. Prototype it. Own it.</p></header>
+            <div class="mind-gym-story-copy text-brand-muted">
+                <p class="mind-gym-story-lead text-brand-ink">Life doesn’t come with an answer key. Still, the systems we walk into seem to have plenty of opinions about what we should do next.</p>
+                <p>You may feel overwhelmed, labelled, or simply cringey about the expectations from people and systems around you. Some of you push back. Others eventually hand your choices to the environment: parents, peers, rankings, or the next least-resistant sensible, safe or popular option.</p>
+                <p>It’s easier said than done: “Make your own choices. Own them.” Living by this is another matter.</p>
+                <p>It asks you to form a point of view, explore possibilities, express your perspective and listen to how the world responds. It asks you to examine where your worldview aligns with others and where it doesn’t, and to stand by your choices while remaining open to what you learn along the way.</p>
+                <p>This isn’t a generational thing. Every generation has had to find its own way of growing up. But in a world of rapid change and competing opinions, building the <strong class="text-brand-accent1 font-semibold">discernment muscle</strong> has become all the more important.</p>
+                <p>Adulting is hard. Owning a choice is uncomfortable. It takes presence and deliberate effort to figure out who we are, where we belong and what matters to us. And we don’t always figure these things out by thinking alone. Most times, we discover them by playing, experimenting, questioning and engaging with the world.</p>
+                <p>As Viola Spolin reminds us, when we focus only on reaching a goal, we risk losing sight of the value of the process itself.</p>
+                <figure class="mind-gym-quote">
+                    <blockquote class="text-brand-ink">“It stands to reason that if we direct all our efforts towards reaching a goal, we stand in grave danger of losing everything on which we have based our daily activities. For when a goal is superimposed on an activity instead of evolving out of it, we often feel cheated when we reach it.”</blockquote>
+                    <figcaption class="text-brand-accent1">Viola Spolin</figcaption>
+                </figure>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- 2. The Problem Section -->
+    <!-- Temporarily disabled: Here is what you can notice section. Inner comment delimiters and existing entities are escaped.
+    &lt;!-- 2. The Problem Section --&gt;
     <section id="problem" class="py-24 px-6 bg-brand-bg relative z-10 border-b border-brand-surfaceLight/20 overflow-hidden">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
-            <!-- Left Big Block (Sticky) -->
+            &lt;!-- Left Big Block (Sticky) --&gt;
             <div class="lg:col-span-5 lg:sticky lg:top-32 reveal-up">
                 <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-4">Here is what you can notice</span>
                 <h2 class="text-3xl md:text-5xl font-display font-medium leading-tight mb-6 text-brand-ink">
@@ -851,10 +1179,10 @@
                 </p>
             </div>
 
-            <!-- Right: 4 Problem Areas -->
+            &lt;!-- Right: 4 Problem Areas --&gt;
             <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6 mt-8 lg:mt-0">
                 
-                <!-- Card 1 -->
+                &lt;!-- Card 1 --&gt;
                 <div class="glass-card spotlight-card p-8 flex flex-col relative overflow-hidden group hover:border-brand-accent1/40 transition-colors reveal-up delay-100" style="--spotlight-color: rgba(202, 168, 233, 0.15);">
                     <div class="flip-grid">
                         <div class="flip-front">
@@ -870,7 +1198,7 @@
                     </div>
                 </div>
                 
-                <!-- Card 2 -->
+                &lt;!-- Card 2 --&gt;
                 <div class="glass-card spotlight-card p-8 flex flex-col relative overflow-hidden group hover:border-brand-accent2/40 transition-colors lg:translate-y-6 reveal-up delay-200" style="--spotlight-color: rgba(249, 115, 22, 0.15);">
                     <div class="flip-grid">
                         <div class="flip-front">
@@ -886,7 +1214,7 @@
                     </div>
                 </div>
                 
-                <!-- Card 3 -->
+                &lt;!-- Card 3 --&gt;
                 <div class="glass-card spotlight-card p-8 flex flex-col relative overflow-hidden group hover:border-brand-accent3/40 transition-colors reveal-up delay-300" style="--spotlight-color: rgba(239, 68, 68, 0.15);">
                     <div class="flip-grid">
                         <div class="flip-front">
@@ -902,7 +1230,7 @@
                     </div>
                 </div>
                 
-                <!-- Card 4 -->
+                &lt;!-- Card 4 --&gt;
                 <div class="glass-card spotlight-card p-8 flex flex-col relative overflow-hidden group hover:border-brand-muted/40 transition-colors lg:translate-y-6 reveal-up delay-400" style="--spotlight-color: rgba(216, 199, 228, 0.15);">
                     <div class="flip-grid">
                         <div class="flip-front">
@@ -921,8 +1249,10 @@
             </div>
         </div>
     </section>
+    -->
 
-    <!-- TRANSITION / BRIDGE SECTION -->
+<!-- Preserved previous bridge section. Inner comment delimiters are escaped.
+    &lt;!-- TRANSITION / BRIDGE SECTION --&gt;
     <section class="py-32 px-6 bg-brand-surface relative z-10 text-center flex flex-col items-center justify-center border-b border-brand-surfaceLight/20">
         <div class="max-w-4xl mx-auto reveal-up">
             <h2 class="text-3xl md:text-5xl font-display font-medium mb-6 text-brand-ink leading-tight">
@@ -939,41 +1269,69 @@
                 </p>
             </div>
             
-            <div class="mt-16 flex flex-col items-center opacity-60">
+            &lt;!-- Temporarily disabled: How it works introduction. Inner comment delimiters are escaped.
+<div class="mt-16 flex flex-col items-center opacity-60">
                 <span class="text-sm text-brand-muted mb-2 uppercase tracking-[0.2em] font-bold">How it works</span>
                 <div class="w-[1px] h-16 bg-gradient-to-b from-brand-accent1 to-transparent"></div>
             </div>
+            --&gt;
+        </div>
+    </section>
+    -->
+
+    <!-- What we do -->
+    <section id="what-we-do" class="home-section bg-brand-surface relative z-10 border-b border-brand-surfaceLight/50" aria-labelledby="what-we-do-heading">
+        <div class="home-section-inner">
+            <!-- Previous section header. Inner comments and entities are escaped.
+<div class="max-w-4xl mb-12 reveal-up">
+                <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-4">What we do</span>
+                <h2 id="what-we-do-heading" class="text-3xl md:text-5xl font-display font-medium leading-tight text-brand-ink">Sthir is a mind gym for practising and strengthening your <span class="text-brand-accent1">discernment.</span></h2>
+            </div>
+            -->
+            <header class="home-section-heading"><h2 id="what-we-do-heading" class="home-section-title">What we do</h2><p class="home-section-intro">Sthir is a mind gym for practising and strengthening your discernment.</p></header>
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 text-lg text-brand-muted leading-relaxed">
+                <p>In small groups, you work through real-life dilemmas, test ideas, challenge assumptions, weigh trade-offs and learn alongside others. You practise making choices, seeing their consequences and finding your feet when you need to rethink your approach.</p>
+                <p>You get to experiment with how you show up, what you stand for and how you respond to the world, before the stakes get higher in your career, at work and in the life you choose to lead.</p>
+            </div>
+            <!-- Temporarily disabled: reflection practice note and secondary clarity check.
+            <div class="mind-gym-practice-note reveal-up">
+                <span class="text-brand-accent1 font-semibold">Reflection, play, and design thinking.</span>
+                <p class="text-brand-muted">Build grounded momentum and self-trust one clear decision at a time.</p>
+                <button id="btn-open-clarity" type="button" class="secondary-button interactive mt-4" data-open-clarity="">Take the 30-sec Clarity Check</button>
+            </div>
+            -->
         </div>
     </section>
 
-    <!-- STORY OF HOW STHIR HELPS (SCROLLYTELLING) -->
+    <!-- Temporarily disabled: How it works scenes. Inner comment delimiters are escaped.
+&lt;!-- STORY OF HOW STHIR HELPS (SCROLLYTELLING) --&gt;
 
-    <!-- SCENE 1: Phase 01 (Pause & Notice / The Problem) -->
+    &lt;!-- SCENE 1: Phase 01 (Pause & Notice / The Problem) --&gt;
     <section class="story-section" id="scene-1">
         <div class="sticky-view">
             <div class="svg-scene" id="svg-scene-1">
                 <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
-                    <!-- Chaos / Autopilot Lines -->
+                    &lt;!-- Chaos / Autopilot Lines --&gt;
                     <g id="s1-chaos" stroke="#6d35a0" stroke-width="3" fill="none" stroke-linecap="round">
                         <path d="M-100,200 Q400,50 800,300 T1100,800" />
                         <path d="M-50,800 Q300,900 700,400 T1200,100" />
                         <path d="M200,-100 Q400,600 900,1100" />
                         <path d="M800,-50 Q500,400 100,900" />
-                        <!-- Nodes in the chaos -->
+                        &lt;!-- Nodes in the chaos --&gt;
                         <circle cx="300" cy="400" r="8" fill="#d8c7e4" />
                         <circle cx="700" cy="600" r="12" fill="#d8c7e4" />
                         <circle cx="200" cy="700" r="6" fill="#d8c7e4" />
                         <circle cx="800" cy="300" r="10" fill="#d8c7e4" />
                     </g>
                     
-                    <!-- The Magnifying Glass -->
+                    &lt;!-- The Magnifying Glass --&gt;
                     <g id="s1-lens" transform="translate(500,500) scale(0)">
-                        <!-- Lens Ring -->
+                        &lt;!-- Lens Ring --&gt;
                         <circle cx="0" cy="0" r="160" fill="#2b0f3a" fill-opacity="0.8" stroke="#f97316" stroke-width="12" />
-                        <!-- Lens Handle -->
+                        &lt;!-- Lens Handle --&gt;
                         <line x1="113" y1="113" x2="280" y2="280" stroke="#f97316" stroke-width="24" stroke-linecap="round" />
                         
-                        <!-- Focused / Objective Center -->
+                        &lt;!-- Focused / Objective Center --&gt;
                         <circle id="s1-focus" cx="0" cy="0" r="30" fill="#caa8e9" opacity="0" />
                         <circle cx="0" cy="0" r="80" fill="none" stroke="#caa8e9" stroke-width="2" stroke-dasharray="10 10" opacity="0.5" />
                         <path d="M-100,0 L100,0 M0,-100 L0,100" stroke="#caa8e9" stroke-width="1" opacity="0.3" />
@@ -995,33 +1353,33 @@
         </div>
     </section>
 
-    <!-- SCENE 2: Phase 02 (Reframe & Redesign / Methodology) -->
+    &lt;!-- SCENE 2: Phase 02 (Reframe & Redesign / Methodology) --&gt;
     <section class="story-section" id="scene-2">
         <div class="sticky-view">
             <div class="svg-scene" id="svg-scene-2">
                 <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
-                    <!-- Design Framework Grid (DYL Worksheet vibe) -->
+                    &lt;!-- Design Framework Grid (DYL Worksheet vibe) --&gt;
                     <g id="s2-grid" stroke="#6d35a0" stroke-width="1.5" fill="none" opacity="0">
-                        <!-- Horizontal Lines -->
+                        &lt;!-- Horizontal Lines --&gt;
                         <line x1="100" y1="250" x2="900" y2="250" />
                         <line x1="100" y1="500" x2="900" y2="500" />
                         <line x1="100" y1="750" x2="900" y2="750" />
-                        <!-- Vertical Lines -->
+                        &lt;!-- Vertical Lines --&gt;
                         <line x1="333" y1="100" x2="333" y2="900" />
                         <line x1="666" y1="100" x2="666" y2="900" />
-                        <!-- Accent Nodes on Grid -->
+                        &lt;!-- Accent Nodes on Grid --&gt;
                         <circle cx="333" cy="250" r="6" fill="#caa8e9" />
                         <circle cx="666" cy="500" r="6" fill="#f97316" />
                         <circle cx="333" cy="750" r="6" fill="#ef4444" />
                     </g>
                     
-                    <!-- Signboard -->
+                    &lt;!-- Signboard --&gt;
                     <g id="s2-sign" transform="translate(500, 1200)">
-                        <!-- Pole -->
+                        &lt;!-- Pole --&gt;
                         <rect x="-8" y="-300" width="16" height="350" fill="#d8c7e4" />
-                        <!-- Sign Shape -->
+                        &lt;!-- Sign Shape --&gt;
                         <path d="M-180,-320 L140,-320 L180,-260 L140,-200 L-180,-200 Z" fill="#f97316" />
-                        <!-- Text -->
+                        &lt;!-- Text --&gt;
                         <text x="-20" y="-245" fill="#fff7ef" font-family="Poppins, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" letter-spacing="4">YOU ARE HERE</text>
                     </g>
                 </svg>
@@ -1041,50 +1399,50 @@
         </div>
     </section>
 
-    <!-- SCENE 3: Abstract Isometric Ascent -->
+    &lt;!-- SCENE 3: Abstract Isometric Ascent --&gt;
     <section class="story-section" id="scene-3">
         <div class="sticky-view">
             <div class="svg-scene" id="svg-scene-3">
                 <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
                     
-                    <!-- Abstract Isometric Staircase (Lowered to keep character in view) -->
+                    &lt;!-- Abstract Isometric Staircase (Lowered to keep character in view) --&gt;
                     <g id="iso-staircase">
-                        <!-- Step 3 (Top/Back) -->
+                        &lt;!-- Step 3 (Top/Back) --&gt;
                         <g class="iso-stair opacity-0">
-                            <!-- Riser -->
+                            &lt;!-- Riser --&gt;
                             <rect x="650" y="450" width="350" height="550" fill="#e47032" />
-                            <!-- Tread -->
+                            &lt;!-- Tread --&gt;
                             <rect x="650" y="450" width="350" height="24" fill="#da3e35" />
                         </g>
-                        <!-- Step 2 (Middle) -->
+                        &lt;!-- Step 2 (Middle) --&gt;
                         <g class="iso-stair opacity-0">
-                            <!-- Riser -->
+                            &lt;!-- Riser --&gt;
                             <rect x="350" y="600" width="300" height="400" fill="#e47032" />
-                            <!-- Tread -->
+                            &lt;!-- Tread --&gt;
                             <rect x="350" y="600" width="300" height="24" fill="#da3e35" />
                         </g>
-                        <!-- Step 1 (Bottom/Front) -->
+                        &lt;!-- Step 1 (Bottom/Front) --&gt;
                         <g class="iso-stair opacity-0">
-                            <!-- Riser -->
+                            &lt;!-- Riser --&gt;
                             <rect x="50" y="750" width="300" height="250" fill="#e47032" />
-                            <!-- Tread -->
+                            &lt;!-- Tread --&gt;
                             <rect x="50" y="750" width="300" height="24" fill="#da3e35" />
                         </g>
                     </g>
                     
-                    <!-- Abstract Character Geometry -->
+                    &lt;!-- Abstract Character Geometry --&gt;
                     <g id="s3-character" transform="translate(200, 730)" opacity="0">
                         <g id="s3-character-mesh">
-                            <!-- The sweeping splash base -->
+                            &lt;!-- The sweeping splash base --&gt;
                             <path d="M -80,20 Q 0,-15 80,20 Q 0,5 -80,20 Z" fill="#faedb5" />
-                            <!-- The leaf-shaped torso pointing up-right -->
+                            &lt;!-- The leaf-shaped torso pointing up-right --&gt;
                             <path d="M 0,0 C -50,-50 -20,-140 30,-150 C 25,-80 15,-30 0,0 Z" fill="#faedb5" />
-                            <!-- The floating head -->
+                            &lt;!-- The floating head --&gt;
                             <circle cx="35" cy="-185" r="22" fill="#faedb5" />
                         </g>
                     </g>
 
-                    <!-- Finish Radiant Burst -->
+                    &lt;!-- Finish Radiant Burst --&gt;
                     <g id="s3-finish-burst" transform="translate(800, 430) scale(0)" opacity="0">
                         <circle cx="0" cy="0" r="280" fill="#faedb5" opacity="0.05" />
                         <circle cx="0" cy="0" r="160" fill="#faedb5" opacity="0.1" />
@@ -1106,9 +1464,10 @@
             </div>
         </div>
     </section>
+    -->
 
-
-    <!-- NEW SECTION: AI Sandbox (Upgraded) -->
+    <!-- Temporarily disabled: Sthir AI Tools. Inner comment delimiters are escaped.
+&lt;!-- NEW SECTION: AI Sandbox (Upgraded) --&gt;
     <section id="ai-sandbox" class="py-24 px-6 bg-brand-bg relative z-10 border-t border-brand-surfaceLight/20">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal-up">
@@ -1124,23 +1483,23 @@
             
             <div class="glass-card overflow-hidden flex flex-col md:flex-row reveal-up delay-100 min-h-[500px]">
                 
-                <!-- Left Side: Controls & Input -->
+                &lt;!-- Left Side: Controls & Input --&gt;
                 <div class="w-full md:w-5/12 bg-white/50 border-r border-brand-surfaceLight/50 p-6 md:p-8 flex flex-col">
                     
-                    <!-- Tab Navigation -->
+                    &lt;!-- Tab Navigation --&gt;
                     <div class="flex gap-6 mb-8 border-b border-brand-surfaceLight/50 pb-2">
                         <button id="tab-idea" class="ai-tab-btn interactive active pb-2 text-sm uppercase tracking-wider font-bold">Test an Idea</button>
                         <button id="tab-lens" class="ai-tab-btn interactive pb-2 text-sm uppercase tracking-wider font-bold">The Lens</button>
                     </div>
 
-                    <!-- Idea Tool Input Area -->
+                    &lt;!-- Idea Tool Input Area --&gt;
                     <div id="panel-idea" class="flex-grow flex flex-col">
                         <p class="text-brand-ink font-medium mb-2">What's on your mind?</p>
                         <p class="text-brand-muted text-sm mb-4">Share a career pivot, a project idea, or a new direction. Get honest feedback on the strength, the hidden assumption, and a way to test it.</p>
                         
                         <textarea id="ai-idea-input" rows="5" class="w-full bg-white/80 border border-brand-surfaceLight rounded-xl p-4 text-sm text-brand-ink focus:outline-none focus:border-brand-accent1 focus:ring-1 focus:ring-brand-accent1/30 mb-4 custom-scrollbar resize-none interactive transition-all" placeholder="E.g., I'm thinking about leaving my corporate job to start a boutique design agency..."></textarea>
                         
-                        <!-- Quick Prompts -->
+                        &lt;!-- Quick Prompts --&gt;
                         <div class="mb-6">
                             <span class="text-xs text-brand-muted uppercase tracking-widest font-bold block mb-2">Quick Prompts</span>
                             <div class="flex flex-wrap gap-2">
@@ -1153,14 +1512,14 @@
                         <button id="btn-run-idea" class="story-button w-full mt-auto interactive shadow-lg">Get Feedback</button>
                     </div>
 
-                    <!-- Lens Tool Input Area (Hidden by default) -->
+                    &lt;!-- Lens Tool Input Area (Hidden by default) --&gt;
                     <div id="panel-lens" class="flex-grow flex flex-col hidden">
                         <p class="text-brand-ink font-medium mb-2">What feels stuck?</p>
                         <p class="text-brand-muted text-sm mb-4">Describe a situation where you feel confused or overwhelmed. We'll give you one powerful question to reframe it.</p>
                         
                         <textarea id="ai-lens-input" rows="5" class="w-full bg-white/80 border border-brand-surfaceLight rounded-xl p-4 text-sm text-brand-ink focus:outline-none focus:border-brand-accent2 focus:ring-1 focus:ring-brand-accent2/30 mb-4 custom-scrollbar resize-none interactive transition-all" placeholder="E.g., I have three good job offers but none of them feel 'right', and I'm paralyzed..."></textarea>
                         
-                        <!-- Quick Prompts -->
+                        &lt;!-- Quick Prompts --&gt;
                         <div class="mb-6">
                             <span class="text-xs text-brand-muted uppercase tracking-widest font-bold block mb-2">Quick Prompts</span>
                             <div class="flex flex-wrap gap-2">
@@ -1173,9 +1532,9 @@
                     </div>
                 </div>
 
-                <!-- Right Side: Response Area -->
+                &lt;!-- Right Side: Response Area --&gt;
                 <div class="w-full md:w-7/12 p-6 md:p-10 flex flex-col relative bg-[#fdfaf6]">
-                    <!-- Decorative Background -->
+                    &lt;!-- Decorative Background --&gt;
                     <div class="absolute inset-0 overflow-hidden pointer-events-none">
                         <div class="absolute -top-24 -right-24 w-64 h-64 bg-brand-accent1/5 rounded-full blur-3xl"></div>
                         <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-brand-accent2/5 rounded-full blur-3xl"></div>
@@ -1186,39 +1545,45 @@
                         <span class="text-xs uppercase tracking-widest font-bold text-brand-muted">Sthir Guide</span>
                     </div>
 
-                    <!-- Idle State -->
+                    &lt;!-- Idle State --&gt;
                     <div id="ai-idle" class="flex-grow flex flex-col items-center justify-center text-center relative z-10 opacity-60">
                         <svg class="w-12 h-12 text-brand-surfaceLight mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
                         <p class="text-brand-muted text-sm max-w-xs">Share your thoughts on the left, and I will help you process them here.</p>
                     </div>
 
-                    <!-- Loading State -->
+                    &lt;!-- Loading State --&gt;
                     <div id="ai-loading" class="hidden flex-grow flex flex-col items-center justify-center text-center relative z-10">
                         <svg class="animate-spin h-8 w-8 text-brand-accent1 mb-4" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                         <p class="text-brand-ink text-sm font-medium animate-pulse">Filtering the noise...</p>
                     </div>
 
-                    <!-- Result State -->
+                    &lt;!-- Result State --&gt;
                     <div id="ai-result" class="hidden flex-grow relative z-10 overflow-y-auto custom-scrollbar pr-2 text-brand-ink leading-relaxed text-lg">
-                        <!-- Content injected via JS with typing effect -->
+                        &lt;!-- Content injected via JS with typing effect --&gt;
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    -->
 
-    <!-- NEW SECTION: Core Offerings (Paths & Sprints separated visually) -->
-    <section id="offerings" class="py-24 px-6 bg-brand-surface relative z-10 border-t border-brand-surfaceLight/50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal-up">
+    <!-- Core Offerings: Individuals and Institutions -->
+    <section id="offerings" class="home-section bg-brand-surface relative z-10 border-t border-brand-surfaceLight/50" aria-labelledby="offerings-heading">
+        <div class="home-section-inner">
+            <!-- Previous section header. Inner comments and entities are escaped.
+<div class="text-center mb-16 reveal-up">
                 <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-3">How to work with us</span>
-                <h2 class="text-3xl md:text-5xl font-display font-medium mb-4 text-brand-ink">Your next chapter begins here.</h2>
-                <p class="text-brand-muted text-lg max-w-2xl mx-auto">Whether you need to zoom in on a single decision, or zoom out to map your next decade, we have a structure for you.</p>
+                <h2 class="text-3xl md:text-5xl font-display font-medium mb-4 text-brand-ink">Who we work with</h2>
+                &lt;!-- Previous introduction: Whether you need to zoom in on a single decision, or zoom out to map your next decade, we have a structure for you. --&gt;
+                <p class="text-brand-muted text-lg max-w-2xl mx-auto">Explore Sthir Pathways for yourself, or connect with us to bring Sthir to your institution.</p>
             </div>
+            -->
+            <header class="home-section-heading"><h2 id="offerings-heading" class="home-section-title">Who we work with</h2><p class="home-section-intro">Explore Sthir Pathways for yourself, or connect with us to bring Sthir to your institution.</p></header>
             
             <div class="grid lg:grid-cols-2 gap-8 items-stretch">
                 
-                <!-- Sprints Card (Short Term) -->
+                <!-- Temporarily disabled: Sthir Sprints offering. Inner comment delimiters are escaped.
+&lt;!-- Sprints Card (Short Term) --&gt;
                 <div class="glass-card flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-accent2/10 transition-all duration-500 reveal-up delay-100 border-t-4 border-t-brand-accent2">
                     <div class="p-8 md:p-12 flex flex-col flex-grow z-10">
                         <div class="w-12 h-12 rounded-full bg-brand-accent2/10 text-brand-accent2 flex items-center justify-center mb-6">
@@ -1246,20 +1611,23 @@
                         
                         <a href="#sprints-directory" class="secondary-button w-full sm:w-auto text-center self-start interactive hover:!bg-brand-accent2 hover:!text-white hover:!border-brand-accent2">View Upcoming Sprints</a>
                     </div>
-                    <!-- Background Accent -->
+                    &lt;!-- Background Accent --&gt;
                     <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-accent2/5 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-accent2/10 transition-colors duration-500"></div>
                 </div>
+                -->
 
-                <!-- Pathways Card (Long Term) -->
-                <div class="glass-card flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-accent1/10 transition-all duration-500 reveal-up delay-200 border-t-4 border-t-brand-accent1">
+                <!-- Individuals: Sthir Pathways -->
+                <div class="glass-card flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-accent1/10 transition-all duration-500 border-t-4 border-t-brand-accent1">
                     <div class="p-8 md:p-12 flex flex-col flex-grow z-10">
                         <div class="w-12 h-12 rounded-full bg-brand-accent1/10 text-brand-accent1 flex items-center justify-center mb-6">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
                         </div>
-                        <h3 class="text-3xl font-display mb-3 text-brand-ink">Sthir Pathways</h3>
+                        <h3 class="home-card-title">Individuals at a crossroads</h3>
+                        <p class="text-xl font-display mb-3 text-brand-ink">Sthir Pathways</p>
                         <p class="text-brand-accent1 font-bold tracking-widest uppercase text-xs mb-6">Zoom Out • 4 to 8 Weeks</p>
                         
-                        <p class="text-brand-muted text-lg leading-relaxed mb-8">Comprehensive life-design cohorts. Best for navigating larger life transitions, understanding your core identity, and designing multiple viable futures.</p>
+                        <!-- Previous Pathways description: Comprehensive life-design cohorts. Best for navigating larger life transitions, understanding your core identity, and designing multiple viable futures. -->
+                        <p class="text-brand-muted text-lg leading-relaxed mb-8">For those facing a significant next choice, questioning the path they’re on or seeking better alignment between their life view and their work view. A space to pause, explore possibilities and make choices they can own.</p>
                         
                         <ul class="space-y-4 mb-10 flex-grow">
                             <li class="flex items-start gap-3 text-sm text-brand-ink">
@@ -1282,11 +1650,45 @@
                     <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-accent1/5 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-accent1/10 transition-colors duration-500"></div>
                 </div>
 
+                <!-- Institutions: Partnerships and collaborations -->
+                <div class="glass-card flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-accent2/10 transition-all duration-500 border-t-4 border-t-brand-accent2">
+                    <div class="p-8 md:p-12 flex flex-col flex-grow z-10">
+                        <div class="w-12 h-12 rounded-full bg-brand-accent2/10 text-brand-accent2 flex items-center justify-center mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4M9 9h1m4 0h1m-6 4h1m4 0h1"></path></svg>
+                        </div>
+                        <h3 class="home-card-title">Educational institutions</h3>
+                        <p class="text-xl font-display mb-3 text-brand-ink">Experiential programmes</p>
+                        <p class="text-brand-accent2 font-bold tracking-widest uppercase text-xs mb-6">Collaborations &amp; Partnerships</p>
+
+                        <!-- Previous institutions description: Help your students or community find clarity and direction. Connect with us to explore how Sthir can support the people at your institution. -->
+                        <p class="text-brand-muted text-lg leading-relaxed mb-8">Experiential programmes that complement academic learning, skill development and leadership education by giving young adults space to practise judgement, perspective-taking, decision-making and navigating uncertainty.</p>
+
+                        <ul class="space-y-4 mb-10 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-brand-ink">
+                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Schools, colleges, and learning communities</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-brand-ink">
+                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Judgement, perspective-taking, and decision-making</span>
+                            </li>
+                            <li class="flex items-start gap-3 text-sm text-brand-ink">
+                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                <span>Space to practise navigating uncertainty</span>
+                            </li>
+                        </ul>
+
+                        <a href="./contact/#contact-form" class="secondary-button w-full sm:w-auto text-center self-start interactive hover:!bg-brand-accent2 hover:!text-white hover:!border-brand-accent2">Get in Touch</a>
+                    </div>
+                    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-accent2/5 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-accent2/10 transition-colors duration-500"></div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Sprints Directory (Masterclasses) -->
+    <!-- Temporarily disabled: Sthir Sprints directory. Inner comment delimiters are escaped.
+&lt;!-- Sprints Directory (Masterclasses) --&gt;
     <section id="sprints-directory" class="py-24 px-6 bg-brand-surface relative z-10 border-t border-brand-surfaceLight">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal-up">
@@ -1295,7 +1697,7 @@
                 <p class="text-brand-muted text-lg max-w-2xl mx-auto">Targeted, immersive deep-dives designed to support specific transitions in your life and career. Design your way forward.</p>
             </div>
             
-            <!-- Upcoming Sprints -->
+            &lt;!-- Upcoming Sprints --&gt;
             <h3 class="text-2xl font-display mb-8 text-brand-ink border-b border-brand-surfaceLight pb-4 flex items-center gap-3 reveal-up delay-100">
                 <span class="w-2 h-2 rounded-full bg-brand-accent2 animate-pulse"></span> Upcoming Live Sprints
             </h3>
@@ -1305,7 +1707,7 @@
                 </div>
             </div>
 
-            <!-- Past/On-Demand Sprints -->
+            &lt;!-- Past/On-Demand Sprints --&gt;
             <h3 class="text-2xl font-display mb-8 text-brand-ink border-b border-brand-surfaceLight pb-4 flex items-center gap-3 reveal-up delay-100">
                 <svg class="w-5 h-5 text-brand-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 
                 On-Demand Sprints
@@ -1317,15 +1719,19 @@
             </div>
         </div>
     </section>
+    -->
 
     <!-- 6. Testimonials Section -->
-    <section id="testimonials" class="py-24 bg-brand-bg relative z-10 overflow-hidden border-t border-brand-surfaceLight">
-        <div class="text-center px-6 mb-16 reveal-up">
+    <section id="testimonials" class="home-section bg-brand-bg relative z-10 overflow-hidden border-t border-brand-surfaceLight" aria-labelledby="testimonials-heading">
+        <!-- Previous section header. Inner comments and entities are escaped.
+<div class="text-center px-6 mb-16 reveal-up">
             <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-3">What people feel after Sthir</span>
             <h2 class="text-3xl md:text-5xl font-display font-medium">Calmer. Clearer. More able to move.</h2>
         </div>
+            -->
+            <header class="home-section-heading"><h2 id="testimonials-heading" class="home-section-title">What participants say</h2><p class="home-section-intro">Experiences shared by people who have practised with Sthir.</p></header>
 
-        <div class="marquee-container interactive reveal-up delay-200" id="testimonial-wrapper">
+        <div class="marquee-container interactive" id="testimonial-wrapper">
             <!-- Set 1 -->
             <div class="marquee-content" id="testimonial-set-1">
                 <div class="glass-card p-8 w-[350px] md:w-[450px] flex-shrink-0 flex flex-col justify-between">
@@ -1377,30 +1783,62 @@
         </div>
     </section>
 
+    <!-- Credibility Banner -->
+    <div class="home-credibility-band border-y border-brand-surfaceLight/30 bg-brand-surface/40 backdrop-blur-md relative z-20 py-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+            <!-- Badge -->
+            <div class="flex-shrink-0 relative group">
+                <div class="absolute inset-0 bg-brand-accent1/20 blur-xl rounded-full group-hover:bg-brand-accent1/40 transition-colors"></div>
+                <img src="./images/dyl_badge.png" alt="Designing Your Life Certified Coach" class="relative h-32 md:h-40 w-auto drop-shadow-xl hover:scale-105 transition-transform duration-300 interactive" onerror="this.style.display='none'"/>
+            </div>
+
+            <!-- Trust Points -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center md:text-left text-brand-muted text-sm font-medium">
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent1 text-lg">✦</span>
+                    <span>Co-created across generations & research</span>
+                </div>
+                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent2 text-lg">✦</span>
+                    <span>Rooted in Stanford’s Design Your Life Approach</span>
+                </div>
+                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent3 text-lg">✦</span>
+                    <span>25+ years of real-world experience</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- 7. FAQ / About Section -->
-    <section id="about" class="py-24 px-6 bg-brand-surface relative z-10 border-t border-brand-surfaceLight">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16 reveal-up">
+    <section id="about" class="home-section bg-brand-surface relative z-10 border-t border-brand-surfaceLight" aria-labelledby="faq-heading">
+        <div class="home-section-inner">
+            <!-- Previous section header. Inner comments and entities are escaped.
+<div class="text-center mb-16 reveal-up">
                 <span class="text-brand-accent1 text-sm tracking-[0.2em] font-bold uppercase block mb-4">If you are wondering whether Sthir is for you</span>
                 <h2 class="text-3xl md:text-5xl font-display font-medium mb-6">FAQ</h2>
                 <p class="text-brand-muted text-lg md:text-xl max-w-2xl mx-auto">Sthir is built for people who are ready for calm, practical support in understanding what is true and deciding what to do next.</p>
             </div>
+            -->
+            <header class="home-section-heading"><h2 id="faq-heading" class="home-section-title">Frequently asked questions</h2><p class="home-section-intro">Learn what Sthir is, what you practise, and what you can take into everyday life.</p></header>
 
-            <div class="reveal-up delay-200">
+            <div class="home-faq-list">
                 <details class="faq-accordion interactive" open>
                     <summary>
-                        What Sthir is
+                        What is Sthir?
                         <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="faq-body">
-                        <strong class="text-brand-accent3 block mb-2 font-display text-lg">A life design space for people in transition</strong>
+                        <strong class="text-brand-accent3 block mb-2 font-display text-lg">A mind gym for practising discernment</strong>
                         <p class="text-brand-muted leading-relaxed">Sthir blends coaching, design thinking, and reflective tools to help people navigate questions around work, identity, leadership, and direction with more honesty.</p>
                     </div>
                 </details>
 
                 <details class="faq-accordion interactive">
                     <summary>
-                        What it helps unlock
+                        What can Sthir help me with?
                         <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="faq-body">
@@ -1411,7 +1849,7 @@
 
                 <details class="faq-accordion interactive">
                     <summary>
-                        What is in it for me
+                        What will I take away?
                         <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="faq-body">
@@ -1422,7 +1860,7 @@
 
                 <details class="faq-accordion interactive">
                     <summary>
-                        What others feel after it
+                        How do people feel after Sthir?
                         <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </summary>
                     <div class="faq-body">
@@ -1435,7 +1873,8 @@
     </section>
 
     <!-- 8. Footer -->
-    <footer id="contact" class="bg-brand-bg border-t border-brand-surfaceLight pt-20 pb-10 px-6 relative z-10">
+    <!-- Preserved previous contact layout. Inner comments and existing entities are escaped.
+<footer id="contact" class="bg-brand-bg border-t border-brand-surfaceLight pt-20 pb-10 px-6 relative z-10">
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 mb-16">
             <div>
                 <a href="/" class="flex items-center gap-3 mb-6 interactive inline-flex">
@@ -1448,8 +1887,8 @@
                 <div class="flex gap-6 mt-8">
                     <a href="#about" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sthir Story</a>
                     <a href="./pathways/" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Pathways</a>
-                    <a href="#sprints-directory" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sprints</a>
-                    <a href="./blog/" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Blogs</a>
+                    &lt;!-- Temporarily disabled: Sprints link. <a href="#sprints-directory" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sprints</a> --&gt;
+                    <a href="./blog/" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sthir Reflections</a>
                     <a href="#testimonials" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Testimonials</a>
                     <a href="#contact" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Contact</a>
                 </div>
@@ -1469,9 +1908,91 @@
             <p class="text-brand-muted text-xs uppercase tracking-widest">© 2026 Sthir. All Rights Reserved.</p>
         </div>
     </footer>
+  -->
+
+  <footer id="contact" class="site-footer-home">
+    <div class="site-footer-home-inner">
+      <div>
+        <a href="./" class="reference-brand interactive" aria-label="Sthir home">
+      <img src="./images/sthir-mark.svg" alt="" width="48" height="60">
+      <span class="reference-brand-copy"><span class="reference-brand-title">STHIR</span><span class="reference-brand-tagline">stillness in motion</span></span>
+    </a>
+        <p class="site-footer-brand-copy">A mind gym for independent thinking.<br>Play it. Prototype it. Own it.</p>
+        <nav class="site-footer-nav" aria-label="Footer navigation">
+          <a href="./about/">Sthir Story</a>
+          <a href="./pathways/">Pathways</a>
+          <a href="./blog/">Sthir Reflections</a>
+          <a href="./#testimonials">Testimonials</a>
+          <a href="./contact/">Contact</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener">Apply Now</a>
+        </nav>
+      </div>
+      <div class="glass-card site-footer-card">
+        <h3>Stay in the loop</h3>
+        <p>Get updates on cohorts, events, and resources.</p>
+        <form class="site-footer-form" onsubmit="event.preventDefault();">
+          <label for="site-footer-email" class="site-sr-only">Email address</label>
+          <input id="site-footer-email" type="email" name="email" placeholder="Email address" class="site-footer-input interactive" autocomplete="email" required>
+          <button type="submit" class="site-footer-submit interactive">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="site-footer-bottom"><p>© 2026 Sthir. All Rights Reserved.</p></div>
+  </footer>
+
+    <!-- Shared AI tools popup -->
+  <dialog id="ai-tools-dialog" class="ai-tools-dialog" aria-labelledby="ai-tools-title" aria-describedby="ai-tools-intro">
+    <header class="ai-tools-header">
+      <button type="button" id="close-ai-tools" class="pathway-modal-close interactive" aria-label="Close AI tools">&times;</button>
+      <p class="pathway-modal-kicker">AI Pathway · Free</p>
+      <h2 id="ai-tools-title">Sthir AI Tools</h2>
+      <p id="ai-tools-intro">A space to process before you proceed. Test an idea or find a fresh perspective.</p>
+    </header>
+    <div class="ai-tools-workspace">
+      <div class="ai-tools-inputs">
+        <div class="ai-tools-tabs" role="tablist" aria-label="Choose an AI tool">
+          <button type="button" id="ai-tab-idea" class="interactive" role="tab" aria-selected="true" aria-controls="ai-panel-idea" tabindex="0" data-ai-tab="idea">Test an Idea</button>
+          <button type="button" id="ai-tab-lens" class="interactive" role="tab" aria-selected="false" aria-controls="ai-panel-lens" tabindex="-1" data-ai-tab="lens">The Lens</button>
+        </div>
+        <div id="ai-panel-idea" role="tabpanel" aria-labelledby="ai-tab-idea">
+          <form data-ai-form="idea">
+            <label for="ai-pathway-idea">What’s on your mind?</label>
+            <p class="ai-tools-help" id="ai-idea-help">Share a career pivot, a project idea, or a new direction. Explore the strength, the hidden assumption, and a way to test it.</p>
+            <textarea id="ai-pathway-idea" name="prompt" rows="5" placeholder="I’m thinking about leaving my corporate job to start a design agency…" aria-describedby="ai-idea-help" required></textarea>
+            <div class="ai-tools-prompts" aria-label="Idea prompts">
+              <button type="button" data-ai-prompt="I want to transition from Marketing to Tech Product Management.">Pivot to PM</button>
+              <button type="button" data-ai-prompt="I am thinking of taking a 6-month sabbatical to figure things out.">Sabbatical</button>
+              <button type="button" data-ai-prompt="I want to start a side hustle selling my art online.">Art Side Hustle</button>
+            </div>
+            <button type="submit" class="story-button interactive">Get Feedback</button>
+          </form>
+        </div>
+        <div id="ai-panel-lens" role="tabpanel" aria-labelledby="ai-tab-lens" hidden>
+          <form data-ai-form="lens">
+            <label for="ai-pathway-lens">What feels stuck?</label>
+            <p class="ai-tools-help" id="ai-lens-help">Describe a situation where you feel confused or overwhelmed. Get one question to help you see it differently.</p>
+            <textarea id="ai-pathway-lens" name="prompt" rows="5" placeholder="I have three good job offers, but none of them feels right…" aria-describedby="ai-lens-help" required></textarea>
+            <div class="ai-tools-prompts" aria-label="Reflection prompts">
+              <button type="button" data-ai-prompt="I feel like I am falling behind my peers.">Falling Behind</button>
+              <button type="button" data-ai-prompt="I want to say no to a project, but I am afraid of disappointing my boss.">Saying No</button>
+            </div>
+            <button type="submit" class="story-button interactive">Reframe This</button>
+          </form>
+        </div>
+      </div>
+      <section class="ai-tools-output" aria-labelledby="ai-guide-title">
+        <h3 id="ai-guide-title">Sthir Guide</h3>
+        <p id="ai-tools-status" class="ai-tools-status" role="status" data-state="idle">Ready when you are.</p>
+        <div id="ai-tools-response" class="ai-tools-response" aria-live="polite" aria-busy="false">
+          <p>Share your thoughts, and your reflection will appear here.</p>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
 
     <!-- MODALS -->
-    <div id="clarity-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-brand-bg/90 backdrop-blur-md opacity-0 transition-opacity duration-300">
+    <div id="clarity-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-brand-bg/90 backdrop-blur-md opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="30-second Clarity Check">
         <div class="glass-card w-full max-w-2xl p-8 md:p-12 relative max-h-[90vh] flex flex-col overflow-y-auto custom-scrollbar">
             <button id="close-clarity" class="absolute top-6 right-6 text-brand-muted hover:text-brand-ink interactive">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -1515,7 +2036,7 @@
                 </div>
                 
                 <div class="flex flex-col sm:flex-row gap-4 mt-auto">
-                    <a href="#sprints-directory" onclick="document.getElementById('close-clarity').click()" id="quiz-cta-btn" class="story-button w-full sm:w-auto text-center !px-4">Join the Next Sprint - Clarity in 48 Hours</a>
+                    <!-- Temporarily disabled: Sprints link. <a href="#sprints-directory" onclick="document.getElementById('close-clarity').click()" id="quiz-cta-btn" class="story-button w-full sm:w-auto text-center !px-4">Join the Next Sprint - Clarity in 48 Hours</a> -->
                     <button id="btn-restart-quiz" class="secondary-button w-full sm:w-auto text-center !px-4">Retake Assessment</button>
                 </div>
             </div>
@@ -1585,7 +2106,7 @@
                 mobileNav.classList.toggle('is-open', willOpen);
             });
 
-            mobileNav.querySelectorAll('a').forEach((link) => {
+            mobileNav.querySelectorAll('a, [data-open-ai-tools]').forEach((link) => {
                 link.addEventListener('click', closeMobileNav);
             });
 
@@ -1728,6 +2249,7 @@
         window.addEventListener('scroll', updateOnScroll);
         window.addEventListener('load', updateOnScroll);
 
+        /* Scroll-in observer disabled. Original code preserved.
         // --- 3.5 Scroll Reveal Animations ---
         const observerOptions = {
             root: null,
@@ -1747,6 +2269,7 @@
         document.querySelectorAll('.reveal-up').forEach((el) => {
             observer.observe(el);
         });
+        */
 
         // --- 3.7 Spotlight Effect on Cards ---
         const spotlightCards = document.querySelectorAll('.spotlight-card');
@@ -2011,7 +2534,7 @@
             });
         }
 
-        // --- 6. Custom 7-Min Clarity Quiz Logic ---
+        // --- 6. Custom 30-Sec Clarity Quiz Logic ---
         const quizQuestions = [
             {
                 type: 'choice',
@@ -2175,6 +2698,7 @@
             const result = archetypes[highestCat];
 
             setTimeout(() => {
+                // Previous result copy: Our Sprints are designed specifically to clear this noise through experiential play.
                 elReport.innerHTML = `
                     <div class="text-center mb-8 mt-2">
                         <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-surfaceLight/20 mb-4 border border-brand-accent1/30 text-brand-accent1 shadow-[0_0_30px_rgba(202,168,233,0.15)]">
@@ -2205,12 +2729,14 @@
                     <div class="text-center bg-brand-surface/40 border border-brand-surfaceLight/20 p-6 rounded-xl">
                         <p class="text-brand-ink leading-relaxed text-sm md:text-base">
                             Your Clarity Check shows you're navigating <strong class="text-brand-accent1">'${result.keyword}.'</strong> 
-                            Our Sprints are designed specifically to clear this noise through experiential play.
+                            At Sthir, you practise discernment through play, reflection, and real-world experiments.
                         </p>
                     </div>
                 `;
                 
-                elQuizCta.innerHTML = `Join the Next Sprint - Clarity in 48 Hours`;
+                if (elQuizCta) {
+                    elQuizCta.innerHTML = `Join the Next Sprint - Clarity in 48 Hours`;
+                }
 
                 containerLoading.classList.add('hidden');
                 containerLoading.classList.remove('flex');
@@ -2232,14 +2758,15 @@
             renderQuestion();
         }
 
-        const btnOpenClarity = document.getElementById('btn-open-clarity');
+        const clarityTriggers = document.querySelectorAll('[data-open-clarity]');
         const btnCloseClarity = document.getElementById('close-clarity');
         const btnRestartQuiz = document.getElementById('btn-restart-quiz');
         
-        if(btnOpenClarity) btnOpenClarity.addEventListener('click', () => openModal(modalClarity));
+        clarityTriggers.forEach((button) => button.addEventListener('click', () => openModal(modalClarity)));
         if(btnCloseClarity) btnCloseClarity.addEventListener('click', () => closeModal(modalClarity));
         if(btnRestartQuiz) btnRestartQuiz.addEventListener('click', resetQuiz);
 
     </script>
+    <script src="./shared/ai-tools.js"></script>
 </body>
 </html>

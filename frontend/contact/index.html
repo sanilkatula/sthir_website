@@ -6,17 +6,20 @@
   <title>Contact - Sthir</title>
 
   <link href="../blog/blog.css" rel="stylesheet" />
-  <link href="./contact.css" rel="stylesheet" />
+  <link href="./contact.css?v=equal-cards-1" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="../shared/site.css?v=compact-1" rel="stylesheet">
+  <link href="../shared/interior.css?v=simple-1" rel="stylesheet">
 </head>
-<body class="blog contact-page">
+<body class="blog contact-page sthir-site interior-page">
 
   <div class="progress-bar" id="progress-bar"></div>
   <div class="noise"></div>
   <div class="cursor-dot"></div>
   <div class="cursor-outline"></div>
 
-  <nav id="navbar">
+  <!-- Preserved previous navbar layout. Inner comments and existing entities are escaped.
+<nav id="navbar">
     <a href="../" class="site-brand interactive" aria-label="Sthir Home">
       <img src="../images/logo.jpeg" alt="Sthir logo" class="brand-logo-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'44\' height=\'44\' viewBox=\'0 0 44 44\'%3E%3Crect width=\'44\' height=\'44\' fill=\'%235b2b82\'/%3E%3Cpath d=\'M14 28l6-12 6 12\' stroke=\'white\' stroke-width=\'3\' fill=\'none\'/%3E%3C/svg%3E'" />
       <div class="site-brand-meta">
@@ -27,8 +30,8 @@
     <div class="site-nav-links">
       <a href="../about/" class="interactive">Sthir Story</a>
       <a href="../pathways/" class="interactive">Pathways</a>
-      <a href="../#sprints-directory" class="interactive">Sprints</a>
-      <a href="../blog/" class="interactive">Blogs</a>
+      &lt;!-- Temporarily disabled: Sprints link. <a href="../#sprints-directory" class="interactive">Sprints</a> --&gt;
+      <a href="../blog/" class="interactive">Sthir Reflections</a>
       <a href="../#testimonials" class="interactive">Testimonials</a>
       <a href="./" class="interactive" aria-current="page">Contact</a>
     </div>
@@ -42,16 +45,70 @@
       <div class="mobile-nav-links">
         <a href="../about/" class="interactive">Sthir Story</a>
         <a href="../pathways/" class="interactive">Pathways</a>
-        <a href="../#sprints-directory" class="interactive">Sprints</a>
-        <a href="../blog/" class="interactive">Blogs</a>
+        &lt;!-- Temporarily disabled: Sprints link. <a href="../#sprints-directory" class="interactive">Sprints</a> --&gt;
+        <a href="../blog/" class="interactive">Sthir Reflections</a>
         <a href="../#testimonials" class="interactive">Testimonials</a>
         <a href="./" class="interactive" aria-current="page">Contact</a>
       </div>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive mobile-nav-cta">Apply Now</a>
     </div>
   </nav>
+  -->
 
-  <section class="hero-shell">
+  <!-- Preserved previous menu. Inner comments and existing entities are escaped.
+<nav id="navbar" class="reference-nav" aria-label="Main navigation">
+    <a href="../#home" class="reference-brand interactive" aria-label="Sthir home">
+      <img src="../images/sthir-mark.svg" alt="" width="48" height="60">
+      <span class="reference-brand-copy"><span class="reference-brand-title">STHIR</span><span class="reference-brand-tagline">stillness in motion</span></span>
+    </a>
+    <div class="reference-nav-links">
+      <a href="../#home" class="interactive">Home</a>
+      <a href="../about/" class="interactive">About</a>
+      <a href="../#what-we-do" class="interactive">Approach</a>
+      <a href="../blog/" class="interactive">Sthir Reflections</a>
+    </div>
+    <button type="button" class="reference-nav-cta interactive" data-open-ai-tools aria-haspopup="dialog" aria-controls="ai-tools-dialog">Explore the sandbox</button>
+    <button id="site-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-links">
+      <a href="../#home" class="interactive">Home</a>
+      <a href="../about/" class="interactive">About</a>
+      <a href="../#what-we-do" class="interactive">Approach</a>
+      <a href="../blog/" class="interactive">Sthir Reflections</a>
+      <a href="../pathways/" class="interactive">Pathways</a>
+      <a href="../contact/" class="interactive" aria-current="page">Contact</a>
+      </div>
+      <button type="button" class="reference-mobile-cta interactive" data-open-ai-tools data-ai-return-focus="site-nav-toggle" aria-haspopup="dialog" aria-controls="ai-tools-dialog">Explore the sandbox</button>
+    </div>
+  </nav>
+  -->
+
+  <nav id="navbar" class="reference-nav" aria-label="Main navigation">
+    <a href="../#home" class="reference-brand interactive" aria-label="Sthir home">
+      <img src="../images/sthir-mark.svg" alt="" width="48" height="60">
+      <span class="reference-brand-copy"><span class="reference-brand-title">STHIR</span><span class="reference-brand-tagline">stillness in motion</span></span>
+    </a>
+    <div class="reference-nav-links">
+      <a href="../about/" class="interactive">Sthir Story</a>
+      <a href="../pathways/" class="interactive">Pathways</a>
+      <a href="../blog/" class="interactive">Sthir Reflections</a>
+      <a href="../contact/" class="interactive" aria-current="page">Contact</a>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="reference-nav-cta reference-apply-cta interactive">Apply Now</a>
+    <button id="site-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+    <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-links">
+      <a href="../about/" class="interactive">Sthir Story</a>
+      <a href="../pathways/" class="interactive">Pathways</a>
+      <a href="../blog/" class="interactive">Sthir Reflections</a>
+      <a href="../contact/" class="interactive" aria-current="page">Contact</a>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="reference-mobile-cta reference-apply-cta interactive">Apply Now</a>
+    </div>
+  </nav>
+
+  <!-- Previous page introduction. Inner comments and entities are escaped.
+<section class="hero-shell">
     <div class="hero-inner">
       <span class="hero-badge interactive">Sthir Contact</span>
       <h1 class="hero-title">
@@ -63,8 +120,17 @@
       </p>
     </div>
   </section>
+  -->
 
-  <main class="wrap page-main">
+  <section class="interior-hero" aria-labelledby="page-title">
+    <div class="interior-container interior-introduction">
+      <p class="interior-kicker">Sthir Contact</p>
+      <h1 id="page-title" class="interior-title">Start the conversation that matches where you are.</h1>
+      <p class="interior-description">Book a call, send a note, or reach us directly at <a href="mailto:shalu@sthir.education" class="hero-email-link interactive">shalu@sthir.education</a>.</p>
+    </div>
+  </section>
+
+  <main class="interior-main interior-container">
     <section class="page-section contact-grid">
       <div class="glass-card contact-panel contact-panel-primary">
         <p class="section-kicker">Start Here</p>
@@ -90,7 +156,7 @@
         </div>
       </div>
 
-      <div class="glass-card contact-panel">
+      <div class="glass-card contact-panel" id="contact-form" style="scroll-margin-top: 7rem;">
         <p class="section-kicker">Send A Message</p>
         <h2>Tell us what you&apos;re looking for</h2>
         <p class="contact-intro">
@@ -138,7 +204,8 @@
     </section>
   </main>
 
-  <footer id="contact" class="site-footer-home">
+  <!-- Preserved previous contact layout. Inner comments and existing entities are escaped.
+<footer id="contact" class="site-footer-home">
     <div class="site-footer-home-inner">
       <div>
         <a href="../" class="site-footer-brand-link interactive">
@@ -151,8 +218,8 @@
         <div class="site-footer-nav">
           <a href="../about/" class="interactive">Sthir Story</a>
           <a href="../pathways/" class="interactive">Pathways</a>
-          <a href="../#sprints-directory" class="interactive">Sprints</a>
-          <a href="../blog/" class="interactive">Blogs</a>
+          &lt;!-- Temporarily disabled: Sprints link. <a href="../#sprints-directory" class="interactive">Sprints</a> --&gt;
+          <a href="../blog/" class="interactive">Sthir Reflections</a>
           <a href="../#testimonials" class="interactive">Testimonials</a>
           <a href="./" class="interactive">Contact</a>
         </div>
@@ -169,8 +236,39 @@
     </div>
 
     <div class="site-footer-bottom">
-      <p>&copy; 2026 Sthir. All Rights Reserved.</p>
+      <p>&amp;copy; 2026 Sthir. All Rights Reserved.</p>
     </div>
+  </footer>
+  -->
+
+  <footer id="contact" class="site-footer-home">
+    <div class="site-footer-home-inner">
+      <div>
+        <a href="../" class="reference-brand interactive" aria-label="Sthir home">
+      <img src="../images/sthir-mark.svg" alt="" width="48" height="60">
+      <span class="reference-brand-copy"><span class="reference-brand-title">STHIR</span><span class="reference-brand-tagline">stillness in motion</span></span>
+    </a>
+        <p class="site-footer-brand-copy">A mind gym for independent thinking.<br>Play it. Prototype it. Own it.</p>
+        <nav class="site-footer-nav" aria-label="Footer navigation">
+          <a href="../about/">Sthir Story</a>
+          <a href="../pathways/">Pathways</a>
+          <a href="../blog/">Sthir Reflections</a>
+          <a href="../#testimonials">Testimonials</a>
+          <a href="../contact/">Contact</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener">Apply Now</a>
+        </nav>
+      </div>
+      <div class="glass-card site-footer-card">
+        <h3>Stay in the loop</h3>
+        <p>Get updates on cohorts, events, and resources.</p>
+        <form class="site-footer-form" onsubmit="event.preventDefault();">
+          <label for="site-footer-email" class="site-sr-only">Email address</label>
+          <input id="site-footer-email" type="email" name="email" placeholder="Email address" class="site-footer-input interactive" autocomplete="email" required>
+          <button type="submit" class="site-footer-submit interactive">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="site-footer-bottom"><p>© 2026 Sthir. All Rights Reserved.</p></div>
   </footer>
 
   <script>
@@ -224,7 +322,7 @@
         mobileNav.classList.toggle('is-open', willOpen);
       });
 
-      mobileNav.querySelectorAll('a').forEach(function(link) {
+      mobileNav.querySelectorAll('a, [data-open-ai-tools]').forEach(function(link) {
         link.addEventListener('click', closeMobileNav);
       });
 
@@ -255,5 +353,54 @@
   <script src="../shared/runtime.js"></script>
   <script src="../shared/interest-forms.js"></script>
   <script src="./contact.js"></script>
+  <dialog id="ai-tools-dialog" class="ai-tools-dialog" aria-labelledby="ai-tools-title" aria-describedby="ai-tools-intro">
+    <header class="ai-tools-header">
+      <button type="button" id="close-ai-tools" class="pathway-modal-close interactive" aria-label="Close AI tools">&times;</button>
+      <p class="pathway-modal-kicker">AI Pathway · Free</p>
+      <h2 id="ai-tools-title">Sthir AI Tools</h2>
+      <p id="ai-tools-intro">A space to process before you proceed. Test an idea or find a fresh perspective.</p>
+    </header>
+    <div class="ai-tools-workspace">
+      <div class="ai-tools-inputs">
+        <div class="ai-tools-tabs" role="tablist" aria-label="Choose an AI tool">
+          <button type="button" id="ai-tab-idea" class="interactive" role="tab" aria-selected="true" aria-controls="ai-panel-idea" tabindex="0" data-ai-tab="idea">Test an Idea</button>
+          <button type="button" id="ai-tab-lens" class="interactive" role="tab" aria-selected="false" aria-controls="ai-panel-lens" tabindex="-1" data-ai-tab="lens">The Lens</button>
+        </div>
+        <div id="ai-panel-idea" role="tabpanel" aria-labelledby="ai-tab-idea">
+          <form data-ai-form="idea">
+            <label for="ai-pathway-idea">What’s on your mind?</label>
+            <p class="ai-tools-help" id="ai-idea-help">Share a career pivot, a project idea, or a new direction. Explore the strength, the hidden assumption, and a way to test it.</p>
+            <textarea id="ai-pathway-idea" name="prompt" rows="5" placeholder="I’m thinking about leaving my corporate job to start a design agency…" aria-describedby="ai-idea-help" required></textarea>
+            <div class="ai-tools-prompts" aria-label="Idea prompts">
+              <button type="button" data-ai-prompt="I want to transition from Marketing to Tech Product Management.">Pivot to PM</button>
+              <button type="button" data-ai-prompt="I am thinking of taking a 6-month sabbatical to figure things out.">Sabbatical</button>
+              <button type="button" data-ai-prompt="I want to start a side hustle selling my art online.">Art Side Hustle</button>
+            </div>
+            <button type="submit" class="story-button interactive">Get Feedback</button>
+          </form>
+        </div>
+        <div id="ai-panel-lens" role="tabpanel" aria-labelledby="ai-tab-lens" hidden>
+          <form data-ai-form="lens">
+            <label for="ai-pathway-lens">What feels stuck?</label>
+            <p class="ai-tools-help" id="ai-lens-help">Describe a situation where you feel confused or overwhelmed. Get one question to help you see it differently.</p>
+            <textarea id="ai-pathway-lens" name="prompt" rows="5" placeholder="I have three good job offers, but none of them feels right…" aria-describedby="ai-lens-help" required></textarea>
+            <div class="ai-tools-prompts" aria-label="Reflection prompts">
+              <button type="button" data-ai-prompt="I feel like I am falling behind my peers.">Falling Behind</button>
+              <button type="button" data-ai-prompt="I want to say no to a project, but I am afraid of disappointing my boss.">Saying No</button>
+            </div>
+            <button type="submit" class="story-button interactive">Reframe This</button>
+          </form>
+        </div>
+      </div>
+      <section class="ai-tools-output" aria-labelledby="ai-guide-title">
+        <h3 id="ai-guide-title">Sthir Guide</h3>
+        <p id="ai-tools-status" class="ai-tools-status" role="status" data-state="idle">Ready when you are.</p>
+        <div id="ai-tools-response" class="ai-tools-response" aria-live="polite" aria-busy="false">
+          <p>Share your thoughts, and your reflection will appear here.</p>
+        </div>
+      </section>
+    </div>
+  </dialog>
+  <script src="../shared/ai-tools.js"></script>
 </body>
 </html>

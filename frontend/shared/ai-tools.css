@@ -1,0 +1,240 @@
+/* The AI tool opens in the browser's modal layer, above the current page. */
+.ai-tools-dialog {
+  --accent1: #5b2b82;
+  --accent2: #f97316;
+  --accent3: #ef4444;
+  --bg: #fff7ef;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --line: rgba(17, 24, 39, 0.08);
+  position: fixed;
+  inset: 0;
+  width: min(960px, calc(100% - 2rem));
+  max-width: none;
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 24px 80px rgba(31, 41, 55, 0.3);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  cursor: auto;
+}
+
+.ai-tools-dialog::backdrop {
+  background: rgba(31, 41, 55, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.ai-tools-dialog [hidden] {
+  display: none !important;
+}
+
+.ai-tools-dialog button {
+  cursor: pointer;
+}
+
+.ai-tools-dialog button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.ai-tools-dialog button:focus-visible,
+.ai-tools-dialog textarea:focus-visible {
+  outline: 2px solid var(--accent1);
+  outline-offset: 3px;
+}
+
+.ai-tools-header {
+  position: relative;
+  padding: 2rem 3.5rem 1.5rem 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.ai-tools-header h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.ai-tools-header > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.ai-tools-header .pathway-modal-kicker {
+  margin: 0 0 0.6rem;
+  color: var(--accent2);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ai-tools-header .pathway-modal-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+  border: 0;
+  background: transparent;
+  color: var(--accent1);
+  font-size: 1.8rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.ai-tools-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.ai-tools-inputs,
+.ai-tools-output {
+  min-width: 0;
+  padding: 2rem;
+}
+
+.ai-tools-output {
+  border-left: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.ai-tools-output h3 {
+  margin: 0 0 0.75rem;
+  color: var(--accent1);
+  font-size: 1rem;
+}
+
+.ai-tools-tabs {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.ai-tools-tabs button {
+  padding: 0.5rem 0 0.85rem;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.ai-tools-tabs button[aria-selected="true"] {
+  border-bottom-color: var(--accent1);
+  color: var(--accent1);
+}
+
+.ai-tools-dialog label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.ai-tools-help {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.75;
+}
+
+.ai-tools-dialog textarea {
+  display: block;
+  width: 100%;
+  min-height: 140px;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  color: var(--ink);
+  background: #fff;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.7;
+  resize: vertical;
+  cursor: text;
+}
+
+.ai-tools-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.ai-tools-prompts button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--accent1);
+  font: inherit;
+  font-size: 0.75rem;
+}
+
+.ai-tools-dialog button[type="submit"] {
+  width: 100%;
+  padding: 0.9rem 1.25rem;
+}
+
+.ai-tools-status {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.ai-tools-status[data-state="loading"] {
+  color: var(--accent1);
+}
+
+.ai-tools-status[data-state="error"] {
+  color: #b91c1c;
+}
+
+.ai-tools-response {
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.ai-tools-response p {
+  margin: 0 0 1.25rem;
+}
+
+.ai-tools-response strong {
+  color: var(--accent1);
+  font-weight: 600;
+}
+
+@media (max-width: 720px) {
+  .ai-tools-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ai-tools-output {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    min-height: 200px;
+  }
+
+  .ai-tools-inputs,
+  .ai-tools-output {
+    padding: 1.25rem;
+  }
+
+  .ai-tools-header {
+    padding: 1.5rem 3.5rem 1.25rem 1.25rem;
+  }
+}
