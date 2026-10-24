@@ -14,3 +14,5 @@
   Supabase Edge API for public events, admin actions, and interest submissions
 - `supabase/functions/groq-proxy/index.ts`
   Supabase Edge Function that hides the Groq API key
+
+![Uploading Screenshot 2026-10-24 at 4.03.54 PM.png…]()
