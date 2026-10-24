@@ -15,4 +15,4 @@
 - `supabase/functions/groq-proxy/index.ts`
   Supabase Edge Function that hides the Groq API key
 
-![Uploading Screenshot 2026-10-24 at 4.03.54 PM.png…]()
+<img width="1720" height="995" alt="Screenshot 2026-10-24 at 4 04 29 PM" src="https://github.com/user-attachments/assets/5313b18a-f6a3-4c01-b097-6f53c2178401" />
