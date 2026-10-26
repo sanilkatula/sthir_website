@@ -1,11 +1,11 @@
 ---
 name: sthir-release
-description: Release changes in the Sthir website repository using incremental version branches, fresh README screenshots, and version-specific change notes. Use whenever asked to push repository changes, create a release, or merge a release into main in this repository.
+description: Release changes in the Sthir website repository using incremental version branches and version-specific README change notes. The repository owner handles screenshots. Use whenever asked to push repository changes, create a release, or merge a release into main in this repository.
 ---
 
 # Sthir release
 
-Make each version branch a visual record of what changed. A normal request to
+Make each version branch a clear record of what changed. A normal request to
 push changes includes creating the next version branch, updating its README,
 pushing that branch, merging it into `main`, and pushing `main`.
 
@@ -44,37 +44,22 @@ and avoids names already occupied locally or on `origin`. It recognizes `vN`
 and `vN.M` as the same version when the minor number is zero. If the user
 specifies a version, honor it provided it advances the baseline and is unused.
 
-## Prepare the branch and visuals
+## Prepare the branch
 
 1. Inspect the working tree and release diff. Carry the changes belonging to
    the requested release onto the new version branch; preserve unrelated work.
    Do not publish a release commit directly on `main` first.
-2. Run the checks appropriate to the changes and preview the actual frontend.
+2. Run the checks appropriate to the changes and preview the frontend when
+   browser access is available. Report visual checks that could not be performed.
    This is a static site: `npm run dev:frontend` normally serves
    `http://localhost:3000/`. Reuse an existing server when it serves this checkout.
-3. Capture **new screenshots of this version's rendered UI** using available
-   browser tooling, following its browser skill when applicable. Inspect the
-   captures for the intended state and legible framing. Do not substitute old
-   screenshots, generated mockups, or images of source code.
-4. Save the images under `docs/releases/<version>/` with descriptive filenames.
-   Use repository-relative image links so they render on that version branch.
 
-Screenshot requirements:
-
-| Release | README screenshots | Notes |
-| --- | --- | --- |
-| Major | One fresh homepage overview, preferably full-page when useful | A clear description of the redesign is enough. |
-| Minor | One to four focused screenshots of the changed areas | Explain the shown changes and every other user-relevant change in this release. |
-
-For motion changes, choose representative frames and describe the sequence.
-For a release with no visible UI changes, use one fresh homepage context image
-and clearly state that the changes are nonvisual. Never imply a visual change
-that did not occur.
-
-If capturing genuine screenshots is unavailable, finish the code checks and
-draft the release notes, then report that screenshot capture is blocked. Do not
-push or merge a release with missing, stale, or fabricated screenshots. Ask for
-the missing browser connection or capability, not routine release permission.
+The repository owner handles screenshots. Write the README release text only;
+do not capture, add, replace, or remove screenshots unless explicitly asked.
+Preserve any owner-added image files, embeds, and captions. Do not add screenshot
+placeholders, ask for a browser connection just for README images, or block a
+release because screenshots are unavailable. This applies to every release,
+not just a one-time exception.
 
 ## Rewrite the README for this version
 
@@ -82,33 +67,32 @@ Read [the release section template](references/readme-section.md) when updating
 `README.md`. Place the current release section immediately after the project
 title, preserving the useful setup and architecture documentation below it.
 
-- Replace the previous release's screenshot embeds and release notes with this
-  release's screenshots and notes. Remove any old preview embeds outside the
-  release section too. If there were no screenshots, add the first release section.
+- Replace the previous release's text notes with this release's notes. Preserve
+  owner-added image embeds and captions, including ones inside the managed
+  release section. If there is no release section, add one without images.
 - Identify the version, major/minor classification, previous version, and what
   changed. Include a comparison link to the previous version when it exists.
-- Give each screenshot a caption explaining the view or change it demonstrates.
-  Include a mobile view when it demonstrates a changed mobile layout.
-- For a minor release, list all other user-relevant changes not illustrated by
-  the screenshots, including behavior and nonvisual changes. Say which checks
-  ran and distinguish unavailable checks from successful ones.
-- Keep only this release's preview section in this branch's README. Existing
-  version branches and their screenshots stay unchanged, so opening an older
-  branch directly shows that branch's release notes and visuals.
+- For a major release, a clear summary of the redesign is sufficient.
+- For a minor release, explain all user-relevant changes, including visual,
+  structural, interaction, and nonvisual changes. For motion changes, describe
+  the sequence in words. Say which checks ran and distinguish unavailable
+  checks from successful ones.
+- Keep only this release's text notes in this branch's managed README section.
+  Existing version branches stay unchanged, so opening an older branch directly
+  shows that version's change notes and any screenshots added by the owner.
 
-Do not remove historic version branches or overwrite their image files. New
-screenshots belong in the new version's directory.
+Do not remove historic version branches or overwrite their image files.
 
 ## Push the version, then merge main
 
-Before pushing, verify that the image files exist, the README points to this
-version's images, its notes describe this release, and minor releases contain
-no more than four screenshot embeds. Review the staged diff for the intended
-scope and exclude local secrets and temporary files.
+Before pushing, verify that the README notes describe this version and the
+complete intended change. Review the staged diff for the intended scope and
+exclude local secrets and temporary files. Screenshot capture is not a release
+requirement; the owner adds images separately.
 
-1. Commit the release changes, README, and screenshots on the new version branch.
+1. Commit the release changes and README notes on the new version branch.
 2. Push that branch to `origin` with upstream tracking. Keep it as the permanent
-   visual snapshot of this release.
+   snapshot of this release.
 3. Bring local `main` up to date with `origin/main`, then merge the version branch
    with a normal merge commit (`--no-ff`). Resolve conflicts without discarding
    unrelated work; rerun affected checks when needed.
@@ -119,7 +103,7 @@ scope and exclude local secrets and temporary files.
    is relevant, check its actual result before claiming the site is live.
 
 Use the existing authorization for a requested push; do not ask again for each
-routine branch, README, screenshot, commit, push, or merge step. Report real tool
+routine branch, README, commit, push, or merge step. Report real tool
 restrictions or merge blockers rather than claiming an unfinished release is done.
 
 Finish with the version and branch link, its README link, a short change summary,

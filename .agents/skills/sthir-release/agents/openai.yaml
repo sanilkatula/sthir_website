@@ -1,4 +1,4 @@
 interface:
   display_name: "Sthir Release"
-  short_description: "Versioned branches with screenshots and release notes"
-  default_prompt: "Use $sthir-release to prepare and push the next Sthir version with fresh README screenshots, then merge it into main."
+  short_description: "Versioned branches and README change notes"
+  default_prompt: "Use $sthir-release to publish the next Sthir version with README change notes, then merge it into main. Leave screenshots to me."
