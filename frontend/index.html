@@ -903,7 +903,9 @@
         }
     </style>
   <link href="./shared/site.css?v=compact-1" rel="stylesheet">
-  <link href="./shared/home.css?v=faq-full-width-1" rel="stylesheet">
+  <link href="./shared/home.css?v=story-practice-1" rel="stylesheet">
+  <link href="./shared/hero-muscles.css?v=muscles-1" rel="stylesheet">
+  <link href="./shared/hero-framework.css?v=seven-visible-landings-13" rel="stylesheet">
 </head>
 <body class="antialiased sthir-site home-page">
 
@@ -1121,14 +1123,95 @@
     -->
 
     <!-- Homepage hero, based on the supplied visual reference -->
+    <div class="sthir-introduction">
     <section id="home" class="reference-hero" aria-labelledby="hero-heading">
+        <!-- Previous network background, preserved for reference.
         <img class="reference-hero-art" src="./images/hero-network.svg" width="1440" height="900" alt="" aria-hidden="true" fetchpriority="high">
+        -->
         <div class="reference-hero-content">
+          <div class="hero-framework-copy">
             <p class="reference-hero-eyebrow">A sandbox for independent thinking</p>
             <h1 id="hero-heading"><span>See beyond the noise.</span><span>Question the obvious.</span><span>Own your choices.</span></h1>
             <p class="reference-hero-intro">For young minds ready to discover what matters, imagine<br class="reference-desktop-break"> what’s possible, and choose paths of their own making.</p>
             <button type="button" id="open-clarity-hero" class="reference-hero-cta interactive" data-open-clarity aria-haspopup="dialog" aria-controls="clarity-modal">Take the 30-sec Clarity Check</button>
+            <!-- Previous decorative hero accent, preserved for reference.
             <div class="reference-hero-accent" aria-hidden="true"><span class="reference-accent-line"></span><span class="reference-accent-dot orange"></span><span class="reference-accent-dot red"></span><span class="reference-accent-dot yellow"></span></div>
+            -->
+            <!-- Previous three-circle row, replaced by the concentric framework.
+            <div class="hero-muscles" role="group" aria-labelledby="hero-muscles-label">
+                <p id="hero-muscles-label" class="hero-muscles-label">Three muscles <span>Practised together.</span></p>
+                <div class="hero-muscles-row">
+                    <button type="button" class="hero-muscle hero-muscle-clarity" data-muscle="clarity" aria-haspopup="dialog" aria-controls="muscle-dialog" aria-labelledby="muscle-title-clarity" aria-describedby="muscle-description-clarity">
+                        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><path d="M5 25s7-11 19-11 19 11 19 11-7 11-19 11S5 25 5 25Z"/><circle cx="24" cy="25" r="6"/><path d="M24 6v3M10 10l2 2M38 10l-2 2"/></svg>
+                        <span id="muscle-title-clarity" class="hero-muscle-title">Clarity</span>
+                        <span id="muscle-description-clarity" class="hero-muscle-description">See what is actually there.</span>
+                        <span class="hero-muscle-explore" aria-hidden="true">Explore ↗</span>
+                    </button>
+                    <button type="button" class="hero-muscle hero-muscle-courage" data-muscle="courage" aria-haspopup="dialog" aria-controls="muscle-dialog" aria-labelledby="muscle-title-courage" aria-describedby="muscle-description-courage">
+                        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><path d="m7 37 12-14 7 6L41 10M30 10h11v11"/></svg>
+                        <span id="muscle-title-courage" class="hero-muscle-title">Courage</span>
+                        <span id="muscle-description-courage" class="hero-muscle-description">Act when the next step is hard.</span>
+                        <span class="hero-muscle-explore" aria-hidden="true">Explore ↗</span>
+                    </button>
+                    <button type="button" class="hero-muscle hero-muscle-choice" data-muscle="choice" aria-haspopup="dialog" aria-controls="muscle-dialog" aria-labelledby="muscle-title-choice" aria-describedby="muscle-description-choice">
+                        <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><circle cx="24" cy="24" r="18"/><path d="m32 16-5 13-11 5 5-13 11-5Zm-11 5 6 8"/></svg>
+                        <span id="muscle-title-choice" class="hero-muscle-title">Conscious choice</span>
+                        <span id="muscle-description-choice" class="hero-muscle-description">Choose intentionally and own it.</span>
+                        <span class="hero-muscle-explore" aria-hidden="true">Explore ↗</span>
+                    </button>
+                </div>
+            </div>
+            -->
+          </div>
+          <figure class="hero-framework" aria-label="Discernment, three muscles and seven dispositions">
+            <div class="framework-map">
+              <svg class="framework-rings" viewBox="0 0 640 640" aria-hidden="true" fill="none">
+                <circle cx="320" cy="320" r="256" fill="#faf8f5" stroke="#dcd5c9"/>
+                <circle cx="320" cy="320" r="144" fill="#f1edf6" stroke="#d9cde2"/>
+              </svg>
+              <div class="framework-core"><span>One Sthir edge</span><strong>Discernment</strong></div>
+              <div class="framework-muscles" role="group" aria-label="Three muscles: explore each one">
+                <button type="button" class="framework-muscle framework-muscle-clarity" data-muscle="clarity" aria-haspopup="dialog" aria-controls="muscle-dialog" aria-labelledby="muscle-title-clarity" aria-describedby="muscle-description-clarity">
+                  <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><path d="M5 25s7-11 19-11 19 11 19 11-7 11-19 11S5 25 5 25Z"/><circle cx="24" cy="25" r="6"/><path d="M24 6v3M10 10l2 2M38 10l-2 2"/></svg>
+                  <span id="muscle-title-clarity">Clarity</span>
+                  <span id="muscle-description-clarity" class="framework-sr-only">See what is actually there. Explore this muscle.</span>
+                </button>
+                <button type="button" class="framework-muscle framework-muscle-courage" data-muscle="courage" aria-haspopup="dialog" aria-controls="muscle-dialog" aria-labelledby="muscle-title-courage" aria-describedby="muscle-description-courage">
+                  <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><path d="m7 37 12-14 7 6L41 10M30 10h11v11"/></svg>
+                  <span id="muscle-title-courage">Courage</span>
+                  <span id="muscle-description-courage" class="framework-sr-only">Act when the next step is hard. Explore this muscle.</span>
+                </button>
+                <button type="button" class="framework-muscle framework-muscle-choice" data-muscle="choice" aria-haspopup="dialog" aria-controls="muscle-dialog" aria-labelledby="muscle-title-choice" aria-describedby="muscle-description-choice">
+                  <svg viewBox="0 0 48 48" aria-hidden="true" fill="none"><circle cx="24" cy="24" r="18"/><path d="m32 16-5 13-11 5 5-13 11-5Zm-11 5 6 8"/></svg>
+                  <span id="muscle-title-choice">Conscious<br> choice</span>
+                  <span id="muscle-description-choice" class="framework-sr-only">Choose intentionally and own it. Explore this muscle.</span>
+                </button>
+              </div>
+              <!-- Previous orbit labels, preserved for reference.
+              <ul class="framework-dispositions" role="list" aria-label="Seven dispositions">
+                <li style="--x: 50%; --y: 10%; --disposition-color: #eee5d2"><span aria-hidden="true">01</span>Cultivate<br> stillness</li>
+                <li style="--x: 81.3%; --y: 25.1%; --disposition-color: #cbe2e9"><span aria-hidden="true">02</span>See with<br> clarity</li>
+                <li style="--x: 89%; --y: 58.9%; --disposition-color: #d5dec8"><span aria-hidden="true">03</span>Expand<br> perspective</li>
+                <li style="--x: 67.4%; --y: 86%; --disposition-color: #f1c28e"><span aria-hidden="true">04</span>Practise<br> discernment</li>
+                <li style="--x: 32.6%; --y: 86%; --disposition-color: #f0c8bc"><span aria-hidden="true">05</span>Choose<br> consciously</li>
+                <li style="--x: 11%; --y: 58.9%; --disposition-color: #d5d0e2"><span aria-hidden="true">06</span>Act with<br> courage</li>
+                <li style="--x: 18.7%; --y: 25.1%; --disposition-color: #c3d7c3"><span aria-hidden="true">07</span>Own with<br> commitment</li>
+              </ul>
+              -->
+              <ul class="framework-dispositions framework-disposition-markers" role="list" aria-label="Seven dispositions, explored below">
+                <li style="--x: 50%; --y: 10%; --disposition-color: #fff"><span aria-hidden="true">01</span><span class="framework-sr-only">Cultivate stillness</span></li>
+                <li style="--x: 81.3%; --y: 25.1%; --disposition-color: #fff"><span aria-hidden="true">02</span><span class="framework-sr-only">See with clarity</span></li>
+                <li style="--x: 89%; --y: 58.9%; --disposition-color: #fff"><span aria-hidden="true">03</span><span class="framework-sr-only">Expand perspective</span></li>
+                <li style="--x: 67.4%; --y: 86%; --disposition-color: #fff"><span aria-hidden="true">04</span><span class="framework-sr-only">Practise discernment</span></li>
+                <li style="--x: 32.6%; --y: 86%; --disposition-color: #fff"><span aria-hidden="true">05</span><span class="framework-sr-only">Choose consciously</span></li>
+                <li style="--x: 11%; --y: 58.9%; --disposition-color: #fff"><span aria-hidden="true">06</span><span class="framework-sr-only">Act with courage</span></li>
+                <li style="--x: 18.7%; --y: 25.1%; --disposition-color: #fff"><span aria-hidden="true">07</span><span class="framework-sr-only">Own with commitment</span></li>
+              </ul>
+            </div>
+            <!-- Previous diagram caption and controls, preserved for reference.
+            <figcaption id="framework-caption"><strong>1 edge</strong><span aria-hidden="true">·</span><strong>3 muscles</strong><span aria-hidden="true">·</span><strong>7 dispositions</strong><small><a class="framework-scroll-cue" href="#mind-gym-story"><span>Scroll to bring them into practice</span><span aria-hidden="true">↓</span></a></small><button class="framework-motion-toggle" type="button" hidden>Pause orbit</button></figcaption>
+            -->
+          </figure>
         </div>
     </section>
 
@@ -1136,7 +1219,9 @@
 
     <!-- The mind gym story -->
     <section id="mind-gym-story" class="home-section bg-brand-surface relative z-10 border-b border-brand-surfaceLight/50" aria-labelledby="mind-gym-story-heading">
-        <div class="home-section-inner">
+        <div class="home-section-inner home-story-layout">
+          <header class="home-section-heading home-story-heading"><h2 id="mind-gym-story-heading" class="home-section-title">Why Sthir exists</h2><p class="home-section-intro">Play it. Prototype it. Own it.</p></header>
+          <div class="home-story-narrative">
             <!-- Previous section header. Inner comments and entities are escaped.
 <div class="mind-gym-story-heading reveal-up">
                 <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-4">Make room for your own point of view</span>
@@ -1144,7 +1229,6 @@
                 <div class="w-16 h-1 bg-brand-accent2 mt-8 rounded-full"></div>
             </div>
             -->
-            <header class="home-section-heading"><h2 id="mind-gym-story-heading" class="home-section-title">Why Sthir exists</h2><p class="home-section-intro">Play it. Prototype it. Own it.</p></header>
             <div class="mind-gym-story-copy text-brand-muted">
                 <p class="mind-gym-story-lead text-brand-ink">Life doesn’t come with an answer key. Still, the systems we walk into seem to have plenty of opinions about what we should do next.</p>
                 <p>You may feel overwhelmed, labelled, or simply cringey about the expectations from people and systems around you. Some of you push back. Others eventually hand your choices to the environment: parents, peers, rankings, or the next least-resistant sensible, safe or popular option.</p>
@@ -1153,13 +1237,85 @@
                 <p>This isn’t a generational thing. Every generation has had to find its own way of growing up. But in a world of rapid change and competing opinions, building the <strong class="text-brand-accent1 font-semibold">discernment muscle</strong> has become all the more important.</p>
                 <p>Adulting is hard. Owning a choice is uncomfortable. It takes presence and deliberate effort to figure out who we are, where we belong and what matters to us. And we don’t always figure these things out by thinking alone. Most times, we discover them by playing, experimenting, questioning and engaging with the world.</p>
                 <p>As Viola Spolin reminds us, when we focus only on reaching a goal, we risk losing sight of the value of the process itself.</p>
-                <figure class="mind-gym-quote">
-                    <blockquote class="text-brand-ink">“It stands to reason that if we direct all our efforts towards reaching a goal, we stand in grave danger of losing everything on which we have based our daily activities. For when a goal is superimposed on an activity instead of evolving out of it, we often feel cheated when we reach it.”</blockquote>
-                    <figcaption class="text-brand-accent1">Viola Spolin</figcaption>
-                </figure>
             </div>
+          </div>
+          <aside class="home-story-practice" aria-label="Seven practices for making choices">
+            <p class="home-practice-heading">Seven dispositions</p>
+            <ol class="home-practice-path">
+              <li class="home-practice-step" style="--practice-color: #fff">
+                <span class="home-practice-icon" aria-hidden="true">
+                  <!-- Previous icon: <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="9"/><circle cx="16" cy="16" r="5" fill="currentColor" stroke="none"/></svg> -->
+                  <img class="home-practice-brand-icon" src="./images/dispositions/stillness.svg" alt="" width="44" height="44" decoding="async">
+                </span>
+                <div class="home-practice-copy"><span class="home-practice-number" aria-hidden="true">01</span><h3>Cultivate stillness</h3><p>Stay present and grounded.</p></div>
+              </li>
+              <li class="home-practice-step" style="--practice-color: #fff">
+                <span class="home-practice-icon" aria-hidden="true">
+                  <!-- Previous icon: <svg viewBox="0 0 32 32" fill="none"><path d="M3 16s4.5-7 13-7 13 7 13 7-4.5 7-13 7S3 16 3 16Z"/><circle cx="16" cy="16" r="4"/></svg> -->
+                  <img class="home-practice-brand-icon" src="./images/dispositions/clarity.svg" alt="" width="44" height="44" decoding="async">
+                </span>
+                <div class="home-practice-copy"><span class="home-practice-number" aria-hidden="true">02</span><h3>See with clarity</h3><p>Notice what is actually there.</p></div>
+              </li>
+              <li class="home-practice-step" style="--practice-color: #fff">
+                <span class="home-practice-icon" aria-hidden="true">
+                  <!-- Previous icon: <svg viewBox="0 0 32 32" fill="none"><path d="m9 23 14-14M12 9h11v11"/></svg> -->
+                  <img class="home-practice-brand-icon" src="./images/dispositions/perspective.svg" alt="" width="44" height="44" decoding="async">
+                </span>
+                <div class="home-practice-copy"><span class="home-practice-number" aria-hidden="true">03</span><h3>Expand perspective</h3><p>Read context and consequences.</p></div>
+              </li>
+              <li class="home-practice-step" style="--practice-color: #fff">
+                <span class="home-practice-icon" aria-hidden="true">
+                  <!-- Previous icon: <svg viewBox="0 0 32 32" fill="none"><path d="M16 6v20M11 26h10M6 10h20M8 10l-4 10h8L8 10Zm16 0-4 10h8l-4-10Z"/><path d="M4 20a4 4 0 0 0 8 0m8 0a4 4 0 0 0 8 0"/></svg> -->
+                  <img class="home-practice-brand-icon" src="./images/dispositions/discernment.svg" alt="" width="44" height="44" decoding="async">
+                </span>
+                <div class="home-practice-copy"><span class="home-practice-number" aria-hidden="true">04</span><h3>Practise discernment</h3><p>Weigh possibilities honestly.</p></div>
+              </li>
+              <li class="home-practice-step" style="--practice-color: #fff">
+                <span class="home-practice-icon" aria-hidden="true">
+                  <!-- Previous icon: <svg viewBox="0 0 32 32" fill="none"><path d="m16 5 11 11-11 11L5 16 16 5Z"/></svg> -->
+                  <img class="home-practice-brand-icon" src="./images/dispositions/conscious-choice.svg" alt="" width="44" height="44" decoding="async">
+                </span>
+                <div class="home-practice-copy"><span class="home-practice-number" aria-hidden="true">05</span><h3>Choose consciously</h3><p>Let your values lead.</p></div>
+              </li>
+              <li class="home-practice-step" style="--practice-color: #fff">
+                <span class="home-practice-icon" aria-hidden="true">
+                  <!-- Previous icon: <svg viewBox="0 0 32 32" fill="none"><path d="M9 27V6m0 1c5-4 9 4 15 0v12c-6 4-10-4-15 0"/></svg> -->
+                  <img class="home-practice-brand-icon" src="./images/dispositions/courage.svg?v=rotate-ccw-14" alt="" width="44" height="44" decoding="async">
+                </span>
+                <div class="home-practice-copy"><span class="home-practice-number" aria-hidden="true">06</span><h3>Act with courage</h3><p>Move through uncertainty.</p></div>
+              </li>
+              <li class="home-practice-step" style="--practice-color: #fff">
+                <span class="home-practice-icon" aria-hidden="true">
+                  <!-- Previous icon: <svg viewBox="0 0 32 32" fill="none"><path d="M16 5c1.5 6 5 9.5 11 11-6 1.5-9.5 5-11 11-1.5-6-5-9.5-11-11 6-1.5 9.5-5 11-11Z"/></svg> -->
+                  <img class="home-practice-brand-icon" src="./images/dispositions/commitment.svg" alt="" width="44" height="44" decoding="async">
+                </span>
+                <div class="home-practice-copy"><span class="home-practice-number" aria-hidden="true">07</span><h3>Own with commitment</h3><p>Take responsibility.</p></div>
+              </li>
+            </ol>
+          </aside>
+          <figure class="mind-gym-quote">
+            <blockquote class="text-brand-ink">“It stands to reason that if we direct all our efforts towards reaching a goal, we stand in grave danger of losing everything on which we have based our daily activities. For when a goal is superimposed on an activity instead of evolving out of it, we often feel cheated when we reach it.”</blockquote>
+            <figcaption class="text-brand-accent1">Viola Spolin</figcaption>
+          </figure>
         </div>
     </section>
+
+    <!-- Previous moving markers and three-thread overlay, preserved for reference.
+    <svg class="framework-journey-overlay" aria-hidden="true" focusable="false" fill="none" hidden>
+      <path class="framework-journey-thread" pathLength="1" stroke="#b8d6df"/>
+      <path class="framework-journey-thread" pathLength="1" stroke="#b7a0c8"/>
+      <path class="framework-journey-thread" pathLength="1" stroke="#e7ae88"/>
+      <g class="framework-journey-seeds">
+        <circle fill="#eee5d2"/><circle fill="#cbe2e9"/><circle fill="#d5dec8"/><circle fill="#f1c28e"/><circle fill="#f0c8bc"/><circle fill="#d5d0e2"/><circle fill="#c3d7c3"/>
+      </g>
+    </svg>
+    -->
+    <svg class="framework-blend-canvas" aria-hidden="true" focusable="false" fill="none" hidden>
+      <path class="framework-blend-ring"/>
+      <path class="framework-blend-tail" pathLength="1"/>
+    </svg>
+    <svg class="framework-solar-canvas" aria-hidden="true" focusable="false" hidden></svg>
+    </div>
 
     <!-- Temporarily disabled: Here is what you can notice section. Inner comment delimiters and existing entities are escaped.
     &lt;!-- 2. The Problem Section --&gt;
@@ -1991,6 +2147,20 @@
   </dialog>
 
 
+    <dialog id="muscle-dialog" class="muscle-dialog" aria-labelledby="muscle-dialog-title" aria-describedby="muscle-dialog-description">
+        <button type="button" class="muscle-dialog-close" id="close-muscle-dialog" aria-label="Close explanation">×</button>
+        <div class="muscle-dialog-icon" id="muscle-dialog-icon" aria-hidden="true"></div>
+        <p class="muscle-dialog-kicker">A muscle you can practise</p>
+        <h2 id="muscle-dialog-title"></h2>
+        <p class="muscle-dialog-tagline" id="muscle-dialog-tagline"></p>
+        <p class="muscle-dialog-description" id="muscle-dialog-description"></p>
+        <div class="muscle-dialog-reflection">
+            <p>A question to start with</p>
+            <blockquote id="muscle-dialog-prompt"></blockquote>
+        </div>
+        <button type="button" class="story-button muscle-dialog-action" id="muscle-dialog-action"></button>
+    </dialog>
+
     <!-- MODALS -->
     <div id="clarity-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 bg-brand-bg/90 backdrop-blur-md opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-label="30-second Clarity Check">
         <div class="glass-card w-full max-w-2xl p-8 md:p-12 relative max-h-[90vh] flex flex-col overflow-y-auto custom-scrollbar">
@@ -2244,10 +2414,20 @@
                     });
                 }
             });
-            requestAnimationFrame(updateOnScroll);
+            // Previous self-scheduling loop preserved for reference:
+            // requestAnimationFrame(updateOnScroll);
         }
-        window.addEventListener('scroll', updateOnScroll);
-        window.addEventListener('load', updateOnScroll);
+        let scrollUpdateFrame = null;
+        function queueScrollUpdate() {
+            if (scrollUpdateFrame !== null) return;
+            scrollUpdateFrame = requestAnimationFrame(() => {
+                scrollUpdateFrame = null;
+                updateOnScroll();
+            });
+        }
+        window.addEventListener('scroll', queueScrollUpdate, { passive: true });
+        window.addEventListener('load', queueScrollUpdate);
+        window.addEventListener('resize', queueScrollUpdate, { passive: true });
 
         /* Scroll-in observer disabled. Original code preserved.
         // --- 3.5 Scroll Reveal Animations ---
@@ -2768,5 +2948,13 @@
 
     </script>
     <script src="./shared/ai-tools.js"></script>
+    <script src="./shared/hero-muscles.js"></script>
+    <!-- Previous moving-marker animation, preserved for reference.
+    <script src="./shared/hero-framework-motion.js?v=journey-1"></script>
+    -->
+    <!-- Previous line-only transition, preserved for reference.
+    <script src="./shared/hero-framework-blend.js?v=blend-2"></script>
+    -->
+    <script src="./shared/hero-framework-solar.js?v=seven-visible-landings-13"></script>
 </body>
 </html>

@@ -1,0 +1,172 @@
+/* Three muscles: still on scroll, with a gentle response to hover and focus. */
+body.home-page .reference-hero {
+  padding-top: clamp(8rem, 18vh, 10rem);
+}
+
+.home-page .hero-muscles {
+  max-width: 620px;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(84, 32, 120, 0.15);
+}
+
+.home-page .hero-muscles-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin: 0 0 1.1rem;
+  color: #542078;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.home-page .hero-muscles-label > span {
+  color: #817987;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.hero-muscles-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.hero-muscle {
+  --muscle-color: #cbe4eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: clamp(0.75rem, 1.4vw, 1.15rem);
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: var(--muscle-color);
+  color: #29312f;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.hero-muscle-courage { --muscle-color: #efb094; }
+.hero-muscle-choice { --muscle-color: #d6dfc7; }
+
+.hero-muscle:hover {
+  transform: translateY(-3px);
+  border-color: rgba(41, 49, 47, 0.2);
+  box-shadow: 0 8px 22px rgba(41, 49, 47, 0.08);
+}
+
+.hero-muscle:focus-visible {
+  outline: 2px solid #542078;
+  outline-offset: 5px;
+}
+
+.hero-muscle > svg, .muscle-dialog-icon > svg {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero-muscle-title {
+  display: grid;
+  align-content: center;
+  min-height: 2.5em;
+  max-width: 11ch;
+  font-size: 0.88rem;
+  font-weight: 650;
+  line-height: 1.25;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.hero-muscle-description {
+  display: grid;
+  align-content: center;
+  min-height: 2.9em;
+  max-width: 19ch;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.hero-muscle-explore {
+  font-size: 0.65rem;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* Native dialog keeps focus inside the explanation and supports Escape. */
+.muscle-dialog {
+  --muscle-color: #cbe4eb;
+  position: fixed;
+  inset: 0;
+  width: min(500px, calc(100% - 2rem));
+  max-width: none;
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 2rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #e9e1ed;
+  border-radius: 20px;
+  background: #fdfdfb;
+  color: #625a69;
+}
+
+.muscle-dialog[data-muscle='courage'] { --muscle-color: #efb094; }
+.muscle-dialog[data-muscle='choice'] { --muscle-color: #d6dfc7; }
+.muscle-dialog::backdrop { background: rgba(31, 26, 37, 0.4); backdrop-filter: blur(3px); }
+
+.muscle-dialog-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #542078;
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+.muscle-dialog-close:hover { background: #f3edf6; }
+.muscle-dialog button:focus-visible { outline: 2px solid #542078; outline-offset: 4px; }
+.muscle-dialog-icon { display: grid; place-items: center; width: 60px; height: 60px; margin-bottom: 1.25rem; border-radius: 50%; background: var(--muscle-color); color: #29312f; }
+.muscle-dialog .muscle-dialog-kicker { margin: 0 0 0.6rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.muscle-dialog #muscle-dialog-title { margin: 0 0 0.75rem; color: #542078; font-size: 1.8rem; line-height: 1.2; }
+.muscle-dialog-tagline { margin: 0 0 1rem; color: #39343e; font-size: 1.1rem; font-weight: 500; line-height: 1.6; }
+.muscle-dialog-description { margin: 0; font-size: 1rem; line-height: 1.8; }
+.muscle-dialog-reflection { margin-top: 1.5rem; padding: 1rem 1.2rem; border-left: 3px solid #bba5c8; background: #f7f3f9; }
+.muscle-dialog-reflection > p { margin: 0 0 0.5rem; font-size: 0.75rem; font-weight: 600; color: #76518b; }
+.muscle-dialog-reflection > blockquote { margin: 0; font-size: 1rem; line-height: 1.75; }
+.muscle-dialog .muscle-dialog-action { margin-top: 1.5rem; padding: 0.85rem 1.3rem; font-size: 0.9rem; }
+
+@media (max-width: 600px) {
+  .hero-muscles-row { gap: 0.7rem; }
+  .hero-muscle { gap: 0.2rem; padding: 0.5rem; }
+  .hero-muscle > svg { width: 20px; height: 20px; }
+  .hero-muscle-title { font-size: clamp(0.65rem, 2.8vw, 0.8rem); }
+  .hero-muscle-explore { font-size: 0.58rem; letter-spacing: 0.04em; }
+  .hero-muscle-description { position: absolute; width: 1px; height: 1px; min-height: 0; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .home-page .hero-muscles-label { gap: 0.6rem; font-size: 0.65rem; }
+  .home-page .hero-muscles-label > span { font-size: 0.7rem; }
+  .muscle-dialog { padding: 1.5rem; }
+}

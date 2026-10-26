@@ -74,6 +74,98 @@ body.home-page .home-card-title {
   max-width: 48rem;
 }
 
+.home-page .home-story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(17rem, 1fr);
+  align-items: start;
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.home-page .home-story-narrative {
+  min-width: 0;
+}
+
+.home-page .home-story-practice {
+  padding-top: 0.25rem;
+  color: #1b3039;
+}
+
+.home-page .home-practice-path {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-page .home-practice-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  column-gap: 1.25rem;
+  padding-bottom: 2.25rem;
+}
+
+.home-page .home-practice-step:last-child {
+  padding-bottom: 0;
+}
+
+.home-page .home-practice-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 4rem;
+  bottom: 0;
+  left: calc(2rem - 1px);
+  width: 2px;
+  background: linear-gradient(var(--practice-color), #d9d2c6);
+}
+
+.home-page .home-practice-icon {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  border: 5px solid #faf8f5;
+  border-radius: 50%;
+  outline: 1px solid #d9d2c6;
+  background: var(--practice-color);
+}
+
+.home-page .home-practice-icon svg {
+  width: 1.65rem;
+  height: 1.65rem;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.home-page .home-practice-number {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: #7a6e5e;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+}
+
+.home-page .home-practice-copy h3 {
+  margin: 0;
+  color: #1b3039;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.home-page .home-practice-copy p {
+  margin: 0.5rem 0 0;
+  color: #536065;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
 .home-page .home-faq-list {
   width: 100%;
   max-width: none;
@@ -104,6 +196,17 @@ body.home-page .home-card-title {
   body.home-page .home-section {
     padding-left: 5vw;
     padding-right: 5vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-page .home-story-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+  }
+  .home-page .home-story-practice {
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(84, 32, 120, 0.18);
   }
 }
 
