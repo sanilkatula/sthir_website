@@ -1,0 +1,27 @@
+/* Sthir brand typography: Noka Medium headings and Work Sans body text. */
+@font-face {
+  font-family: 'Noka';
+  src: url('../fonts/Noka-Medium.otf') format('opentype');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  /* Supplied font lacks the question mark and typographic punctuation; use Work Sans for those glyphs. */
+  unicode-range: U+0020-003E, U+0040-007E;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* Override page-specific title styles and utility weights with the brand face. */
+h1, h2, h3, h4, h5, h6, .font-display,
+.brand-title, .brand-title-text {
+  font-family: 'Noka', 'Work Sans', sans-serif !important;
+  font-weight: 500 !important;
+  font-synthesis: none;
+}

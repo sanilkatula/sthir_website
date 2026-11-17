@@ -1,0 +1,92 @@
+/* Sthir Story: personal chapters, tactile accents, and an invitation. */
+body.about-page .story-page { color: var(--ink); font-size: 1.0625rem; line-height: 1.75; }
+.story-width { width: calc(100% - 3rem); max-width: 1120px; margin-inline: auto; }
+.story-page p { margin: 0 0 1rem; }
+body.about-page .story-page :is(h1,h2,h3) { color: var(--site-purple); margin: 0 0 1rem; line-height: 1.2; }
+body.about-page .story-page h1 { font-size: clamp(2.4rem,4.2vw,3.75rem); }
+body.about-page .story-page h2 { font-size: clamp(1.8rem,3vw,2.6rem); }
+body.about-page .story-page h3 { font-size: 1.4rem; }
+.story-page .story-kicker { color: #d95c22; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.75rem; font-weight: 600; margin-bottom: 0.8rem; }
+.story-hero { display:grid; grid-template-columns: 1.15fr 1fr; gap:4rem; align-items:center; padding-block: 9rem 3.5rem; }
+.story-hero .story-subtitle { color:var(--site-purple); font-size:clamp(1.2rem,2vw,1.6rem); }
+body.about-page .story-text-link { color:var(--site-purple); text-decoration:underline; text-underline-offset:0.3em; font-weight:500; }
+.story-portrait { position:relative; margin:0 1rem; isolation:isolate; }
+.story-portrait img { width:100%; height:auto; aspect-ratio:1.15; object-fit:cover; border-radius:2rem; display:block; }
+.story-portrait figcaption { font-size:0.8rem; text-align:center; color:var(--muted); margin-top:0.75rem; }
+.story-portrait-paper { position:absolute; inset:0.5rem 0 3rem -1.5rem; background:#ffeea9; transform:rotate(-7deg); z-index:-1; border-radius:1rem 3rem 1rem 2rem; }
+.story-portrait::after { content:''; position:absolute; width:7rem; height:4rem; border:2px solid #f26921; border-radius:50%; right:-1.5rem; bottom:3.5rem; transform:rotate(-20deg); z-index:-1; }
+.story-journey { background:#fff5e7; padding-block:3rem; scroll-margin-top:7rem; }
+.story-journey p { max-width:58rem; }
+.story-page .story-credentials { color:var(--site-purple); font-weight:600; margin:1.25rem 0 0.2rem; }
+.story-certification { color:var(--site-purple); font-size:0.95rem; }
+.story-moments { padding-block:3.5rem 1.5rem; }
+.story-quote-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2rem; align-items:start; }
+.story-quote { margin:0; padding:2rem; background:#f1e6f6; border-radius:0.6rem 1.3rem 0.8rem 1rem; transform:rotate(-0.5deg); }
+.story-quote--warm { background:#fff0b8; transform:rotate(0.5deg); }
+.story-quote blockquote { margin:0 0 1rem; color:var(--site-purple); font-size:1.3rem; line-height:1.5; }
+.story-quote figcaption { color:var(--site-purple); font-size:0.8rem; }
+.story-page .story-reflection { margin-top:1.5rem; color:var(--site-purple); }
+.story-origin { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; padding-block:2rem 3.5rem; }
+.story-origin-art { width:100%; height:auto; display:block; }
+.story-presence { background:#662d91; padding-block:3rem; text-align:center; }
+body.about-page .story-presence :is(h2,h3,p) { color:#fff7ef; }
+.story-presence-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin-top:2rem; }
+.story-presence-grid > div + div { border-left:1px solid #bca0d0; padding-left:2rem; }
+.story-presence-grid p { max-width:15rem; margin-inline:auto; }
+.story-invitation { padding-block:3rem; text-align:center; }
+.story-invitation-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2rem; }
+.story-text-link:focus-visible { outline:2px solid #f26921; outline-offset:5px; }
+@media(max-width:760px) {
+ .story-hero { grid-template-columns:1fr; gap:2rem; padding-top:7.5rem; }
+ .story-portrait { max-width:26rem; }
+ .story-quote-grid,.story-origin,.story-invitation-grid,.story-presence-grid { grid-template-columns:1fr; }
+ .story-presence-grid > div + div { border-left:0; border-top:1px solid #bca0d0; padding:1.5rem 0 0; }
+ .story-origin { gap:1rem; }
+ .story-quote { padding:1.5rem; }
+}
+
+.story-hero strong { color: var(--site-purple); font-weight: 600; }
+
+/* Light, handmade playfulness around the three facilitation qualities. */
+.story-presence { position: relative; overflow: hidden; isolation: isolate; }
+.story-presence > .story-width { position: relative; }
+.story-play-doodle { position: absolute; width: 160px; height: auto; pointer-events: none; z-index: -1; }
+.story-play-doodle--left { left: -25px; top: 20px; color: #ffeea9; opacity: 0.55; transform: rotate(-12deg); }
+.story-play-doodle--right { right: -15px; bottom: -30px; color: #ffb176; opacity: 0.65; transform: rotate(12deg); }
+.story-presence-grid > div { position: relative; padding: 1.25rem 0.8rem 0.5rem; }
+.story-presence-grid > div + div { border-left: 0; padding-left: 0.8rem; }
+.story-presence-grid > div::before { content: ''; display: block; width: 42px; height: 8px; margin: 0 auto 1.25rem; border-top: 3px solid #ffeea9; border-radius: 50%; transform: rotate(-8deg); }
+.story-presence-grid > div:nth-child(2)::before { border-color: #ffb176; transform: rotate(8deg); }
+.story-presence-grid > div:nth-child(3)::before { width: 34px; height: 17px; border: 2px solid #ffeea9; border-radius: 50%; transform: rotate(-12deg); }
+.story-presence-grid p { max-width: 19rem; }
+@media (max-width:760px) {
+ .story-presence-grid { gap: 1rem; }
+ .story-presence-grid > div + div { border-top: 0; padding: 1.25rem 0.8rem 0.5rem; }
+ .story-play-doodle { opacity: 0.25; width: 120px; }
+}
+
+/* Equal icon columns and consistent type for both credential rows. */
+.story-page :is(.story-credentials, .story-certification) {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--site-purple);
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0.75rem 0 0;
+}
+.story-page :is(.story-credentials, .story-certification) strong { font-weight: 600; }
+body.about-page :is(.story-credential-icon, .story-coach-link) {
+  display: inline-flex;
+  width: 56px;
+  min-height: 56px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+body.about-page .story-credential-icon { color: #0a66c2; }
+.story-coach-link img { width: 56px; height: 56px; object-fit: contain; }
+.story-credential-icon:focus-visible, .story-coach-link:focus-visible { outline: 2px solid #f26921; outline-offset: 4px; }

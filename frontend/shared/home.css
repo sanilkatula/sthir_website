@@ -42,7 +42,7 @@ body.home-page .home-credibility-band {
 body.home-page .home-section-title {
   margin: 0 0 1rem;
   color: var(--site-purple, #542078);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: clamp(1.85rem, 3.2vw, 2.75rem);
   font-weight: 600;
   line-height: 1.2;
@@ -63,7 +63,7 @@ body.home-page .home-section-title {
 body.home-page .home-card-title {
   margin: 0 0 0.75rem;
   color: var(--site-purple, #542078);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: clamp(1.35rem, 2vw, 1.65rem);
   font-weight: 600;
   line-height: 1.35;
@@ -151,7 +151,7 @@ body.home-page .home-card-title {
 .home-page .home-practice-copy h3 {
   margin: 0;
   color: #1b3039;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.45;
@@ -221,3 +221,35 @@ body.home-page .home-card-title {
     font-size: 1.85rem;
   }
 }
+
+/* Audiences continue directly from the shared What we do introduction. */
+.home-page .home-audiences {
+  margin-top: 3rem;
+  scroll-margin-top: 7rem;
+}
+
+/* An editorial introduction followed by two clear audiences. */
+.home-page .home-approach-copy { max-width: 64rem; color: var(--muted); font-size: 1.125rem; line-height: 1.8; }
+.home-page .home-approach-copy p { margin: 0 0 1.25rem; }
+.home-page .home-approach-copy strong { color: var(--site-purple); font-weight: 600; }
+.home-page .home-audiences-label { margin: 0 0 1.5rem; color: var(--ink); font-size: 1.125rem; }
+.home-page .home-audience-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 5vw, 5rem); }
+.home-page .home-audience { display: flex; flex-direction: column; align-items: flex-start; padding-top: 1.5rem; border-top: 2px solid var(--site-purple); }
+.home-page .home-audience--institutions { border-color: var(--site-orange); }
+body.home-page .home-audience h3 { margin: 0 0 1rem; color: var(--site-purple); font-size: clamp(1.5rem, 2.3vw, 2rem); line-height: 1.25; }
+.home-page .home-audience p { margin: 0 0 1.5rem; color: var(--muted); font-size: 1.0625rem; line-height: 1.8; }
+body.home-page .home-audience-link { margin-top: auto; color: var(--site-purple); font-weight: 600; text-decoration: underline; text-underline-offset: 0.3em; }
+.home-audience-link:focus-visible { outline: 2px solid var(--site-orange); outline-offset: 5px; }
+@media (max-width: 700px) { .home-page .home-audience-columns { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+.home-page .home-audience-points {
+  margin: 0 0 1.75rem;
+  padding-left: 1.2rem;
+  list-style: disc;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+.home-page .home-audience-points li + li { margin-top: 0.5rem; }
+.home-page .home-audience-points li::marker { color: var(--site-purple); }
+.home-page .home-audience--institutions .home-audience-points li::marker { color: var(--site-orange); }
