@@ -25,7 +25,7 @@ html {
     radial-gradient(circle at 86% 16%, rgba(91, 43, 130, 0.1), transparent 22%),
     var(--page-bg);
   color: var(--ink);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   cursor: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,7 +54,7 @@ html {
 .blog .brand-title-text,
 .blog .card-content h2,
 .blog #title {
-  font-family: 'Poppins', 'Inter', sans-serif;
+  font-family: 'Noka', 'Work Sans', sans-serif;
   letter-spacing: -0.02em;
 }
 

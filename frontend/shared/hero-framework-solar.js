@@ -40,6 +40,7 @@
   }
   function clamp(value) { return Math.max(0, Math.min(1, value)); }
   function ease(value) { return value * value * value * (value * (value * 6 - 15) + 10); }
+  function glide(value) { return value * value * (3 - 2 * value); }
   function mix(a, b, amount) { return a + (b - a) * amount; }
   function xy(x, y) { return x.toFixed(2) + ' ' + y.toFixed(2); }
   function setSvgVisible(node, visible) {
@@ -127,11 +128,14 @@
     var total = metrics.landingDistances[index];
     var viewportTop = window.scrollY - metrics.sceneTop - metrics.planetRadius - 20;
     var offscreen = Math.min(total, distanceAtHeight(viewportTop));
-    if (offscreen <= 0) return amount * total;
+    if (offscreen <= 0) return glide(amount) * total;
     // Quickly cover the invisible route, then spend most of the movement
     // descending through the viewport. No fade-in or jump to the badge.
-    if (amount < 0.1) return offscreen * ease(amount / 0.1);
-    return mix(offscreen, total, ease((amount - 0.1) / 0.9));
+    // Grow this portion continuously as the route leaves the viewport;
+    // switching straight to a fixed 10% split caused a visible backward step.
+    var hiddenShare = Math.min(0.1, offscreen / total * 0.35);
+    if (amount < hiddenShare) return offscreen * glide(amount / hiddenShare);
+    return mix(offscreen, total, glide((amount - hiddenShare) / (1 - hiddenShare)));
   }
 
   function scrollProgress(scroll) {
@@ -180,15 +184,15 @@
     });
     var start = Math.max(0, source.top + scroll + source.width * 0.35 - window.innerHeight * 0.45);
     var sceneTop = bounds.top + scroll;
-    var firstDeadline = Math.max(start + 120, sceneTop + targets[0].y - window.innerHeight * 0.72);
+    var firstDeadline = Math.max(start + 180, sceneTop + targets[0].y - window.innerHeight * 0.62);
     var gatherEnd = start + Math.max(24, Math.min(window.innerHeight * 0.16, (firstDeadline - start) * 0.25));
     var stops = [{ scroll: start, progress: 0 }, { scroll: gatherEnd, progress: 0.16 }];
     var previousEnd = gatherEnd;
     targets.forEach(function(destination, index) {
-      var deadline = Math.max(firstDeadline, sceneTop + destination.y - window.innerHeight * 0.72);
-      // Each stage lands at 92% of its interval, before the row passes the
-      // lower part of the viewport. Keep all intervals continuous and ordered.
-      var end = Math.max(previousEnd + 48, (deadline - previousEnd * 0.08) / 0.92);
+      var deadline = Math.max(firstDeadline, sceneTop + destination.y - window.innerHeight * 0.62);
+      // Use almost the whole interval for travel, while each row is still
+      // comfortably visible. Later rows keep their own viewport deadlines.
+      var end = Math.max(previousEnd + 48, (deadline - previousEnd * 0.04) / 0.96);
       stops.push({ scroll: end, progress: 0.16 + (index + 1) * 0.84 / 7 });
       previousEnd = end;
     });
@@ -248,8 +252,12 @@
     var elapsed = lastTime === null ? 0 : Math.max(0, Math.min(time - lastTime, 64)) / 1000;
     var sceneVisible = metrics.sceneBottom > window.scrollY && metrics.sceneTop < window.scrollY + window.innerHeight;
     if (timeline === null || !sceneVisible) timeline = target;
-    // A short scrub smoothing keeps movement soft without a delayed timer.
-    timeline += (target - timeline) * (1 - Math.exp(-elapsed / 0.09));
+    // Soften wheel/trackpad steps, but catch up on large scroll jumps instead
+    // of running a long animation after the reader has passed the section.
+    var smoothing = target === 0 || target === 1
+      ? 0.07
+      : mix(0.16, 0.065, clamp(Math.abs(target - timeline) / 0.12));
+    timeline += (target - timeline) * (1 - Math.exp(-elapsed / smoothing));
     if (Math.abs(target - timeline) < 0.000001) timeline = target;
     var raw = timeline;
     if (raw > 0 && !departing) {
@@ -273,7 +281,7 @@
       var stages = clamp((raw - 0.16) / 0.84) * 7;
       var activeIndex = Math.min(6, Math.floor(stages));
       var stageProgress = stages - activeIndex;
-      var advance = activeIndex ? ease(clamp(stageProgress / 0.24)) : 1;
+      var advance = activeIndex ? glide(clamp(stageProgress / 0.12)) : 1;
       var parkedAngle = departureAngle + parkingTurn;
       planets.forEach(function(planet, index) {
         var local = 0;
@@ -284,7 +292,9 @@
           } else {
             angle = parkedAngle + (index - activeIndex + (activeIndex ? 1 - advance : 0)) * Math.PI * 2 / 7;
             if (index < activeIndex) local = 1;
-            else if (index === activeIndex) local = ease(clamp((stageProgress - 0.24) / 0.68));
+            // Keep time linear here: flightDistance applies the easing once.
+            // Stacking two eases made most of the descent happen in a burst.
+            else if (index === activeIndex) local = clamp((stageProgress - 0.12) / 0.84);
           }
         }
         var position;

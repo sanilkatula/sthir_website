@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sthir — A Mind Gym | Stillness in Motion</title>
-    <meta name="description" content="Get to know yourself, question what you’re told, and make choices you can call your own. Sthir is a mind gym for practising and strengthening your discernment.">
+    <meta name="description" content="Get to know yourself, question what you’re told, and make choices you can call your own. Sthir is a mind gym for practising and strengthening your discernment muscle.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
 
     <!-- Tailwind CSS -->
@@ -20,8 +20,8 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Poppins', 'Inter', 'sans-serif'],
+                        sans: ['Work Sans', 'sans-serif'],
+                        display: ['Noka', 'Work Sans', 'sans-serif'],
                     },
                     colors: {
                         brand: {
@@ -41,6 +41,12 @@
     </script>
 
     <style>
+        /* Native anchor scrolling stays responsive to the reader's input. */
+        html.scroll-smooth { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) {
+            html.scroll-smooth { scroll-behavior: auto; }
+        }
+
         :root {
             --paper: #ffffff;
             --bg: #fff7ef;
@@ -64,7 +70,7 @@
 
         body {
             margin: 0;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Work Sans', sans-serif;
             color: var(--ink);
             background: var(--bg);
             overflow-x: hidden;
@@ -72,7 +78,7 @@
         }
 
         h1, h2, h3, .font-display {
-            font-family: 'Poppins', 'Inter', sans-serif;
+            font-family: 'Noka', 'Work Sans', sans-serif;
             letter-spacing: -0.02em;
         }
 
@@ -159,7 +165,7 @@
         }
 
         .brand-title-text {
-            font-family: 'Poppins', 'Inter', sans-serif;
+            font-family: 'Noka', 'Work Sans', sans-serif;
             letter-spacing: 0.22em;
             font-weight: 700;
             font-size: 16px;
@@ -262,7 +268,7 @@
         .mind-gym-jump-links a span {
             display: block;
             color: var(--hero-text);
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Noka', sans-serif;
             font-size: 1.125rem;
             margin-bottom: 0.25rem;
         }
@@ -596,7 +602,7 @@
             justify-content: space-between;
             align-items: center;
             list-style: none;
-            font-family: 'Poppins', 'Inter', sans-serif;
+            font-family: 'Noka', 'Work Sans', sans-serif;
             font-size: 1.125rem;
             font-weight: 500;
             color: var(--ink);
@@ -649,7 +655,8 @@
         .progress-bar {
             position: fixed; top: 0; left: 0; height: 3px;
             background: linear-gradient(90deg, var(--accent-orange), var(--accent-red));
-            width: 0%; z-index: 10000; transition: width 0.1s ease-out;
+            /* Previous width-based animation: width: 0%; transition: width 0.1s ease-out; */
+            width: 100%; z-index: 10000; transform: scaleX(0); transform-origin: left;
         }
 
         /* Nav Transitions */
@@ -902,10 +909,12 @@
             opacity: 1;
         }
     </style>
-  <link href="./shared/site.css?v=compact-1" rel="stylesheet">
-  <link href="./shared/home.css?v=story-practice-1" rel="stylesheet">
+  <link href="./shared/site.css?v=next-step-2" rel="stylesheet">
+  <link href="./shared/home.css?v=audience-points-4" rel="stylesheet">
   <link href="./shared/hero-muscles.css?v=muscles-1" rel="stylesheet">
-  <link href="./shared/hero-framework.css?v=seven-visible-landings-13" rel="stylesheet">
+  <link href="./shared/hero-framework.css?v=story-spacing-16" rel="stylesheet">
+  <link href="./shared/typography.css?v=brand-4" rel="stylesheet">
+  <link href="./shared/home-transition.css?v=reflection-5" rel="stylesheet">
 </head>
 <body class="antialiased sthir-site home-page">
 
@@ -932,7 +941,7 @@
             <a href="#testimonials" class="hover:text-brand-ink transition-colors interactive">Testimonials</a>
             <a href="./contact/" class="hover:text-brand-ink transition-colors interactive">Contact</a>
         </div>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button !py-2 !px-6 text-sm interactive">Apply Now</a>
+        <a href="#offerings" class="story-button !py-2 !px-6 text-sm interactive">Find Your Next Step</a>
         <button class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
             <span></span>
             <span></span>
@@ -947,7 +956,7 @@
                 <a href="#testimonials" class="interactive">Testimonials</a>
                 <a href="./contact/" class="interactive">Contact</a>
             </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive mobile-nav-cta">Apply Now</a>
+            <a href="#offerings" class="story-button interactive mobile-nav-cta">Find Your Next Step</a>
         </div>
     </nav>
     -->
@@ -963,7 +972,7 @@
             <a href="#home" class="interactive">Home</a>
             <a href="./about/" class="interactive">About</a>
             <a href="#what-we-do" class="interactive">Approach</a>
-            <a href="./blog/" class="interactive">Sthir Reflections</a>
+            <a href="./blog/" class="interactive">Sthir Journal</a>
         </div>
         <button type="button" class="reference-nav-cta interactive" data-open-ai-tools aria-haspopup="dialog" aria-controls="ai-tools-dialog">Explore the sandbox</button>
         <button id="homepage-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
@@ -972,7 +981,7 @@
                 <a href="#home" class="interactive">Home</a>
                 <a href="./about/" class="interactive">About</a>
                 <a href="#what-we-do" class="interactive">Approach</a>
-                <a href="./blog/" class="interactive">Sthir Reflections</a>
+                <a href="./blog/" class="interactive">Sthir Journal</a>
                 <a href="./pathways/" class="interactive">Pathways</a>
                 <a href="./contact/" class="interactive">Contact</a>
             </div>
@@ -991,7 +1000,7 @@
       <a href="#home" class="interactive" aria-current="page">Home</a>
       <a href="./about/" class="interactive">About</a>
       <a href="./#what-we-do" class="interactive">Approach</a>
-      <a href="./blog/" class="interactive">Sthir Reflections</a>
+      <a href="./blog/" class="interactive">Sthir Journal</a>
     </div>
     <button type="button" class="reference-nav-cta interactive" data-open-ai-tools aria-haspopup="dialog" aria-controls="ai-tools-dialog">Explore the sandbox</button>
     <button id="site-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
@@ -1000,7 +1009,7 @@
       <a href="#home" class="interactive" aria-current="page">Home</a>
       <a href="./about/" class="interactive">About</a>
       <a href="./#what-we-do" class="interactive">Approach</a>
-      <a href="./blog/" class="interactive">Sthir Reflections</a>
+      <a href="./blog/" class="interactive">Sthir Journal</a>
       <a href="./pathways/" class="interactive">Pathways</a>
       <a href="./contact/" class="interactive">Contact</a>
       </div>
@@ -1017,19 +1026,19 @@
     <div class="reference-nav-links">
       <a href="./about/" class="interactive">Sthir Story</a>
       <a href="./pathways/" class="interactive">Pathways</a>
-      <a href="./blog/" class="interactive">Sthir Reflections</a>
+      <a href="./blog/" class="interactive">Sthir Journal</a>
       <a href="./contact/" class="interactive">Contact</a>
     </div>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="reference-nav-cta reference-apply-cta interactive">Apply Now</a>
+    <a href="#offerings" class="reference-nav-cta reference-apply-cta interactive">Find Your Next Step</a>
     <button id="site-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     <div class="mobile-nav" id="mobile-nav">
       <div class="mobile-nav-links">
       <a href="./about/" class="interactive">Sthir Story</a>
       <a href="./pathways/" class="interactive">Pathways</a>
-      <a href="./blog/" class="interactive">Sthir Reflections</a>
+      <a href="./blog/" class="interactive">Sthir Journal</a>
       <a href="./contact/" class="interactive">Contact</a>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="reference-mobile-cta reference-apply-cta interactive">Apply Now</a>
+      <a href="#offerings" class="reference-mobile-cta reference-apply-cta interactive">Find Your Next Step</a>
     </div>
   </nav>
 
@@ -1130,9 +1139,9 @@
         -->
         <div class="reference-hero-content">
           <div class="hero-framework-copy">
-            <p class="reference-hero-eyebrow">A sandbox for independent thinking</p>
+            <p class="reference-hero-eyebrow">A mind gym for independent thinking</p>
             <h1 id="hero-heading"><span>See beyond the noise.</span><span>Question the obvious.</span><span>Own your choices.</span></h1>
-            <p class="reference-hero-intro">For young minds ready to discover what matters, imagine<br class="reference-desktop-break"> what’s possible, and choose paths of their own making.</p>
+            <p class="reference-hero-intro">For young adults (16-25 year olds) ready to discover what matters, imagine<br class="reference-desktop-break"> what’s possible, and choose paths of their own making.</p>
             <button type="button" id="open-clarity-hero" class="reference-hero-cta interactive" data-open-clarity aria-haspopup="dialog" aria-controls="clarity-modal">Take the 30-sec Clarity Check</button>
             <!-- Previous decorative hero accent, preserved for reference.
             <div class="reference-hero-accent" aria-hidden="true"><span class="reference-accent-line"></span><span class="reference-accent-dot orange"></span><span class="reference-accent-dot red"></span><span class="reference-accent-dot yellow"></span></div>
@@ -1220,7 +1229,7 @@
     <!-- The mind gym story -->
     <section id="mind-gym-story" class="home-section bg-brand-surface relative z-10 border-b border-brand-surfaceLight/50" aria-labelledby="mind-gym-story-heading">
         <div class="home-section-inner home-story-layout">
-          <header class="home-section-heading home-story-heading"><h2 id="mind-gym-story-heading" class="home-section-title">Why Sthir exists</h2><p class="home-section-intro">Play it. Prototype it. Own it.</p></header>
+          <header class="home-section-heading home-story-heading"><h2 id="mind-gym-story-heading" class="home-section-title">Why Sthir exists</h2><p class="reference-hero-eyebrow">Play it. Prototype it. Own it.</p></header>
           <div class="home-story-narrative">
             <!-- Previous section header. Inner comments and entities are escaped.
 <div class="mind-gym-story-heading reveal-up">
@@ -1230,13 +1239,15 @@
             </div>
             -->
             <div class="mind-gym-story-copy text-brand-muted">
-                <p class="mind-gym-story-lead text-brand-ink">Life doesn’t come with an answer key. Still, the systems we walk into seem to have plenty of opinions about what we should do next.</p>
-                <p>You may feel overwhelmed, labelled, or simply cringey about the expectations from people and systems around you. Some of you push back. Others eventually hand your choices to the environment: parents, peers, rankings, or the next least-resistant sensible, safe or popular option.</p>
-                <p>It’s easier said than done: “Make your own choices. Own them.” Living by this is another matter.</p>
-                <p>It asks you to form a point of view, explore possibilities, express your perspective and listen to how the world responds. It asks you to examine where your worldview aligns with others and where it doesn’t, and to stand by your choices while remaining open to what you learn along the way.</p>
-                <p>This isn’t a generational thing. Every generation has had to find its own way of growing up. But in a world of rapid change and competing opinions, building the <strong class="text-brand-accent1 font-semibold">discernment muscle</strong> has become all the more important.</p>
-                <p>Adulting is hard. Owning a choice is uncomfortable. It takes presence and deliberate effort to figure out who we are, where we belong and what matters to us. And we don’t always figure these things out by thinking alone. Most times, we discover them by playing, experimenting, questioning and engaging with the world.</p>
-                <p>As Viola Spolin reminds us, when we focus only on reaching a goal, we risk losing sight of the value of the process itself.</p>
+                <p class="mind-gym-story-lead text-brand-ink">Life doesn’t come with an answer key. Still, the systems you walk into seem to have plenty of opinions about what you should do next.</p>
+                <p>Choosing subjects. Finding a career direction. Deciding what kind of company you want to build.</p>
+                <p>At 16–25, you’re making these choices while still discovering what interests you, what matters to you.</p>
+                <p><strong class="text-brand-accent1 font-semibold">“Make your own choices. Own them,”</strong> they say.</p>
+                <p>You’re asked to have a point of view, know which possibilities excite you and express how you see the world.</p>
+                <p><strong class="text-brand-accent2 font-semibold">But isn’t it harder when the choice is yours?</strong></p>
+                <p>Even more so when you’re choosing from seemingly endless possibilities, amid competing advice and systems that often favour social status and clamouring voices.</p>
+                <p>Developing <strong class="text-brand-accent1 font-semibold">discernment you can trust</strong> becomes essential for hearing your own thinking while staying open to what the world has to offer. You can’t draw the conviction and courage to own your choices from studying and strategizing alone. You develop them by playing, prototyping, questioning and engaging with the world.</p>
+                <p><strong class="text-brand-accent1 font-semibold">That’s what you practise at Sthir:</strong> making work-related choices with a clearer sense of the life you want to build.</p>
             </div>
           </div>
           <aside class="home-story-practice" aria-label="Seven practices for making choices">
@@ -1293,10 +1304,7 @@
               </li>
             </ol>
           </aside>
-          <figure class="mind-gym-quote">
-            <blockquote class="text-brand-ink">“It stands to reason that if we direct all our efforts towards reaching a goal, we stand in grave danger of losing everything on which we have based our daily activities. For when a goal is superimposed on an activity instead of evolving out of it, we often feel cheated when we reach it.”</blockquote>
-            <figcaption class="text-brand-accent1">Viola Spolin</figcaption>
-          </figure>
+
         </div>
     </section>
 
@@ -1435,28 +1443,56 @@
     </section>
     -->
 
+    <!-- A reflective pause between purpose and practice. -->
+    <section id="staying-connected" class="sthir-reflection" aria-label="A reflection from Viola Spolin">
+      <svg class="sthir-reflection-doodle sthir-reflection-doodle--left" viewBox="0 0 240 320" fill="none" aria-hidden="true" focusable="false"><path d="M-20 250C130 290 25 145 117 153S194 264 132 224 83 77 225 35" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="174" cy="76" r="28" stroke="currentColor" stroke-width="2"/><path d="m53 62 5 15 16 3-15 6-3 16-6-15-16-3 15-6Z" fill="currentColor"/></svg>
+      <svg class="sthir-reflection-doodle sthir-reflection-doodle--right" viewBox="0 0 220 300" fill="none" aria-hidden="true" focusable="false"><path d="M230 40C75 15 188 158 100 130S26 225 106 245 210 199 152 176" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="54" cy="65" r="8" fill="currentColor"/><path d="m168 250 8 12m7-30 12 4m-39 32-1 15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      <div class="sthir-reflection-inner">
+        <figure class="sthir-reflection-quote">
+          <span class="sthir-reflection-quote-mark" aria-hidden="true">“</span>
+          <blockquote><p>“It stands to reason that if we direct all our efforts towards reaching a goal, we stand in grave danger of losing everything on which we have based our daily activities. <span class="sthir-reflection-highlight">For when a goal is superimposed on an activity instead of evolving out of it, we often feel cheated when we reach it.”</span></p></blockquote>
+          <figcaption>Viola Spolin</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <!-- What we do -->
-    <section id="what-we-do" class="home-section bg-brand-surface relative z-10 border-b border-brand-surfaceLight/50" aria-labelledby="what-we-do-heading">
-        <div class="home-section-inner">
-            <!-- Previous section header. Inner comments and entities are escaped.
-<div class="max-w-4xl mb-12 reveal-up">
-                <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-4">What we do</span>
-                <h2 id="what-we-do-heading" class="text-3xl md:text-5xl font-display font-medium leading-tight text-brand-ink">Sthir is a mind gym for practising and strengthening your <span class="text-brand-accent1">discernment.</span></h2>
-            </div>
-            -->
-            <header class="home-section-heading"><h2 id="what-we-do-heading" class="home-section-title">What we do</h2><p class="home-section-intro">Sthir is a mind gym for practising and strengthening your discernment.</p></header>
-            <div class="grid md:grid-cols-2 gap-8 md:gap-12 text-lg text-brand-muted leading-relaxed">
-                <p>In small groups, you work through real-life dilemmas, test ideas, challenge assumptions, weigh trade-offs and learn alongside others. You practise making choices, seeing their consequences and finding your feet when you need to rethink your approach.</p>
-                <p>You get to experiment with how you show up, what you stand for and how you respond to the world, before the stakes get higher in your career, at work and in the life you choose to lead.</p>
-            </div>
-            <!-- Temporarily disabled: reflection practice note and secondary clarity check.
-            <div class="mind-gym-practice-note reveal-up">
-                <span class="text-brand-accent1 font-semibold">Reflection, play, and design thinking.</span>
-                <p class="text-brand-muted">Build grounded momentum and self-trust one clear decision at a time.</p>
-                <button id="btn-open-clarity" type="button" class="secondary-button interactive mt-4" data-open-clarity="">Take the 30-sec Clarity Check</button>
-            </div>
-            -->
+    <section id="what-we-do" class="home-section home-approach relative z-10" aria-labelledby="what-we-do-heading">
+      <div class="home-section-inner">
+        <header class="home-section-heading">
+          <h2 id="what-we-do-heading" class="home-section-title">What we do</h2>
+        </header>
+        <div class="home-approach-copy">
+          <p>At Sthir, our focus is <strong>you and your capacity to discern</strong>: to understand what matters to you, explore possibilities and make choices you can own.</p>
+          <p>Through playful, deeply engaging workshops, you reflect, test ideas and learn alongside others. You build your <strong>discernment muscle through Clarity, Courage and Conscious Choice</strong>, practising how to choose, act and learn before committing to your next step.</p>
+          <p>Whether you’re choosing subjects, exploring a career or shaping a company, you bring your work choices into conversation with the life you want to build.</p>
         </div>
+        <div id="offerings" class="home-audiences" role="group" aria-labelledby="home-audiences-label">
+          <p id="home-audiences-label" class="home-audiences-label">We work with:</p>
+          <div class="home-audience-columns">
+            <article class="home-audience home-audience--institutions" aria-labelledby="home-institutions-title">
+              <h3 id="home-institutions-title">Educational institutions</h3>
+              <p>Experiential workshops that complement career guidance by helping students test possibilities, weigh trade-offs and take ownership of their education-to-work choices.</p>
+              <ul class="home-audience-points">
+                <li>Schools, colleges, and learning communities</li>
+                <li>Judgement, perspective-taking, and decision-making</li>
+                <li>Space to practise navigating uncertainty</li>
+              </ul>
+              <a class="home-audience-link interactive" href="./contact/#contact-form">Discuss a programme for your students <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="home-audience home-audience--individuals" aria-labelledby="home-individuals-title">
+              <h3 id="home-individuals-title">Young adults, 16–25</h3>
+              <p>Playful workshops to explore subjects, careers or business ideas, test what speaks to you and choose your next step with greater clarity and courage.</p>
+              <ul class="home-audience-points">
+                <li>Intimate, curated cohorts</li>
+                <li>Age-specific tracks (16-18 yrs, 18-25 yrs)</li>
+                <li>Deep 1:1 coaching integration</li>
+              </ul>
+              <a class="home-audience-link interactive" href="./pathways/">Explore the next cohort <span aria-hidden="true">→</span></a>
+            </article>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Temporarily disabled: How it works scenes. Inner comment delimiters are escaped.
@@ -1536,7 +1572,7 @@
                         &lt;!-- Sign Shape --&gt;
                         <path d="M-180,-320 L140,-320 L180,-260 L140,-200 L-180,-200 Z" fill="#f97316" />
                         &lt;!-- Text --&gt;
-                        <text x="-20" y="-245" fill="#fff7ef" font-family="Poppins, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" letter-spacing="4">YOU ARE HERE</text>
+                        <text x="-20" y="-245" fill="#fff7ef" font-family="Noka, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" letter-spacing="4">YOU ARE HERE</text>
                     </g>
                 </svg>
             </div>
@@ -1724,124 +1760,7 @@
     -->
 
     <!-- Core Offerings: Individuals and Institutions -->
-    <section id="offerings" class="home-section bg-brand-surface relative z-10 border-t border-brand-surfaceLight/50" aria-labelledby="offerings-heading">
-        <div class="home-section-inner">
-            <!-- Previous section header. Inner comments and entities are escaped.
-<div class="text-center mb-16 reveal-up">
-                <span class="text-brand-accent2 text-sm tracking-[0.2em] font-bold uppercase block mb-3">How to work with us</span>
-                <h2 class="text-3xl md:text-5xl font-display font-medium mb-4 text-brand-ink">Who we work with</h2>
-                &lt;!-- Previous introduction: Whether you need to zoom in on a single decision, or zoom out to map your next decade, we have a structure for you. --&gt;
-                <p class="text-brand-muted text-lg max-w-2xl mx-auto">Explore Sthir Pathways for yourself, or connect with us to bring Sthir to your institution.</p>
-            </div>
-            -->
-            <header class="home-section-heading"><h2 id="offerings-heading" class="home-section-title">Who we work with</h2><p class="home-section-intro">Explore Sthir Pathways for yourself, or connect with us to bring Sthir to your institution.</p></header>
-            
-            <div class="grid lg:grid-cols-2 gap-8 items-stretch">
-                
-                <!-- Temporarily disabled: Sthir Sprints offering. Inner comment delimiters are escaped.
-&lt;!-- Sprints Card (Short Term) --&gt;
-                <div class="glass-card flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-accent2/10 transition-all duration-500 reveal-up delay-100 border-t-4 border-t-brand-accent2">
-                    <div class="p-8 md:p-12 flex flex-col flex-grow z-10">
-                        <div class="w-12 h-12 rounded-full bg-brand-accent2/10 text-brand-accent2 flex items-center justify-center mb-6">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <h3 class="text-3xl font-display mb-3 text-brand-ink">Sthir Sprints</h3>
-                        <p class="text-brand-accent2 font-bold tracking-widest uppercase text-xs mb-6">Zoom In • 1 to 2 Days</p>
-                        
-                        <p class="text-brand-muted text-lg leading-relaxed mb-8">Targeted, immersive deep-dives. Perfect for when you are circling a specific decision (a career pivot, a project launch, a tough choice) and need immediate clarity to move.</p>
-                        
-                        <ul class="space-y-4 mb-10 flex-grow">
-                            <li class="flex items-start gap-3 text-sm text-brand-ink">
-                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>High-momentum workshops</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-brand-ink">
-                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>Specific, actionable outputs (e.g., your "Anti-Resume")</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-brand-ink">
-                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>Available Live or On-Demand</span>
-                            </li>
-                        </ul>
-                        
-                        <a href="#sprints-directory" class="secondary-button w-full sm:w-auto text-center self-start interactive hover:!bg-brand-accent2 hover:!text-white hover:!border-brand-accent2">View Upcoming Sprints</a>
-                    </div>
-                    &lt;!-- Background Accent --&gt;
-                    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-accent2/5 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-accent2/10 transition-colors duration-500"></div>
-                </div>
-                -->
 
-                <!-- Individuals: Sthir Pathways -->
-                <div class="glass-card flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-accent1/10 transition-all duration-500 border-t-4 border-t-brand-accent1">
-                    <div class="p-8 md:p-12 flex flex-col flex-grow z-10">
-                        <div class="w-12 h-12 rounded-full bg-brand-accent1/10 text-brand-accent1 flex items-center justify-center mb-6">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
-                        </div>
-                        <h3 class="home-card-title">Individuals at a crossroads</h3>
-                        <p class="text-xl font-display mb-3 text-brand-ink">Sthir Pathways</p>
-                        <p class="text-brand-accent1 font-bold tracking-widest uppercase text-xs mb-6">Zoom Out • 4 to 8 Weeks</p>
-                        
-                        <!-- Previous Pathways description: Comprehensive life-design cohorts. Best for navigating larger life transitions, understanding your core identity, and designing multiple viable futures. -->
-                        <p class="text-brand-muted text-lg leading-relaxed mb-8">For those facing a significant next choice, questioning the path they’re on or seeking better alignment between their life view and their work view. A space to pause, explore possibilities and make choices they can own.</p>
-                        
-                        <ul class="space-y-4 mb-10 flex-grow">
-                            <li class="flex items-start gap-3 text-sm text-brand-ink">
-                                <svg class="w-5 h-5 text-brand-accent1 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>Intimate, curated cohorts</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-brand-ink">
-                                <svg class="w-5 h-5 text-brand-accent1 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>Age-specific tracks (15-18 yrs, 18-25 yrs)</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-brand-ink">
-                                <svg class="w-5 h-5 text-brand-accent1 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>Deep 1:1 coaching integration</span>
-                            </li>
-                        </ul>
-                        
-                        <a href="./pathways/" class="secondary-button w-full sm:w-auto text-center self-start interactive hover:!bg-brand-accent1 hover:!text-white hover:!border-brand-accent1">Explore Pathways</a>
-                    </div>
-                    <!-- Background Accent -->
-                    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-accent1/5 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-accent1/10 transition-colors duration-500"></div>
-                </div>
-
-                <!-- Institutions: Partnerships and collaborations -->
-                <div class="glass-card flex flex-col relative overflow-hidden group hover:shadow-2xl hover:shadow-brand-accent2/10 transition-all duration-500 border-t-4 border-t-brand-accent2">
-                    <div class="p-8 md:p-12 flex flex-col flex-grow z-10">
-                        <div class="w-12 h-12 rounded-full bg-brand-accent2/10 text-brand-accent2 flex items-center justify-center mb-6">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4M9 9h1m4 0h1m-6 4h1m4 0h1"></path></svg>
-                        </div>
-                        <h3 class="home-card-title">Educational institutions</h3>
-                        <p class="text-xl font-display mb-3 text-brand-ink">Experiential programmes</p>
-                        <p class="text-brand-accent2 font-bold tracking-widest uppercase text-xs mb-6">Collaborations &amp; Partnerships</p>
-
-                        <!-- Previous institutions description: Help your students or community find clarity and direction. Connect with us to explore how Sthir can support the people at your institution. -->
-                        <p class="text-brand-muted text-lg leading-relaxed mb-8">Experiential programmes that complement academic learning, skill development and leadership education by giving young adults space to practise judgement, perspective-taking, decision-making and navigating uncertainty.</p>
-
-                        <ul class="space-y-4 mb-10 flex-grow">
-                            <li class="flex items-start gap-3 text-sm text-brand-ink">
-                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>Schools, colleges, and learning communities</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-brand-ink">
-                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>Judgement, perspective-taking, and decision-making</span>
-                            </li>
-                            <li class="flex items-start gap-3 text-sm text-brand-ink">
-                                <svg class="w-5 h-5 text-brand-accent2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span>Space to practise navigating uncertainty</span>
-                            </li>
-                        </ul>
-
-                        <a href="./contact/#contact-form" class="secondary-button w-full sm:w-auto text-center self-start interactive hover:!bg-brand-accent2 hover:!text-white hover:!border-brand-accent2">Get in Touch</a>
-                    </div>
-                    <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-brand-accent2/5 rounded-full blur-3xl pointer-events-none group-hover:bg-brand-accent2/10 transition-colors duration-500"></div>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
     <!-- Temporarily disabled: Sthir Sprints directory. Inner comment delimiters are escaped.
 &lt;!-- Sprints Directory (Masterclasses) --&gt;
@@ -1876,6 +1795,35 @@
         </div>
     </section>
     -->
+
+    <!-- Credibility Banner -->
+    <div class="home-credibility-band border-y border-brand-surfaceLight/30 bg-brand-surface/40 backdrop-blur-md relative z-20 py-6 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
+            <!-- Badge -->
+            <div class="flex-shrink-0 relative group">
+                <div class="absolute inset-0 bg-brand-accent1/20 blur-xl rounded-full group-hover:bg-brand-accent1/40 transition-colors"></div>
+                <img src="./images/dyl_badge.png" alt="Designing Your Life Certified Coach" class="relative h-32 md:h-40 w-auto drop-shadow-xl hover:scale-105 transition-transform duration-300 interactive" onerror="this.style.display='none'"/>
+            </div>
+
+            <!-- Trust Points -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center md:text-left text-brand-muted text-sm font-medium">
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent1 text-lg">✦</span>
+                    <span>Pedagogy co-created with three generations &amp; adult learning research</span>
+                </div>
+                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent2 text-lg">✦</span>
+                    <span>Structured frameworks rooted in Stanford’s Design Your Life approach</span>
+                </div>
+                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-accent3 text-lg">✦</span>
+                    <span>25+ years of lived experience in leadership roles at American Express, BCG, Optum</span>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 6. Testimonials Section -->
     <section id="testimonials" class="home-section bg-brand-bg relative z-10 overflow-hidden border-t border-brand-surfaceLight" aria-labelledby="testimonials-heading">
@@ -1939,93 +1887,45 @@
         </div>
     </section>
 
-    <!-- Credibility Banner -->
-    <div class="home-credibility-band border-y border-brand-surfaceLight/30 bg-brand-surface/40 backdrop-blur-md relative z-20 py-6 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-            <!-- Badge -->
-            <div class="flex-shrink-0 relative group">
-                <div class="absolute inset-0 bg-brand-accent1/20 blur-xl rounded-full group-hover:bg-brand-accent1/40 transition-colors"></div>
-                <img src="./images/dyl_badge.png" alt="Designing Your Life Certified Coach" class="relative h-32 md:h-40 w-auto drop-shadow-xl hover:scale-105 transition-transform duration-300 interactive" onerror="this.style.display='none'"/>
-            </div>
-
-            <!-- Trust Points -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-center md:text-left text-brand-muted text-sm font-medium">
-                <div class="flex items-center gap-2">
-                    <span class="text-brand-accent1 text-lg">✦</span>
-                    <span>Co-created across generations & research</span>
-                </div>
-                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
-                <div class="flex items-center gap-2">
-                    <span class="text-brand-accent2 text-lg">✦</span>
-                    <span>Rooted in Stanford’s Design Your Life Approach</span>
-                </div>
-                <div class="hidden md:block w-1.5 h-1.5 rounded-full bg-brand-surfaceLight"></div>
-                <div class="flex items-center gap-2">
-                    <span class="text-brand-accent3 text-lg">✦</span>
-                    <span>25+ years of real-world experience</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 7. FAQ / About Section -->
+    <!-- Questions about joining and working with Sthir. -->
     <section id="about" class="home-section bg-brand-surface relative z-10 border-t border-brand-surfaceLight" aria-labelledby="faq-heading">
-        <div class="home-section-inner">
-            <!-- Previous section header. Inner comments and entities are escaped.
-<div class="text-center mb-16 reveal-up">
-                <span class="text-brand-accent1 text-sm tracking-[0.2em] font-bold uppercase block mb-4">If you are wondering whether Sthir is for you</span>
-                <h2 class="text-3xl md:text-5xl font-display font-medium mb-6">FAQ</h2>
-                <p class="text-brand-muted text-lg md:text-xl max-w-2xl mx-auto">Sthir is built for people who are ready for calm, practical support in understanding what is true and deciding what to do next.</p>
-            </div>
-            -->
-            <header class="home-section-heading"><h2 id="faq-heading" class="home-section-title">Frequently asked questions</h2><p class="home-section-intro">Learn what Sthir is, what you practise, and what you can take into everyday life.</p></header>
-
-            <div class="home-faq-list">
-                <details class="faq-accordion interactive" open>
-                    <summary>
-                        What is Sthir?
-                        <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="faq-body">
-                        <strong class="text-brand-accent3 block mb-2 font-display text-lg">A mind gym for practising discernment</strong>
-                        <p class="text-brand-muted leading-relaxed">Sthir blends coaching, design thinking, and reflective tools to help people navigate questions around work, identity, leadership, and direction with more honesty.</p>
-                    </div>
-                </details>
-
-                <details class="faq-accordion interactive">
-                    <summary>
-                        What can Sthir help me with?
-                        <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="faq-body">
-                        <strong class="text-brand-accent2 block mb-2 font-display text-lg">The gap between looking fine and feeling aligned</strong>
-                        <p class="text-brand-muted leading-relaxed">Many people have options, ambition, and momentum, and they benefit from a grounded way to hear their own signal through expectation, achievement, and overthinking. Sthir gives structure to that fog.</p>
-                    </div>
-                </details>
-
-                <details class="faq-accordion interactive">
-                    <summary>
-                        What will I take away?
-                        <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="faq-body">
-                        <strong class="text-brand-accent1 block mb-2 font-display text-lg">Clarity you can actually use in real life</strong>
-                        <p class="text-brand-muted leading-relaxed">You leave with sharper questions, a clearer decision lens, and one next experiment to test, paired with momentum that stays with you after a good conversation.</p>
-                    </div>
-                </details>
-
-                <details class="faq-accordion interactive">
-                    <summary>
-                        How do people feel after Sthir?
-                        <svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </summary>
-                    <div class="faq-body">
-                        <strong class="text-brand-ink block mb-2 font-display text-lg">Calmer, clearer, and more able to move</strong>
-                        <p class="text-brand-muted leading-relaxed">People often describe feeling more permission to be honest and more trust in their own next step. The emotional shift is usually just as important as the practical one.</p>
-                    </div>
-                </details>
-            </div>
+      <div class="home-section-inner">
+        <header class="home-section-heading"><h2 id="faq-heading" class="home-section-title">You want to know more?</h2></header>
+        <div class="home-faq-list">
+          <details class="faq-accordion interactive" open>
+            <summary>Will Sthir help me choose a career or a problem statement to build a company around?<svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></summary>
+            <div class="faq-body"><p class="text-brand-muted leading-relaxed">Sthir helps you develop your own judgement. Sthir provides a conscious container. You explore what matters to you, examine possibilities and test assumptions through experiences. The aim is to enable you to make a more informed next choice that you can own.</p></div>
+          </details>
+          <details class="faq-accordion interactive">
+            <summary>Can I join if I have no idea what I want to do?<svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></summary>
+            <div class="faq-body"><p class="text-brand-muted leading-relaxed">You can begin with uncertainty. Bring a question, a few competing possibilities or simply a sense that your current direction needs another look. You don’t need a clear goal to start exploring.</p></div>
+          </details>
+          <details class="faq-accordion interactive">
+            <summary>What if I know what I want, but my family expects something different?<svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></summary>
+            <div class="faq-body"><p class="text-brand-muted leading-relaxed">You can explore the interests, expectations and practical concerns behind that tension. Sthir gives you an objective space to examine your thinking, understand others’ perspectives and practise expressing and standing behind your choice with conviction.</p></div>
+          </details>
+          <details class="faq-accordion interactive">
+            <summary>How do I explore possibilities without risking my studies, job or financial security?<svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></summary>
+            <div class="faq-body"><p class="text-brand-muted leading-relaxed">Start from where you are. Start small. A prototype conversation with someone doing the work, a short project or an experience can help you learn before making a larger commitment. You practise weighing your resources and practical constraints alongside your interests and ambitions.</p></div>
+          </details>
+          <details class="faq-accordion interactive">
+            <summary>What will I leave with?<svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></summary>
+            <div class="faq-body"><p class="text-brand-muted leading-relaxed">Clarity about what matters to you as of now, possibilities worth exploring and a practical next prototype. You also practise a way of approaching choices that you can return to as your circumstances change.</p></div>
+          </details>
+          <details class="faq-accordion interactive">
+            <summary>How do you measure discernment?<svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></summary>
+            <div class="faq-body"><p class="text-brand-muted leading-relaxed">At Sthir, we don’t assess your choices through approval or disapproval. We offer a rubric for you to assess yourself on your clarity, choice quality, commitment and conviction. You use it to reflect on how you’re choosing and where you want to develop further.</p></div>
+          </details>
+          <details class="faq-accordion interactive">
+            <summary>How does Sthir fit alongside our institution’s career counselling and placement support?<svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></summary>
+            <div class="faq-body"><p class="text-brand-muted leading-relaxed">Sthir adds experiential practice in making choices. Students work on self-awareness, judgement, weighing trade-offs and taking ownership of their next steps, alongside the information and opportunities your existing teams provide.</p></div>
+          </details>
+          <details class="faq-accordion interactive">
+            <summary>How can an institution tell whether the workshops are making a difference?<svg class="faq-chevron w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></summary>
+            <div class="faq-body"><p class="text-brand-muted leading-relaxed">We co-create learning intentions and agree on the programme’s intensity before it begins. We then review progress by looking at how students explain their choices, assess alternatives and act on their next steps. Participant engagement, reflections and completed experiments make that learning visible.</p></div>
+          </details>
         </div>
+      </div>
     </section>
 
     <!-- 8. Footer -->
@@ -2044,7 +1944,7 @@
                     <a href="#about" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sthir Story</a>
                     <a href="./pathways/" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Pathways</a>
                     &lt;!-- Temporarily disabled: Sprints link. <a href="#sprints-directory" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sprints</a> --&gt;
-                    <a href="./blog/" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sthir Reflections</a>
+                    <a href="./blog/" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Sthir Journal</a>
                     <a href="#testimonials" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Testimonials</a>
                     <a href="#contact" class="text-brand-muted hover:text-brand-ink transition-colors text-sm interactive">Contact</a>
                 </div>
@@ -2077,10 +1977,10 @@
         <nav class="site-footer-nav" aria-label="Footer navigation">
           <a href="./about/">Sthir Story</a>
           <a href="./pathways/">Pathways</a>
-          <a href="./blog/">Sthir Reflections</a>
+          <a href="./blog/">Sthir Journal</a>
           <a href="./#testimonials">Testimonials</a>
           <a href="./contact/">Contact</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener">Apply Now</a>
+          <a href="#offerings">Find Your Next Step</a>
         </nav>
       </div>
       <div class="glass-card site-footer-card">
@@ -2287,13 +2187,7 @@
             });
         }
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled');
-            } else {
-                navbar.classList.remove('nav-scrolled');
-            }
-        });
+        // Navbar and progress share the frame-batched scroll update below.
 
         // --- 3. Scrollytelling Engine & SVG Manipulation ---
         const sections = document.querySelectorAll('.story-section');
@@ -2309,7 +2203,9 @@
             const scrollY = window.scrollY;
             const windowHeight = window.innerHeight;
             const totalHeight = document.body.scrollHeight - windowHeight;
-            progressBar.style.width = `${(scrollY / totalHeight) * 100}%`;
+            navbar.classList.toggle('nav-scrolled', scrollY > 50);
+            // Transform avoids changing layout on every scroll frame.
+            progressBar.style.transform = `scaleX(${Math.max(0, Math.min(1, scrollY / (totalHeight || 1)))})`;
 
             sections.forEach((section, index) => {
                 const rect = section.getBoundingClientRect();
@@ -2473,6 +2369,23 @@
             let scrollLeft;
             let isHovered = false;
             let exactScroll = 0; 
+            let loopPoint = 0;
+            let marqueeFrame = null;
+            let lastMarqueeTime = null;
+            let marqueeVisible = false;
+            const marqueeMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            function measureMarquee() {
+                const gap = parseFloat(getComputedStyle(testimonialWrapper).gap) || 32;
+                loopPoint = testimonialSet1.offsetWidth + gap;
+            }
+            measureMarquee();
+            if (window.ResizeObserver) {
+                const marqueeSizeObserver = new ResizeObserver(measureMarquee);
+                marqueeSizeObserver.observe(testimonialSet1);
+                marqueeSizeObserver.observe(testimonialWrapper);
+            }
+            window.addEventListener('resize', measureMarquee, { passive: true });
 
             testimonialWrapper.addEventListener('mousedown', (e) => {
                 isDown = true;
@@ -2493,27 +2406,46 @@
             testimonialWrapper.addEventListener('touchstart', () => isHovered = true, {passive: true});
             testimonialWrapper.addEventListener('touchend', () => isHovered = false, {passive: true});
 
-            function autoScrollMarquee() {
+            function autoScrollMarquee(time) {
+                marqueeFrame = null;
+                if (!marqueeVisible || document.hidden || marqueeMotion.matches) {
+                    lastMarqueeTime = null;
+                    return;
+                }
+                const elapsed = lastMarqueeTime === null ? 0 : Math.min(48, time - lastMarqueeTime);
+                lastMarqueeTime = time;
                 if (Math.abs(testimonialWrapper.scrollLeft - exactScroll) > 1) {
                     exactScroll = testimonialWrapper.scrollLeft;
                 }
                 if (!isHovered && !isDown) {
-                    exactScroll += 0.3; 
+                    // Keep the same gentle speed on 60 Hz and 120 Hz screens.
+                    exactScroll += elapsed * 0.018;
                     testimonialWrapper.scrollLeft = exactScroll;
                 }
-                const gap = parseFloat(getComputedStyle(testimonialWrapper).gap) || 32;
-                const loopPoint = testimonialSet1.offsetWidth + gap;
 
-                if (testimonialWrapper.scrollLeft >= loopPoint) {
+                if (loopPoint > 0 && testimonialWrapper.scrollLeft >= loopPoint) {
                     exactScroll -= loopPoint;
                     testimonialWrapper.scrollLeft = exactScroll;
                 } else if (testimonialWrapper.scrollLeft <= 0 && isDown) {
                     exactScroll += loopPoint;
                     testimonialWrapper.scrollLeft = exactScroll;
                 }
-                requestAnimationFrame(autoScrollMarquee);
+                marqueeFrame = requestAnimationFrame(autoScrollMarquee);
             }
-            autoScrollMarquee();
+            function resumeMarquee() {
+                if (marqueeFrame === null && marqueeVisible && !document.hidden && !marqueeMotion.matches) {
+                    lastMarqueeTime = null;
+                    marqueeFrame = requestAnimationFrame(autoScrollMarquee);
+                }
+            }
+            // Avoid running the testimonial animation while reading other sections.
+            const marqueeObserver = new IntersectionObserver((entries) => {
+                marqueeVisible = entries[0].isIntersecting;
+                resumeMarquee();
+            });
+            marqueeObserver.observe(testimonialWrapper);
+            document.addEventListener('visibilitychange', resumeMarquee);
+            marqueeMotion.addEventListener('change', resumeMarquee);
         }
 
         // --- 5. AI Sandbox Logic (Tabs, Chips, Typewriter, API) ---
@@ -2955,6 +2887,6 @@
     <!-- Previous line-only transition, preserved for reference.
     <script src="./shared/hero-framework-blend.js?v=blend-2"></script>
     -->
-    <script src="./shared/hero-framework-solar.js?v=seven-visible-landings-13"></script>
+    <script src="./shared/hero-framework-solar.js?v=gentle-scroll-17"></script>
 </body>
 </html>

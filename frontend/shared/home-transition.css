@@ -1,0 +1,39 @@
+/* A playful pause, with the quote as the sole focus. */
+body.home-page .sthir-reflection {
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  padding: clamp(3rem, 6vw, 5rem) max(7.2vw, calc((100vw - 1280px) / 2));
+  background: #662d91;
+  color: #fff7ef;
+  scroll-margin-top: 7rem;
+  isolation: isolate;
+}
+.sthir-reflection-inner { position: relative; max-width: 850px; margin-inline: auto; text-align: center; }
+.sthir-reflection-quote { margin: 0; }
+.sthir-reflection-quote-mark { display: block; height: 3.5rem; color: #ffeea9; font-family: 'Work Sans', sans-serif; font-size: 6rem; line-height: 1; transform: rotate(-10deg); }
+.sthir-reflection-quote blockquote { margin: 1.25rem 0 1.75rem; }
+.sthir-reflection-quote blockquote p { margin: 0; color: #fff7ef; font-family: 'Work Sans', sans-serif; font-style: italic; font-size: clamp(1.125rem, 1.8vw, 1.45rem); line-height: 1.8; text-wrap: pretty; }
+.sthir-reflection-quote figcaption { color: #ffeea9; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.sthir-reflection-doodle { position: absolute; z-index: -1; pointer-events: none; width: clamp(140px, 18vw, 250px); height: auto; opacity: 0.22; }
+.sthir-reflection-doodle--left { left: -3rem; top: 0; color: #ffeea9; transform: rotate(-12deg); }
+.sthir-reflection-doodle--right { right: -2rem; bottom: -2rem; color: #f9a069; transform: rotate(10deg); }
+@media (max-width: 760px) {
+  body.home-page .sthir-reflection { padding: 3rem 1.5rem; }
+  .sthir-reflection-doodle { opacity: 0.12; }
+  .sthir-reflection-doodle--left { left: -5rem; }
+  .sthir-reflection-doodle--right { right: -5rem; }
+}
+
+/* Full-width, compact quote band with an orange closing thought. */
+body.home-page .sthir-reflection {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: 2rem max(1.5rem, 7.2vw);
+}
+.sthir-reflection-inner { max-width: 1000px; }
+.sthir-reflection-quote-mark { height: 2.5rem; font-size: 4.5rem; }
+.sthir-reflection-quote blockquote { margin: 0.75rem 0 1rem; }
+.sthir-reflection-quote blockquote p { line-height: 1.65; }
+.sthir-reflection-highlight { color: #ffb176; }

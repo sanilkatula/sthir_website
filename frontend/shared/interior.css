@@ -4,7 +4,7 @@ body.interior-page {
   --interior-copy-size: 1.0625rem;
   --interior-copy-leading: 1.75;
   --interior-section-gap: 3rem;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: var(--interior-copy-size);
   line-height: var(--interior-copy-leading);
 }
@@ -38,7 +38,7 @@ body.interior-page .interior-title {
   min-height: 2.5em;
   margin: 0 0 1rem;
   color: var(--site-purple);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: clamp(1.75rem, 3vw, 2.5rem);
   font-weight: 600;
   line-height: 1.25;
@@ -65,7 +65,7 @@ body.interior-page .interior-main :is(h2, h3) {
   min-height: 0;
   margin: 0 0 1rem;
   color: var(--site-purple);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.35;
@@ -79,7 +79,7 @@ body.interior-page .interior-main h3 {
 body.interior-page .interior-main :is(p, blockquote) {
   margin: 0 0 1rem;
   color: var(--muted);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-size: var(--interior-copy-size);
   font-weight: 400;
   line-height: var(--interior-copy-leading);

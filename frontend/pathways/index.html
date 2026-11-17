@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pathways - Sthir</title>
 
+  <link rel="preload" href="../fonts/Noka-Medium.otf" as="font" type="font/otf" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="./utilities.css?v=static-1" rel="stylesheet" />
   <link href="../blog/blog.css" rel="stylesheet" />
   <link href="./pathways.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Previous browser-generated utilities, preserved for reference.
+       Styles are now generated ahead of time; see tailwind.config.cjs.
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -56,8 +62,8 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Poppins', 'Inter', 'sans-serif']
+            sans: ['Work Sans', 'sans-serif'],
+            display: ['Noka', 'Work Sans', 'sans-serif']
           },
           colors: {
             brand: {
@@ -75,8 +81,10 @@
       }
     };
   </script>
-  <link href="../shared/site.css?v=compact-1" rel="stylesheet">
+  -->
+  <link href="../shared/site.css?v=next-step-2" rel="stylesheet">
   <link href="../shared/interior.css?v=simple-1" rel="stylesheet">
+  <link href="../shared/typography.css?v=brand-4" rel="stylesheet">
 </head>
 <body class="blog pathways-page sthir-site interior-page">
 
@@ -98,11 +106,11 @@
       <a href="../about/" class="interactive">Sthir Story</a>
       <a href="./" class="interactive" aria-current="page">Pathways</a>
       &lt;!-- Temporarily disabled: Sprints link. <a href="../#sprints-directory" class="interactive">Sprints</a> --&gt;
-      <a href="../blog/" class="interactive">Sthir Reflections</a>
+      <a href="../blog/" class="interactive">Sthir Journal</a>
       <a href="../#testimonials" class="interactive">Testimonials</a>
       <a href="../contact/" class="interactive">Contact</a>
     </div>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive">Apply Now</a>
+    <a href="../#offerings" class="story-button interactive">Find Your Next Step</a>
     <button class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation">
       <span></span>
       <span></span>
@@ -113,11 +121,11 @@
         <a href="../about/" class="interactive">Sthir Story</a>
         <a href="./" class="interactive" aria-current="page">Pathways</a>
         &lt;!-- Temporarily disabled: Sprints link. <a href="../#sprints-directory" class="interactive">Sprints</a> --&gt;
-        <a href="../blog/" class="interactive">Sthir Reflections</a>
+        <a href="../blog/" class="interactive">Sthir Journal</a>
         <a href="../#testimonials" class="interactive">Testimonials</a>
         <a href="../contact/" class="interactive">Contact</a>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="story-button interactive mobile-nav-cta">Apply Now</a>
+      <a href="../#offerings" class="story-button interactive mobile-nav-cta">Find Your Next Step</a>
     </div>
   </nav>
   -->
@@ -132,7 +140,7 @@
       <a href="../#home" class="interactive">Home</a>
       <a href="../about/" class="interactive">About</a>
       <a href="../#what-we-do" class="interactive">Approach</a>
-      <a href="../blog/" class="interactive">Sthir Reflections</a>
+      <a href="../blog/" class="interactive">Sthir Journal</a>
     </div>
     <button type="button" class="reference-nav-cta interactive" data-open-ai-tools aria-haspopup="dialog" aria-controls="ai-tools-dialog">Explore the sandbox</button>
     <button id="site-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
@@ -141,7 +149,7 @@
       <a href="../#home" class="interactive">Home</a>
       <a href="../about/" class="interactive">About</a>
       <a href="../#what-we-do" class="interactive">Approach</a>
-      <a href="../blog/" class="interactive">Sthir Reflections</a>
+      <a href="../blog/" class="interactive">Sthir Journal</a>
       <a href="../pathways/" class="interactive" aria-current="page">Pathways</a>
       <a href="../contact/" class="interactive">Contact</a>
       </div>
@@ -158,19 +166,19 @@
     <div class="reference-nav-links">
       <a href="../about/" class="interactive">Sthir Story</a>
       <a href="../pathways/" class="interactive" aria-current="page">Pathways</a>
-      <a href="../blog/" class="interactive">Sthir Reflections</a>
+      <a href="../blog/" class="interactive">Sthir Journal</a>
       <a href="../contact/" class="interactive">Contact</a>
     </div>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="reference-nav-cta reference-apply-cta interactive">Apply Now</a>
+    <a href="../#offerings" class="reference-nav-cta reference-apply-cta interactive">Find Your Next Step</a>
     <button id="site-nav-toggle" class="nav-toggle interactive" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
     <div class="mobile-nav" id="mobile-nav">
       <div class="mobile-nav-links">
       <a href="../about/" class="interactive">Sthir Story</a>
       <a href="../pathways/" class="interactive" aria-current="page">Pathways</a>
-      <a href="../blog/" class="interactive">Sthir Reflections</a>
+      <a href="../blog/" class="interactive">Sthir Journal</a>
       <a href="../contact/" class="interactive">Contact</a>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener" class="reference-mobile-cta reference-apply-cta interactive">Apply Now</a>
+      <a href="../#offerings" class="reference-mobile-cta reference-apply-cta interactive">Find Your Next Step</a>
     </div>
   </nav>
 
@@ -460,7 +468,7 @@
           <a href="../about/" class="interactive">Sthir Story</a>
           <a href="./" class="interactive">Pathways</a>
           &lt;!-- Temporarily disabled: Sprints link. <a href="../#sprints-directory" class="interactive">Sprints</a> --&gt;
-          <a href="../blog/" class="interactive">Sthir Reflections</a>
+          <a href="../blog/" class="interactive">Sthir Journal</a>
           <a href="../#testimonials" class="interactive">Testimonials</a>
           <a href="../contact/" class="interactive">Contact</a>
         </div>
@@ -493,10 +501,10 @@
         <nav class="site-footer-nav" aria-label="Footer navigation">
           <a href="../about/">Sthir Story</a>
           <a href="../pathways/">Pathways</a>
-          <a href="../blog/">Sthir Reflections</a>
+          <a href="../blog/">Sthir Journal</a>
           <a href="../#testimonials">Testimonials</a>
           <a href="../contact/">Contact</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScMgIgvs0fhy520HeA-aDZCrtfYprspWlODNZ8Khom50pzGuA/viewform?usp=sharing" target="_blank" rel="noopener">Apply Now</a>
+          <a href="../#offerings">Find Your Next Step</a>
         </nav>
       </div>
       <div class="glass-card site-footer-card">

@@ -37,7 +37,7 @@ body.sthir-site {
   margin: 0;
   background: var(--site-bg);
   color: var(--ink);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   cursor: auto;
 }
 
@@ -48,7 +48,7 @@ body.sthir-site *, body.sthir-site *::before, body.sthir-site *::after {
 body.sthir-site :is(h1, h2, h3, h4, .font-display),
 body.sthir-site .founder-people p {
   color: var(--site-purple);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   letter-spacing: -0.035em;
 }
 
@@ -239,7 +239,7 @@ body.sthir-site.admin-page .hero-shell { min-height: 25rem; padding-bottom: 3rem
 body.sthir-site.admin-page .hero-title-accent { font-size: inherit; font-weight: inherit; }
 body.sthir-site.blog-post .wrap { max-width: 56rem; padding-top: 10rem; }
 body.sthir-site.blog-post #post { background: #fff; border: 1px solid var(--site-border); box-shadow: var(--site-shadow); }
-body.sthir-site.blog-post #title { color: var(--site-purple); font-family: 'Inter', sans-serif; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.2; }
+body.sthir-site.blog-post #title { color: var(--site-purple); font-family: 'Work Sans', sans-serif; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.2; }
 
 body.sthir-site :is(.glass-card, .admin-panel, .admin-login-form, .admin-modal-dialog) {
   border-color: var(--site-border);
@@ -290,7 +290,7 @@ body.sthir-site :is(.story-button, .site-footer-submit) {
   border-radius: 999px;
   background: var(--site-orange);
   color: #fff;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: 500;
   box-shadow: none;
 }
@@ -331,7 +331,7 @@ body.sthir-site .btn.admin-danger:not(:disabled):hover {
 }
 
 body.sthir-site :is(input, textarea, select) {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 body.sthir-site :is(.form-group, .form-field, .admin-field, .session-filter-field) :is(input, textarea, select) {
@@ -426,4 +426,26 @@ body.sthir-site .site-footer-bottom p { margin: 0; color: var(--muted); font-siz
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Make the main next-step action visible on desktop and in the mobile menu. */
+body.sthir-site .reference-nav .reference-apply-cta {
+  background: #662d91;
+  color: #ffffff;
+  border-color: #662d91;
+  min-height: 52px;
+  padding: 0.85rem 1.65rem;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(102, 45, 145, 0.2);
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+}
+body.sthir-site .reference-nav .reference-apply-cta:hover {
+  background: #542078;
+  color: #ffffff;
+  border-color: #542078;
+  box-shadow: 0 6px 16px rgba(102, 45, 145, 0.28);
+}
+body.sthir-site .reference-nav .reference-apply-cta:focus-visible {
+  outline: 3px solid #f26921;
+  outline-offset: 4px;
 }

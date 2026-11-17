@@ -50,7 +50,7 @@ body.home-page .reference-hero {
   border-radius: 50%;
   background: var(--muscle-color);
   color: #29312f;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Work Sans', sans-serif;
   text-align: center;
   cursor: pointer;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
