@@ -1,0 +1,4 @@
+/* Prebuilt Pathways utilities. Build command: see tailwind.config.cjs. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

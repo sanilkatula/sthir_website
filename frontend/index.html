@@ -41,6 +41,12 @@
     </script>
 
     <style>
+        /* Native anchor scrolling stays responsive to the reader's input. */
+        html.scroll-smooth { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) {
+            html.scroll-smooth { scroll-behavior: auto; }
+        }
+
         :root {
             --paper: #ffffff;
             --bg: #fff7ef;
@@ -649,7 +655,8 @@
         .progress-bar {
             position: fixed; top: 0; left: 0; height: 3px;
             background: linear-gradient(90deg, var(--accent-orange), var(--accent-red));
-            width: 0%; z-index: 10000; transition: width 0.1s ease-out;
+            /* Previous width-based animation: width: 0%; transition: width 0.1s ease-out; */
+            width: 100%; z-index: 10000; transform: scaleX(0); transform-origin: left;
         }
 
         /* Nav Transitions */
@@ -2180,13 +2187,7 @@
             });
         }
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled');
-            } else {
-                navbar.classList.remove('nav-scrolled');
-            }
-        });
+        // Navbar and progress share the frame-batched scroll update below.
 
         // --- 3. Scrollytelling Engine & SVG Manipulation ---
         const sections = document.querySelectorAll('.story-section');
@@ -2202,7 +2203,9 @@
             const scrollY = window.scrollY;
             const windowHeight = window.innerHeight;
             const totalHeight = document.body.scrollHeight - windowHeight;
-            progressBar.style.width = `${(scrollY / totalHeight) * 100}%`;
+            navbar.classList.toggle('nav-scrolled', scrollY > 50);
+            // Transform avoids changing layout on every scroll frame.
+            progressBar.style.transform = `scaleX(${Math.max(0, Math.min(1, scrollY / (totalHeight || 1)))})`;
 
             sections.forEach((section, index) => {
                 const rect = section.getBoundingClientRect();
@@ -2366,6 +2369,23 @@
             let scrollLeft;
             let isHovered = false;
             let exactScroll = 0; 
+            let loopPoint = 0;
+            let marqueeFrame = null;
+            let lastMarqueeTime = null;
+            let marqueeVisible = false;
+            const marqueeMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            function measureMarquee() {
+                const gap = parseFloat(getComputedStyle(testimonialWrapper).gap) || 32;
+                loopPoint = testimonialSet1.offsetWidth + gap;
+            }
+            measureMarquee();
+            if (window.ResizeObserver) {
+                const marqueeSizeObserver = new ResizeObserver(measureMarquee);
+                marqueeSizeObserver.observe(testimonialSet1);
+                marqueeSizeObserver.observe(testimonialWrapper);
+            }
+            window.addEventListener('resize', measureMarquee, { passive: true });
 
             testimonialWrapper.addEventListener('mousedown', (e) => {
                 isDown = true;
@@ -2386,27 +2406,46 @@
             testimonialWrapper.addEventListener('touchstart', () => isHovered = true, {passive: true});
             testimonialWrapper.addEventListener('touchend', () => isHovered = false, {passive: true});
 
-            function autoScrollMarquee() {
+            function autoScrollMarquee(time) {
+                marqueeFrame = null;
+                if (!marqueeVisible || document.hidden || marqueeMotion.matches) {
+                    lastMarqueeTime = null;
+                    return;
+                }
+                const elapsed = lastMarqueeTime === null ? 0 : Math.min(48, time - lastMarqueeTime);
+                lastMarqueeTime = time;
                 if (Math.abs(testimonialWrapper.scrollLeft - exactScroll) > 1) {
                     exactScroll = testimonialWrapper.scrollLeft;
                 }
                 if (!isHovered && !isDown) {
-                    exactScroll += 0.3; 
+                    // Keep the same gentle speed on 60 Hz and 120 Hz screens.
+                    exactScroll += elapsed * 0.018;
                     testimonialWrapper.scrollLeft = exactScroll;
                 }
-                const gap = parseFloat(getComputedStyle(testimonialWrapper).gap) || 32;
-                const loopPoint = testimonialSet1.offsetWidth + gap;
 
-                if (testimonialWrapper.scrollLeft >= loopPoint) {
+                if (loopPoint > 0 && testimonialWrapper.scrollLeft >= loopPoint) {
                     exactScroll -= loopPoint;
                     testimonialWrapper.scrollLeft = exactScroll;
                 } else if (testimonialWrapper.scrollLeft <= 0 && isDown) {
                     exactScroll += loopPoint;
                     testimonialWrapper.scrollLeft = exactScroll;
                 }
-                requestAnimationFrame(autoScrollMarquee);
+                marqueeFrame = requestAnimationFrame(autoScrollMarquee);
             }
-            autoScrollMarquee();
+            function resumeMarquee() {
+                if (marqueeFrame === null && marqueeVisible && !document.hidden && !marqueeMotion.matches) {
+                    lastMarqueeTime = null;
+                    marqueeFrame = requestAnimationFrame(autoScrollMarquee);
+                }
+            }
+            // Avoid running the testimonial animation while reading other sections.
+            const marqueeObserver = new IntersectionObserver((entries) => {
+                marqueeVisible = entries[0].isIntersecting;
+                resumeMarquee();
+            });
+            marqueeObserver.observe(testimonialWrapper);
+            document.addEventListener('visibilitychange', resumeMarquee);
+            marqueeMotion.addEventListener('change', resumeMarquee);
         }
 
         // --- 5. AI Sandbox Logic (Tabs, Chips, Typewriter, API) ---
@@ -2848,6 +2887,6 @@
     <!-- Previous line-only transition, preserved for reference.
     <script src="./shared/hero-framework-blend.js?v=blend-2"></script>
     -->
-    <script src="./shared/hero-framework-solar.js?v=seven-visible-landings-13"></script>
+    <script src="./shared/hero-framework-solar.js?v=gentle-scroll-17"></script>
 </body>
 </html>
