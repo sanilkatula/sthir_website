@@ -8,9 +8,9 @@
   <link rel="preload" href="../fonts/Noka-Medium.otf" as="font" type="font/otf" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="./utilities.css?v=static-1" rel="stylesheet" />
+  <link href="./utilities.css?v=email-series-1" rel="stylesheet" />
   <link href="../blog/blog.css" rel="stylesheet" />
-  <link href="./pathways.css?v=eligibility-5" rel="stylesheet" />
+  <link href="./pathways.css?v=email-series-1" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <!-- Previous browser-generated utilities, preserved for reference.
        Styles are now generated ahead of time; see tailwind.config.cjs.
@@ -85,6 +85,7 @@
   <link href="../shared/site.css?v=next-step-2" rel="stylesheet">
   <link href="../shared/interior.css?v=simple-1" rel="stylesheet">
   <link href="../shared/typography.css?v=brand-4" rel="stylesheet">
+  <link href="./session-actions.css?v=1" rel="stylesheet">
 </head>
 <body class="blog pathways-page sthir-site interior-page">
 
@@ -213,20 +214,22 @@
           <h2>AI Pathway</h2>
           <p>Explore the Sthir AI tools to get a first reflection, test an idea, and begin hearing your own signal more clearly.</p>
           <!-- Previous destination: <a href="../#ai-sandbox" class="story-button interactive pathway-action">Free</a> -->
-          <button type="button" id="open-ai-tools" class="story-button interactive pathway-action" aria-haspopup="dialog" aria-controls="ai-tools-dialog">Free</button>
+          <span class="pathway-price">Free</span>
+          <button type="button" id="open-ai-tools" class="story-button interactive pathway-action" aria-haspopup="dialog" aria-controls="ai-tools-dialog">Try AI tools</button>
         </article>
 
         <article class="glass-card pathway-card">
           <p class="pathway-kicker">Pathway 02</p>
           <h2>4 Week Cohort</h2>
           <p>A shorter guided cohort for reflection, clarity, and grounded next steps when you need support without a long commitment.</p>
+          <span class="pathway-price">$295</span>
           <button
             type="button"
             class="story-button interactive pathway-action"
             data-open-interest="4-week"
             data-price="$295"
           >
-            $295
+            Register interest
           </button>
         </article>
 
@@ -234,18 +237,20 @@
           <p class="pathway-kicker">Pathway 03</p>
           <h2>6 Week Cohort</h2>
           <p>A deeper cohort for bigger transitions, more support, and a more spacious process for redesigning your next chapter.</p>
+          <span class="pathway-price">$395</span>
           <button
             type="button"
             class="story-button interactive pathway-action"
             data-open-interest="6-week"
             data-price="$395"
           >
-            $395
+            Register interest
           </button>
         </article>
       </div>
     </section>
 
+    <p class="session-load-note hidden" id="session-load-note" role="status"></p>
     <section class="page-section" id="upcoming-section">
       <div class="section-header section-header--split">
         <h2 class="text-2xl font-display text-brand-ink border-b border-brand-surfaceLight pb-4 flex items-center gap-3 flex-1">
@@ -445,7 +450,7 @@
         </label>
 
         <div class="interest-actions">
-          <button type="submit" class="story-button interactive" id="interest-submit">Send Interest</button>
+          <button type="submit" class="story-button session-cta interactive" id="interest-submit">Register interest</button>
           <p class="form-note hidden" id="interest-success">Thanks. Your interest has been recorded and we’ll reach out soon.</p>
           <p class="form-note form-note--error hidden" id="interest-error">We couldn’t submit that right now. Please try again or contact Sthir directly.</p>
         </div>
@@ -522,7 +527,7 @@
 
   <script src="../shared/runtime.js"></script>
   <script src="../shared/interest-forms.js"></script>
-  <script src="./pathways.js?v=eligibility-6"></script>
+  <script src="./pathways.js?v=email-series-1"></script>
   <script src="../shared/ai-tools.js"></script>
 </body>
 </html>

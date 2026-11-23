@@ -109,6 +109,7 @@
       'ai-clarity': 'AI Clarity',
       '4-week': '4-Week',
       '6-week': '6-Week',
+      'see-and-be-seen': 'See, and Be Seen! email series',
       'not-sure': 'Not sure yet'
     };
 

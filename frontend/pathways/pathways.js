@@ -23,6 +23,7 @@
   var pastFilterActiveCount = document.getElementById('past-filter-active-count');
   var pastRoot = document.getElementById('past-sessions');
   var pastCount = document.getElementById('past-count');
+  var sessionLoadNote = document.getElementById('session-load-note');
   var sessionSearch = document.getElementById('session-search');
   var sessionPathwayFilter = document.getElementById('session-pathway-filter');
   var sessionFormatFilter = document.getElementById('session-format-filter');
@@ -49,8 +50,9 @@
       id: 'sthir-email-series', title: 'See, and Be Seen!',
       description: '“See, and Be Seen!” is a complimentary 12-day experience of journaling and play on email. Explore how we see ourselves, interpret others’ intentions and respond to attention and feedback.',
       eligibility_label: 'Open to all; no prior experience needed.',
-      start_at: null, format: 'live', path_type: 'general', price_usd: 0,
-      details_url: './see-and-be-seen/', date_label: 'Email Series (12 DAYS)', pending_cta: 'Subscribe to email series', pending_label: 'Subscription link coming soon'
+      start_at: null, format: 'on-demand', path_type: 'general', price_usd: 0,
+      details_url: './see-and-be-seen/', date_label: 'Email series · 12 days',
+      cta_url: './see-and-be-seen/#register-interest', cta_label: 'Register interest'
     }
   ];
   var allEvents = featuredSessions.slice();
@@ -230,8 +232,12 @@
     var label = event && event.cta_label ? escapeHtml(event.cta_label) : '';
 
     if (ctaUrl && label) {
+      var destination;
+      try { destination = new URL(ctaUrl, window.location.href); } catch (error) { return ''; }
+      if (destination.protocol !== 'https:' && destination.protocol !== 'http:') return '';
+      var external = destination.origin !== window.location.origin;
       return '' +
-        '<a class="session-join-action w-full py-3 rounded-lg bg-brand-bg border border-brand-surfaceLight text-brand-ink hover:border-brand-accent2 hover:text-white transition-colors interactive text-sm font-medium text-center" href="' + escapeHtml(ctaUrl) + '" target="_blank" rel="noopener">' +
+        '<a class="session-join-action interactive" href="' + escapeHtml(ctaUrl) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' +
           label +
         '</a>';
     }
@@ -254,9 +260,9 @@
 
     if (event.format === 'on-demand') {
       return {
-        cardClass: 'event-card event-card--ondemand glass-card p-8 flex flex-col opacity-80 hover:opacity-100 transition-opacity',
+        cardClass: 'event-card event-card--ondemand glass-card p-8 flex flex-col',
         kickerClass: 'text-xs font-bold tracking-wider uppercase text-brand-muted mb-3 block',
-        kicker: 'On-demand • Available now'
+        kicker: event.date_label || 'On-demand • Available now'
       };
     }
 
@@ -301,7 +307,7 @@
           (event.location_label ? '<span class="session-location">' + escapeHtml(event.location_label) + '</span>' : '') +
           (event.schedule_label ? '<span class="session-schedule">' + escapeHtml(event.schedule_label) + '</span>' : '') + '</p>' +
           '<div class="text-brand-accent1 text-sm font-semibold mb-4">' + escapeHtml(formatPrice(event.price_usd)) + '</div>' +
-          (event.details_url ? '<a class="session-read-more interactive text-sm mb-4 underline" href="' + escapeHtml(event.details_url) + '">Read More</a>' : '') +
+          (event.details_url ? '<a class="session-read-more interactive" href="' + escapeHtml(event.details_url) + '">View details<span class="site-sr-only"> for ' + escapeHtml(event.title || 'this session') + '</span></a>' : '') +
           renderEventAction(event) +
         '</article>';
     }).join('');
@@ -529,20 +535,15 @@
         applyEventFilters();
       })
       .catch(function(error) {
-        var message = error && error.message ? error.message : 'Please try again soon.';
+        var message = 'Some sessions couldn’t load. The experiences below are still available. Please refresh to try again.';
 
         // Keep local experiences available if the session service is unavailable.
         applyEventFilters();
 
-        ondemandRoot.innerHTML = '' +
-          '<article class="glass-card event-card event-card--empty p-8 text-center text-brand-muted md:col-span-2 lg:col-span-3">' +
-            '<p>' + escapeHtml(message) + '</p>' +
-          '</article>';
-
-        pastRoot.innerHTML = '' +
-          '<article class="glass-card event-card event-card--empty p-8 text-center text-brand-muted md:col-span-2 lg:col-span-3">' +
-            '<p>' + escapeHtml(message) + '</p>' +
-          '</article>';
+        if (sessionLoadNote) {
+          sessionLoadNote.textContent = message;
+          sessionLoadNote.classList.remove('hidden');
+        }
 
         if (sessionFilterNote) {
           sessionFilterNote.textContent = message;
@@ -721,7 +722,7 @@
         interestError.classList.remove('hidden');
       }).finally(function() {
         interestSubmit.disabled = false;
-        interestSubmit.textContent = 'Send Interest';
+        interestSubmit.textContent = 'Register interest';
       });
     });
   }

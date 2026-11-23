@@ -12,9 +12,13 @@ const CONTENT_TYPES = {
   '.jpg': 'image/jpeg',
   '.js': 'application/javascript; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.mov': 'video/quicktime',
+  '.mp4': 'video/mp4',
+  '.otf': 'font/otf',
   '.png': 'image/png',
   '.svg': 'image/svg+xml',
   '.txt': 'text/plain; charset=utf-8',
+  '.ttf': 'font/ttf',
   '.webp': 'image/webp'
 };
 

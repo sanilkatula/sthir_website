@@ -81,3 +81,11 @@ and Pathways styles ready before the page appears.
   Supabase Edge API for public events, admin actions, and interest submissions
 - `supabase/functions/groq-proxy/index.ts`
   Supabase Edge Function that hides the Groq API key
+
+## Checks
+
+Install development dependencies with `npm install`, then run `npm test`.
+The tests use Node's `module.stripTypeScriptTypes` API; they were verified on
+Node 26. They exercise the actual Edge API handler with in-memory database and
+authentication fixtures, plus the signup forms and Pathways interactions.
+Automated tests do not write to the live Supabase database or send emails.
