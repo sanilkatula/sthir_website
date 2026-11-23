@@ -23,6 +23,7 @@
   var pastFilterActiveCount = document.getElementById('past-filter-active-count');
   var pastRoot = document.getElementById('past-sessions');
   var pastCount = document.getElementById('past-count');
+  var sessionLoadNote = document.getElementById('session-load-note');
   var sessionSearch = document.getElementById('session-search');
   var sessionPathwayFilter = document.getElementById('session-pathway-filter');
   var sessionFormatFilter = document.getElementById('session-format-filter');
@@ -35,7 +36,26 @@
   var interestSubmit = document.getElementById('interest-submit');
   var interestSuccess = document.getElementById('interest-success');
   var interestError = document.getElementById('interest-error');
-  var allEvents = [];
+  // Local experiences share the session renderer, filters and date grouping.
+  var featuredSessions = [
+    {
+      id: 'sthir-saturdays-2026-12-12', title: 'Sthir Saturdays',
+      description: 'Sixty minutes of choice-making practice through applied improv, reflection and playful experiments.',
+      location_label: 'Online on Zoom', schedule_label: '12 December 2026 · 8:30–9:30 PM IST',
+      start_at: '2026-12-12T20:30:00+05:30', format: 'live', path_type: 'general', price_usd: 0,
+      cta_url: 'https://forms.gle/jkNnp8aySgCaUSRY9', cta_label: 'Join a Saturday',
+      details_url: './saturdays/'
+    },
+    {
+      id: 'sthir-email-series', title: 'See, and Be Seen!',
+      description: '“See, and Be Seen!” is a complimentary 12-day experience of journaling and play on email. Explore how we see ourselves, interpret others’ intentions and respond to attention and feedback.',
+      eligibility_label: 'Open to all; no prior experience needed.',
+      start_at: null, format: 'on-demand', path_type: 'general', price_usd: 0,
+      details_url: './see-and-be-seen/', date_label: 'Email series · 12 days',
+      cta_url: './see-and-be-seen/#register-interest', cta_label: 'Register interest'
+    }
+  ];
+  var allEvents = featuredSessions.slice();
   var activeFilterPanel = 'upcoming';
   var sectionFilters = {
     upcoming: createDefaultFilters(),
@@ -212,13 +232,21 @@
     var label = event && event.cta_label ? escapeHtml(event.cta_label) : '';
 
     if (ctaUrl && label) {
+      var destination;
+      try { destination = new URL(ctaUrl, window.location.href); } catch (error) { return ''; }
+      if (destination.protocol !== 'https:' && destination.protocol !== 'http:') return '';
+      var external = destination.origin !== window.location.origin;
       return '' +
-        '<a class="w-full py-3 rounded-lg bg-brand-bg border border-brand-surfaceLight text-brand-ink hover:border-brand-accent2 hover:text-white transition-colors interactive text-sm font-medium text-center" href="' + escapeHtml(ctaUrl) + '" target="_blank" rel="noopener">' +
+        '<a class="session-join-action interactive" href="' + escapeHtml(ctaUrl) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' +
           label +
         '</a>';
     }
 
-    return '';
+    if (event.pending_cta) {
+      return '<button type="button" disabled class="w-full py-3 rounded-lg border border-brand-surfaceLight text-brand-muted text-sm font-medium cursor-not-allowed">' + escapeHtml(event.pending_cta) + '</button><span class="text-brand-muted text-sm mt-2">' + escapeHtml(event.pending_label || '') + '</span>';
+    }
+
+    return event.pending_label ? '<span class="text-brand-muted text-sm">' + escapeHtml(event.pending_label) + '</span>' : '';
   }
 
   function getEventCardMeta(event, sectionTitle) {
@@ -232,9 +260,9 @@
 
     if (event.format === 'on-demand') {
       return {
-        cardClass: 'event-card event-card--ondemand glass-card p-8 flex flex-col opacity-80 hover:opacity-100 transition-opacity',
+        cardClass: 'event-card event-card--ondemand glass-card p-8 flex flex-col',
         kickerClass: 'text-xs font-bold tracking-wider uppercase text-brand-muted mb-3 block',
-        kicker: 'On-demand • Available now'
+        kicker: event.date_label || 'On-demand • Available now'
       };
     }
 
@@ -249,7 +277,7 @@
     return {
       cardClass: 'event-card event-card--upcoming glass-card p-8 flex flex-col hover:border-brand-accent2/50 transition-colors',
       kickerClass: 'text-xs font-bold tracking-wider uppercase text-brand-accent2 mb-3 block',
-      kicker: formatDateLabel(event.start_at) + ' • ' + formatEventFormat(event.format)
+      kicker: event.date_label || formatDateLabel(event.start_at) + ' • ' + formatEventFormat(event.format)
     };
   }
 
@@ -268,12 +296,18 @@
 
     root.innerHTML = events.map(function(event) {
       var eventMeta = getEventCardMeta(event, title);
+      var showFreeRibbon = title === 'Upcoming Sessions' && formatPrice(event.price_usd) === 'Free';
       return '' +
-        '<article class="' + eventMeta.cardClass + '">' +
+        '<article class="' + eventMeta.cardClass + (showFreeRibbon ? ' event-card--free' : '') + '">' +
+          (showFreeRibbon ? '<span class="event-free-ribbon">Free</span>' : '') +
           '<span class="' + eventMeta.kickerClass + '">' + escapeHtml(eventMeta.kicker) + '</span>' +
-          '<h3 class="text-xl font-display mb-3 text-brand-ink">' + escapeHtml(event.title || 'Session') + '</h3>' +
-          '<p class="text-brand-muted text-sm leading-relaxed mb-6 flex-grow">' + escapeHtml(event.description || 'More details coming soon.') + '</p>' +
+          '<h3 class="text-xl font-display mb-3 text-brand-ink">' + escapeHtml(event.title || 'Session').replace(/!$/, '<span class="session-title-punctuation">!</span>') + '</h3>' +
+          '<p class="text-brand-muted text-sm leading-relaxed mb-6 flex-grow">' + escapeHtml(event.description || 'More details coming soon.') +
+          (event.eligibility_label ? '<span class="session-eligibility">' + escapeHtml(event.eligibility_label) + '</span>' : '') +
+          (event.location_label ? '<span class="session-location">' + escapeHtml(event.location_label) + '</span>' : '') +
+          (event.schedule_label ? '<span class="session-schedule">' + escapeHtml(event.schedule_label) + '</span>' : '') + '</p>' +
           '<div class="text-brand-accent1 text-sm font-semibold mb-4">' + escapeHtml(formatPrice(event.price_usd)) + '</div>' +
+          (event.details_url ? '<a class="session-read-more interactive" href="' + escapeHtml(event.details_url) + '">View details<span class="site-sr-only"> for ' + escapeHtml(event.title || 'this session') + '</span></a>' : '') +
           renderEventAction(event) +
         '</article>';
     }).join('');
@@ -302,7 +336,7 @@
     });
 
     upcoming.sort(function(a, b) {
-      return new Date(a.start_at || 0).getTime() - new Date(b.start_at || 0).getTime();
+      return (a.start_at ? new Date(a.start_at).getTime() : Infinity) - (b.start_at ? new Date(b.start_at).getTime() : Infinity);
     });
 
     ondemand.sort(function(a, b) {
@@ -487,32 +521,29 @@
   }
 
   function loadEvents() {
+    applyEventFilters();
     if (!window.SthirRuntime || !upcomingRoot || !ondemandRoot || !pastRoot) {
       return;
     }
 
     window.SthirRuntime.apiFetch('/events')
       .then(function(data) {
-        allEvents = data && Array.isArray(data.events) ? data.events.filter(Boolean) : [];
+        var remoteEvents = data && Array.isArray(data.events) ? data.events.filter(Boolean) : [];
+        allEvents = featuredSessions.concat(remoteEvents.filter(function(event) {
+          return !featuredSessions.some(function(local) { return local.id === event.id; });
+        }));
         applyEventFilters();
       })
       .catch(function(error) {
-        var message = error && error.message ? error.message : 'Please try again soon.';
+        var message = 'Some sessions couldn’t load. The experiences below are still available. Please refresh to try again.';
 
-        upcomingRoot.innerHTML = '' +
-          '<article class="glass-card event-card event-card--empty p-8 text-center text-brand-muted md:col-span-2 lg:col-span-3">' +
-            '<p>' + escapeHtml(message) + '</p>' +
-          '</article>';
+        // Keep local experiences available if the session service is unavailable.
+        applyEventFilters();
 
-        ondemandRoot.innerHTML = '' +
-          '<article class="glass-card event-card event-card--empty p-8 text-center text-brand-muted md:col-span-2 lg:col-span-3">' +
-            '<p>' + escapeHtml(message) + '</p>' +
-          '</article>';
-
-        pastRoot.innerHTML = '' +
-          '<article class="glass-card event-card event-card--empty p-8 text-center text-brand-muted md:col-span-2 lg:col-span-3">' +
-            '<p>' + escapeHtml(message) + '</p>' +
-          '</article>';
+        if (sessionLoadNote) {
+          sessionLoadNote.textContent = message;
+          sessionLoadNote.classList.remove('hidden');
+        }
 
         if (sessionFilterNote) {
           sessionFilterNote.textContent = message;
@@ -691,7 +722,7 @@
         interestError.classList.remove('hidden');
       }).finally(function() {
         interestSubmit.disabled = false;
-        interestSubmit.textContent = 'Send Interest';
+        interestSubmit.textContent = 'Register interest';
       });
     });
   }

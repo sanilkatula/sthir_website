@@ -1,0 +1,43 @@
+/* One action style for the Pathways directory and experience pages. */
+body.pathways-page .pathway-action,
+body.pathways-page .session-cta,
+body.pathways-page .event-card .session-join-action,
+body.session-detail .session-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 48px;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid #662d91;
+  border-radius: 999px;
+  background: #662d91;
+  color: #fff;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+body.pathways-page .event-card .session-join-action { width: 100%; margin-top: auto; }
+body.pathways-page .pathway-action:hover,
+body.pathways-page .session-cta:hover,
+body.pathways-page .event-card .session-join-action:hover,
+body.session-detail .session-cta:hover { background: #482062; border-color: #482062; color: #fff; }
+
+/* A contrasting fill keeps the same pill legible on purple sections. */
+body.session-detail :is(.hero, .closing) .session-cta { background: #ffeea9; border-color: #ffeea9; color: #482062; }
+body.session-detail :is(.hero, .closing) .session-cta:hover { background: #fff5cf; border-color: #fff5cf; }
+body.pathways-page :is(.pathway-action, .session-cta, .session-join-action):focus-visible,
+body.session-detail .session-cta:focus-visible { outline: 3px solid #f26921; outline-offset: 4px; }
+body.pathways-page .session-cta:disabled,
+body.session-detail .session-cta:disabled { opacity: 0.65; cursor: wait; }
+.pathways-page .pathway-price { display: block; margin: 1.25rem 0 0.75rem; color: #662d91; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) {
+  body.pathways-page :is(.pathway-action, .session-cta, .session-join-action),
+  body.session-detail .session-cta { transition: none; }
+}

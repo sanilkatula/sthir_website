@@ -1,70 +1,80 @@
 # Sthir Website
 
 <!-- sthir-release:start -->
-<!-- sthir-release-version: v2.3 -->
-## v2.3 — Story, Journal, and smoother motion
+<!-- sthir-release-version: v2.4 -->
+## v2.4 — Pathways experiences and email-series interests
 
-**Minor release** · Previous version: **v2.2**
+**Minor release** · Previous version: **v2.3**
 
-Refined Sthir's content and brand presentation, with a calmer homepage journey
-and Pathways styles ready before the page appears.
+Add Sthir Saturdays and See, and Be Seen! to Pathways, with dedicated experience
+pages, a working email-series interest form, and consistent next-step actions.
 
-[Compare with v2.2](https://github.com/sanilkatula/sthir_website/compare/v2.2...v2.3)
+[Compare with v2.3](https://github.com/sanilkatula/sthir_website/compare/v2.3...v2.4)
 
 ### Changes
 
-- **Brand typography:** use local Noka Medium headings and Work Sans body text
-  across the homepage, Story, Pathways, Journal, posts, Contact, and admin pages.
-  Keep punctuation fallbacks for characters missing from the supplied Noka font.
-  Include the original font downloads and Journal reference artwork.
-- **Homepage content:** refine the opening story and What we do copy around
-  education-to-work choices. Present educational institutions and young adults
-  aged 16–25 in two clear audience columns, with programme and cohort links.
-  Give the Viola Spolin quote its own full-width purple band with warm accents
-  and attribution, and update the invitation to learn more.
-- **Sthir Story:** introduce Shalu with a portrait and a chapter-based founder
-  story, credentials, formative conversations, and the Making Choice a Play
-  section. Add supporting artwork, a Curiosity / Structure / Play band, and
-  separate invitations for institutions and young adults.
-- **Sthir Journal:** rename Sthir Reflections throughout navigation and footers.
-  Add the illustrated "middle muddle" introduction, a founder-story link, and
-  a contact invitation while retaining the WordPress article feed.
-- **Next-step navigation:** replace Apply Now with the purple Find Your Next
-  Step pill, linking to the homepage audience section from desktop and mobile
-  menus, footer links, and other existing entry points.
-- **Homepage circle motion:** the seven branded circles orbit, gather at a
-  shared exit, then descend in order beside Why Sthir exists. Spend more of each
-  scroll interval on visible travel and apply a single gentle easing curve.
-  Remove a backward step as the route leaves the viewport. Keep arrivals in
-  view, catch up during fast scrolling, and return smoothly on reverse scroll.
-  Respect reduced-motion preferences.
-- **Scrolling performance:** explicitly enable native smooth scrolling for
-  homepage anchors, with reduced-motion support. Batch navbar and progress
-  updates per frame and animate progress with a transform. Make testimonial
-  scrolling consistent on 60 Hz and 120 Hz displays, cache its measurements,
-  and pause it offscreen, in hidden tabs, or when reduced motion is requested.
-  Preserve hover and drag controls.
-- **Pathways loading:** replace browser-generated Tailwind styles with a small
-  prebuilt local stylesheet to address the navigation flicker. Preload the
-  heading font and connect to font hosts early. Include the stylesheet source,
-  configuration, and pinned rebuild command, preserving responsive grids,
-  dynamic session utilities, hidden modals, and existing controls.
+- **Pathways directory:** introduce local featured experiences alongside
+  sessions from the existing backend. Add dates, location, eligibility,
+  free-session ribbons, and View details links. Keep Sthir Saturdays in live
+  sessions and classify the self-paced email series as on-demand. Existing
+  session search, format/pathway filters, date grouping, and cohort forms remain
+  available. Keep both local experiences visible during an events-loading
+  failure and show a helpful retry message.
+- **Sthir Saturdays:** add a dedicated workshop page with the December session
+  schedule, external registration links, host introduction, FAQ, illustrations,
+  and a workshop video. Include local brand fonts, imagery, video assets, and
+  shared site navigation/footer with mobile menu controls.
+- **See, and Be Seen!:** add the illustrated 12-day email-series page with
+  journaling prompts, practical information, and the latest opening/closing
+  copy and emphasis from the source branch.
+- **Interest capture:** replace disabled email-series signup buttons with
+  Register interest links to a compact form. Require email, allow an optional
+  name, validate input, prevent duplicate clicks while saving, retain input on
+  failure, allow retry, and confirm only a completed save. Include accessible
+  labels, status feedback, keyboard focus styles, and a no-JavaScript contact
+  option. This captures interest for follow-up; it does not start automated
+  email delivery.
+- **Backend compatibility:** submit to the existing `/interests` endpoint using
+  the supported `pathways` type and series metadata. Add a readable series
+  label in admin interests. Existing Supabase functions, schema, authentication,
+  and access rules require no changes or migrations.
+- **Consistent actions:** use the same pill shape, sizing, typography, focus,
+  hover, and disabled states across session pages, cards, and interest forms,
+  with a contrasting fill on purple backgrounds. Use Register interest for
+  cohorts and the email series, Join a Saturday for the workshop, Try AI tools
+  for the free tool, and View details for secondary links. Show cohort prices
+  separately. Keep internal actions in the same tab and external registration
+  links in a new tab. Reject unsupported action URL protocols.
+- **Navigation and loading:** label homepage and founder-story entry points
+  Explore Pathways. Preserve the prebuilt Pathways stylesheet to avoid the
+  previous style-generation flash, rebuild its utilities, and version updated
+  script/style URLs. Detail-page anchors use native scrolling with reduced-motion
+  support.
+- **Local development:** serve MP4/MOV video and OTF/TTF fonts with their proper
+  content types. Add `npm test` and 13 regression tests using the real Edge API
+  handler with in-memory database/auth adapters and DOM-based form checks.
+  Refresh the dependency lockfile to match the static-site workspace, remove
+  obsolete framework/backend lock entries, and add the development-only DOM
+  test dependency with its WebSocket advisory resolved. Document how to run
+  checks without writing to production or sending email.
 
 ### Validation
 
-- Parsed all 10 HTML files, 25 external/inline scripts, and 20 external/inline
-  stylesheets without syntax errors.
-- Verified 10 local routes and 41 local assets return HTTP 200 and match this
-  checkout, including the new artwork, fonts, and Pathways stylesheet.
-- Scripted motion simulations passed for desktop, short viewports, mobile,
-  fast scrolling, reverse scrolling, all seven ordered landings, and reduced
-  motion. Visible descents take roughly twice as long in the sampled runs,
-  with substantially lower peak speeds.
-- Testimonial checks passed for 60/120 Hz timing, hover pause, offscreen idle,
-  reduced motion, and cached layout measurements. Checked native/reduced-motion
-  scrolling rules and prebuilt Pathways responsive/visibility utilities.
-- Git whitespace checks passed. Live browser visual and interaction checks
-  were unavailable because no browser was connected.
+- All 13 automated tests passed: email-series form-to-API integration and admin
+  visibility, validation, optional name, duplicate-click prevention, failed and
+  unconfirmed saves, retry, missing runtime, event merging/filtering, local
+  fallbacks, consistent calls to action, existing cohort/contact/footer forms,
+  API validation, published events, CORS, database errors, and admin access.
+- Live backend checks passed: health and published events returned HTTP 200,
+  invalid interest input returned HTTP 400, and unauthenticated admin interests
+  returned HTTP 401. No valid test contacts were inserted into production.
+- Verified 12 local routes and 63 local assets, including nested-page images,
+  fonts, scripts, styles, and workshop video; video uses `video/mp4`.
+- Parsed 12 HTML files, 27 external/inline scripts, 24 stylesheets, both Edge
+  functions, and checked for duplicate HTML IDs. Git whitespace checks passed.
+- Dependency audit reported zero vulnerabilities after updating the test-only
+  WebSocket dependency. Live visual browser review was unavailable because no
+  browser was connected.
 <!-- sthir-release:end -->
 
 - `frontend/` hosted as a plain static site on Cloudflare Pages or GitHub Pages
@@ -81,3 +91,11 @@ and Pathways styles ready before the page appears.
   Supabase Edge API for public events, admin actions, and interest submissions
 - `supabase/functions/groq-proxy/index.ts`
   Supabase Edge Function that hides the Groq API key
+
+## Checks
+
+Install development dependencies with `npm install`, then run `npm test`.
+The tests use Node's `module.stripTypeScriptTypes` API; they were verified on
+Node 26. They exercise the actual Edge API handler with in-memory database and
+authentication fixtures, plus the signup forms and Pathways interactions.
+Automated tests do not write to the live Supabase database or send emails.
